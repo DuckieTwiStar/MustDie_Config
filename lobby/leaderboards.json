@@ -1,11 +1,11 @@
 {
   "boards": [
     {
-      "id": "Wins_AllTime",
+      "id": "LeaderboardAllTime",
       "period": "AllTime"
     },
     {
-      "id": "Wins_Weekly",
+      "id": "LeaderboardWeekly",
       "period": "Weekly"
     }
   ]
