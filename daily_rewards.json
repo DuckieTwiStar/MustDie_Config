@@ -1,0 +1,78 @@
+{
+  "milestones": [
+    {
+      "days": 6,
+      "reward": {
+        "icon": "",
+        "kind": "SoftCurrency",
+        "title": "500 Coins",
+        "amount": 500
+      }
+    },
+    {
+      "days": 15,
+      "reward": {
+        "icon": "",
+        "kind": "SoftCurrency",
+        "title": "2000 Coins",
+        "amount": 2000
+      }
+    },
+    {
+      "days": 30,
+      "reward": {
+        "icon": "",
+        "kind": "SoftCurrency",
+        "title": "5000 Coins",
+        "amount": 5000
+      }
+    }
+  ],
+  "title": "Daily Rewards",
+  "cycles": [
+    [
+      {
+        "icon": "",
+        "kind": "SoftCurrency",
+        "title": "100 Coins",
+        "amount": 100
+      },
+      {
+        "icon": "",
+        "kind": "SoftCurrency",
+        "title": "150 Coins",
+        "amount": 150
+      },
+      {
+        "icon": "",
+        "kind": "SoftCurrency",
+        "title": "200 Coins",
+        "amount": 200
+      },
+      {
+        "icon": "",
+        "kind": "SoftCurrency",
+        "title": "300 Coins",
+        "amount": 300
+      },
+      {
+        "icon": "",
+        "kind": "SoftCurrency",
+        "title": "400 Coins",
+        "amount": 400
+      },
+      {
+        "icon": "",
+        "kind": "SoftCurrency",
+        "title": "500 Coins",
+        "amount": 500
+      },
+      {
+        "icon": "",
+        "kind": "SoftCurrency",
+        "title": "1000 Coins",
+        "amount": 1000
+      }
+    ]
+  ]
+}

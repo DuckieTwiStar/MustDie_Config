@@ -1,0 +1,76 @@
+{
+  "items": [
+    {
+      "type": "consumable",
+      "description": "Get {amount} coins",
+      "id": "coins_small",
+      "layout": "row",
+      "priceRobux": 49,
+      "title": "Pile of Coins",
+      "productId": 0,
+      "values": {
+        "amount": 500
+      },
+      "order": 10,
+      "reward": {
+        "amount": 500,
+        "kind": "SoftCurrency"
+      }
+    },
+    {
+      "type": "consumable",
+      "description": "Get {amount} coins",
+      "id": "coins_big",
+      "layout": "row",
+      "priceRobux": 199,
+      "title": "Chest of Coins",
+      "productId": 0,
+      "values": {
+        "amount": 3000
+      },
+      "order": 20,
+      "reward": {
+        "amount": 3000,
+        "kind": "SoftCurrency"
+      }
+    },
+    {
+      "type": "nonconsumable",
+      "description": "Permanent {bonus}% coin bonus",
+      "id": "vip",
+      "layout": "row",
+      "priceRobux": 399,
+      "title": "VIP",
+      "productId": 0,
+      "values": {
+        "bonus": 25
+      },
+      "order": 30,
+      "productType": "GamePass",
+      "reward": {
+        "id": "vip",
+        "kind": "Item",
+        "amount": 1
+      }
+    },
+    {
+      "type": "nonconsumable",
+      "description": "{amount} coins and a Lucky Charm. One time only!",
+      "id": "starter_pack",
+      "layout": "offer",
+      "priceRobux": 99,
+      "title": "Starter Pack",
+      "productId": 0,
+      "values": {
+        "amount": 2000
+      },
+      "order": 5,
+      "reward": {
+        "amount": 2000,
+        "kind": "SoftCurrency"
+      }
+    }
+  ],
+  "showSoftCounter": true,
+  "title": "Robux Shop"
+}

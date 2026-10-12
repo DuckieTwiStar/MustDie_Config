@@ -1,0 +1,12 @@
+{
+  "buttonText": "Join",
+  "title": "Join our Community",
+  "groupId": 0,
+  "infoText": "Get a unique gift for joining",
+  "reward": {
+    "icon": "",
+    "kind": "SoftCurrency",
+    "title": "1000 Coins",
+    "amount": 1000
+  }
+}
