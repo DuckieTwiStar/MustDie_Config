@@ -1,0 +1,26 @@
+{
+  "meta": {
+    "version": "BAL-0004",
+    "exported_at": "2026-10-15",
+    "note": "Заготовка нової кімнати: копія параметрів Room 2. Скопіюй папку в rooms/<roomId>, поправ room.id і числа. Геометрія в Place"
+  },
+  "room": {
+    "id": "template",
+    "name_en": "Room Template",
+    "name_uk": "Шаблон кімнати",
+    "base_hp": 900,
+    "door_timer": 75,
+    "spawners": [
+      {
+        "id": "s1",
+        "mode": "simultaneous",
+        "cooldown": 0
+      },
+      {
+        "id": "s2",
+        "mode": "simultaneous",
+        "cooldown": 0
+      }
+    ]
+  }
+}

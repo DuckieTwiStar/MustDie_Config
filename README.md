@@ -223,10 +223,12 @@ tools/validate.py       перевірка перед комітом
 
 ## Як додати нову кімнату
 
-1. Скопіювати `rooms/room1/` у `rooms/roomN/` (`N` у snake_case, наприклад `room2`).
-2. У `room.json` поставити `"id": "roomN"`, змінити значення під кімнату. Зони і спавнери назвати так само, як об'єкти в Place нової кімнати.
-3. Прогнати `python3 tools/validate.py`.
-4. Повідомити стороні Жені: у новому Place треба прописати `roomUrl = .../rooms/roomN`.
+1. У Studio продублювати Place `MustDie - Room Template` (Creator Hub: Places → Duplicate) і дати йому ім'я `MustDie - Room N`.
+2. Скопіювати `rooms/template/` у `rooms/roomN/` (`N` у snake_case, наприклад `room3`).
+3. У `rooms/roomN/room.json` поставити `"id": "roomN"`, змінити числа і спавнери під кімнату. Зони і спавнери назвати так, як на карті (`EnemySpawn` з атрибутом `SpawnerId`).
+4. У новому Place в `ReplicatedStorage.RoomProjectConfig` поставити `roomId = "roomN"`, замінити карту (контракт карти: README в `ServerScriptService._README_FOR_CLAUDE`).
+5. Додати рядок у `lobby/portals.json` з `placeId` нової кімнати.
+6. Прогнати `python3 tools/validate.py`.
 
 ## Перед кожним комітом
 
