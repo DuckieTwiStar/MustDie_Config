@@ -11,7 +11,7 @@ https://raw.githubusercontent.com/DuckieTwiStar/MustDie_Config/main/<папка>
 ## Структура
 
 ```
-lobby/                  конфіги лобі (магазини, щоденні нагороди, лідерборди)
+lobby/                  конфіги лобі (магазини, щоденні нагороди, лідерборди, портали)
 rooms/
   shared/               спільне для всіх кімнат
     rules.json
@@ -190,6 +190,22 @@ tools/validate.py       перевірка перед комітом
 | hp_mult | number | множник | > 0 | так | множник HP ворогів |
 | count_mult | number | множник | > 0 | так | множник кількості ворогів у хвилях |
 | reward_mult | number | множник | ≥ 0 | так | множник віспів за вбивство |
+
+## Файл `lobby/portals.json`
+
+Порталі лобі. Читає пакет `Portal` (ConfigService, ім'я конфігу `portals`), Place ID у самому пакеті немає.
+
+| Поле | Значення |
+|---|---|
+| `maxPlayers` | максимум гравців у групі, 1..4 (місця, що лишились вільними, займають боти кімнати) |
+| `autoJoinRadius` | радіус у studs: хто стоїть біля порталу, автоматично потрапляє в групу того, хто його відкрив |
+| `portals[].id` | рядок, збігається з атрибутом `ContentId` порталу в Studio (`"1"`, `"2"`...) |
+| `portals[].title` | назва у вікні порталу |
+| `portals[].placeId` | Place ID кімнати; `0` поки кімнати немає |
+| `portals[].enabled` | `false` = у вікні «Coming soon», телепорту немає |
+| `portals[].maxPlayers` | необов'язково: ліміт саме цього порталу, 1..4 |
+
+У TeleportData кімнати йдуть `teamSize`, `ContentId`, `partyHost`. Нова кімната: додати Place у Experience, вписати рядок у `portals`, поставити `enabled: true`.
 
 ## Як додати нову кімнату
 

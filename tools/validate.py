@@ -198,6 +198,46 @@ def check_file(path, name):
     return body
 
 
+def check_portals(path):
+    """lobby/portals.json: порталі лобі (id = ContentId порталу в Studio), Place ID кімнат."""
+    if not path.exists():
+        err(path, "файлу немає")
+        return
+    body = load(path)
+    if not isinstance(body, dict):
+        return
+    for key, lo, hi in (("maxPlayers", 1, 4), ("autoJoinRadius", 1, 200)):
+        v = body.get(key)
+        if not isinstance(v, (int, float)) or isinstance(v, bool) or not (lo <= v <= hi):
+            err(path, f"{key}: потрібне число {lo}..{hi}")
+    portals = body.get("portals")
+    if not isinstance(portals, list) or not portals:
+        err(path, "portals: потрібен непорожній масив")
+        return
+    seen = set()
+    for i, row in enumerate(portals):
+        where = f"portals[{i}]"
+        if not isinstance(row, dict):
+            err(path, f"{where}: не об'єкт")
+            continue
+        pid = row.get("id")
+        if not isinstance(pid, str) or not pid or pid in seen:
+            err(path, f"{where}: id (рядок, збігається з ContentId порталу) має бути унікальним, зараз {pid!r}")
+        seen.add(pid)
+        if not isinstance(row.get("title"), str) or not row["title"]:
+            err(path, f"{where}: потрібен title")
+        place = row.get("placeId")
+        if not isinstance(place, int) or isinstance(place, bool) or place < 0:
+            err(path, f"{where}: placeId має бути цілим числом >= 0")
+        if not isinstance(row.get("enabled"), bool):
+            err(path, f"{where}: enabled має бути true/false")
+        elif row["enabled"] and not place:
+            err(path, f"{where}: enabled=true потребує placeId > 0")
+        mp = row.get("maxPlayers")
+        if mp is not None and (not isinstance(mp, int) or isinstance(mp, bool) or not 1 <= mp <= 4):
+            err(path, f"{where}: maxPlayers 1..4")
+
+
 def main():
     shared = {}
     for n in SHARED_FILES:
@@ -264,6 +304,8 @@ def main():
         counts = sorted(p.get("players") for p in (files.get("players") or []) if isinstance(p, dict))
         if counts and counts != [1, 2, 3, 4]:
             err(room_dir / "players.json", f"потрібні рядки для 1, 2, 3, 4 гравців, зараз {counts}")
+
+    check_portals(ROOT / "lobby" / "portals.json")
 
     # решта JSON (лобі, лідерборди, старий balance.json): лише синтаксис
     for p in sorted(ROOT.rglob("*.json")):
