@@ -1,0 +1,29 @@
+name: promote-release
+# Ручний запуск: перевіряє main і переносить гілку release на main (fast-forward).
+# Гра читає конфіги з гілки release.
+on:
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency: promote-release
+jobs:
+  promote:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Валідація main
+        run: python3 tools/validate.py
+      - name: Просунути release до main
+        run: |
+          git fetch origin release || true
+          if git rev-parse --verify origin/release >/dev/null 2>&1; then
+            git merge-base --is-ancestor origin/release HEAD || { echo "release містить коміти, яких немає в main: fast-forward неможливий"; exit 1; }
+          fi
+          git push origin HEAD:refs/heads/release
+          echo "release -> $(git rev-parse --short HEAD)"

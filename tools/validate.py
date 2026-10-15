@@ -13,7 +13,7 @@
 - посилання між файлами: waves -> enemies і спавнери кімнати, weapon_upgrades -> weapons;
 - у кожній кімнаті є всі файли кімнати;
 - wave_delay однаковий у всіх рядках однієї хвилі (гра бере його з першого рядка);
-- копії leaderboards.json (lobby/, rooms/shared/, rooms/) побайтно однакові.
+- копії leaderboards.json (lobby/, rooms/shared/) побайтно однакові.
 """
 import json
 import re
@@ -331,7 +331,7 @@ def main():
     check_portals(ROOT / "lobby" / "portals.json")
 
     # leaderboards.json лежить у кількох місцях, бо різні частини гри читають різні адреси: копії мають бути ідентичними
-    lb_copies = [ROOT / "lobby" / "leaderboards.json", SHARED / "leaderboards.json", ROOMS / "leaderboards.json"]
+    lb_copies = [ROOT / "lobby" / "leaderboards.json", SHARED / "leaderboards.json"]
     lb_copies = [p for p in lb_copies if p.exists()]
     if len(lb_copies) > 1:
         base = lb_copies[0].read_bytes()
@@ -339,7 +339,7 @@ def main():
             if p.read_bytes() != base:
                 err(p, f"не збігається з {lb_copies[0].relative_to(ROOT)}: копії leaderboards.json мають бути ідентичними")
 
-    # решта JSON (лобі, лідерборди, старий balance.json): лише синтаксис
+    # решта JSON (лобі, лідерборди): лише синтаксис
     for p in sorted(ROOT.rglob("*.json")):
         if ".git" in p.parts:
             continue

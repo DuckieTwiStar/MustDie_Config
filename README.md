@@ -3,8 +3,10 @@
 Конфіги гри MustDie (Roblox). Гра читає їх сервером (`CoreServer.ConfigService`) за raw-посиланням:
 
 ```
-https://raw.githubusercontent.com/DuckieTwiStar/MustDie_Config/main/<папка>/<ім'я>.json
+https://raw.githubusercontent.com/DuckieTwiStar/MustDie_Config/release/<папка>/<ім'я>.json
 ```
+
+Гра читає гілку **`release`**, а не `main`. Працюємо й комітимо в `main`; у гру зміни потрапляють лише після «просування» (див. розділ «Гілки: main і release»).
 
 Джерело чисел: GDD MustDie, вкладка «Тест балансу». Кожна збережена версія балансу має id `BAL-XXXX`; він стоїть у `meta.version` кожного файлу. Знімок версії лежить також на Google Диску (папка `Balance`).
 
@@ -27,8 +29,6 @@ rooms/
     players.json
   room2/                Room 2 (два спавнери, хвилі на 4 гравців, множники < 1)
     ...                 ті самі чотири файли
-  balance.json          старий зведений файл BAL-0003, гра його не читає; видалимо, коли код перейде на shared/
-  leaderboards.json     старе місце, Room 1 читає його до перемикання на shared/
 docs/prices.md          ціни лобі: розблокування зброї, розблокування і прокачка пасток
 tools/validate.py       перевірка перед комітом (так само її запускає GitHub Actions: .github/workflows/validate.yml)
 ```
@@ -252,4 +252,13 @@ git fetch origin main && git rebase origin/main
 python3 tools/validate.py      # має бути "OK"
 ```
 
-Невеликі коміти з версією балансу в описі (`BAL-0004: waves room1`). Без force push. Не змінюємо `lobby/`, `rooms/leaderboards.json` і назви/склад полів уже опублікованих файлів без попередження: код написано під них.
+Невеликі коміти з версією балансу в описі (`BAL-0004: waves room1`). Без force push. Не змінюємо `lobby/` і назви/склад полів уже опублікованих файлів без попередження: код написано під них.
+
+## Гілки: main і release
+
+- `main` робоча гілка: сюди коміти, PR, правки балансу. Гра її **не** читає.
+- `release` те, що бачать гравці. Усі кімнати й лобі читають `.../release/...`.
+- Просування змін у гру: GitHub -> вкладка **Actions** -> **promote-release** -> **Run workflow**. Дія спершу запускає `validate.py` на `main`, і лише якщо все чисто, переносить `release` на поточний `main` (fast-forward, без перезапису історії).
+- Після просування сервери підхоплять зміни самі: нові значення читаються кожні `configRefreshSeconds` (зараз 300 с) і застосовуються на початку наступного забігу. Перезапуск серверів не потрібен.
+- Відкотити: у `main` зробити `git revert` потрібного коміту і ще раз запустити promote-release.
+- Руками (якщо потрібно): `git push origin main:release` (лише після `python3 tools/validate.py`).
