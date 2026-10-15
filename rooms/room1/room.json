@@ -1,0 +1,21 @@
+{
+  "meta": {
+    "version": "BAL-0003",
+    "exported_at": "2026-10-15",
+    "note": "Room 1: параметри кімнати. Геометрія в Place"
+  },
+  "room": {
+    "id": "room1",
+    "name_en": "Room 1",
+    "name_uk": "Кімната 1",
+    "base_hp": 650,
+    "door_timer": 60,
+    "spawners": [
+      {
+        "id": "s1",
+        "mode": "simultaneous",
+        "cooldown": 0
+      }
+    ]
+  }
+}

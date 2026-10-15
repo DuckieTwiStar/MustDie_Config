@@ -1,0 +1,42 @@
+{
+  "meta": {
+    "version": "BAL-0003",
+    "exported_at": "2026-10-15",
+    "note": "Вороги"
+  },
+  "enemies": [
+    {
+      "id": "grunt",
+      "name_en": "Grunt",
+      "name_uk": "Рядовий",
+      "size": "small",
+      "hp": 60,
+      "speed": 12,
+      "armor": 0,
+      "damage_to_base": 10,
+      "reward": 25
+    },
+    {
+      "id": "warrior",
+      "name_en": "Warrior",
+      "name_uk": "Воїн",
+      "size": "medium",
+      "hp": 150,
+      "speed": 10,
+      "armor": 0.25,
+      "damage_to_base": 20,
+      "reward": 35
+    },
+    {
+      "id": "brute",
+      "name_en": "Brute",
+      "name_uk": "Громила",
+      "size": "large",
+      "hp": 600,
+      "speed": 6,
+      "armor": 0.1,
+      "damage_to_base": 50,
+      "reward": 75
+    }
+  ]
+}

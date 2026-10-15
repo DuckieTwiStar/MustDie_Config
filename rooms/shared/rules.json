@@ -1,0 +1,15 @@
+{
+  "meta": {
+    "version": "BAL-0003",
+    "exported_at": "2026-10-15",
+    "note": "Правила забігу і економіки, спільні для всіх кімнат"
+  },
+  "rules": {
+    "start_coins": 500,
+    "refund_share": 1,
+    "reward_mode": "each",
+    "ricochet_falloff": 0.5,
+    "cell_size": 4,
+    "restart_delay": 10
+  }
+}

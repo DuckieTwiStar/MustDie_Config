@@ -1,0 +1,277 @@
+#!/usr/bin/env python3
+"""Перевірка конфігів MustDie перед комітом.
+
+Запуск з кореня репозиторію:  python3 tools/validate.py
+Код виходу 0 = усе чисто, 1 = є помилки (коміт не робимо).
+
+Що перевіряється:
+- кожен *.json парситься, корінь це об'єкт, немає null;
+- у файлах rooms/shared/ і rooms/<кімната>/ є meta (version, exported_at, note);
+- колекції це масиви об'єктів з полем id у snake_case, id унікальні
+  (у пастках унікальна пара id + level);
+- обов'язкові поля, типи і діапазони за схемою нижче;
+- посилання між файлами: waves -> enemies і спавнери кімнати, weapon_upgrades -> weapons;
+- у кожній кімнаті є всі файли кімнати.
+"""
+import json
+import re
+import sys
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parent.parent
+ROOMS = ROOT / "rooms"
+SHARED = ROOMS / "shared"
+ID_RE = re.compile(r"^[a-z0-9_]+$")
+
+NUM = (int, float)
+# поле: (тип, обов'язкове, мін, макс)  None = без межі
+SCHEMA = {
+    "rules": {
+        "_object": True,
+        "start_coins": (int, True, 0, None),
+        "refund_share": (NUM, True, 0, 1),
+        "reward_mode": (str, True, None, None),
+        "ricochet_falloff": (NUM, True, 0, 1),
+        "cell_size": (NUM, True, 0.1, None),
+        "restart_delay": (NUM, True, 0, None),
+    },
+    "enemies": {
+        "id": (str, True, None, None), "name_en": (str, True, None, None), "name_uk": (str, True, None, None),
+        "size": (str, True, None, None), "hp": (NUM, True, 1, None), "speed": (NUM, True, 0.1, None),
+        "armor": (NUM, True, 0, 0.95), "damage_to_base": (NUM, True, 0, None), "reward": (int, True, 0, None),
+    },
+    "traps": {
+        "id": (str, True, None, None), "level": (int, True, 1, 10), "order": (int, True, 0, None),
+        "name_en": (str, True, None, None), "name_uk": (str, True, None, None),
+        "mechanic": (str, True, None, None), "placement": (str, True, None, None),
+        "cost": (int, True, 0, None), "damage": (NUM, True, 0, None),
+        "cooldown": (NUM, False, 0, None), "hold_time": (NUM, False, 0, None),
+        "fire_interval": (NUM, False, 0.01, None), "range": (NUM, False, 0, None),
+        "default_owned": (bool, False, None, None),
+    },
+    "weapons": {
+        "id": (str, True, None, None), "order": (int, True, 0, None), "default_owned": (bool, False, None, None),
+        "name_en": (str, True, None, None), "name_uk": (str, True, None, None),
+        "damage": (NUM, True, 0, None), "attack_interval": (NUM, True, 0.01, None), "range": (NUM, True, 0, None),
+        "projectile_speed": (NUM, False, 0.1, None), "gravity": (NUM, False, 0, None),
+        "ricochet": (int, False, 0, None), "multishot": (int, False, 1, None),
+        "crit_chance": (NUM, False, 0, 1), "crit_mult": (NUM, False, 1, None),
+        "pellets": (int, False, 1, None), "spread": (NUM, False, 0, 90),
+        "falloff_start": (NUM, False, 0, None), "falloff_min": (NUM, False, 0, 1),
+    },
+    "weapon_upgrades": {
+        "id": (str, True, None, None), "weapon_id": (str, True, None, None), "upgrade": (str, True, None, None),
+        "order": (int, True, 0, None), "level": (int, True, 1, 10), "cost": (int, True, 0, None), "value": (NUM, True, None, None),
+    },
+    "room": {
+        "_object": True,
+        "id": (str, True, None, None), "name_en": (str, True, None, None), "name_uk": (str, True, None, None),
+        "base_hp": (NUM, True, 1, None), "door_timer": (NUM, True, 0, None), "spawners": (list, True, None, None),
+    },
+    "zones": {
+        "id": (str, True, None, None), "order": (int, True, 0, None), "name_en": (str, True, None, None),
+        "name_uk": (str, True, None, None), "length": (NUM, True, 0, None),
+    },
+    "waves": {
+        "id": (str, True, None, None), "wave": (int, True, 1, None), "spawner_id": (str, True, None, None),
+        "enemy_id": (str, True, None, None), "count": (int, True, 1, None),
+        "spawn_interval": (NUM, True, 0, None), "wave_delay": (NUM, True, 0, None),
+    },
+    "players": {
+        "id": (str, True, None, None), "players": (int, True, 1, 4), "hp_mult": (NUM, True, 0.1, None),
+        "count_mult": (NUM, True, 0.1, None), "reward_mult": (NUM, True, 0, None),
+    },
+}
+ENUMS = {
+    ("rules", "reward_mode"): {"each", "split", "killer"},
+    ("enemies", "size"): {"small", "medium", "large"},
+    ("traps", "mechanic"): {"snare", "wall", "turret"},
+    ("traps", "placement"): {"floor", "wall"},
+    ("weapon_upgrades", "upgrade"): {"damage", "attack_interval", "ricochet", "multishot", "crit", "pellets"},
+}
+SHARED_FILES = ["rules", "enemies", "traps", "weapons", "weapon_upgrades"]
+ROOM_FILES = ["room", "zones", "waves", "players"]
+SKIP = {"leaderboards"}  # формат лідербордів веде сторона Жені
+
+errors = []
+
+
+def err(path, msg):
+    errors.append(f"{path.relative_to(ROOT)}: {msg}")
+
+
+def has_null(v):
+    if v is None:
+        return True
+    if isinstance(v, dict):
+        return any(has_null(x) for x in v.values())
+    if isinstance(v, list):
+        return any(has_null(x) for x in v)
+    return False
+
+
+def load(path):
+    try:
+        data = json.loads(path.read_text(encoding="utf-8"))
+    except Exception as e:  # noqa: BLE001
+        err(path, f"не JSON: {e}")
+        return None
+    if not isinstance(data, dict):
+        err(path, "корінь має бути об'єктом")
+        return None
+    if has_null(data):
+        err(path, "є null: відсутнє значення = відсутній ключ")
+    return data
+
+
+def type_ok(v, t):
+    if t is int:
+        return isinstance(v, int) and not isinstance(v, bool)
+    if t == NUM:
+        return isinstance(v, (int, float)) and not isinstance(v, bool)
+    return isinstance(v, t)
+
+
+def check_fields(path, name, row, where):
+    schema = SCHEMA[name]
+    for key, spec in schema.items():
+        if key.startswith("_"):
+            continue
+        t, req, lo, hi = spec
+        if key not in row:
+            if req:
+                err(path, f"{where}: немає поля {key}")
+            continue
+        v = row[key]
+        if not type_ok(v, t):
+            err(path, f"{where}: {key} має неправильний тип ({v!r})")
+            continue
+        if lo is not None and v < lo:
+            err(path, f"{where}: {key}={v} менше за {lo}")
+        if hi is not None and v > hi:
+            err(path, f"{where}: {key}={v} більше за {hi}")
+        if (name, key) in ENUMS and v not in ENUMS[(name, key)]:
+            err(path, f"{where}: {key}={v!r} не з {sorted(ENUMS[(name, key)])}")
+    for key in row:
+        if key not in schema or key.startswith("_"):
+            err(path, f"{where}: невідоме поле {key} (додай його в схему і README)")
+
+
+def check_file(path, name):
+    data = load(path)
+    if data is None:
+        return None
+    meta = data.get("meta")
+    if not isinstance(meta, dict) or not all(isinstance(meta.get(k), str) and meta.get(k) for k in ("version", "exported_at", "note")):
+        err(path, "meta має містити рядки version, exported_at, note")
+    if name not in data:
+        err(path, f"немає ключа {name}")
+        return None
+    body = data[name]
+    if SCHEMA[name].get("_object"):
+        if not isinstance(body, dict):
+            err(path, f"{name} має бути об'єктом")
+            return None
+        check_fields(path, name, body, name)
+        if "id" in body and not ID_RE.match(str(body["id"])):
+            err(path, f"id {body['id']!r} не snake_case")
+        return body
+    if not isinstance(body, list) or not body:
+        err(path, f"{name} має бути непорожнім масивом")
+        return None
+    seen = set()
+    for i, row in enumerate(body):
+        where = f"{name}[{i}]"
+        if not isinstance(row, dict):
+            err(path, f"{where}: не об'єкт")
+            continue
+        check_fields(path, name, row, where)
+        rid = row.get("id")
+        if isinstance(rid, str) and not ID_RE.match(rid):
+            err(path, f"{where}: id {rid!r} не snake_case")
+        key = (rid, row.get("level")) if name == "traps" else rid
+        if key in seen:
+            err(path, f"{where}: повторний id {key}")
+        seen.add(key)
+    return body
+
+
+def main():
+    shared = {}
+    for n in SHARED_FILES:
+        p = SHARED / f"{n}.json"
+        if not p.exists():
+            err(p, "файлу немає")
+            continue
+        shared[n] = check_file(p, n)
+
+    enemy_ids = {e["id"] for e in (shared.get("enemies") or []) if isinstance(e, dict)}
+    weapon_ids = {w["id"] for w in (shared.get("weapons") or []) if isinstance(w, dict)}
+    for i, u in enumerate(shared.get("weapon_upgrades") or []):
+        if isinstance(u, dict) and u.get("weapon_id") not in weapon_ids:
+            err(SHARED / "weapon_upgrades.json", f"weapon_upgrades[{i}]: weapon_id {u.get('weapon_id')!r} немає в weapons")
+    traps = shared.get("traps") or []
+    by_trap = {}
+    for t in traps:
+        if isinstance(t, dict):
+            by_trap.setdefault(t.get("id"), []).append(t.get("level"))
+    for tid, levels in by_trap.items():
+        if sorted(levels) != list(range(1, len(levels) + 1)):
+            err(SHARED / "traps.json", f"пастка {tid}: рівні мають іти 1..N без пропусків, зараз {sorted(levels)}")
+    if not any(isinstance(w, dict) and w.get("default_owned") for w in (shared.get("weapons") or [])):
+        err(SHARED / "weapons.json", "жодна зброя не default_owned: гравцю не буде з чим грати")
+
+    for room_dir in sorted(p for p in ROOMS.iterdir() if p.is_dir() and p.name != "shared"):
+        if not ID_RE.match(room_dir.name):
+            err(room_dir, "назва папки кімнати має бути snake_case")
+        files = {}
+        for n in ROOM_FILES:
+            p = room_dir / f"{n}.json"
+            if not p.exists():
+                err(p, "файлу немає (кожна кімната має всі файли кімнати)")
+                continue
+            files[n] = check_file(p, n)
+        room = files.get("room") or {}
+        spawner_ids = set()
+        for i, s in enumerate(room.get("spawners") or []):
+            if not isinstance(s, dict) or not isinstance(s.get("id"), str) or not ID_RE.match(s["id"]):
+                err(room_dir / "room.json", f"spawners[{i}]: потрібен id у snake_case")
+                continue
+            spawner_ids.add(s["id"])
+        if room and room.get("id") != room_dir.name:
+            err(room_dir / "room.json", f"room.id {room.get('id')!r} має збігатися з назвою папки {room_dir.name!r}")
+        delays = {}
+        for i, wv in enumerate(files.get("waves") or []):
+            if not isinstance(wv, dict):
+                continue
+            if wv.get("enemy_id") not in enemy_ids:
+                err(room_dir / "waves.json", f"waves[{i}]: enemy_id {wv.get('enemy_id')!r} немає в shared/enemies")
+            if wv.get("spawner_id") not in spawner_ids:
+                err(room_dir / "waves.json", f"waves[{i}]: spawner_id {wv.get('spawner_id')!r} немає в room.spawners")
+            d = delays.setdefault(wv.get("wave"), wv.get("wave_delay"))
+            if d != wv.get("wave_delay"):
+                err(room_dir / "waves.json", f"waves[{i}]: wave_delay у хвилі {wv.get('wave')} має бути однаковим у всіх рядках")
+        counts = sorted(p.get("players") for p in (files.get("players") or []) if isinstance(p, dict))
+        if counts and counts != [1, 2, 3, 4]:
+            err(room_dir / "players.json", f"потрібні рядки для 1, 2, 3, 4 гравців, зараз {counts}")
+
+    # решта JSON (лобі, лідерборди, старий balance.json): лише синтаксис
+    for p in sorted(ROOT.rglob("*.json")):
+        if ".git" in p.parts:
+            continue
+        rel = p.relative_to(ROOMS) if ROOMS in p.parents else None
+        managed = rel is not None and len(rel.parts) == 2 and p.stem in SCHEMA
+        if not managed:
+            load(p)
+
+    if errors:
+        print(f"ПОМИЛКИ ({len(errors)}):")
+        for e in errors:
+            print("  -", e)
+        return 1
+    print("OK: усі конфіги валідні")
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())

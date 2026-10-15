@@ -1,0 +1,59 @@
+{
+  "meta": {
+    "version": "BAL-0003",
+    "exported_at": "2026-10-15",
+    "note": "Зброя. Ціни розблокування в лобі, див. docs/prices.md. Рогатка і дробовик: числа прототипу Room 1"
+  },
+  "weapons": [
+    {
+      "id": "fists",
+      "order": 10,
+      "default_owned": true,
+      "name_en": "Fists",
+      "name_uk": "Кулаки",
+      "damage": 15,
+      "attack_interval": 0.4,
+      "range": 7
+    },
+    {
+      "id": "slingshot",
+      "order": 20,
+      "default_owned": true,
+      "name_en": "Slingshot",
+      "name_uk": "Рогатка",
+      "damage": 12,
+      "attack_interval": 0.6,
+      "range": 150,
+      "projectile_speed": 110,
+      "gravity": 35
+    },
+    {
+      "id": "bow",
+      "order": 30,
+      "name_en": "Bow",
+      "name_uk": "Лук",
+      "damage": 40,
+      "attack_interval": 1,
+      "range": 250,
+      "projectile_speed": 160,
+      "ricochet": 0,
+      "multishot": 1,
+      "crit_chance": 0.05,
+      "crit_mult": 1.5
+    },
+    {
+      "id": "shotgun",
+      "order": 40,
+      "name_en": "Shotgun",
+      "name_uk": "Дробовик",
+      "damage": 9,
+      "attack_interval": 1.2,
+      "range": 40,
+      "projectile_speed": 260,
+      "pellets": 8,
+      "spread": 7,
+      "falloff_start": 12,
+      "falloff_min": 0.5
+    }
+  ]
+}

@@ -1,0 +1,108 @@
+{
+  "meta": {
+    "version": "BAL-0003",
+    "exported_at": "2026-10-15",
+    "note": "Хвилі Room 1: рядок на групу ворогів. wave_delay = пауза перед хвилею, однакова в усіх рядках хвилі"
+  },
+  "waves": [
+    {
+      "id": "w1_grunt",
+      "wave": 1,
+      "spawner_id": "s1",
+      "enemy_id": "grunt",
+      "count": 6,
+      "spawn_interval": 1.5,
+      "wave_delay": 0
+    },
+    {
+      "id": "w2_grunt",
+      "wave": 2,
+      "spawner_id": "s1",
+      "enemy_id": "grunt",
+      "count": 10,
+      "spawn_interval": 1.2,
+      "wave_delay": 20
+    },
+    {
+      "id": "w3_grunt",
+      "wave": 3,
+      "spawner_id": "s1",
+      "enemy_id": "grunt",
+      "count": 8,
+      "spawn_interval": 1,
+      "wave_delay": 20
+    },
+    {
+      "id": "w3_warrior",
+      "wave": 3,
+      "spawner_id": "s1",
+      "enemy_id": "warrior",
+      "count": 3,
+      "spawn_interval": 2.5,
+      "wave_delay": 20
+    },
+    {
+      "id": "w4_warrior",
+      "wave": 4,
+      "spawner_id": "s1",
+      "enemy_id": "warrior",
+      "count": 6,
+      "spawn_interval": 2,
+      "wave_delay": 25
+    },
+    {
+      "id": "w4_grunt",
+      "wave": 4,
+      "spawner_id": "s1",
+      "enemy_id": "grunt",
+      "count": 8,
+      "spawn_interval": 0.8,
+      "wave_delay": 25
+    },
+    {
+      "id": "w5_grunt",
+      "wave": 5,
+      "spawner_id": "s1",
+      "enemy_id": "grunt",
+      "count": 12,
+      "spawn_interval": 0.8,
+      "wave_delay": 25
+    },
+    {
+      "id": "w5_brute",
+      "wave": 5,
+      "spawner_id": "s1",
+      "enemy_id": "brute",
+      "count": 1,
+      "spawn_interval": 0,
+      "wave_delay": 25
+    },
+    {
+      "id": "w6_warrior",
+      "wave": 6,
+      "spawner_id": "s1",
+      "enemy_id": "warrior",
+      "count": 8,
+      "spawn_interval": 1.5,
+      "wave_delay": 30
+    },
+    {
+      "id": "w6_brute",
+      "wave": 6,
+      "spawner_id": "s1",
+      "enemy_id": "brute",
+      "count": 2,
+      "spawn_interval": 6,
+      "wave_delay": 30
+    },
+    {
+      "id": "w6_grunt",
+      "wave": 6,
+      "spawner_id": "s1",
+      "enemy_id": "grunt",
+      "count": 10,
+      "spawn_interval": 0.7,
+      "wave_delay": 30
+    }
+  ]
+}

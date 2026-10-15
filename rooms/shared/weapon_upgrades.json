@@ -1,0 +1,189 @@
+{
+  "meta": {
+    "version": "BAL-0003",
+    "exported_at": "2026-10-15",
+    "note": "Прокачка зброї в кімнаті за віспи, діє один забіг. value = нове значення параметра. Дробовик: числа прототипу"
+  },
+  "weapon_upgrades": [
+    {
+      "id": "bow_damage_1",
+      "weapon_id": "bow",
+      "upgrade": "damage",
+      "order": 10,
+      "level": 1,
+      "cost": 100,
+      "value": 40
+    },
+    {
+      "id": "bow_damage_2",
+      "weapon_id": "bow",
+      "upgrade": "damage",
+      "order": 10,
+      "level": 2,
+      "cost": 150,
+      "value": 50
+    },
+    {
+      "id": "bow_damage_3",
+      "weapon_id": "bow",
+      "upgrade": "damage",
+      "order": 10,
+      "level": 3,
+      "cost": 200,
+      "value": 60
+    },
+    {
+      "id": "bow_attack_interval_1",
+      "weapon_id": "bow",
+      "upgrade": "attack_interval",
+      "order": 20,
+      "level": 1,
+      "cost": 100,
+      "value": 0.85
+    },
+    {
+      "id": "bow_attack_interval_2",
+      "weapon_id": "bow",
+      "upgrade": "attack_interval",
+      "order": 20,
+      "level": 2,
+      "cost": 150,
+      "value": 0.7
+    },
+    {
+      "id": "bow_attack_interval_3",
+      "weapon_id": "bow",
+      "upgrade": "attack_interval",
+      "order": 20,
+      "level": 3,
+      "cost": 200,
+      "value": 0.55
+    },
+    {
+      "id": "bow_ricochet_1",
+      "weapon_id": "bow",
+      "upgrade": "ricochet",
+      "order": 30,
+      "level": 1,
+      "cost": 100,
+      "value": 1
+    },
+    {
+      "id": "bow_ricochet_2",
+      "weapon_id": "bow",
+      "upgrade": "ricochet",
+      "order": 30,
+      "level": 2,
+      "cost": 150,
+      "value": 2
+    },
+    {
+      "id": "bow_ricochet_3",
+      "weapon_id": "bow",
+      "upgrade": "ricochet",
+      "order": 30,
+      "level": 3,
+      "cost": 200,
+      "value": 3
+    },
+    {
+      "id": "bow_multishot_1",
+      "weapon_id": "bow",
+      "upgrade": "multishot",
+      "order": 40,
+      "level": 1,
+      "cost": 300,
+      "value": 2
+    },
+    {
+      "id": "bow_multishot_2",
+      "weapon_id": "bow",
+      "upgrade": "multishot",
+      "order": 40,
+      "level": 2,
+      "cost": 500,
+      "value": 3
+    },
+    {
+      "id": "bow_crit_1",
+      "weapon_id": "bow",
+      "upgrade": "crit",
+      "order": 50,
+      "level": 1,
+      "cost": 100,
+      "value": 2
+    },
+    {
+      "id": "bow_crit_2",
+      "weapon_id": "bow",
+      "upgrade": "crit",
+      "order": 50,
+      "level": 2,
+      "cost": 150,
+      "value": 2.5
+    },
+    {
+      "id": "bow_crit_3",
+      "weapon_id": "bow",
+      "upgrade": "crit",
+      "order": 50,
+      "level": 3,
+      "cost": 200,
+      "value": 3
+    },
+    {
+      "id": "shotgun_damage_1",
+      "weapon_id": "shotgun",
+      "upgrade": "damage",
+      "order": 60,
+      "level": 1,
+      "cost": 100,
+      "value": 11
+    },
+    {
+      "id": "shotgun_damage_2",
+      "weapon_id": "shotgun",
+      "upgrade": "damage",
+      "order": 60,
+      "level": 2,
+      "cost": 175,
+      "value": 13
+    },
+    {
+      "id": "shotgun_pellets_1",
+      "weapon_id": "shotgun",
+      "upgrade": "pellets",
+      "order": 70,
+      "level": 1,
+      "cost": 150,
+      "value": 10
+    },
+    {
+      "id": "shotgun_pellets_2",
+      "weapon_id": "shotgun",
+      "upgrade": "pellets",
+      "order": 70,
+      "level": 2,
+      "cost": 250,
+      "value": 12
+    },
+    {
+      "id": "shotgun_attack_interval_1",
+      "weapon_id": "shotgun",
+      "upgrade": "attack_interval",
+      "order": 80,
+      "level": 1,
+      "cost": 125,
+      "value": 1.0
+    },
+    {
+      "id": "shotgun_attack_interval_2",
+      "weapon_id": "shotgun",
+      "upgrade": "attack_interval",
+      "order": 80,
+      "level": 2,
+      "cost": 200,
+      "value": 0.8
+    }
+  ]
+}

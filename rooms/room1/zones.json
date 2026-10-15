@@ -1,0 +1,51 @@
+{
+  "meta": {
+    "version": "BAL-0003",
+    "exported_at": "2026-10-15",
+    "note": "Зони маршруту від спавнера до бази. length для симуляції і ботів, ще не звірено з картою"
+  },
+  "zones": [
+    {
+      "id": "c1",
+      "order": 10,
+      "name_en": "Corridor 1",
+      "name_uk": "Коридор 1",
+      "length": 40
+    },
+    {
+      "id": "t1",
+      "order": 20,
+      "name_en": "Turn 1",
+      "name_uk": "Поворот 1",
+      "length": 12
+    },
+    {
+      "id": "c2",
+      "order": 30,
+      "name_en": "Corridor 2",
+      "name_uk": "Коридор 2",
+      "length": 40
+    },
+    {
+      "id": "t2",
+      "order": 40,
+      "name_en": "Turn 2",
+      "name_uk": "Поворот 2",
+      "length": 12
+    },
+    {
+      "id": "c3",
+      "order": 50,
+      "name_en": "Corridor 3",
+      "name_uk": "Коридор 3",
+      "length": 30
+    },
+    {
+      "id": "area",
+      "order": 60,
+      "name_en": "Main area",
+      "name_uk": "Головна зала",
+      "length": 20
+    }
+  ]
+}

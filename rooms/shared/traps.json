@@ -1,0 +1,121 @@
+{
+  "meta": {
+    "version": "BAL-0003",
+    "exported_at": "2026-10-15",
+    "note": "Пастки: рядок на пару (id, level). cost = віспи за встановлення. Розблокування і прокачка в лобі, ціни в docs/prices.md"
+  },
+  "traps": [
+    {
+      "id": "snare",
+      "level": 1,
+      "order": 10,
+      "name_en": "Snare",
+      "name_uk": "Капкан",
+      "mechanic": "snare",
+      "placement": "floor",
+      "cost": 100,
+      "damage": 15,
+      "cooldown": 6,
+      "hold_time": 2,
+      "default_owned": true
+    },
+    {
+      "id": "snare",
+      "level": 2,
+      "order": 10,
+      "name_en": "Snare",
+      "name_uk": "Капкан",
+      "mechanic": "snare",
+      "placement": "floor",
+      "cost": 100,
+      "damage": 25,
+      "cooldown": 5,
+      "hold_time": 2.5
+    },
+    {
+      "id": "snare",
+      "level": 3,
+      "order": 10,
+      "name_en": "Snare",
+      "name_uk": "Капкан",
+      "mechanic": "snare",
+      "placement": "floor",
+      "cost": 100,
+      "damage": 35,
+      "cooldown": 4,
+      "hold_time": 3
+    },
+    {
+      "id": "energy_wall",
+      "level": 1,
+      "order": 20,
+      "name_en": "Energy Wall",
+      "name_uk": "Енергостіна",
+      "mechanic": "wall",
+      "placement": "wall",
+      "cost": 200,
+      "damage": 20
+    },
+    {
+      "id": "energy_wall",
+      "level": 2,
+      "order": 20,
+      "name_en": "Energy Wall",
+      "name_uk": "Енергостіна",
+      "mechanic": "wall",
+      "placement": "wall",
+      "cost": 200,
+      "damage": 30
+    },
+    {
+      "id": "energy_wall",
+      "level": 3,
+      "order": 20,
+      "name_en": "Energy Wall",
+      "name_uk": "Енергостіна",
+      "mechanic": "wall",
+      "placement": "wall",
+      "cost": 200,
+      "damage": 45
+    },
+    {
+      "id": "turret",
+      "level": 1,
+      "order": 30,
+      "name_en": "Turret",
+      "name_uk": "Турель",
+      "mechanic": "turret",
+      "placement": "floor",
+      "cost": 250,
+      "damage": 25,
+      "fire_interval": 1.5,
+      "range": 20
+    },
+    {
+      "id": "turret",
+      "level": 2,
+      "order": 30,
+      "name_en": "Turret",
+      "name_uk": "Турель",
+      "mechanic": "turret",
+      "placement": "floor",
+      "cost": 250,
+      "damage": 35,
+      "fire_interval": 1.2,
+      "range": 20
+    },
+    {
+      "id": "turret",
+      "level": 3,
+      "order": 30,
+      "name_en": "Turret",
+      "name_uk": "Турель",
+      "mechanic": "turret",
+      "placement": "floor",
+      "cost": 250,
+      "damage": 45,
+      "fire_interval": 0.9,
+      "range": 20
+    }
+  ]
+}
