@@ -63,6 +63,13 @@ SCHEMA = {
         "id": (str, True, None, None), "weapon_id": (str, True, None, None), "upgrade": (str, True, None, None),
         "order": (int, True, 0, None), "level": (int, True, 1, 10), "cost": (int, True, 0, None), "value": (NUM, True, None, None),
     },
+    "run_rewards": {
+        "_object": True,
+        "damage_per_soft": (NUM, True, 0.01, None), "wisps_per_soft": (NUM, True, 0.01, None),
+        "base_hp_per_soft": (NUM, True, 0.01, None), "results_delay": (NUM, True, 0, 30),
+        "results_timer": (NUM, True, 5, 300), "damage_dealer_min_players": (int, True, 1, 4),
+        "wave_soft": (list, True, None, None),
+    },
     "room": {
         "_object": True,
         "id": (str, True, None, None), "name_en": (str, True, None, None), "name_uk": (str, True, None, None),
@@ -91,8 +98,9 @@ ENUMS = {
     ("traps", "placement"): {"floor", "wall"},
     ("weapon_upgrades", "upgrade"): {"damage", "attack_interval", "ricochet", "multishot", "crit", "pellets"},
 }
-SHARED_FILES = ["rules", "enemies", "traps", "weapons", "weapon_upgrades"]
+SHARED_FILES = ["rules", "enemies", "traps", "weapons", "weapon_upgrades", "run_rewards"]
 ROOM_FILES = ["room", "zones", "waves", "players"]
+ROOM_OPTIONAL_FILES = ["run_rewards"]  # перекриває rooms/shared цілим файлом (ConfigService не зливає ключі)
 SKIP = {"leaderboards"}  # формат лідербордів веде сторона Жені
 
 errors = []
@@ -273,6 +281,10 @@ def main():
                 err(p, "файлу немає (кожна кімната має всі файли кімнати)")
                 continue
             files[n] = check_file(p, n)
+        for n in ROOM_OPTIONAL_FILES:
+            p = room_dir / f"{n}.json"
+            if p.exists():
+                files[n] = check_file(p, n)
         room = files.get("room") or {}
         spawner_ids = set()
         for i, s in enumerate(room.get("spawners") or []):
@@ -301,6 +313,15 @@ def main():
                 branch_spawners.add(z["spawner_id"])
         if len(spawner_ids) > 1 and branch_spawners != spawner_ids:
             err(room_dir / "zones.json", f"при кількох спавнерах кожен має свою гілку зон (spawner_id), зараз {sorted(branch_spawners)}")
+        rewards = files.get("run_rewards") or shared.get("run_rewards") or {}
+        wave_nums = {wv.get("wave") for wv in (files.get("waves") or []) if isinstance(wv, dict)}
+        soft = rewards.get("wave_soft") if isinstance(rewards, dict) else None
+        if isinstance(soft, list) and wave_nums:
+            if len(soft) < max(wave_nums):
+                err(room_dir / "waves.json", f"хвиль {max(wave_nums)}, а wave_soft у run_rewards має лише {len(soft)} значень: за зайві хвилі гравець не отримає софт")
+            for i, v in enumerate(soft):
+                if not isinstance(v, int) or isinstance(v, bool) or v < 0:
+                    err(room_dir / "waves.json", f"run_rewards.wave_soft[{i}]: ціле >= 0")
         counts = sorted(p.get("players") for p in (files.get("players") or []) if isinstance(p, dict))
         if counts and counts != [1, 2, 3, 4]:
             err(room_dir / "players.json", f"потрібні рядки для 1, 2, 3, 4 гравців, зараз {counts}")
