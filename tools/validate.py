@@ -11,7 +11,9 @@
   (у пастках унікальна пара id + level);
 - обов'язкові поля, типи і діапазони за схемою нижче;
 - посилання між файлами: waves -> enemies і спавнери кімнати, weapon_upgrades -> weapons;
-- у кожній кімнаті є всі файли кімнати.
+- у кожній кімнаті є всі файли кімнати;
+- wave_delay однаковий у всіх рядках однієї хвилі (гра бере його з першого рядка);
+- копії leaderboards.json (lobby/, rooms/shared/, rooms/) побайтно однакові.
 """
 import json
 import re
@@ -327,6 +329,15 @@ def main():
             err(room_dir / "players.json", f"потрібні рядки для 1, 2, 3, 4 гравців, зараз {counts}")
 
     check_portals(ROOT / "lobby" / "portals.json")
+
+    # leaderboards.json лежить у кількох місцях, бо різні частини гри читають різні адреси: копії мають бути ідентичними
+    lb_copies = [ROOT / "lobby" / "leaderboards.json", SHARED / "leaderboards.json", ROOMS / "leaderboards.json"]
+    lb_copies = [p for p in lb_copies if p.exists()]
+    if len(lb_copies) > 1:
+        base = lb_copies[0].read_bytes()
+        for p in lb_copies[1:]:
+            if p.read_bytes() != base:
+                err(p, f"не збігається з {lb_copies[0].relative_to(ROOT)}: копії leaderboards.json мають бути ідентичними")
 
     # решта JSON (лобі, лідерборди, старий balance.json): лише синтаксис
     for p in sorted(ROOT.rglob("*.json")):
