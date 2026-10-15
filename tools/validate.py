@@ -71,11 +71,13 @@ SCHEMA = {
     "zones": {
         "id": (str, True, None, None), "order": (int, True, 0, None), "name_en": (str, True, None, None),
         "name_uk": (str, True, None, None), "length": (NUM, True, 0, None),
+        "spawner_id": (str, False, None, None),
     },
     "waves": {
         "id": (str, True, None, None), "wave": (int, True, 1, None), "spawner_id": (str, True, None, None),
         "enemy_id": (str, True, None, None), "count": (int, True, 1, None),
         "spawn_interval": (NUM, True, 0, None), "wave_delay": (NUM, True, 0, None),
+        "min_players": (int, False, 1, 4),
     },
     "players": {
         "id": (str, True, None, None), "players": (int, True, 1, 4), "hp_mult": (NUM, True, 0.1, None),
@@ -251,6 +253,14 @@ def main():
             d = delays.setdefault(wv.get("wave"), wv.get("wave_delay"))
             if d != wv.get("wave_delay"):
                 err(room_dir / "waves.json", f"waves[{i}]: wave_delay у хвилі {wv.get('wave')} має бути однаковим у всіх рядках")
+        branch_spawners = set()
+        for i, z in enumerate(files.get("zones") or []):
+            if isinstance(z, dict) and "spawner_id" in z:
+                if z["spawner_id"] not in spawner_ids:
+                    err(room_dir / "zones.json", f"zones[{i}]: spawner_id {z['spawner_id']!r} немає в room.spawners")
+                branch_spawners.add(z["spawner_id"])
+        if len(spawner_ids) > 1 and branch_spawners != spawner_ids:
+            err(room_dir / "zones.json", f"при кількох спавнерах кожен має свою гілку зон (spawner_id), зараз {sorted(branch_spawners)}")
         counts = sorted(p.get("players") for p in (files.get("players") or []) if isinstance(p, dict))
         if counts and counts != [1, 2, 3, 4]:
             err(room_dir / "players.json", f"потрібні рядки для 1, 2, 3, 4 гравців, зараз {counts}")

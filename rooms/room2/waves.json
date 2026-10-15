@@ -1,0 +1,301 @@
+{
+  "meta": {
+    "version": "BAL-0004",
+    "exported_at": "2026-10-15",
+    "note": "Хвилі Room 2, розраховані на 4 гравців; для меншої команди players.json зменшує кількість. min_players: рядок лише для команди від N гравців"
+  },
+  "waves": [
+    {
+      "id": "w1_s1_grunt",
+      "wave": 1,
+      "spawner_id": "s1",
+      "enemy_id": "grunt",
+      "count": 8,
+      "spawn_interval": 1.2,
+      "wave_delay": 0
+    },
+    {
+      "id": "w1_s2_grunt",
+      "wave": 1,
+      "spawner_id": "s2",
+      "enemy_id": "grunt",
+      "count": 8,
+      "spawn_interval": 1.2,
+      "wave_delay": 0
+    },
+    {
+      "id": "w2_s1_grunt",
+      "wave": 2,
+      "spawner_id": "s1",
+      "enemy_id": "grunt",
+      "count": 12,
+      "spawn_interval": 1.0,
+      "wave_delay": 20
+    },
+    {
+      "id": "w2_s2_grunt",
+      "wave": 2,
+      "spawner_id": "s2",
+      "enemy_id": "grunt",
+      "count": 12,
+      "spawn_interval": 1.0,
+      "wave_delay": 20
+    },
+    {
+      "id": "w2_s1_warrior",
+      "wave": 2,
+      "spawner_id": "s1",
+      "enemy_id": "warrior",
+      "count": 2,
+      "spawn_interval": 3.0,
+      "wave_delay": 20,
+      "min_players": 3
+    },
+    {
+      "id": "w3_s1_grunt",
+      "wave": 3,
+      "spawner_id": "s1",
+      "enemy_id": "grunt",
+      "count": 10,
+      "spawn_interval": 0.9,
+      "wave_delay": 22
+    },
+    {
+      "id": "w3_s2_warrior",
+      "wave": 3,
+      "spawner_id": "s2",
+      "enemy_id": "warrior",
+      "count": 5,
+      "spawn_interval": 2.0,
+      "wave_delay": 22
+    },
+    {
+      "id": "w3_s2_grunt",
+      "wave": 3,
+      "spawner_id": "s2",
+      "enemy_id": "grunt",
+      "count": 6,
+      "spawn_interval": 1.0,
+      "wave_delay": 22
+    },
+    {
+      "id": "w4_s1_warrior",
+      "wave": 4,
+      "spawner_id": "s1",
+      "enemy_id": "warrior",
+      "count": 6,
+      "spawn_interval": 1.8,
+      "wave_delay": 25
+    },
+    {
+      "id": "w4_s2_warrior",
+      "wave": 4,
+      "spawner_id": "s2",
+      "enemy_id": "warrior",
+      "count": 6,
+      "spawn_interval": 1.8,
+      "wave_delay": 25
+    },
+    {
+      "id": "w4_s1_grunt",
+      "wave": 4,
+      "spawner_id": "s1",
+      "enemy_id": "grunt",
+      "count": 14,
+      "spawn_interval": 0.7,
+      "wave_delay": 25
+    },
+    {
+      "id": "w4_s2_brute",
+      "wave": 4,
+      "spawner_id": "s2",
+      "enemy_id": "brute",
+      "count": 1,
+      "spawn_interval": 0,
+      "wave_delay": 25
+    },
+    {
+      "id": "w5_s2_grunt",
+      "wave": 5,
+      "spawner_id": "s2",
+      "enemy_id": "grunt",
+      "count": 24,
+      "spawn_interval": 0.5,
+      "wave_delay": 25
+    },
+    {
+      "id": "w5_s1_warrior",
+      "wave": 5,
+      "spawner_id": "s1",
+      "enemy_id": "warrior",
+      "count": 4,
+      "spawn_interval": 2.0,
+      "wave_delay": 25
+    },
+    {
+      "id": "w5_s1_brute",
+      "wave": 5,
+      "spawner_id": "s1",
+      "enemy_id": "brute",
+      "count": 1,
+      "spawn_interval": 0,
+      "wave_delay": 25
+    },
+    {
+      "id": "w5_s2_brute",
+      "wave": 5,
+      "spawner_id": "s2",
+      "enemy_id": "brute",
+      "count": 1,
+      "spawn_interval": 0,
+      "wave_delay": 25,
+      "min_players": 3
+    },
+    {
+      "id": "w6_s1_grunt",
+      "wave": 6,
+      "spawner_id": "s1",
+      "enemy_id": "grunt",
+      "count": 16,
+      "spawn_interval": 0.6,
+      "wave_delay": 28
+    },
+    {
+      "id": "w6_s2_grunt",
+      "wave": 6,
+      "spawner_id": "s2",
+      "enemy_id": "grunt",
+      "count": 16,
+      "spawn_interval": 0.6,
+      "wave_delay": 28
+    },
+    {
+      "id": "w6_s1_warrior",
+      "wave": 6,
+      "spawner_id": "s1",
+      "enemy_id": "warrior",
+      "count": 8,
+      "spawn_interval": 1.5,
+      "wave_delay": 28
+    },
+    {
+      "id": "w6_s2_brute",
+      "wave": 6,
+      "spawner_id": "s2",
+      "enemy_id": "brute",
+      "count": 2,
+      "spawn_interval": 5,
+      "wave_delay": 28
+    },
+    {
+      "id": "w7_s1_warrior",
+      "wave": 7,
+      "spawner_id": "s1",
+      "enemy_id": "warrior",
+      "count": 10,
+      "spawn_interval": 1.2,
+      "wave_delay": 30
+    },
+    {
+      "id": "w7_s2_warrior",
+      "wave": 7,
+      "spawner_id": "s2",
+      "enemy_id": "warrior",
+      "count": 10,
+      "spawn_interval": 1.2,
+      "wave_delay": 30
+    },
+    {
+      "id": "w7_s1_brute",
+      "wave": 7,
+      "spawner_id": "s1",
+      "enemy_id": "brute",
+      "count": 2,
+      "spawn_interval": 5,
+      "wave_delay": 30
+    },
+    {
+      "id": "w7_s2_grunt",
+      "wave": 7,
+      "spawner_id": "s2",
+      "enemy_id": "grunt",
+      "count": 20,
+      "spawn_interval": 0.5,
+      "wave_delay": 30
+    },
+    {
+      "id": "w7_s2_brute",
+      "wave": 7,
+      "spawner_id": "s2",
+      "enemy_id": "brute",
+      "count": 1,
+      "spawn_interval": 0,
+      "wave_delay": 30,
+      "min_players": 4
+    },
+    {
+      "id": "w8_s1_grunt",
+      "wave": 8,
+      "spawner_id": "s1",
+      "enemy_id": "grunt",
+      "count": 20,
+      "spawn_interval": 0.5,
+      "wave_delay": 30
+    },
+    {
+      "id": "w8_s2_grunt",
+      "wave": 8,
+      "spawner_id": "s2",
+      "enemy_id": "grunt",
+      "count": 20,
+      "spawn_interval": 0.5,
+      "wave_delay": 30
+    },
+    {
+      "id": "w8_s1_warrior",
+      "wave": 8,
+      "spawner_id": "s1",
+      "enemy_id": "warrior",
+      "count": 10,
+      "spawn_interval": 1.2,
+      "wave_delay": 30
+    },
+    {
+      "id": "w8_s2_warrior",
+      "wave": 8,
+      "spawner_id": "s2",
+      "enemy_id": "warrior",
+      "count": 10,
+      "spawn_interval": 1.2,
+      "wave_delay": 30
+    },
+    {
+      "id": "w8_s1_brute",
+      "wave": 8,
+      "spawner_id": "s1",
+      "enemy_id": "brute",
+      "count": 2,
+      "spawn_interval": 4,
+      "wave_delay": 30
+    },
+    {
+      "id": "w8_s2_brute",
+      "wave": 8,
+      "spawner_id": "s2",
+      "enemy_id": "brute",
+      "count": 2,
+      "spawn_interval": 4,
+      "wave_delay": 30
+    },
+    {
+      "id": "w8_s1_brute_2",
+      "wave": 8,
+      "spawner_id": "s1",
+      "enemy_id": "brute",
+      "count": 1,
+      "spawn_interval": 0,
+      "wave_delay": 30,
+      "min_players": 4
+    }
+  ]
+}

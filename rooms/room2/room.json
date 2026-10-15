@@ -1,0 +1,26 @@
+{
+  "meta": {
+    "version": "BAL-0004",
+    "exported_at": "2026-10-15",
+    "note": "Room 2: два спавнери, гілки сходяться у вузлі. Геометрія в Place"
+  },
+  "room": {
+    "id": "room2",
+    "name_en": "Room 2",
+    "name_uk": "Кімната 2",
+    "base_hp": 900,
+    "door_timer": 75,
+    "spawners": [
+      {
+        "id": "s1",
+        "mode": "simultaneous",
+        "cooldown": 0
+      },
+      {
+        "id": "s2",
+        "mode": "simultaneous",
+        "cooldown": 0
+      }
+    ]
+  }
+}

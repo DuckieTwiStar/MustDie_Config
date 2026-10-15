@@ -20,11 +20,13 @@ rooms/
     weapons.json
     weapon_upgrades.json
     leaderboards.json   той самий вміст, що lobby/leaderboards.json
-  room1/                Room 1
+  room1/                Room 1 (один спавнер, хвилі на 1 гравця, множники > 1)
     room.json
     zones.json
     waves.json
     players.json
+  room2/                Room 2 (два спавнери, хвилі на 4 гравців, множники < 1)
+    ...                 ті самі чотири файли
   balance.json          старий зведений файл BAL-0003, гра його не читає; видалимо, коли код перейде на shared/
   leaderboards.json     старе місце, Room 1 читає його до перемикання на shared/
 docs/prices.md          ціни лобі: розблокування зброї, розблокування і прокачка пасток
@@ -163,7 +165,8 @@ tools/validate.py       перевірка перед комітом
 | id | string | — | snake_case | так | зона маршруту; у Place об'єкт з тим самим `id` |
 | order | int | — | ≥ 0 | так | порядок від спавнера до бази |
 | name_en, name_uk | string | — | — | так | назва |
-| length | number | studs (умовно) | ≥ 0 | так | довжина для симуляції балансу і ботів; гра бере геометрію з Place. **Ще не звірено з картою Room 1** |
+| length | number | studs (умовно) | ≥ 0 | так | довжина для симуляції балансу і ботів; гра бере геометрію з Place. **Ще не звірено з картами** |
+| spawner_id | string | — | → `room.spawners[].id` | ні | зона належить гілці цього спавнера. Зони без `spawner_id` спільні: ними йдуть вороги з усіх спавнерів. Якщо спавнерів кілька, у кожного має бути своя гілка |
 
 ### waves.json → `waves` (масив, рядок на групу ворогів)
 
@@ -173,9 +176,10 @@ tools/validate.py       перевірка перед комітом
 | wave | int | — | ≥ 1 | так | номер хвилі |
 | spawner_id | string | — | → `room.spawners[].id` | так | звідки йдуть |
 | enemy_id | string | — | → `enemies.id` | так | який ворог |
-| count | int | — | ≥ 1 | так | скільки ворогів (для 1 гравця, далі множник `players`) |
+| count | int | — | ≥ 1 | так | скільки ворогів до множника `players.count_mult` (Room 1 рахує хвилі на 1 гравця, Room 2 на 4) |
 | spawn_interval | number | с | ≥ 0 | так | інтервал між ворогами групи |
 | wave_delay | number | с | ≥ 0 | так | пауза перед хвилею; однакова в усіх рядках хвилі |
+| min_players | int | — | 1..4 | ні | рядок діє лише для команди від N учасників (гравці + боти). Без поля діє завжди |
 
 ### players.json → `players` (масив)
 
