@@ -248,6 +248,36 @@ def check_portals(path):
             err(path, f"{where}: maxPlayers 1..4")
 
 
+def check_debug(path):
+    """rules.json -> debug: { enabled: bool, user_ids: [UserId...] }. Ключа може не бути (= дебаг вимкнений)."""
+    try:
+        data = json.loads(path.read_text(encoding="utf-8"))
+    except Exception:  # noqa: BLE001
+        return
+    block = data.get("debug")
+    if block is None:
+        return
+    if not isinstance(block, dict):
+        err(path, "debug має бути об'єктом")
+        return
+    for key in block:
+        if key not in ("enabled", "user_ids"):
+            err(path, f"debug: невідоме поле {key}")
+    if not isinstance(block.get("enabled"), bool):
+        err(path, "debug.enabled має бути true/false")
+    ids = block.get("user_ids")
+    if not isinstance(ids, list):
+        err(path, "debug.user_ids має бути масивом чисел")
+        return
+    for i, uid in enumerate(ids):
+        if not isinstance(uid, int) or isinstance(uid, bool) or uid <= 0:
+            err(path, f"debug.user_ids[{i}]: потрібен додатний цілий UserId")
+    if len(set(ids)) != len(ids):
+        err(path, "debug.user_ids: є дублі")
+    if block.get("enabled") is True and not ids:
+        err(path, "debug.enabled=true, але user_ids порожній")
+
+
 def main():
     shared = {}
     for n in SHARED_FILES:
@@ -256,6 +286,8 @@ def main():
             err(p, "файлу немає")
             continue
         shared[n] = check_file(p, n)
+        if n == "rules":
+            check_debug(p)
 
     enemy_ids = {e["id"] for e in (shared.get("enemies") or []) if isinstance(e, dict)}
     weapon_ids = {w["id"] for w in (shared.get("weapons") or []) if isinstance(w, dict)}

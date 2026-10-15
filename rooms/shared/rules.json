@@ -1,8 +1,8 @@
 {
   "meta": {
-    "version": "BAL-0003",
+    "version": "BAL-0004",
     "exported_at": "2026-10-15",
-    "note": "Правила забігу і економіки, спільні для всіх кімнат"
+    "note": "Правила забігу і економіки, спільні для всіх кімнат; debug: доступ до дебаг-меню"
   },
   "rules": {
     "start_coins": 500,
@@ -11,5 +11,12 @@
     "ricochet_falloff": 0.5,
     "cell_size": 4,
     "restart_delay": 10
+  },
+  "debug": {
+    "enabled": true,
+    "user_ids": [
+      11708066498,
+      11744693964
+    ]
   }
 }
