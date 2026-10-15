@@ -1,0 +1,12 @@
+{
+  "boards": [
+    {
+      "id": "LeaderboardAllTime",
+      "period": "AllTime"
+    },
+    {
+      "id": "LeaderboardWeekly",
+      "period": "Weekly"
+    }
+  ]
+}
