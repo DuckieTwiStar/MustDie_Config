@@ -8,7 +8,7 @@
     {
       "id": "soft",
       "kind": "currency",
-      "icon": "",
+      "icon": "rbxassetid://120728741244450",
       "title": "Coins",
       "description": "Earned by clearing waves in runs. Spend it in the shop to unlock weapons and traps."
     },
@@ -22,56 +22,56 @@
     {
       "id": "wisps",
       "kind": "currency",
-      "icon": "",
+      "icon": "rbxassetid://96242202141864",
       "title": "Wisps",
       "description": "Run currency. Dropped by enemies. Spend it on weapon upgrades and placing traps. Resets every run."
     },
     {
       "id": "fists",
       "kind": "weapon",
-      "icon": "",
+      "icon": "rbxassetid://91811419583670",
       "title": "Fists",
       "description": "Bare knuckles. Always with you."
     },
     {
       "id": "slingshot",
       "kind": "weapon",
-      "icon": "",
+      "icon": "rbxassetid://131622915601447",
       "title": "Slingshot",
       "description": "A cheap ranged weapon. Slow, but reliable."
     },
     {
       "id": "bow",
       "kind": "weapon",
-      "icon": "",
+      "icon": "rbxassetid://111825883312148",
       "title": "Bow",
       "description": "Long range and high damage per shot."
     },
     {
       "id": "shotgun",
       "kind": "weapon",
-      "icon": "",
+      "icon": "rbxassetid://73400560440940",
       "title": "Shotgun",
       "description": "Close range burst: many pellets per shot, weaker the farther the target."
     },
     {
       "id": "snare",
       "kind": "trap",
-      "icon": "",
+      "icon": "rbxassetid://71107116122318",
       "title": "Snare",
       "description": "Floor trap. Holds an enemy in place and damages it."
     },
     {
       "id": "energy_wall",
       "kind": "trap",
-      "icon": "",
+      "icon": "rbxassetid://109338741096462",
       "title": "Energy Wall",
       "description": "Wall trap. Damages enemies that cross the barrier."
     },
     {
       "id": "turret",
       "kind": "trap",
-      "icon": "",
+      "icon": "rbxassetid://86824992920638",
       "title": "Turret",
       "description": "Floor trap. Automatically shoots enemies in range."
     },

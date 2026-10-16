@@ -250,7 +250,7 @@ tools/validate.py       перевірка перед комітом (так с�
 
 Перевірки: кожна зброя й пастка має запис і навпаки; `icon` має правильний формат; кожен `{ключ}` в описі має значення в `values` і навпаки; `reward.id` бустерів і речей у `lobby/shop_*.json` є в каталозі; є записи валют `soft`, `hard`, `wisps`.
 
-Іконки: PNG 512x512 з прозорим фоном лежать у `assets/icons/<id>.png`. Завантажити в Roblox (Creator Hub → Assets → Images), взяти Asset ID і вписати в `icon` обох копій як `rbxassetid://<ID>`. Іконки валют `soft` (Coins) і `wisps` теж тут (`soft.png`, `wisps.png`): вони замінюють Frame-и в UI (`CoinIcon`, `WispIcon`). Іконки Robux немає навмисно: це бренд Roblox, окремого лічильника hard-валюти в грі нема.
+Іконки: PNG 512x512 з прозорим фоном лежать у `assets/icons/`. Назви файлів і асетів у Creator Hub за регламентом `MD_<Тип>_<Сутність>_<Імʼя>`: `MD` індекс проєкту (MustDie), `Icon` тип обʼєкта, `Weapon` / `Trap` / `Currency` тип сутності, далі унікальне імʼя в PascalCase (`MD_Icon_Weapon_Bow`, `MD_Icon_Trap_EnergyWall`), роздільник `_`. Завантажити в Roblox (Creator Hub → Assets → Images), взяти Asset ID і вписати в `icon` обох копій як `rbxassetid://<ID>`. Іконки валют `soft` (Coins) і `wisps` теж тут (`MD_Icon_Currency_Coin.png`, `MD_Icon_Currency_Wisp.png`): вони замінюють Frame-и в UI (`CoinIcon`, `WispIcon`). Іконки Robux немає навмисно: це бренд Roblox, окремого лічильника hard-валюти в грі нема.
 
 Поки пакети не підключені до каталогу, назви в `weapons.json` / `traps.json` (`name_en`, `name_uk`) і поля `title`/`description` у `lobby/shop_*.json` лишаються. Коли магазини перейдуть на каталог, ці дублі видаляються.
 
