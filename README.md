@@ -94,6 +94,8 @@ tools/validate.py       перевірка перед комітом (так с�
 | ricochet_falloff | number | частка | 0..1 | так | частка урону, що лишається після кожного рикошету |
 | cell_size | number | studs | > 0 | так | розмір клітинки сітки пасток |
 | restart_delay | number | с | ≥ 0 | так | пауза після кінця забігу перед рестартом |
+| weapon_select_seconds | number | с | 1..120 | так | скільки триває вікно вибору зброї на старті; потім видається доступна зброя найвищого `tier`/`order` |
+| weapon_select_delay | number | с | 0..10 | так | пауза між стартом забігу (камера від третьої особи) і появою вікна вибору |
 
 **Дебаг-меню (`rules.json` → `debug`, окремий ключ поруч із `rules`)**
 
@@ -262,7 +264,7 @@ tools/validate.py       перевірка перед комітом (так с�
 | поле | тип | обов. | що означає |
 |---|---|---|---|
 | id | string | так | snake_case. Для зброї й пасток збігається з `id` у `weapons.json` / `traps.json`; для бустерів і речей з `reward.id` у магазині; для валют `soft`, `hard`, `wisps` |
-| kind | string | так | `currency` / `weapon` / `trap` / `booster` / `item` |
+| kind | string | так | `currency` / `weapon` / `trap` / `booster` / `item` / `enemy` / `upgrade` (два останні лише після публікації Core) |
 | icon | string | так | `rbxassetid://<число>` або `""` (тоді клієнт показує плейсхолдер «?») |
 | title | string | так | назва |
 | description | string | так | опис; `{ключ}` підставляється зі `values` |
