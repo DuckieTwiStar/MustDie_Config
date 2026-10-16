@@ -8,6 +8,7 @@
     "id": "template",
     "name_en": "Room Template",
     "name_uk": "Шаблон кімнати",
+    "unlock_weapon": "slingshot",
     "base_hp": 900,
     "door_timer": 75,
     "spawners": [

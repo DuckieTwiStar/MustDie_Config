@@ -14,6 +14,9 @@
 - у кожній кімнаті є всі файли кімнати;
 - wave_delay однаковий у всіх рядках однієї хвилі (гра бере його з першого рядка);
 - копії leaderboards.json і items.json (lobby/, rooms/shared/) побайтно однакові;
+- зброя: tier (прогрес), price_soft (розблокування в лобі), модифікація = base_id + tier бази + order бази+1..9;
+- пастки: рівні 1..N, price_soft рівня 1 = 0 (default_owned), вище > 0; room.json: unlock_weapon існує, базова, tier не спадає з номером кімнати;
+- bots.json: пул зброї ботів та бюджет на пастки; симулятор: python3 tools/validate.py --economy;
 - каталог items.json: кожна зброя й пастка має запис (і навпаки), icon це rbxassetid://<число> або порожньо,
   плейсхолдери {x} в description мають значення в values, reward.id у магазинах лобі є в каталозі.
 """
@@ -48,13 +51,14 @@ SCHEMA = {
         "id": (str, True, None, None), "level": (int, True, 1, 10), "order": (int, True, 0, None),
         "name_en": (str, True, None, None), "name_uk": (str, True, None, None),
         "mechanic": (str, True, None, None), "placement": (str, True, None, None),
-        "cost": (int, True, 0, None), "damage": (NUM, True, 0, None),
+        "cost": (int, True, 0, None), "price_soft": (int, True, 0, None), "damage": (NUM, True, 0, None),
         "cooldown": (NUM, False, 0, None), "hold_time": (NUM, False, 0, None),
         "fire_interval": (NUM, False, 0.01, None), "range": (NUM, False, 0, None),
         "default_owned": (bool, False, None, None),
     },
     "weapons": {
         "id": (str, True, None, None), "order": (int, True, 0, None), "default_owned": (bool, False, None, None),
+        "tier": (int, True, 1, 20), "price_soft": (int, False, 1, None), "base_id": (str, False, None, None),
         "name_en": (str, True, None, None), "name_uk": (str, True, None, None),
         "damage": (NUM, True, 0, None), "attack_interval": (NUM, True, 0.01, None), "range": (NUM, True, 0, None),
         "projectile_speed": (NUM, False, 0.1, None), "gravity": (NUM, False, 0, None),
@@ -77,7 +81,13 @@ SCHEMA = {
     "room": {
         "_object": True,
         "id": (str, True, None, None), "name_en": (str, True, None, None), "name_uk": (str, True, None, None),
+        "unlock_weapon": (str, True, None, None),
         "base_hp": (NUM, True, 1, None), "door_timer": (NUM, True, 0, None), "spawners": (list, True, None, None),
+    },
+    "bots": {
+        "_object": True,
+        "weapon_pool_exclude": (list, True, None, None), "include_premium": (bool, True, None, None),
+        "trap_budget_mult": (NUM, True, 0, 100),
     },
     "zones": {
         "id": (str, True, None, None), "order": (int, True, 0, None), "name_en": (str, True, None, None),
@@ -100,14 +110,14 @@ SCHEMA = {
     },
 }
 ENUMS = {
-    ("items", "kind"): {"currency", "weapon", "trap", "booster", "item"},
+    ("items", "kind"): {"currency", "weapon", "trap", "booster", "item", "enemy"},
     ("rules", "reward_mode"): {"each", "split", "killer"},
     ("enemies", "size"): {"small", "medium", "large"},
     ("traps", "mechanic"): {"snare", "wall", "turret"},
     ("traps", "placement"): {"floor", "wall"},
     ("weapon_upgrades", "upgrade"): {"damage", "attack_interval", "ricochet", "multishot", "crit", "pellets"},
 }
-SHARED_FILES = ["rules", "enemies", "traps", "weapons", "weapon_upgrades", "run_rewards", "items"]
+SHARED_FILES = ["rules", "enemies", "traps", "weapons", "weapon_upgrades", "run_rewards", "items", "bots"]
 ICON_RE = re.compile(r"^(rbxassetid://[0-9]+)?$")
 PLACEHOLDER_RE = re.compile(r"\{([a-z0-9_]+)\}")
 ROOM_FILES = ["room", "zones", "waves", "players"]
@@ -217,7 +227,7 @@ def check_file(path, name):
     return body
 
 
-def check_items(items, weapon_ids, trap_ids):
+def check_items(items, weapon_ids, trap_ids, enemy_ids=frozenset()):
     """items.json: каталог предметів (іконка, назва, опис) для лобі й кімнат."""
     path = SHARED / "items.json"
     by_id = {}
@@ -244,6 +254,13 @@ def check_items(items, weapon_ids, trap_ids):
             err(path, f"немає запису kind={kind} для id {i!r} (він є в {kind}s.json)")
         for i in sorted(have - ids):
             err(path, f"запис {i!r} має kind={kind}, але такого id немає в {kind}s.json")
+    # вороги: перевірка вмикається з першим записом kind=enemy (до публікації пакета Core з типом enemy рядків додавати не можна)
+    have_enemy = {i for i, it in by_id.items() if it.get("kind") == "enemy"}
+    if have_enemy:
+        for i in sorted(enemy_ids - have_enemy):
+            err(path, f"немає запису kind=enemy для id {i!r} (він є в enemies.json)")
+        for i in sorted(have_enemy - enemy_ids):
+            err(path, f"запис {i!r} має kind=enemy, але такого id немає в enemies.json")
     for cur in ("soft", "hard", "wisps"):
         if by_id.get(cur, {}).get("kind") != "currency":
             err(path, f"немає запису kind=currency для {cur!r}")
@@ -260,6 +277,152 @@ def check_items(items, weapon_ids, trap_ids):
             rw = r.get("reward") if isinstance(r, dict) else None
             if isinstance(rw, dict) and rw.get("kind") in ("Item", "Booster") and rw.get("id") not in by_id:
                 err(sp, f"reward.id {rw.get('id')!r} немає в items.json")
+
+
+def check_economy(weapons, traps, bots, room_unlocks):
+    """3.1: tier/order/ціни зброї й пасток, зброя що відкриває кімнату, пул і бюджет ботів."""
+    wpath, tpath = SHARED / "weapons.json", SHARED / "traps.json"
+    by_id = {w["id"]: w for w in weapons if isinstance(w, dict) and isinstance(w.get("id"), str)}
+    orders = {}
+    for w in by_id.values():
+        wid = w["id"]
+        o = w.get("order")
+        if o in orders:
+            err(wpath, f"{wid}: order {o} вже має {orders[o]}")
+        orders[o] = wid
+        base_id = w.get("base_id")
+        if base_id is not None:
+            base = by_id.get(base_id)
+            if base is None:
+                err(wpath, f"{wid}: base_id {base_id!r} немає в weapons")
+                continue
+            if base.get("base_id") is not None:
+                err(wpath, f"{wid}: base_id має вказувати на базову зброю, а {base_id!r} сама модифікація")
+            if w.get("tier") != base.get("tier"):
+                err(wpath, f"{wid}: модифікація успадковує tier бази ({base.get('tier')}), зараз {w.get('tier')}")
+            if isinstance(o, int) and isinstance(base.get("order"), int) and not (base["order"] < o < base["order"] + 10):
+                err(wpath, f"{wid}: order модифікації = order бази ({base['order']}) + 1..9, зараз {o}")
+            if "price_soft" in w:
+                err(wpath, f"{wid}: модифікація не продається за софт (price_soft), її видають нагородою або в hard-магазині")
+            if w.get("default_owned"):
+                err(wpath, f"{wid}: модифікація не може бути default_owned")
+        else:
+            if w.get("default_owned"):
+                if "price_soft" in w:
+                    err(wpath, f"{wid}: default_owned і price_soft разом, прибери price_soft")
+            elif "price_soft" not in w:
+                err(wpath, f"{wid}: базова зброя без default_owned потребує price_soft")
+    # tier не спадає з order серед базової зброї
+    bases = sorted((w for w in by_id.values() if w.get("base_id") is None), key=lambda w: w.get("order", 0))
+    for a, b in zip(bases, bases[1:]):
+        if isinstance(a.get("tier"), int) and isinstance(b.get("tier"), int) and b["tier"] < a["tier"]:
+            err(wpath, f"tier не має спадати з order: {a['id']} (tier {a['tier']}) нижче за {b['id']} (tier {b['tier']})")
+    # пастки: ціна рівня
+    for t in traps:
+        if not isinstance(t, dict):
+            continue
+        where = f"{t.get('id')} L{t.get('level')}"
+        price = t.get("price_soft")
+        if not isinstance(price, int):
+            continue
+        if t.get("level") == 1 and t.get("default_owned") and price != 0:
+            err(tpath, f"{where}: default_owned, ціна має бути 0")
+        if t.get("level") == 1 and not t.get("default_owned") and price <= 0:
+            err(tpath, f"{where}: рівень 1 не default_owned, потрібна price_soft > 0")
+        if isinstance(t.get("level"), int) and t["level"] > 1 and price <= 0:
+            err(tpath, f"{where}: ціна прокачки має бути > 0")
+        if t.get("default_owned") and t.get("level") != 1:
+            err(tpath, f"{where}: default_owned лише на рівні 1")
+    # кімнати: зброя, що відкриває кімнату
+    prev_tier, prev_room = 0, None
+    for room_id, wid in room_unlocks:
+        w = by_id.get(wid)
+        rpath = ROOMS / room_id / "room.json"
+        if w is None:
+            err(rpath, f"unlock_weapon {wid!r} немає в weapons")
+            continue
+        if w.get("base_id") is not None:
+            err(rpath, f"unlock_weapon {wid!r} це модифікація: кімнату відкриває базова зброя")
+        m = re.fullmatch(r"room(\d+)", room_id)
+        if m and isinstance(w.get("tier"), int):
+            if w["tier"] < prev_tier:
+                err(rpath, f"tier зброї {wid!r} ({w['tier']}) нижчий, ніж у {prev_room} ({prev_tier}): кімнати мають відкриватися зростаючою зброєю")
+            prev_tier, prev_room = w["tier"], room_id
+    # боти
+    if isinstance(bots, dict):
+        for x in bots.get("weapon_pool_exclude") or []:
+            if x not in by_id:
+                err(SHARED / "bots.json", f"weapon_pool_exclude: {x!r} немає в weapons")
+        for room_id, wid in room_unlocks:
+            if not bot_pool(by_id, bots, wid):
+                err(ROOMS / room_id / "room.json", "пул зброї ботів порожній (усе в weapon_pool_exclude)")
+
+
+def bot_pool(by_id, bots, unlock_id):
+    """Зброя, яку може взяти бот: unlock_weapon кімнати і все, що нижче за order; без виключень і (за налаштуванням) без модифікацій."""
+    top = by_id.get(unlock_id)
+    if top is None:
+        return []
+    excl = set(bots.get("weapon_pool_exclude") or [])
+    out = []
+    for w in sorted(by_id.values(), key=lambda w: w.get("order", 0)):
+        if w["id"] in excl or w.get("order", 0) > top.get("order", 0):
+            continue
+        if w.get("base_id") is not None and not bots.get("include_premium"):
+            continue
+        out.append(w["id"])
+    return out
+
+
+def trap_upgrades(traps):
+    """{trap_id: [ціна рівня 2, ціна рівня 3, ...]} для тих, що вже мають рівень 1 (default_owned або куплений)."""
+    by = {}
+    for t in traps:
+        if isinstance(t, dict):
+            by.setdefault(t.get("id"), {})[t.get("level")] = t
+    return by
+
+
+def spend_budget(by, budget, rng):
+    """Бот витрачає бюджет випадково на прокачку пасток за цінами лобі. Повертає (рівні, залишок)."""
+    levels = {tid: max((lv for lv, r in rows.items() if r.get("default_owned")), default=0) for tid, rows in by.items()}
+    # непридбані пастки (рівень 0) можуть розблоковуватися за ціну рівня 1
+    while True:
+        options = []
+        for tid, rows in by.items():
+            nxt = levels[tid] + 1
+            if nxt in rows and rows[nxt].get("price_soft", 0) <= budget:
+                options.append(tid)
+        if not options:
+            return levels, budget
+        tid = rng.choice(sorted(options))
+        budget -= by[tid][levels[tid] + 1]["price_soft"]
+        levels[tid] += 1
+
+
+def economy_report(weapons, traps, bots, room_unlocks, runs=2000):
+    """Таблиця для людини: що отримають боти в кожній кімнаті. Не помилка, а підказка для налаштування цін."""
+    import random
+    by_id = {w["id"]: w for w in weapons if isinstance(w, dict) and isinstance(w.get("id"), str)}
+    by = trap_upgrades(traps)
+    cheapest = min((r["price_soft"] for rows in by.values() for lv, r in rows.items() if lv > 1 and isinstance(r.get("price_soft"), int)), default=0)
+    lines, warns = [], []
+    for room_id, wid in room_unlocks:
+        w = by_id.get(wid) or {}
+        budget = (w.get("price_soft") or 0) * bots.get("trap_budget_mult", 1)
+        pool = bot_pool(by_id, bots, wid)
+        rng = random.Random(room_id)
+        totals, left = {tid: 0 for tid in by}, 0
+        for _ in range(runs):
+            lv, rest = spend_budget(by, budget, rng)
+            for tid, v in lv.items():
+                totals[tid] += v
+            left += rest
+        avg = ", ".join(f"{tid} {totals[tid] / runs:.2f}" for tid in by)
+        lines.append(f"  {room_id}: зброя {wid} (tier {w.get('tier')}), пул ботів {pool}, бюджет {budget:g}, сер. рівні пасток: {avg}, не витрачено в середньому {left / runs:.0f}")
+        if 0 < budget < cheapest:
+            warns.append(f"{room_id}: бюджет ботів {budget:g} менший за найдешевшу прокачку ({cheapest}): боти лишаться на базових пастках")
+    return lines, warns
 
 
 def check_portals(path):
@@ -333,6 +496,7 @@ def check_debug(path):
 
 
 def main():
+    economy = "--economy" in sys.argv
     shared = {}
     for n in SHARED_FILES:
         p = SHARED / f"{n}.json"
@@ -358,7 +522,8 @@ def main():
             err(SHARED / "traps.json", f"пастка {tid}: рівні мають іти 1..N без пропусків, зараз {sorted(levels)}")
     if not any(isinstance(w, dict) and w.get("default_owned") for w in (shared.get("weapons") or [])):
         err(SHARED / "weapons.json", "жодна зброя не default_owned: гравцю не буде з чим грати")
-    check_items(shared.get("items") or [], weapon_ids, set(by_trap))
+    check_items(shared.get("items") or [], weapon_ids, set(by_trap), enemy_ids)
+    room_unlocks = []
 
     for room_dir in sorted(p for p in ROOMS.iterdir() if p.is_dir() and p.name != "shared"):
         if not ID_RE.match(room_dir.name):
@@ -381,6 +546,8 @@ def main():
                 err(room_dir / "room.json", f"spawners[{i}]: потрібен id у snake_case")
                 continue
             spawner_ids.add(s["id"])
+        if isinstance(room.get("unlock_weapon"), str):
+            room_unlocks.append((room_dir.name, room["unlock_weapon"]))
         if room and room.get("id") != room_dir.name:
             err(room_dir / "room.json", f"room.id {room.get('id')!r} має збігатися з назвою папки {room_dir.name!r}")
         delays = {}
@@ -415,6 +582,9 @@ def main():
         if counts and counts != [1, 2, 3, 4]:
             err(room_dir / "players.json", f"потрібні рядки для 1, 2, 3, 4 гравців, зараз {counts}")
 
+    room_unlocks.sort(key=lambda x: (x[0] == "template", int(re.sub(r"\D", "", x[0]) or 0)))
+    check_economy(shared.get("weapons") or [], shared.get("traps") or [], shared.get("bots") or {}, room_unlocks)
+
     check_portals(ROOT / "lobby" / "portals.json")
 
     # leaderboards.json і items.json лежать у кількох місцях, бо різні частини гри читають різні адреси: копії мають бути ідентичними
@@ -442,6 +612,12 @@ def main():
             print("  -", e)
         return 1
     print("OK: усі конфіги валідні")
+    lines, warns = economy_report(shared.get("weapons") or [], shared.get("traps") or [], shared.get("bots") or {}, room_unlocks)
+    if economy:
+        print("Економіка ботів (бюджет = ціна зброї кімнати x trap_budget_mult):")
+        print("\n".join(lines))
+    for w in warns:
+        print("  УВАГА:", w)
     return 0
 
 

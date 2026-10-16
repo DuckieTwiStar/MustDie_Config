@@ -1,13 +1,14 @@
 {
   "meta": {
-    "version": "BAL-0003",
-    "exported_at": "2026-10-15",
-    "note": "Зброя. Ціни розблокування в лобі, див. docs/prices.md. Рогатка і дробовик: числа прототипу Room 1"
+    "version": "BAL-0004",
+    "exported_at": "2026-10-16",
+    "note": "Зброя. tier = прогрес (замки порталів), order = сортування; price_soft = розблокування в лобі. Модифікація: base_id, tier як у бази, order = база + 1..9. Рогатка і дробовик: числа прототипу Room 1"
   },
   "weapons": [
     {
       "id": "fists",
       "order": 10,
+      "tier": 1,
       "default_owned": true,
       "name_en": "Fists",
       "name_uk": "Кулаки",
@@ -18,6 +19,7 @@
     {
       "id": "slingshot",
       "order": 20,
+      "tier": 1,
       "default_owned": true,
       "name_en": "Slingshot",
       "name_uk": "Рогатка",
@@ -30,6 +32,8 @@
     {
       "id": "bow",
       "order": 30,
+      "tier": 2,
+      "price_soft": 50,
       "name_en": "Bow",
       "name_uk": "Лук",
       "damage": 40,
@@ -44,6 +48,8 @@
     {
       "id": "shotgun",
       "order": 40,
+      "tier": 3,
+      "price_soft": 150,
       "name_en": "Shotgun",
       "name_uk": "Дробовик",
       "damage": 9,

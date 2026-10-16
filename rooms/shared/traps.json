@@ -1,8 +1,8 @@
 {
   "meta": {
-    "version": "BAL-0003",
-    "exported_at": "2026-10-15",
-    "note": "Пастки: рядок на пару (id, level). cost = віспи за встановлення. Розблокування і прокачка в лобі, ціни в docs/prices.md"
+    "version": "BAL-0004",
+    "exported_at": "2026-10-16",
+    "note": "Пастки: рядок на пару (id, level). cost = віспи за встановлення в кімнаті. price_soft = ціна рівня в лобі (рівень 1 безкоштовний: усі три пастки доступні одразу, далі лише прокачка)"
   },
   "traps": [
     {
@@ -17,6 +17,7 @@
       "damage": 15,
       "cooldown": 6,
       "hold_time": 2,
+      "price_soft": 0,
       "default_owned": true
     },
     {
@@ -30,7 +31,8 @@
       "cost": 100,
       "damage": 25,
       "cooldown": 5,
-      "hold_time": 2.5
+      "hold_time": 2.5,
+      "price_soft": 75
     },
     {
       "id": "snare",
@@ -43,7 +45,8 @@
       "cost": 100,
       "damage": 35,
       "cooldown": 4,
-      "hold_time": 3
+      "hold_time": 3,
+      "price_soft": 125
     },
     {
       "id": "energy_wall",
@@ -54,7 +57,9 @@
       "mechanic": "wall",
       "placement": "wall",
       "cost": 200,
-      "damage": 20
+      "damage": 20,
+      "price_soft": 0,
+      "default_owned": true
     },
     {
       "id": "energy_wall",
@@ -65,7 +70,8 @@
       "mechanic": "wall",
       "placement": "wall",
       "cost": 200,
-      "damage": 30
+      "damage": 30,
+      "price_soft": 150
     },
     {
       "id": "energy_wall",
@@ -76,7 +82,8 @@
       "mechanic": "wall",
       "placement": "wall",
       "cost": 200,
-      "damage": 45
+      "damage": 45,
+      "price_soft": 250
     },
     {
       "id": "turret",
@@ -89,7 +96,9 @@
       "cost": 250,
       "damage": 25,
       "fire_interval": 1.5,
-      "range": 20
+      "range": 20,
+      "price_soft": 0,
+      "default_owned": true
     },
     {
       "id": "turret",
@@ -102,7 +111,8 @@
       "cost": 250,
       "damage": 35,
       "fire_interval": 1.2,
-      "range": 20
+      "range": 20,
+      "price_soft": 175
     },
     {
       "id": "turret",
@@ -115,7 +125,8 @@
       "cost": 250,
       "damage": 45,
       "fire_interval": 0.9,
-      "range": 20
+      "range": 20,
+      "price_soft": 275
     }
   ]
 }

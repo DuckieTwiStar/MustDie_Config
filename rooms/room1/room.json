@@ -8,6 +8,7 @@
     "id": "room1",
     "name_en": "Room 1",
     "name_uk": "Кімната 1",
+    "unlock_weapon": "slingshot",
     "base_hp": 650,
     "door_timer": 60,
     "spawners": [

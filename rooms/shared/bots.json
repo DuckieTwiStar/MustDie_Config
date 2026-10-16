@@ -1,0 +1,14 @@
+{
+  "meta": {
+    "version": "BAL-0004",
+    "exported_at": "2026-10-16",
+    "note": "Боти: зброя з пулу за кімнатою, бюджет на прокачку пасток. Гра поки не читає"
+  },
+  "bots": {
+    "weapon_pool_exclude": [
+      "fists"
+    ],
+    "include_premium": false,
+    "trap_budget_mult": 1
+  }
+}
