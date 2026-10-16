@@ -444,8 +444,62 @@ def economy_report(weapons, traps, bots, room_unlocks, run_values=None, runs=200
     return lines, warns
 
 
-def check_portals(path):
-    """lobby/portals.json: порталі лобі (id = ContentId порталу в Studio), Place ID кімнат."""
+def check_shop_soft(path, weapons, traps):
+    """lobby/shop_soft.json: рядки, що продають зброю (reward.kind=Weapon) і рівні пасток (TrapLevel), мають збігатися з weapons.json і traps.json."""
+    if not path.exists():
+        return
+    try:
+        rows = json.loads(path.read_text(encoding="utf-8")).get("items") or []
+    except Exception:  # noqa: BLE001
+        return
+    wby = {w["id"]: w for w in weapons if isinstance(w, dict) and isinstance(w.get("id"), str)}
+    levels = {}
+    for t in traps:
+        if isinstance(t, dict) and isinstance(t.get("id"), str) and isinstance(t.get("level"), int):
+            levels[(t["id"], t["level"])] = t
+    sold_w, sold_t = {}, {}
+    for r in rows:
+        rw = r.get("reward") if isinstance(r, dict) else None
+        if not isinstance(rw, dict):
+            continue
+        where = f"shop_soft {r.get('id')}"
+        kind, rid, amount = rw.get("kind"), rw.get("id"), rw.get("amount")
+        if kind == "Weapon":
+            w = wby.get(rid)
+            if w is None:
+                err(path, f"{where}: зброї {rid!r} немає в weapons.json")
+                continue
+            if amount != 1:
+                err(path, f"{where}: для Weapon amount має бути 1")
+            if w.get("default_owned") or w.get("base_id"):
+                err(path, f"{where}: {rid!r} видається безкоштовно або як премодифікація, у софт-магазині її не продаємо")
+            if r.get("price") != w.get("price_soft"):
+                err(path, f"{where}: price {r.get('price')} не збігається з price_soft {w.get('price_soft')} у weapons.json")
+            sold_w[rid] = sold_w.get(rid, 0) + 1
+        elif kind == "TrapLevel":
+            t = levels.get((rid, amount))
+            if t is None:
+                err(path, f"{where}: немає рядка пастки {rid!r} рівня {amount} у traps.json")
+                continue
+            if amount < 2:
+                err(path, f"{where}: рівень 1 безкоштовний, продавати можна з рівня 2")
+            if r.get("price") != t.get("price_soft"):
+                err(path, f"{where}: price {r.get('price')} не збігається з price_soft {t.get('price_soft')} у traps.json")
+            sold_t[(rid, amount)] = sold_t.get((rid, amount), 0) + 1
+    for wid, w in wby.items():
+        if w.get("price_soft") and not w.get("default_owned") and not w.get("base_id") and sold_w.get(wid, 0) != 1:
+            err(path, f"зброя {wid!r} має продаватися рівно одним рядком Weapon, зараз {sold_w.get(wid, 0)}")
+    for (tid, lvl), t in sorted(levels.items()):
+        if lvl >= 2 and sold_t.get((tid, lvl), 0) != 1:
+            err(path, f"рівень {lvl} пастки {tid!r} має продаватися рівно одним рядком TrapLevel, зараз {sold_t.get((tid, lvl), 0)}")
+
+
+def check_portals(path, weapons=(), room_unlocks=()):
+    """lobby/portals.json: порталі лобі (id = ContentId порталу в Studio), Place ID кімнат.
+    requires = зброя (id з weapons.json), потрібна для входу (tier не нижчий за tier цієї зброї). Для порталу N кімната rooms/roomN:
+    її unlock_weapon має збігатися з requires, а якщо tier зброї кімнати вищий за 1, requires обов'язковий."""
+    wby = {w["id"]: w for w in weapons if isinstance(w, dict) and isinstance(w.get("id"), str)}
+    unlocks = dict(room_unlocks)
     if not path.exists():
         err(path, "файлу немає")
         return
@@ -482,6 +536,19 @@ def check_portals(path):
         mp = row.get("maxPlayers")
         if mp is not None and (not isinstance(mp, int) or isinstance(mp, bool) or not 1 <= mp <= 4):
             err(path, f"{where}: maxPlayers 1..4")
+        req = row.get("requires")
+        if req is not None:
+            if req not in wby:
+                err(path, f"{where}: requires {req!r} немає в weapons.json")
+            elif wby[req].get("default_owned"):
+                err(path, f"{where}: requires {req!r} це зброя default_owned, замок нічого не закриє")
+        unlock = unlocks.get(f"room{pid}")
+        if unlock is not None and unlock in wby:
+            need = wby[unlock].get("tier", 1)
+            if req is None and need > 1:
+                err(path, f"{where}: кімната room{pid} відкривається зброєю {unlock} (tier {need}), а requires не заданий")
+            if req is not None and req in wby and req != unlock:
+                err(path, f"{where}: requires {req!r} не збігається з unlock_weapon кімнати room{pid} ({unlock!r})")
 
 
 def check_debug(path):
@@ -608,7 +675,8 @@ def main():
     room_unlocks.sort(key=lambda x: (x[0] == "template", int(re.sub(r"\D", "", x[0]) or 0)))
     check_economy(shared.get("weapons") or [], shared.get("traps") or [], shared.get("bots") or {}, room_unlocks)
 
-    check_portals(ROOT / "lobby" / "portals.json")
+    check_portals(ROOT / "lobby" / "portals.json", shared.get("weapons") or [], room_unlocks)
+    check_shop_soft(ROOT / "lobby" / "shop_soft.json", shared.get("weapons") or [], shared.get("traps") or [])
 
     # leaderboards.json і items.json лежать у кількох місцях, бо різні частини гри читають різні адреси: копії мають бути ідентичними
     for fname in ("leaderboards.json", "items.json"):

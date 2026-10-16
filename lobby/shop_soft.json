@@ -2,10 +2,149 @@
   "hardShopText": "Robux Shop",
   "items": [
     {
+      "id": "weapon_bow",
+      "type": "nonconsumable",
+      "title": "Bow",
+      "order": 10,
+      "description": "Long range, {damage} damage per shot. Opens Room 2.",
+      "values": {
+        "damage": 40
+      },
+      "price": 600,
+      "reward": {
+        "kind": "Weapon",
+        "id": "bow",
+        "amount": 1
+      }
+    },
+    {
+      "id": "weapon_shotgun",
+      "type": "nonconsumable",
+      "title": "Shotgun",
+      "order": 20,
+      "description": "Close-range blast: {pellets} pellets, {damage} damage each.",
+      "values": {
+        "pellets": 8,
+        "damage": 9
+      },
+      "price": 2500,
+      "reward": {
+        "kind": "Weapon",
+        "id": "shotgun",
+        "amount": 1
+      }
+    },
+    {
+      "id": "snare_lvl2",
+      "type": "nonconsumable",
+      "title": "Snare Lv.2",
+      "order": 30,
+      "description": "Level {level}: damage {damage}, recharge {cooldown} s.",
+      "values": {
+        "level": 2,
+        "damage": 25,
+        "cooldown": 5
+      },
+      "price": 75,
+      "reward": {
+        "kind": "TrapLevel",
+        "id": "snare",
+        "amount": 2
+      }
+    },
+    {
+      "id": "snare_lvl3",
+      "type": "nonconsumable",
+      "title": "Snare Lv.3",
+      "order": 40,
+      "description": "Level {level}: damage {damage}, recharge {cooldown} s.",
+      "values": {
+        "level": 3,
+        "damage": 35,
+        "cooldown": 4
+      },
+      "price": 125,
+      "reward": {
+        "kind": "TrapLevel",
+        "id": "snare",
+        "amount": 3
+      }
+    },
+    {
+      "id": "energy_wall_lvl2",
+      "type": "nonconsumable",
+      "title": "Energy Wall Lv.2",
+      "order": 50,
+      "description": "Level {level}: damage {damage}.",
+      "values": {
+        "level": 2,
+        "damage": 30
+      },
+      "price": 150,
+      "reward": {
+        "kind": "TrapLevel",
+        "id": "energy_wall",
+        "amount": 2
+      }
+    },
+    {
+      "id": "energy_wall_lvl3",
+      "type": "nonconsumable",
+      "title": "Energy Wall Lv.3",
+      "order": 60,
+      "description": "Level {level}: damage {damage}.",
+      "values": {
+        "level": 3,
+        "damage": 45
+      },
+      "price": 250,
+      "reward": {
+        "kind": "TrapLevel",
+        "id": "energy_wall",
+        "amount": 3
+      }
+    },
+    {
+      "id": "turret_lvl2",
+      "type": "nonconsumable",
+      "title": "Turret Lv.2",
+      "order": 70,
+      "description": "Level {level}: damage {damage}, shot every {interval} s.",
+      "values": {
+        "level": 2,
+        "damage": 35,
+        "interval": 1.2
+      },
+      "price": 175,
+      "reward": {
+        "kind": "TrapLevel",
+        "id": "turret",
+        "amount": 2
+      }
+    },
+    {
+      "id": "turret_lvl3",
+      "type": "nonconsumable",
+      "title": "Turret Lv.3",
+      "order": 80,
+      "description": "Level {level}: damage {damage}, shot every {interval} s.",
+      "values": {
+        "level": 3,
+        "damage": 45,
+        "interval": 0.9
+      },
+      "price": 275,
+      "reward": {
+        "kind": "TrapLevel",
+        "id": "turret",
+        "amount": 3
+      }
+    },
+    {
       "description": "Run {percent}% faster for {minutes} min",
       "type": "consumable",
       "title": "Speed Boost",
-      "order": 10,
+      "order": 110,
       "id": "speed_boost",
       "price": 100,
       "values": {
@@ -22,7 +161,7 @@
       "description": "Increases drop chance by {percent}%",
       "type": "nonconsumable",
       "title": "Lucky Charm",
-      "order": 20,
+      "order": 120,
       "id": "lucky_charm",
       "price": 500,
       "values": {
@@ -38,7 +177,7 @@
       "description": "{count} random boosters in one pack",
       "type": "consumable",
       "title": "Mega Pack",
-      "order": 30,
+      "order": 130,
       "id": "mega_pack",
       "price": 250,
       "values": {
@@ -55,7 +194,7 @@
       "title": "Golden Hat",
       "description": "A shiny hat. Pure style.",
       "id": "golden_hat",
-      "order": 40,
+      "order": 140,
       "price": 1500,
       "reward": {
         "id": "golden_hat",
@@ -67,7 +206,7 @@
       "description": "Survive {hits} hit per run",
       "type": "consumable",
       "title": "Shield",
-      "order": 50,
+      "order": 150,
       "id": "shield",
       "price": 300,
       "values": {
@@ -83,7 +222,7 @@
       "description": "Pulls coins from {radius} studs",
       "type": "nonconsumable",
       "title": "Coin Magnet",
-      "order": 60,
+      "order": 160,
       "id": "magnet",
       "price": 800,
       "values": {

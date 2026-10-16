@@ -278,6 +278,17 @@ tools/validate.py       перевірка перед комітом (так с�
 
 Поки UI не перейшов на каталог, назви в `weapons.json` / `traps.json` (`name_en`, `name_uk`) і поля `title`/`description` у `lobby/shop_*.json` лишаються. Коли магазини перейдуть на каталог, ці дублі видаляються.
 
+## Файл `lobby/shop_soft.json`: зброя й прокачка пасток
+
+Софт-магазин лобі. Крім шаблонних рядків (Speed Boost та ін.) продає зброю і рівні пасток через два типи нагороди:
+
+| Нагорода | Що робить | Перевірка валідатором |
+|---|---|---|
+| `{"kind":"Weapon","id":"bow","amount":1}` | пише `Items[id] = 1` у профіль | `price` = `price_soft` зброї; зброя не `default_owned` і не премодифікація; рівно один рядок на зброю |
+| `{"kind":"TrapLevel","id":"snare","amount":2}` | пише `Items[id] = amount`, лише якщо поточний рівень = amount - 1 (рівні купуються по порядку) | `price` = `price_soft` рівня в `traps.json`; рівно один рядок на кожен рівень від 2 |
+
+Додаєш зброю чи рівень пастки в `weapons.json`/`traps.json`, додай рядок сюди (`id` рядка довільний, `reward.id` це id зброї чи пастки). Іконку рядок бере з `items.json` за `reward.id`. Магазин читає `weapons.json` і `traps.json` з `rooms/shared` (лобі підключає цю папку як спільну).
+
 ## Файл `lobby/portals.json`
 
 Порталі лобі. Читає пакет `Portal` (ConfigService, ім'я конфігу `portals`), Place ID у самому пакеті немає.
@@ -291,6 +302,7 @@ tools/validate.py       перевірка перед комітом (так с�
 | `portals[].placeId` | Place ID кімнати; `0` поки кімнати немає |
 | `portals[].enabled` | `false` = у вікні «Coming soon», телепорту немає |
 | `portals[].maxPlayers` | необов'язково: ліміт саме цього порталу, 1..4 |
+| `portals[].requires` | необов'язково: id зброї з `weapons.json`, потрібної для входу (потрібна зброя того ж або вищого `tier`). Закритий портал показує іконку зброї й веде в магазин; кімната ще раз перевіряє це при вході. Має збігатися з `unlock_weapon` кімнати `roomN` |
 
 У TeleportData кімнати йдуть `teamSize`, `ContentId`, `partyHost`. Нова кімната: додати Place у Experience, вписати рядок у `portals`, поставити `enabled: true`.
 
