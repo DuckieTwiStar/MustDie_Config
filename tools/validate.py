@@ -14,7 +14,7 @@
 - у кожній кімнаті є всі файли кімнати;
 - wave_delay однаковий у всіх рядках однієї хвилі (гра бере його з першого рядка);
 - копії leaderboards.json і items.json (lobby/, rooms/shared/) побайтно однакові;
-- зброя: tier (прогрес), price_soft (розблокування в лобі), модифікація = base_id + tier бази + order бази+1..9;
+- зброя: tier (прогрес), price_soft у всіх базових (розблокування в лобі; у default_owned це бюджет ботів), модифікація = base_id + tier бази + order бази+1..9;
 - пастки: рівні 1..N, price_soft рівня 1 = 0 (default_owned), вище > 0; room.json: unlock_weapon існує, базова, tier не спадає з номером кімнати;
 - bots.json: пул зброї ботів та бюджет на пастки; симулятор: python3 tools/validate.py --economy;
 - каталог items.json: кожна зброя й пастка має запис (і навпаки), icon це rbxassetid://<число> або порожньо,
@@ -306,12 +306,8 @@ def check_economy(weapons, traps, bots, room_unlocks):
                 err(wpath, f"{wid}: модифікація не продається за софт (price_soft), її видають нагородою або в hard-магазині")
             if w.get("default_owned"):
                 err(wpath, f"{wid}: модифікація не може бути default_owned")
-        else:
-            if w.get("default_owned"):
-                if "price_soft" in w:
-                    err(wpath, f"{wid}: default_owned і price_soft разом, прибери price_soft")
-            elif "price_soft" not in w:
-                err(wpath, f"{wid}: базова зброя без default_owned потребує price_soft")
+        elif "price_soft" not in w:
+            err(wpath, f"{wid}: базова зброя потребує price_soft (для default_owned це бюджет ботів, гравець не платить)")
     # tier не спадає з order серед базової зброї
     bases = sorted((w for w in by_id.values() if w.get("base_id") is None), key=lambda w: w.get("order", 0))
     for a, b in zip(bases, bases[1:]):
@@ -400,13 +396,34 @@ def spend_budget(by, budget, rng):
         levels[tid] += 1
 
 
-def economy_report(weapons, traps, bots, room_unlocks, runs=2000):
+BASE_HP_LEFT = 0.5  # типовий виграшний забіг: база доживає з такою часткою HP
+
+
+def run_soft(rewards, waves, enemies, base_hp):
+    """Софт за типовий виграшний забіг однієї кімнати: хвилі + урон усіма ворогами + HP бази. Віспи, що лишились, не рахуємо."""
+    wave_soft = rewards.get("wave_soft") or []
+    n = max((wv.get("wave", 0) for wv in waves if isinstance(wv, dict)), default=0)
+    total_hp = sum(enemies.get(wv.get("enemy_id"), {}).get("hp", 0) * wv.get("count", 0) for wv in waves if isinstance(wv, dict))
+    soft = sum(v for v in wave_soft[:n] if isinstance(v, int))
+    soft += int(total_hp // rewards.get("damage_per_soft", 100))
+    soft += int(base_hp * BASE_HP_LEFT // rewards.get("base_hp_per_soft", 10))
+    return soft
+
+
+def economy_report(weapons, traps, bots, room_unlocks, run_values=None, runs=2000):
     """Таблиця для людини: що отримають боти в кожній кімнаті. Не помилка, а підказка для налаштування цін."""
     import random
     by_id = {w["id"]: w for w in weapons if isinstance(w, dict) and isinstance(w.get("id"), str)}
     by = trap_upgrades(traps)
     cheapest = min((r["price_soft"] for rows in by.values() for lv, r in rows.items() if lv > 1 and isinstance(r.get("price_soft"), int)), default=0)
     lines, warns = [], []
+    run_values = run_values or {}
+    for wid2, w2 in by_id.items():
+        if w2.get("base_id") is None and isinstance(w2.get("price_soft"), int):
+            owned = " (отримана одразу)" if w2.get("default_owned") else ""
+            lines.append(f"  ціна {wid2}: {w2['price_soft']}{owned}")
+    for room_id, run in sorted(run_values.items()):
+        lines.append(f"  забіг {room_id}: ~{run} софту (хвилі + урон + база {int(BASE_HP_LEFT * 100)}%); на лук {by_id.get('bow', {}).get('price_soft', 0) / run:.1f} забігів, на дробовик {by_id.get('shotgun', {}).get('price_soft', 0) / run:.1f}")
     for room_id, wid in room_unlocks:
         w = by_id.get(wid) or {}
         budget = (w.get("price_soft") or 0) * bots.get("trap_budget_mult", 1)
@@ -524,6 +541,7 @@ def main():
         err(SHARED / "weapons.json", "жодна зброя не default_owned: гравцю не буде з чим грати")
     check_items(shared.get("items") or [], weapon_ids, set(by_trap), enemy_ids)
     room_unlocks = []
+    run_values = {}
 
     for room_dir in sorted(p for p in ROOMS.iterdir() if p.is_dir() and p.name != "shared"):
         if not ID_RE.match(room_dir.name):
@@ -571,6 +589,9 @@ def main():
             err(room_dir / "zones.json", f"при кількох спавнерах кожен має свою гілку зон (spawner_id), зараз {sorted(branch_spawners)}")
         rewards = files.get("run_rewards") or shared.get("run_rewards") or {}
         wave_nums = {wv.get("wave") for wv in (files.get("waves") or []) if isinstance(wv, dict)}
+        if isinstance(rewards, dict) and isinstance(room.get("base_hp"), (int, float)):
+            enemies_by_id = {e["id"]: e for e in (shared.get("enemies") or []) if isinstance(e, dict) and "id" in e}
+            run_values[room_dir.name] = run_soft(rewards, [wv for wv in (files.get("waves") or [])], enemies_by_id, room["base_hp"])
         soft = rewards.get("wave_soft") if isinstance(rewards, dict) else None
         if isinstance(soft, list) and wave_nums:
             if len(soft) < max(wave_nums):
@@ -612,7 +633,7 @@ def main():
             print("  -", e)
         return 1
     print("OK: усі конфіги валідні")
-    lines, warns = economy_report(shared.get("weapons") or [], shared.get("traps") or [], shared.get("bots") or {}, room_unlocks)
+    lines, warns = economy_report(shared.get("weapons") or [], shared.get("traps") or [], shared.get("bots") or {}, room_unlocks, run_values)
     if economy:
         print("Економіка ботів (бюджет = ціна зброї кімнати x trap_budget_mult):")
         print("\n".join(lines))

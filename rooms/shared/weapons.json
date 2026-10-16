@@ -2,13 +2,14 @@
   "meta": {
     "version": "BAL-0004",
     "exported_at": "2026-10-16",
-    "note": "Зброя. tier = прогрес (замки порталів), order = сортування; price_soft = розблокування в лобі. Модифікація: base_id, tier як у бази, order = база + 1..9. Рогатка і дробовик: числа прототипу Room 1"
+    "note": "Зброя. tier = прогрес (замки порталів), order = сортування. price_soft є в усіх базових зброй: розблокування в лобі; для default_owned гравець не платить (зброя в профілі вже отримана), ціна потрібна для бюджету ботів. Модифікація: base_id, tier як у бази, order = база + 1..9, без price_soft. Рогатка і дробовик: числа прототипу Room 1"
   },
   "weapons": [
     {
       "id": "fists",
       "order": 10,
       "tier": 1,
+      "price_soft": 50,
       "default_owned": true,
       "name_en": "Fists",
       "name_uk": "Кулаки",
@@ -20,6 +21,7 @@
       "id": "slingshot",
       "order": 20,
       "tier": 1,
+      "price_soft": 150,
       "default_owned": true,
       "name_en": "Slingshot",
       "name_uk": "Рогатка",
@@ -33,7 +35,7 @@
       "id": "bow",
       "order": 30,
       "tier": 2,
-      "price_soft": 50,
+      "price_soft": 600,
       "name_en": "Bow",
       "name_uk": "Лук",
       "damage": 40,
@@ -49,7 +51,7 @@
       "id": "shotgun",
       "order": 40,
       "tier": 3,
-      "price_soft": 150,
+      "price_soft": 2500,
       "name_en": "Shotgun",
       "name_uk": "Дробовик",
       "damage": 9,

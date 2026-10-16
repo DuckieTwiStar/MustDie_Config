@@ -1,12 +1,12 @@
 {
   "meta": {
-    "version": "BAL-0004",
-    "exported_at": "2026-10-15",
+    "version": "BAL-0005",
+    "exported_at": "2026-10-16",
     "note": "Правила забігу і економіки, спільні для всіх кімнат; debug: доступ до дебаг-меню"
   },
   "rules": {
     "start_coins": 500,
-    "refund_share": 1,
+    "refund_share": 0.5,
     "reward_mode": "each",
     "ricochet_falloff": 0.5,
     "cell_size": 4,
