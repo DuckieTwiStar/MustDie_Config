@@ -47,7 +47,7 @@ tools/validate.py       перевірка перед комітом (так с�
 | waves.json | так | `wave_delay` береться з першого рядка хвилі, тому в одній хвилі він має бути однаковим (перевіряє validate.py) |
 | players.json | так | `hp_mult`, `count_mult`, `reward_mult` (нагорода за вбивство множиться на `reward_mult`) |
 | zones.json | **ні** | довідкові дані для розрахунків балансу; маршрут задають `PathNode` на карті |
-| items.json | **поки ні** | каталог готовий і перевіряється, підключення до коду пакетів: наступний крок |
+| items.json | **так (іконки валют)** | `ItemCatalogService` читає й публікує клієнту; іконки валют працюють у лобі й кімнаті після публікації пакетів. Назви зброї/пасток у UI ще з `weapons|traps.json` |
 | shared/weapons.json, shared/traps.json | **ні** | зброя й пастки вшиті в код пакета; ціни лобі див. `docs/prices.md` |
 
 Якщо конфіг не вдалося завантажити (тимчасова помилка GitHub, не 404), сервер кілька разів повторює запит, далі працює на вшитих запасних значеннях і пробує знову кожні 30 с. У цей час `TD_State` має атрибут `ConfigDegraded = true`. Вшиті значення навмисно нейтральні й не збігаються з балансом ні однієї кімнати: це аварійний режим, а не копія Room 1.
@@ -252,7 +252,9 @@ tools/validate.py       перевірка перед комітом (так с�
 
 Іконки: PNG 512x512 з прозорим фоном лежать у `assets/icons/`. Назви файлів і асетів у Creator Hub за регламентом `MD_<Тип>_<Сутність>_<Імʼя>`: `MD` індекс проєкту (MustDie), `Icon` тип обʼєкта, `Weapon` / `Trap` / `Currency` тип сутності, далі унікальне імʼя в PascalCase (`MD_Icon_Weapon_Bow`, `MD_Icon_Trap_EnergyWall`), роздільник `_`. Завантажити в Roblox (Creator Hub → Assets → Images), взяти Asset ID і вписати в `icon` обох копій як `rbxassetid://<ID>`. Іконки валют `soft` (Coins) і `wisps` теж тут (`MD_Icon_Currency_Coin.png`, `MD_Icon_Currency_Wisp.png`): вони замінюють Frame-и в UI (`CoinIcon`, `WispIcon`). Іконки Robux немає навмисно: це бренд Roblox, окремого лічильника hard-валюти в грі нема.
 
-Поки пакети не підключені до каталогу, назви в `weapons.json` / `traps.json` (`name_en`, `name_uk`) і поля `title`/`description` у `lobby/shop_*.json` лишаються. Коли магазини перейдуть на каталог, ці дублі видаляються.
+Як додати зброю, пастку чи ворога: `docs/adding-items.md`.
+
+Поки UI не перейшов на каталог, назви в `weapons.json` / `traps.json` (`name_en`, `name_uk`) і поля `title`/`description` у `lobby/shop_*.json` лишаються. Коли магазини перейдуть на каталог, ці дублі видаляються.
 
 ## Файл `lobby/portals.json`
 
