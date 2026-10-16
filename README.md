@@ -250,7 +250,7 @@ tools/validate.py       перевірка перед комітом (так с�
 
 Перевірки: кожна зброя й пастка має запис і навпаки; `icon` має правильний формат; кожен `{ключ}` в описі має значення в `values` і навпаки; `reward.id` бустерів і речей у `lobby/shop_*.json` є в каталозі; є записи валют `soft`, `hard`, `wisps`.
 
-Іконки: PNG 512x512 з прозорим фоном лежать у `assets/icons/<id>.png`. Завантажити в Roblox (Creator Hub → Assets → Images), взяти Asset ID і вписати в `icon` обох копій як `rbxassetid://<ID>`. Іконки валют зараз намальовані Frame-ами в UI (`CoinIcon`, `WispIcon`), PNG для них ще немає.
+Іконки: PNG 512x512 з прозорим фоном лежать у `assets/icons/<id>.png`. Завантажити в Roblox (Creator Hub → Assets → Images), взяти Asset ID і вписати в `icon` обох копій як `rbxassetid://<ID>`. Іконки валют `soft` (Coins) і `wisps` теж тут (`soft.png`, `wisps.png`): вони замінюють Frame-и в UI (`CoinIcon`, `WispIcon`). Іконки Robux немає навмисно: це бренд Roblox, окремого лічильника hard-валюти в грі нема.
 
 Поки пакети не підключені до каталогу, назви в `weapons.json` / `traps.json` (`name_en`, `name_uk`) і поля `title`/`description` у `lobby/shop_*.json` лишаються. Коли магазини перейдуть на каталог, ці дублі видаляються.
 
