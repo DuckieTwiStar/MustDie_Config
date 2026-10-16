@@ -1,0 +1,147 @@
+{
+  "meta": {
+    "version": "ITEMS-0001",
+    "exported_at": "2026-10-16",
+    "note": "Каталог предметів: іконка, назва й опис для лобі та кімнат. Копії lobby/items.json і rooms/shared/items.json мають бути ідентичними. icon: rbxassetid://<число> або порожньо (плейсхолдер). Лише EN, локалізація пізніше"
+  },
+  "items": [
+    {
+      "id": "soft",
+      "kind": "currency",
+      "icon": "",
+      "title": "Coins",
+      "description": "Earned by clearing waves in runs. Spend it in the shop to unlock weapons and traps."
+    },
+    {
+      "id": "hard",
+      "kind": "currency",
+      "icon": "",
+      "title": "Robux",
+      "description": "Premium currency, paid for with real Robux in the Robux Shop."
+    },
+    {
+      "id": "wisps",
+      "kind": "currency",
+      "icon": "",
+      "title": "Wisps",
+      "description": "Run currency. Dropped by enemies. Spend it on weapon upgrades and placing traps. Resets every run."
+    },
+    {
+      "id": "fists",
+      "kind": "weapon",
+      "icon": "",
+      "title": "Fists",
+      "description": "Bare knuckles. Always with you."
+    },
+    {
+      "id": "slingshot",
+      "kind": "weapon",
+      "icon": "",
+      "title": "Slingshot",
+      "description": "A cheap ranged weapon. Slow, but reliable."
+    },
+    {
+      "id": "bow",
+      "kind": "weapon",
+      "icon": "",
+      "title": "Bow",
+      "description": "Long range and high damage per shot."
+    },
+    {
+      "id": "shotgun",
+      "kind": "weapon",
+      "icon": "",
+      "title": "Shotgun",
+      "description": "Close range burst: many pellets per shot, weaker the farther the target."
+    },
+    {
+      "id": "snare",
+      "kind": "trap",
+      "icon": "",
+      "title": "Snare",
+      "description": "Floor trap. Holds an enemy in place and damages it."
+    },
+    {
+      "id": "energy_wall",
+      "kind": "trap",
+      "icon": "",
+      "title": "Energy Wall",
+      "description": "Wall trap. Damages enemies that cross the barrier."
+    },
+    {
+      "id": "turret",
+      "kind": "trap",
+      "icon": "",
+      "title": "Turret",
+      "description": "Floor trap. Automatically shoots enemies in range."
+    },
+    {
+      "id": "speed_boost",
+      "kind": "booster",
+      "icon": "",
+      "title": "Speed Boost",
+      "description": "Run {percent}% faster for {minutes} min",
+      "values": {
+        "percent": 25,
+        "minutes": 10
+      }
+    },
+    {
+      "id": "lucky_charm",
+      "kind": "item",
+      "icon": "",
+      "title": "Lucky Charm",
+      "description": "Increases drop chance by {percent}%",
+      "values": {
+        "percent": 15
+      }
+    },
+    {
+      "id": "mega_pack",
+      "kind": "booster",
+      "icon": "",
+      "title": "Mega Pack",
+      "description": "{count} random boosters in one pack",
+      "values": {
+        "count": 3
+      }
+    },
+    {
+      "id": "golden_hat",
+      "kind": "item",
+      "icon": "",
+      "title": "Golden Hat",
+      "description": "A shiny hat. Pure style."
+    },
+    {
+      "id": "shield",
+      "kind": "booster",
+      "icon": "",
+      "title": "Shield",
+      "description": "Survive {hits} hit per run",
+      "values": {
+        "hits": 1
+      }
+    },
+    {
+      "id": "magnet",
+      "kind": "item",
+      "icon": "",
+      "title": "Coin Magnet",
+      "description": "Pulls coins from {radius} studs",
+      "values": {
+        "radius": 20
+      }
+    },
+    {
+      "id": "vip",
+      "kind": "item",
+      "icon": "",
+      "title": "VIP",
+      "description": "Permanent {bonus}% coin bonus",
+      "values": {
+        "bonus": 25
+      }
+    }
+  ]
+}

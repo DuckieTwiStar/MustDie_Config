@@ -13,7 +13,9 @@
 - посилання між файлами: waves -> enemies і спавнери кімнати, weapon_upgrades -> weapons;
 - у кожній кімнаті є всі файли кімнати;
 - wave_delay однаковий у всіх рядках однієї хвилі (гра бере його з першого рядка);
-- копії leaderboards.json (lobby/, rooms/shared/) побайтно однакові.
+- копії leaderboards.json і items.json (lobby/, rooms/shared/) побайтно однакові;
+- каталог items.json: кожна зброя й пастка має запис (і навпаки), icon це rbxassetid://<число> або порожньо,
+  плейсхолдери {x} в description мають значення в values, reward.id у магазинах лобі є в каталозі.
 """
 import json
 import re
@@ -92,15 +94,22 @@ SCHEMA = {
         "id": (str, True, None, None), "players": (int, True, 1, 4), "hp_mult": (NUM, True, 0.1, None),
         "count_mult": (NUM, True, 0.1, None), "reward_mult": (NUM, True, 0, None),
     },
+    "items": {
+        "id": (str, True, None, None), "kind": (str, True, None, None), "icon": (str, True, None, None),
+        "title": (str, True, None, None), "description": (str, True, None, None), "values": (dict, False, None, None),
+    },
 }
 ENUMS = {
+    ("items", "kind"): {"currency", "weapon", "trap", "booster", "item"},
     ("rules", "reward_mode"): {"each", "split", "killer"},
     ("enemies", "size"): {"small", "medium", "large"},
     ("traps", "mechanic"): {"snare", "wall", "turret"},
     ("traps", "placement"): {"floor", "wall"},
     ("weapon_upgrades", "upgrade"): {"damage", "attack_interval", "ricochet", "multishot", "crit", "pellets"},
 }
-SHARED_FILES = ["rules", "enemies", "traps", "weapons", "weapon_upgrades", "run_rewards"]
+SHARED_FILES = ["rules", "enemies", "traps", "weapons", "weapon_upgrades", "run_rewards", "items"]
+ICON_RE = re.compile(r"^(rbxassetid://[0-9]+)?$")
+PLACEHOLDER_RE = re.compile(r"\{([a-z0-9_]+)\}")
 ROOM_FILES = ["room", "zones", "waves", "players"]
 ROOM_OPTIONAL_FILES = ["run_rewards"]  # перекриває rooms/shared цілим файлом (ConfigService не зливає ключі)
 SKIP = {"leaderboards"}  # формат лідербордів веде сторона Жені
@@ -208,6 +217,51 @@ def check_file(path, name):
     return body
 
 
+def check_items(items, weapon_ids, trap_ids):
+    """items.json: каталог предметів (іконка, назва, опис) для лобі й кімнат."""
+    path = SHARED / "items.json"
+    by_id = {}
+    for i, it in enumerate(items):
+        if not isinstance(it, dict):
+            continue
+        where = f"items[{i}] ({it.get('id')})"
+        by_id[it.get("id")] = it
+        icon = it.get("icon")
+        if isinstance(icon, str) and not ICON_RE.match(icon):
+            err(path, f"{where}: icon має бути порожнім або rbxassetid://<число>, зараз {icon!r}")
+        for key in ("title", "description"):
+            if isinstance(it.get(key), str) and not it[key].strip():
+                err(path, f"{where}: {key} порожній")
+        values = it.get("values") if isinstance(it.get("values"), dict) else {}
+        used = set(PLACEHOLDER_RE.findall(it.get("description") or ""))
+        for name in sorted(used - set(values)):
+            err(path, f"{where}: у description є {{{name}}}, а в values немає ключа {name}")
+        for name in sorted(set(values) - used):
+            err(path, f"{where}: values.{name} не використано в description")
+    for kind, ids in (("weapon", weapon_ids), ("trap", trap_ids)):
+        have = {i for i, it in by_id.items() if it.get("kind") == kind}
+        for i in sorted(ids - have):
+            err(path, f"немає запису kind={kind} для id {i!r} (він є в {kind}s.json)")
+        for i in sorted(have - ids):
+            err(path, f"запис {i!r} має kind={kind}, але такого id немає в {kind}s.json")
+    for cur in ("soft", "hard", "wisps"):
+        if by_id.get(cur, {}).get("kind") != "currency":
+            err(path, f"немає запису kind=currency для {cur!r}")
+    # предмети, які магазини лобі видають як нагороду
+    for shop in ("shop_soft", "shop_hard"):
+        sp = ROOT / "lobby" / f"{shop}.json"
+        if not sp.exists():
+            continue
+        try:
+            rows = json.loads(sp.read_text(encoding="utf-8")).get("items") or []
+        except Exception:  # noqa: BLE001
+            continue  # синтаксис перевірить load() нижче
+        for r in rows:
+            rw = r.get("reward") if isinstance(r, dict) else None
+            if isinstance(rw, dict) and rw.get("kind") in ("Item", "Booster") and rw.get("id") not in by_id:
+                err(sp, f"reward.id {rw.get('id')!r} немає в items.json")
+
+
 def check_portals(path):
     """lobby/portals.json: порталі лобі (id = ContentId порталу в Studio), Place ID кімнат."""
     if not path.exists():
@@ -304,6 +358,7 @@ def main():
             err(SHARED / "traps.json", f"пастка {tid}: рівні мають іти 1..N без пропусків, зараз {sorted(levels)}")
     if not any(isinstance(w, dict) and w.get("default_owned") for w in (shared.get("weapons") or [])):
         err(SHARED / "weapons.json", "жодна зброя не default_owned: гравцю не буде з чим грати")
+    check_items(shared.get("items") or [], weapon_ids, set(by_trap))
 
     for room_dir in sorted(p for p in ROOMS.iterdir() if p.is_dir() and p.name != "shared"):
         if not ID_RE.match(room_dir.name):
@@ -362,14 +417,15 @@ def main():
 
     check_portals(ROOT / "lobby" / "portals.json")
 
-    # leaderboards.json лежить у кількох місцях, бо різні частини гри читають різні адреси: копії мають бути ідентичними
-    lb_copies = [ROOT / "lobby" / "leaderboards.json", SHARED / "leaderboards.json"]
-    lb_copies = [p for p in lb_copies if p.exists()]
-    if len(lb_copies) > 1:
-        base = lb_copies[0].read_bytes()
-        for p in lb_copies[1:]:
-            if p.read_bytes() != base:
-                err(p, f"не збігається з {lb_copies[0].relative_to(ROOT)}: копії leaderboards.json мають бути ідентичними")
+    # leaderboards.json і items.json лежать у кількох місцях, бо різні частини гри читають різні адреси: копії мають бути ідентичними
+    for fname in ("leaderboards.json", "items.json"):
+        copies = [ROOT / "lobby" / fname, SHARED / fname]
+        copies = [p for p in copies if p.exists()]
+        if len(copies) > 1:
+            base = copies[0].read_bytes()
+            for p in copies[1:]:
+                if p.read_bytes() != base:
+                    err(p, f"не збігається з {copies[0].relative_to(ROOT)}: копії {fname} мають бути ідентичними")
 
     # решта JSON (лобі, лідерборди): лише синтаксис
     for p in sorted(ROOT.rglob("*.json")):
