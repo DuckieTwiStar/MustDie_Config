@@ -107,6 +107,8 @@
 
 Коли можна: рядок у `enemies.json` (числа), рядок `kind: "enemy"` в обох копіях `items.json` (назва, опис, портрет 512x512 з ім'ям `MD_Icon_Enemy_<Name>`), модель у Place (наша частина). `name_en` / `name_uk` з `enemies.json` приберемо, коли UI перейде на каталог.
 
+Каталог `upgrade` (іконки прокачки зброї) уже є в `items.json`: перед просуванням у `release` усі Place (лобі, Room 1, Room 2, Template) мають отримати Core з типом `upgrade`, інакше стара гра відхилить весь `items.json`.
+
 Поки не підтверджено: новий ворог це рядок у `enemies.json` + модель у Place, без запису в `items.json`.
 
 ## 9. Перед комітом

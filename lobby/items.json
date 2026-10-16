@@ -1,6 +1,6 @@
 {
   "meta": {
-    "version": "ITEMS-0001",
+    "version": "ITEMS-0002",
     "exported_at": "2026-10-16",
     "note": "Каталог предметів: іконка, назва й опис для лобі та кімнат. Копії lobby/items.json і rooms/shared/items.json мають бути ідентичними. icon: rbxassetid://<число> або порожньо (плейсхолдер). Лише EN, локалізація пізніше"
   },
@@ -142,6 +142,48 @@
       "values": {
         "bonus": 25
       }
+    },
+    {
+      "id": "upgrade_damage",
+      "kind": "upgrade",
+      "icon": "rbxassetid://130094929055375",
+      "title": "Damage",
+      "description": "Each hit deals more damage."
+    },
+    {
+      "id": "upgrade_fire_rate",
+      "kind": "upgrade",
+      "icon": "rbxassetid://126300744011792",
+      "title": "Fire rate",
+      "description": "Shorter pause between shots."
+    },
+    {
+      "id": "upgrade_ricochet",
+      "kind": "upgrade",
+      "icon": "rbxassetid://106522443251614",
+      "title": "Ricochet",
+      "description": "Projectiles bounce to nearby enemies."
+    },
+    {
+      "id": "upgrade_multishot",
+      "kind": "upgrade",
+      "icon": "rbxassetid://111887280022566",
+      "title": "Multishot",
+      "description": "Fire several projectiles per shot."
+    },
+    {
+      "id": "upgrade_crit",
+      "kind": "upgrade",
+      "icon": "rbxassetid://102804882980652",
+      "title": "Crit damage",
+      "description": "Critical hits deal bigger damage."
+    },
+    {
+      "id": "upgrade_pellets",
+      "kind": "upgrade",
+      "icon": "rbxassetid://100640740226076",
+      "title": "Pellets",
+      "description": "More pellets in every shot."
     }
   ]
 }
