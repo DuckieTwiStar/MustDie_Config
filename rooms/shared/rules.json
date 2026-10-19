@@ -1,7 +1,7 @@
 {
   "meta": {
     "version": "BAL-0006",
-    "exported_at": "2026-10-16",
+    "exported_at": "2026-10-19",
     "note": "Правила забігу і економіки, спільні для всіх кімнат; debug: доступ до дебаг-меню"
   },
   "rules": {
@@ -10,7 +10,6 @@
     "reward_mode": "each",
     "ricochet_falloff": 0.5,
     "cell_size": 4,
-    "restart_delay": 10,
     "weapon_select_seconds": 20,
     "weapon_select_delay": 1.5
   },

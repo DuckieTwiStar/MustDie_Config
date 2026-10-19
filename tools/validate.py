@@ -40,7 +40,6 @@ SCHEMA = {
         "reward_mode": (str, True, None, None),
         "ricochet_falloff": (NUM, True, 0, 1),
         "cell_size": (NUM, True, 0.1, None),
-        "restart_delay": (NUM, True, 0, None),
         "weapon_select_seconds": (NUM, True, 1, 120),
         "weapon_select_delay": (NUM, True, 0, 10),
     },
