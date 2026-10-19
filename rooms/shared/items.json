@@ -1,7 +1,7 @@
 {
   "meta": {
-    "version": "ITEMS-0002",
-    "exported_at": "2026-10-16",
+    "version": "ITEMS-0003",
+    "exported_at": "2026-10-19",
     "note": "Каталог предметів: іконка, назва й опис для лобі та кімнат. Копії lobby/items.json і rooms/shared/items.json мають бути ідентичними. icon: rbxassetid://<число> або порожньо (плейсхолдер). Лише EN, локалізація пізніше"
   },
   "items": [
@@ -31,21 +31,28 @@
       "kind": "weapon",
       "icon": "rbxassetid://91811419583670",
       "title": "Fists",
-      "description": "Bare knuckles. Always with you."
+      "description": "Always with you. Fast punches up close."
     },
     {
       "id": "slingshot",
       "kind": "weapon",
       "icon": "rbxassetid://131622915601447",
       "title": "Slingshot",
-      "description": "A cheap ranged weapon. Slow, but reliable."
+      "description": "Free starter. Pebbles fly in an arc."
     },
     {
       "id": "bow",
       "kind": "weapon",
       "icon": "rbxassetid://111825883312148",
       "title": "Bow",
-      "description": "Long range and high damage per shot."
+      "description": "Long range and high damage per shot. Arrows can ricochet."
+    },
+    {
+      "id": "revolver",
+      "kind": "weapon",
+      "icon": "",
+      "title": "Revolver",
+      "description": "Instant, precise shots. Upgrade to fire two revolvers at once."
     },
     {
       "id": "shotgun",
@@ -53,6 +60,34 @@
       "icon": "rbxassetid://73400560440940",
       "title": "Shotgun",
       "description": "Close range burst: many pellets per shot, weaker the farther the target."
+    },
+    {
+      "id": "tommy",
+      "kind": "weapon",
+      "icon": "",
+      "title": "Tommy Gun",
+      "description": "Hold to spray bullets. Gets less accurate in long bursts. Can fire incendiary rounds."
+    },
+    {
+      "id": "crossbow",
+      "kind": "weapon",
+      "icon": "",
+      "title": "Demon Hunter",
+      "description": "Heavy bolts pierce enemies. Upgrades add a fan of bolts, crits and ricochets."
+    },
+    {
+      "id": "energygun",
+      "kind": "weapon",
+      "icon": "",
+      "title": "Energy Gun",
+      "description": "Hold for a steady energy beam. Overheats; upgrades add plasma balls and piercing."
+    },
+    {
+      "id": "voodoo",
+      "kind": "weapon",
+      "icon": "",
+      "title": "Voodoo Doll",
+      "description": "Stab the doll to set the target on fire. Fire ignores armor and spreads to nearby enemies."
     },
     {
       "id": "snare",
@@ -184,6 +219,90 @@
       "icon": "rbxassetid://100640740226076",
       "title": "Pellets",
       "description": "More pellets in every shot."
+    },
+    {
+      "id": "upgrade_choke",
+      "kind": "upgrade",
+      "icon": "",
+      "title": "Choke",
+      "description": "Tighter spread and longer full-damage range."
+    },
+    {
+      "id": "upgrade_dual",
+      "kind": "upgrade",
+      "icon": "",
+      "title": "Two Revolvers",
+      "description": "Fire a second revolver: faster shots, less accuracy."
+    },
+    {
+      "id": "upgrade_stability",
+      "kind": "upgrade",
+      "icon": "",
+      "title": "Stability",
+      "description": "Less spread in long bursts."
+    },
+    {
+      "id": "upgrade_incendiary",
+      "kind": "upgrade",
+      "icon": "",
+      "title": "Incendiary Rounds",
+      "description": "Bullets set enemies on fire."
+    },
+    {
+      "id": "upgrade_beam_time",
+      "kind": "upgrade",
+      "icon": "",
+      "title": "Beam Time",
+      "description": "The beam lasts longer before overheating."
+    },
+    {
+      "id": "upgrade_cooldown",
+      "kind": "upgrade",
+      "icon": "",
+      "title": "Cooling",
+      "description": "Overheat passes faster."
+    },
+    {
+      "id": "upgrade_plasma",
+      "kind": "upgrade",
+      "icon": "",
+      "title": "Plasma Balls",
+      "description": "While the beam is on, plasma balls explode at the target."
+    },
+    {
+      "id": "upgrade_pierce",
+      "kind": "upgrade",
+      "icon": "",
+      "title": "Pierce",
+      "description": "The beam passes through more enemies."
+    },
+    {
+      "id": "upgrade_burn",
+      "kind": "upgrade",
+      "icon": "",
+      "title": "Burning",
+      "description": "Stronger fire damage over time."
+    },
+    {
+      "id": "upgrade_radius",
+      "kind": "upgrade",
+      "icon": "",
+      "title": "Fire Radius",
+      "description": "Fire spreads to nearby enemies."
+    },
+    {
+      "id": "upgrade_targets",
+      "kind": "upgrade",
+      "icon": "",
+      "title": "Targets",
+      "description": "Curse several enemies with one stab."
+    },
+    {
+      "id": "upgrade_ash",
+      "kind": "upgrade",
+      "icon": "",
+      "title": "Ash Curse",
+      "description": "Cursed enemies explode in fire when they die."
     }
   ]
 }

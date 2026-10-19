@@ -233,6 +233,87 @@
         "kind": "Item",
         "amount": 1
       }
+    },
+    {
+      "id": "weapon_revolver",
+      "type": "nonconsumable",
+      "title": "Revolver",
+      "order": 12,
+      "description": "Instant shots, {damage} damage. Upgrade to two revolvers.",
+      "values": {
+        "damage": 22
+      },
+      "price": 1200,
+      "reward": {
+        "kind": "Weapon",
+        "id": "revolver",
+        "amount": 1
+      }
+    },
+    {
+      "id": "weapon_tommy",
+      "type": "nonconsumable",
+      "title": "Tommy Gun",
+      "order": 22,
+      "description": "Hold to spray: {damage} damage x {rate} shots per second.",
+      "values": {
+        "damage": 7,
+        "rate": 10
+      },
+      "price": 3500,
+      "reward": {
+        "kind": "Weapon",
+        "id": "tommy",
+        "amount": 1
+      }
+    },
+    {
+      "id": "weapon_crossbow",
+      "type": "nonconsumable",
+      "title": "Demon Hunter",
+      "order": 24,
+      "description": "Heavy bolts, {damage} damage, pierce an enemy.",
+      "values": {
+        "damage": 70
+      },
+      "price": 5000,
+      "reward": {
+        "kind": "Weapon",
+        "id": "crossbow",
+        "amount": 1
+      }
+    },
+    {
+      "id": "weapon_energygun",
+      "type": "nonconsumable",
+      "title": "Energy Gun",
+      "order": 26,
+      "description": "Steady beam, {dps} damage per second. Overheats.",
+      "values": {
+        "dps": 60
+      },
+      "price": 6000,
+      "reward": {
+        "kind": "Weapon",
+        "id": "energygun",
+        "amount": 1
+      }
+    },
+    {
+      "id": "weapon_voodoo",
+      "type": "nonconsumable",
+      "title": "Voodoo Doll",
+      "order": 28,
+      "description": "Fire that ignores armor: {damage} per stab and burning.",
+      "values": {
+        "damage": 40
+      },
+      "price": 10000,
+      "reward": {
+        "kind": "Weapon",
+        "id": "voodoo",
+        "amount": 1
+      }
     }
   ],
   "title": "Merchant",

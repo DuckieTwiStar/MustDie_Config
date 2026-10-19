@@ -1,42 +1,114 @@
 {
   "meta": {
-    "version": "BAL-0003",
-    "exported_at": "2026-10-15",
-    "note": "Прокачка зброї в кімнаті за віспи, діє один забіг. value = нове значення параметра. Дробовик: числа прототипу"
+    "version": "BAL-0004",
+    "exported_at": "2026-10-19",
+    "note": "Прокачка зброї в кімнаті за віспи, діє один забіг. value = нове значення параметра. Арсенал 19.10.2026: рарність = скільки прокачок (Common 4, Uncommon 6-8, Rare 8-10, Epic 13-14, Legendary 16)"
   },
   "weapon_upgrades": [
+    {
+      "id": "fists_damage_1",
+      "weapon_id": "fists",
+      "upgrade": "damage",
+      "order": 10,
+      "level": 1,
+      "cost": 75,
+      "value": 20
+    },
+    {
+      "id": "fists_damage_2",
+      "weapon_id": "fists",
+      "upgrade": "damage",
+      "order": 10,
+      "level": 2,
+      "cost": 125,
+      "value": 25
+    },
+    {
+      "id": "fists_attack_interval_1",
+      "weapon_id": "fists",
+      "upgrade": "attack_interval",
+      "order": 20,
+      "level": 1,
+      "cost": 75,
+      "value": 0.36
+    },
+    {
+      "id": "fists_attack_interval_2",
+      "weapon_id": "fists",
+      "upgrade": "attack_interval",
+      "order": 20,
+      "level": 2,
+      "cost": 125,
+      "value": 0.32
+    },
+    {
+      "id": "slingshot_damage_1",
+      "weapon_id": "slingshot",
+      "upgrade": "damage",
+      "order": 30,
+      "level": 1,
+      "cost": 75,
+      "value": 16
+    },
+    {
+      "id": "slingshot_damage_2",
+      "weapon_id": "slingshot",
+      "upgrade": "damage",
+      "order": 30,
+      "level": 2,
+      "cost": 125,
+      "value": 20
+    },
+    {
+      "id": "slingshot_attack_interval_1",
+      "weapon_id": "slingshot",
+      "upgrade": "attack_interval",
+      "order": 40,
+      "level": 1,
+      "cost": 75,
+      "value": 0.5
+    },
+    {
+      "id": "slingshot_attack_interval_2",
+      "weapon_id": "slingshot",
+      "upgrade": "attack_interval",
+      "order": 40,
+      "level": 2,
+      "cost": 125,
+      "value": 0.4
+    },
     {
       "id": "bow_damage_1",
       "weapon_id": "bow",
       "upgrade": "damage",
-      "order": 10,
+      "order": 50,
       "level": 1,
       "cost": 100,
-      "value": 40
+      "value": 50
     },
     {
       "id": "bow_damage_2",
       "weapon_id": "bow",
       "upgrade": "damage",
-      "order": 10,
+      "order": 50,
       "level": 2,
       "cost": 150,
-      "value": 50
+      "value": 60
     },
     {
       "id": "bow_damage_3",
       "weapon_id": "bow",
       "upgrade": "damage",
-      "order": 10,
+      "order": 50,
       "level": 3,
       "cost": 200,
-      "value": 60
+      "value": 70
     },
     {
       "id": "bow_attack_interval_1",
       "weapon_id": "bow",
       "upgrade": "attack_interval",
-      "order": 20,
+      "order": 60,
       "level": 1,
       "cost": 100,
       "value": 0.85
@@ -45,7 +117,7 @@
       "id": "bow_attack_interval_2",
       "weapon_id": "bow",
       "upgrade": "attack_interval",
-      "order": 20,
+      "order": 60,
       "level": 2,
       "cost": 150,
       "value": 0.7
@@ -54,88 +126,88 @@
       "id": "bow_attack_interval_3",
       "weapon_id": "bow",
       "upgrade": "attack_interval",
-      "order": 20,
+      "order": 60,
       "level": 3,
       "cost": 200,
-      "value": 0.55
+      "value": 0.6
     },
     {
       "id": "bow_ricochet_1",
       "weapon_id": "bow",
       "upgrade": "ricochet",
-      "order": 30,
+      "order": 70,
       "level": 1,
-      "cost": 100,
+      "cost": 150,
       "value": 1
     },
     {
       "id": "bow_ricochet_2",
       "weapon_id": "bow",
       "upgrade": "ricochet",
-      "order": 30,
+      "order": 70,
       "level": 2,
-      "cost": 150,
+      "cost": 250,
       "value": 2
     },
     {
-      "id": "bow_ricochet_3",
-      "weapon_id": "bow",
-      "upgrade": "ricochet",
-      "order": 30,
-      "level": 3,
-      "cost": 200,
-      "value": 3
-    },
-    {
-      "id": "bow_multishot_1",
-      "weapon_id": "bow",
-      "upgrade": "multishot",
-      "order": 40,
-      "level": 1,
-      "cost": 300,
-      "value": 2
-    },
-    {
-      "id": "bow_multishot_2",
-      "weapon_id": "bow",
-      "upgrade": "multishot",
-      "order": 40,
-      "level": 2,
-      "cost": 500,
-      "value": 3
-    },
-    {
-      "id": "bow_crit_1",
-      "weapon_id": "bow",
-      "upgrade": "crit",
-      "order": 50,
+      "id": "revolver_damage_1",
+      "weapon_id": "revolver",
+      "upgrade": "damage",
+      "order": 80,
       "level": 1,
       "cost": 100,
-      "value": 2
+      "value": 27
     },
     {
-      "id": "bow_crit_2",
-      "weapon_id": "bow",
-      "upgrade": "crit",
-      "order": 50,
+      "id": "revolver_damage_2",
+      "weapon_id": "revolver",
+      "upgrade": "damage",
+      "order": 80,
       "level": 2,
       "cost": 150,
-      "value": 2.5
+      "value": 32
     },
     {
-      "id": "bow_crit_3",
-      "weapon_id": "bow",
-      "upgrade": "crit",
-      "order": 50,
+      "id": "revolver_damage_3",
+      "weapon_id": "revolver",
+      "upgrade": "damage",
+      "order": 80,
       "level": 3,
       "cost": 200,
-      "value": 3
+      "value": 36
+    },
+    {
+      "id": "revolver_attack_interval_1",
+      "weapon_id": "revolver",
+      "upgrade": "attack_interval",
+      "order": 90,
+      "level": 1,
+      "cost": 125,
+      "value": 0.47
+    },
+    {
+      "id": "revolver_attack_interval_2",
+      "weapon_id": "revolver",
+      "upgrade": "attack_interval",
+      "order": 90,
+      "level": 2,
+      "cost": 200,
+      "value": 0.4
+    },
+    {
+      "id": "revolver_dual_1",
+      "weapon_id": "revolver",
+      "upgrade": "dual",
+      "order": 100,
+      "level": 1,
+      "cost": 400,
+      "value": 1
     },
     {
       "id": "shotgun_damage_1",
       "weapon_id": "shotgun",
       "upgrade": "damage",
-      "order": 60,
+      "order": 110,
       "level": 1,
       "cost": 100,
       "value": 11
@@ -144,7 +216,7 @@
       "id": "shotgun_damage_2",
       "weapon_id": "shotgun",
       "upgrade": "damage",
-      "order": 60,
+      "order": 110,
       "level": 2,
       "cost": 175,
       "value": 13
@@ -153,7 +225,7 @@
       "id": "shotgun_pellets_1",
       "weapon_id": "shotgun",
       "upgrade": "pellets",
-      "order": 70,
+      "order": 120,
       "level": 1,
       "cost": 150,
       "value": 10
@@ -162,7 +234,7 @@
       "id": "shotgun_pellets_2",
       "weapon_id": "shotgun",
       "upgrade": "pellets",
-      "order": 70,
+      "order": 120,
       "level": 2,
       "cost": 250,
       "value": 12
@@ -171,7 +243,7 @@
       "id": "shotgun_attack_interval_1",
       "weapon_id": "shotgun",
       "upgrade": "attack_interval",
-      "order": 80,
+      "order": 130,
       "level": 1,
       "cost": 125,
       "value": 1.0
@@ -180,10 +252,487 @@
       "id": "shotgun_attack_interval_2",
       "weapon_id": "shotgun",
       "upgrade": "attack_interval",
-      "order": 80,
+      "order": 130,
       "level": 2,
       "cost": 200,
       "value": 0.8
+    },
+    {
+      "id": "shotgun_choke_1",
+      "weapon_id": "shotgun",
+      "upgrade": "choke",
+      "order": 140,
+      "level": 1,
+      "cost": 125,
+      "value": 5
+    },
+    {
+      "id": "shotgun_choke_2",
+      "weapon_id": "shotgun",
+      "upgrade": "choke",
+      "order": 140,
+      "level": 2,
+      "cost": 200,
+      "value": 4
+    },
+    {
+      "id": "tommy_damage_1",
+      "weapon_id": "tommy",
+      "upgrade": "damage",
+      "order": 150,
+      "level": 1,
+      "cost": 100,
+      "value": 8
+    },
+    {
+      "id": "tommy_damage_2",
+      "weapon_id": "tommy",
+      "upgrade": "damage",
+      "order": 150,
+      "level": 2,
+      "cost": 150,
+      "value": 9
+    },
+    {
+      "id": "tommy_damage_3",
+      "weapon_id": "tommy",
+      "upgrade": "damage",
+      "order": 150,
+      "level": 3,
+      "cost": 225,
+      "value": 11
+    },
+    {
+      "id": "tommy_attack_interval_1",
+      "weapon_id": "tommy",
+      "upgrade": "attack_interval",
+      "order": 160,
+      "level": 1,
+      "cost": 150,
+      "value": 0.085
+    },
+    {
+      "id": "tommy_attack_interval_2",
+      "weapon_id": "tommy",
+      "upgrade": "attack_interval",
+      "order": 160,
+      "level": 2,
+      "cost": 250,
+      "value": 0.075
+    },
+    {
+      "id": "tommy_stability_1",
+      "weapon_id": "tommy",
+      "upgrade": "stability",
+      "order": 170,
+      "level": 1,
+      "cost": 100,
+      "value": 4
+    },
+    {
+      "id": "tommy_stability_2",
+      "weapon_id": "tommy",
+      "upgrade": "stability",
+      "order": 170,
+      "level": 2,
+      "cost": 175,
+      "value": 2.5
+    },
+    {
+      "id": "tommy_incendiary_1",
+      "weapon_id": "tommy",
+      "upgrade": "incendiary",
+      "order": 180,
+      "level": 1,
+      "cost": 200,
+      "value": 4
+    },
+    {
+      "id": "tommy_incendiary_2",
+      "weapon_id": "tommy",
+      "upgrade": "incendiary",
+      "order": 180,
+      "level": 2,
+      "cost": 300,
+      "value": 6
+    },
+    {
+      "id": "crossbow_damage_1",
+      "weapon_id": "crossbow",
+      "upgrade": "damage",
+      "order": 190,
+      "level": 1,
+      "cost": 150,
+      "value": 85
+    },
+    {
+      "id": "crossbow_damage_2",
+      "weapon_id": "crossbow",
+      "upgrade": "damage",
+      "order": 190,
+      "level": 2,
+      "cost": 225,
+      "value": 100
+    },
+    {
+      "id": "crossbow_damage_3",
+      "weapon_id": "crossbow",
+      "upgrade": "damage",
+      "order": 190,
+      "level": 3,
+      "cost": 300,
+      "value": 115
+    },
+    {
+      "id": "crossbow_attack_interval_1",
+      "weapon_id": "crossbow",
+      "upgrade": "attack_interval",
+      "order": 200,
+      "level": 1,
+      "cost": 150,
+      "value": 1.2
+    },
+    {
+      "id": "crossbow_attack_interval_2",
+      "weapon_id": "crossbow",
+      "upgrade": "attack_interval",
+      "order": 200,
+      "level": 2,
+      "cost": 225,
+      "value": 1.0
+    },
+    {
+      "id": "crossbow_attack_interval_3",
+      "weapon_id": "crossbow",
+      "upgrade": "attack_interval",
+      "order": 200,
+      "level": 3,
+      "cost": 300,
+      "value": 0.85
+    },
+    {
+      "id": "crossbow_multishot_1",
+      "weapon_id": "crossbow",
+      "upgrade": "multishot",
+      "order": 210,
+      "level": 1,
+      "cost": 350,
+      "value": 2
+    },
+    {
+      "id": "crossbow_multishot_2",
+      "weapon_id": "crossbow",
+      "upgrade": "multishot",
+      "order": 210,
+      "level": 2,
+      "cost": 550,
+      "value": 3
+    },
+    {
+      "id": "crossbow_crit_1",
+      "weapon_id": "crossbow",
+      "upgrade": "crit",
+      "order": 220,
+      "level": 1,
+      "cost": 125,
+      "value": 2
+    },
+    {
+      "id": "crossbow_crit_2",
+      "weapon_id": "crossbow",
+      "upgrade": "crit",
+      "order": 220,
+      "level": 2,
+      "cost": 200,
+      "value": 2.5
+    },
+    {
+      "id": "crossbow_crit_3",
+      "weapon_id": "crossbow",
+      "upgrade": "crit",
+      "order": 220,
+      "level": 3,
+      "cost": 275,
+      "value": 3
+    },
+    {
+      "id": "crossbow_ricochet_1",
+      "weapon_id": "crossbow",
+      "upgrade": "ricochet",
+      "order": 230,
+      "level": 1,
+      "cost": 150,
+      "value": 1
+    },
+    {
+      "id": "crossbow_ricochet_2",
+      "weapon_id": "crossbow",
+      "upgrade": "ricochet",
+      "order": 230,
+      "level": 2,
+      "cost": 225,
+      "value": 2
+    },
+    {
+      "id": "crossbow_ricochet_3",
+      "weapon_id": "crossbow",
+      "upgrade": "ricochet",
+      "order": 230,
+      "level": 3,
+      "cost": 300,
+      "value": 3
+    },
+    {
+      "id": "energygun_damage_1",
+      "weapon_id": "energygun",
+      "upgrade": "damage",
+      "order": 240,
+      "level": 1,
+      "cost": 150,
+      "value": 7
+    },
+    {
+      "id": "energygun_damage_2",
+      "weapon_id": "energygun",
+      "upgrade": "damage",
+      "order": 240,
+      "level": 2,
+      "cost": 225,
+      "value": 8
+    },
+    {
+      "id": "energygun_damage_3",
+      "weapon_id": "energygun",
+      "upgrade": "damage",
+      "order": 240,
+      "level": 3,
+      "cost": 300,
+      "value": 9
+    },
+    {
+      "id": "energygun_beam_time_1",
+      "weapon_id": "energygun",
+      "upgrade": "beam_time",
+      "order": 250,
+      "level": 1,
+      "cost": 125,
+      "value": 4
+    },
+    {
+      "id": "energygun_beam_time_2",
+      "weapon_id": "energygun",
+      "upgrade": "beam_time",
+      "order": 250,
+      "level": 2,
+      "cost": 200,
+      "value": 5
+    },
+    {
+      "id": "energygun_beam_time_3",
+      "weapon_id": "energygun",
+      "upgrade": "beam_time",
+      "order": 250,
+      "level": 3,
+      "cost": 275,
+      "value": 6
+    },
+    {
+      "id": "energygun_cooldown_1",
+      "weapon_id": "energygun",
+      "upgrade": "cooldown",
+      "order": 260,
+      "level": 1,
+      "cost": 150,
+      "value": 1.2
+    },
+    {
+      "id": "energygun_cooldown_2",
+      "weapon_id": "energygun",
+      "upgrade": "cooldown",
+      "order": 260,
+      "level": 2,
+      "cost": 250,
+      "value": 0.9
+    },
+    {
+      "id": "energygun_plasma_1",
+      "weapon_id": "energygun",
+      "upgrade": "plasma",
+      "order": 270,
+      "level": 1,
+      "cost": 250,
+      "value": 40
+    },
+    {
+      "id": "energygun_plasma_2",
+      "weapon_id": "energygun",
+      "upgrade": "plasma",
+      "order": 270,
+      "level": 2,
+      "cost": 350,
+      "value": 60
+    },
+    {
+      "id": "energygun_plasma_3",
+      "weapon_id": "energygun",
+      "upgrade": "plasma",
+      "order": 270,
+      "level": 3,
+      "cost": 450,
+      "value": 80
+    },
+    {
+      "id": "energygun_pierce_1",
+      "weapon_id": "energygun",
+      "upgrade": "pierce",
+      "order": 280,
+      "level": 1,
+      "cost": 300,
+      "value": 1
+    },
+    {
+      "id": "energygun_pierce_2",
+      "weapon_id": "energygun",
+      "upgrade": "pierce",
+      "order": 280,
+      "level": 2,
+      "cost": 450,
+      "value": 2
+    },
+    {
+      "id": "voodoo_damage_1",
+      "weapon_id": "voodoo",
+      "upgrade": "damage",
+      "order": 290,
+      "level": 1,
+      "cost": 150,
+      "value": 50
+    },
+    {
+      "id": "voodoo_damage_2",
+      "weapon_id": "voodoo",
+      "upgrade": "damage",
+      "order": 290,
+      "level": 2,
+      "cost": 225,
+      "value": 60
+    },
+    {
+      "id": "voodoo_damage_3",
+      "weapon_id": "voodoo",
+      "upgrade": "damage",
+      "order": 290,
+      "level": 3,
+      "cost": 300,
+      "value": 70
+    },
+    {
+      "id": "voodoo_attack_interval_1",
+      "weapon_id": "voodoo",
+      "upgrade": "attack_interval",
+      "order": 300,
+      "level": 1,
+      "cost": 150,
+      "value": 0.7
+    },
+    {
+      "id": "voodoo_attack_interval_2",
+      "weapon_id": "voodoo",
+      "upgrade": "attack_interval",
+      "order": 300,
+      "level": 2,
+      "cost": 225,
+      "value": 0.6
+    },
+    {
+      "id": "voodoo_attack_interval_3",
+      "weapon_id": "voodoo",
+      "upgrade": "attack_interval",
+      "order": 300,
+      "level": 3,
+      "cost": 300,
+      "value": 0.5
+    },
+    {
+      "id": "voodoo_burn_1",
+      "weapon_id": "voodoo",
+      "upgrade": "burn",
+      "order": 310,
+      "level": 1,
+      "cost": 125,
+      "value": 15
+    },
+    {
+      "id": "voodoo_burn_2",
+      "weapon_id": "voodoo",
+      "upgrade": "burn",
+      "order": 310,
+      "level": 2,
+      "cost": 200,
+      "value": 20
+    },
+    {
+      "id": "voodoo_burn_3",
+      "weapon_id": "voodoo",
+      "upgrade": "burn",
+      "order": 310,
+      "level": 3,
+      "cost": 275,
+      "value": 25
+    },
+    {
+      "id": "voodoo_radius_1",
+      "weapon_id": "voodoo",
+      "upgrade": "radius",
+      "order": 320,
+      "level": 1,
+      "cost": 200,
+      "value": 5
+    },
+    {
+      "id": "voodoo_radius_2",
+      "weapon_id": "voodoo",
+      "upgrade": "radius",
+      "order": 320,
+      "level": 2,
+      "cost": 300,
+      "value": 8
+    },
+    {
+      "id": "voodoo_radius_3",
+      "weapon_id": "voodoo",
+      "upgrade": "radius",
+      "order": 320,
+      "level": 3,
+      "cost": 400,
+      "value": 12
+    },
+    {
+      "id": "voodoo_targets_1",
+      "weapon_id": "voodoo",
+      "upgrade": "targets",
+      "order": 330,
+      "level": 1,
+      "cost": 400,
+      "value": 2
+    },
+    {
+      "id": "voodoo_targets_2",
+      "weapon_id": "voodoo",
+      "upgrade": "targets",
+      "order": 330,
+      "level": 2,
+      "cost": 600,
+      "value": 3
+    },
+    {
+      "id": "voodoo_ash_1",
+      "weapon_id": "voodoo",
+      "upgrade": "ash",
+      "order": 340,
+      "level": 1,
+      "cost": 500,
+      "value": 100
     }
   ]
 }

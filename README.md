@@ -48,7 +48,8 @@ tools/validate.py       перевірка перед комітом (так с�
 | players.json | так | `hp_mult`, `count_mult`, `reward_mult` (нагорода за вбивство множиться на `reward_mult`) |
 | zones.json | **ні** | довідкові дані для розрахунків балансу; маршрут задають `PathNode` на карті |
 | items.json | **так (іконки валют)** | `ItemCatalogService` читає й публікує клієнту; іконки валют працюють у лобі й кімнаті після публікації пакетів. Назви зброї/пасток у UI ще з `weapons|traps.json` |
-| shared/weapons.json, shared/traps.json, shared/bots.json | **ні** | зброя й пастки вшиті в код пакета; `tier`, `price_soft`, `unlock_weapon`, `bots` готуються під дизайн 3.1 (код ще не читає). Ціни лобі тепер у `price_soft` цих файлів |
+| shared/weapons.json | **так** (з TowerDefense після 19.10.2026) | каталог (`tier`, `order`, `price_soft`, `default_owned`, `rarity`) і **стати зброї**: усі числові поля накладаються на код (snake_case → camelCase). `fire_mode` довідковий: механіку пострілу визначає код. Зброя без механіки в коді пропускається |
+| shared/traps.json, shared/bots.json | частково | рівні й ціни пасток (`price_soft`, `cost`) і налаштування ботів читаються; числа ефектів пасток поки в коді |
 | room.json → `unlock_weapon` | **ні** | зброя, яка відкриває кімнату; з неї боти беруть пул зброї й бюджет. Гра ігнорує невідомі поля |
 
 Якщо конфіг не вдалося завантажити (тимчасова помилка GitHub, не 404), сервер кілька разів повторює запит, далі працює на вшитих запасних значеннях і пробує знову кожні 30 с. У цей час `TD_State` має атрибут `ConfigDegraded = true`. Вшиті значення навмисно нейтральні й не збігаються з балансом ні однієї кімнати: це аварійний режим, а не копія Room 1.
@@ -167,6 +168,18 @@ tools/validate.py       перевірка перед комітом (так с�
 | spread | number | градуси | 0..90 | ні | кут конуса дробу |
 | falloff_start | number | studs | ≥ 0 | ні | до цієї відстані повний урон дробу |
 | falloff_min | number | частка | 0..1 | ні | частка урону дробу на межі `range` |
+| rarity | string | — | `common` / `uncommon` / `rare` / `epic` / `legendary` | так | рамка у вітрині лобі й вікні вибору; рарність = скільки прокачок має зброя |
+| fire_mode | string | — | `melee` / `projectile` / `hitscan` / `pellets` / `beam` / `curse` | так | довідково: як стріляє (гра бере механіку з коду) |
+| pierce | int | — | ≥ 0 | ні | скільки ворогів проходить снаряд/промінь наскрізь |
+| multishot_spread | number | градуси | 0..45 | ні | кут між болтами мультипострілу (віяло); 0 = черга в одну точку |
+| dual_rate, dual_spread | number | множник, градуси | ≥ 1, 0..90 | ні | револьвер з прокачкою «два револьвери»: темп × `dual_rate`, розкид `dual_spread` |
+| spread_max, spread_grow, spread_recover | number | градуси, градуси, с | | ні | автомат: розкид росте на `spread_grow` за постріл до `spread_max`, скидається після паузи `spread_recover` |
+| burn_dps, burn_time | number | урон/с, с | ≥ 0 | ні | горіння (лялька вуду; у автомата `burn_dps` дає прокачка `incendiary`) |
+| beam_time, cooldown | number | с | > 0 | ні | енергогармата: скільки горить промінь до перегріву і скільки остигає. `damage` = урон за тик, `attack_interval` = тик |
+| plasma_interval, plasma_radius | number | с, studs | > 0 | ні | плазма-кулі (з прокачки `plasma`): як часто вилітають і радіус вибуху |
+| cone | number | градуси | 1..90 | ні | лялька вуду: конус навколо прицілу, у якому шукається ціль |
+| ignore_armor | bool | — | — | ні | урон ігнорує броню ворога (вогонь вуду) |
+| splash_share, ash_radius | number | частка, studs | | ні | вуду: частка урону сусідам у радіусі (`radius`), радіус вибуху «попелястого прокляття» |
 
 ### bots.json → `bots` (об'єкт)
 
@@ -188,7 +201,7 @@ tools/validate.py       перевірка перед комітом (так с�
 |---|---|---|---|---|---|
 | id | string | — | snake_case | так | `<weapon_id>_<upgrade>_<level>` |
 | weapon_id | string | — | → `weapons.id` | так | яку зброю качає |
-| upgrade | string | — | `damage` / `attack_interval` / `ricochet` / `multishot` / `crit` / `pellets` | так | параметр (`crit` змінює `crit_mult`) |
+| upgrade | string | — | `damage` / `attack_interval` / `ricochet` / `multishot` / `crit` / `pellets` / `choke` / `dual` / `stability` / `incendiary` / `beam_time` / `cooldown` / `plasma` / `pierce` / `burn` / `radius` / `targets` / `ash` | так | параметр. `crit` змінює `crit_mult`, `choke` = `spread` дробовика, `stability` = `spread_max`, `burn` = `burn_dps`, `incendiary` = урон/с підпалу кулями, `plasma` = урон плазма-кулі, `radius` = радіус вогню вуду, `targets` = цілей за укол, `ash` = урон вибуху, `dual` = 1 (другий револьвер) |
 | order | int | — | ≥ 0 | так | порядок рядка прокачки у вікні |
 | level | int | — | ≥ 1 | так | рівень прокачки |
 | cost | int | віспи | ≥ 0 | так | ціна цього рівня |

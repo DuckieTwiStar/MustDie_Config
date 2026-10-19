@@ -67,6 +67,16 @@ SCHEMA = {
         "crit_chance": (NUM, False, 0, 1), "crit_mult": (NUM, False, 1, None),
         "pellets": (int, False, 1, None), "spread": (NUM, False, 0, 90),
         "falloff_start": (NUM, False, 0, None), "falloff_min": (NUM, False, 0, 1),
+        # арсенал 19.10.2026
+        "rarity": (str, True, None, None), "fire_mode": (str, True, None, None),
+        "pierce": (int, False, 0, None), "multishot_spread": (NUM, False, 0, 45),
+        "dual_rate": (NUM, False, 1, None), "dual_spread": (NUM, False, 0, 90),
+        "spread_max": (NUM, False, 0, 90), "spread_grow": (NUM, False, 0, 90), "spread_recover": (NUM, False, 0, None),
+        "burn_dps": (NUM, False, 0, None), "burn_time": (NUM, False, 0, None),
+        "beam_time": (NUM, False, 0.1, None), "cooldown": (NUM, False, 0, None),
+        "plasma_interval": (NUM, False, 0.1, None), "plasma_radius": (NUM, False, 0, None),
+        "cone": (NUM, False, 1, 90), "ignore_armor": (bool, False, None, None),
+        "splash_share": (NUM, False, 0, 1), "ash_radius": (NUM, False, 0, None),
     },
     "weapon_upgrades": {
         "id": (str, True, None, None), "weapon_id": (str, True, None, None), "upgrade": (str, True, None, None),
@@ -116,7 +126,12 @@ ENUMS = {
     ("enemies", "size"): {"small", "medium", "large"},
     ("traps", "mechanic"): {"snare", "wall", "turret"},
     ("traps", "placement"): {"floor", "wall"},
-    ("weapon_upgrades", "upgrade"): {"damage", "attack_interval", "ricochet", "multishot", "crit", "pellets"},
+    ("weapon_upgrades", "upgrade"): {
+        "damage", "attack_interval", "ricochet", "multishot", "crit", "pellets",
+        "choke", "dual", "stability", "incendiary", "beam_time", "cooldown", "plasma", "pierce", "burn", "radius", "targets", "ash",
+    },
+    ("weapons", "rarity"): {"common", "uncommon", "rare", "epic", "legendary"},
+    ("weapons", "fire_mode"): {"melee", "projectile", "hitscan", "pellets", "beam", "curse"},
 }
 SHARED_FILES = ["rules", "enemies", "traps", "weapons", "weapon_upgrades", "run_rewards", "items", "bots"]
 ICON_RE = re.compile(r"^(rbxassetid://[0-9]+)?$")
