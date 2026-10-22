@@ -115,6 +115,15 @@ SCHEMA = {
         "id": (str, True, None, None), "players": (int, True, 1, 4), "hp_mult": (NUM, True, 0.1, None),
         "count_mult": (NUM, True, 0.1, None), "reward_mult": (NUM, True, 0, None),
     },
+    # ефекти на ворогах (EffectService, 23.10.2026); новий id = новий тип ефекту без коду
+    "status_effects": {
+        "id": (str, True, None, None), "kind": (str, True, None, None),
+        "name_en": (str, True, None, None), "name_uk": (str, True, None, None),
+        "duration": (NUM, True, 0, None), "dps": (NUM, False, 0, None), "tick": (NUM, False, 0.05, 5),
+        "mult": (NUM, False, 0, 1), "damage": (NUM, False, 0, None), "radius": (NUM, False, 0, None),
+        "ignore_armor": (bool, False, None, None), "visual": (str, False, None, None),
+        "fx": (str, False, None, None), "sound": (str, False, None, None),
+    },
     "items": {
         "id": (str, True, None, None), "kind": (str, True, None, None), "icon": (str, True, None, None),
         "title": (str, True, None, None), "description": (str, True, None, None), "values": (dict, False, None, None),
@@ -130,10 +139,12 @@ ENUMS = {
         "damage", "attack_interval", "ricochet", "multishot", "crit", "pellets",
         "choke", "dual", "stability", "incendiary", "beam_time", "cooldown", "plasma", "pierce", "burn", "radius", "targets", "ash",
     },
+    ("status_effects", "kind"): {"dot", "stun", "slow", "death_blast"},
+    ("status_effects", "visual"): {"fire"},
     ("weapons", "rarity"): {"common", "uncommon", "rare", "epic", "legendary"},
     ("weapons", "fire_mode"): {"melee", "projectile", "hitscan", "pellets", "beam", "curse"},
 }
-SHARED_FILES = ["rules", "enemies", "traps", "weapons", "weapon_upgrades", "run_rewards", "items", "bots"]
+SHARED_FILES = ["rules", "enemies", "traps", "weapons", "weapon_upgrades", "run_rewards", "items", "bots", "status_effects"]
 ICON_RE = re.compile(r"^(rbxassetid://[0-9]+)?$")
 PLACEHOLDER_RE = re.compile(r"\{([a-z0-9_]+)\}")
 ROOM_FILES = ["room", "zones", "waves", "players"]

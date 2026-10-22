@@ -1,0 +1,47 @@
+{
+  "meta": {
+    "version": "FX-0001",
+    "exported_at": "2026-10-23",
+    "note": "Ефекти на ворогах (EffectService). Не стакаються: повторне накладення того самого id замінює попереднє. Ефект прив'язаний до гравця, що наклав: урон, бали й вбивство йому. Джерело (зброя, пастка, сцена) може передати свої числа, вони важливіші за ці. Інструкція: docs/status-effects.md"
+  },
+  "status_effects": [
+    {
+      "id": "burn",
+      "kind": "dot",
+      "name_en": "Burning",
+      "name_uk": "Горіння",
+      "duration": 3,
+      "dps": 10,
+      "tick": 0.25,
+      "ignore_armor": false,
+      "visual": "fire"
+    },
+    {
+      "id": "stun",
+      "kind": "stun",
+      "name_en": "Stunned",
+      "name_uk": "Оглушення",
+      "duration": 1.5
+    },
+    {
+      "id": "slow",
+      "kind": "slow",
+      "name_en": "Slowed",
+      "name_uk": "Уповільнення",
+      "duration": 2,
+      "mult": 0.5
+    },
+    {
+      "id": "ash_curse",
+      "kind": "death_blast",
+      "name_en": "Ash Curse",
+      "name_uk": "Попелясте прокляття",
+      "duration": 0,
+      "damage": 100,
+      "radius": 8,
+      "ignore_armor": true,
+      "fx": "ash",
+      "sound": "ashBoom"
+    }
+  ]
+}

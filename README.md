@@ -22,6 +22,7 @@ rooms/
     traps.json
     weapons.json
     weapon_upgrades.json
+    status_effects.json ефекти на ворогах (горіння, оглушення, уповільнення, прокляття), docs/status-effects.md
     leaderboards.json   той самий вміст, що lobby/leaderboards.json
     items.json          каталог предметів (іконка, назва, опис), той самий вміст, що lobby/items.json
   room1/                Room 1 (один спавнер, хвилі на 1 гравця, множники > 1)
@@ -49,6 +50,7 @@ tools/validate.py       перевірка перед комітом (так с�
 | zones.json | **ні** | довідкові дані для розрахунків балансу; маршрут задають `PathNode` на карті |
 | items.json | **так** | `ItemCatalogService` читає й публікує клієнту каталог: іконки, назви й описи валют, зброї, пасток і прокачок (kind `upgrade`). Копії в `lobby/` і `rooms/shared/` ідентичні |
 | shared/weapons.json | **так** (з TowerDefense після 19.10.2026) | каталог (`tier`, `order`, `price_soft`, `default_owned`, `rarity`) і **стати зброї**: усі числові поля накладаються на код (snake_case → camelCase). `fire_mode` довідковий: механіку пострілу визначає код. Зброя без механіки в коді пропускається |
+| shared/status_effects.json | **так** (з TowerDefense після 23.10.2026, ще не опубліковано) | типи ефектів на ворогах для `EffectService`; новий рядок на наявному `kind` = новий тип без коду. Див. `docs/status-effects.md` |
 | shared/traps.json, shared/bots.json | частково | рівні й ціни пасток (`price_soft`, `cost`) і налаштування ботів читаються; числа ефектів пасток поки в коді |
 | room.json → `unlock_weapon` | **так** (з 16.10.2026) | зброя, яка відкриває кімнату: другий замок входу (`LoadoutService.meetsRoomRequirement`, потрібна зброя того ж або вищого `tier`); з неї боти беруть пул зброї й бюджет |
 
@@ -192,6 +194,25 @@ tools/validate.py       перевірка перед комітом (так с�
 | trap_budget_mult | number | 0..100 | так | бюджет = `price_soft` зброї `unlock_weapon` × це число |
 
 Подивитися, що отримають боти в кожній кімнаті: `python3 tools/validate.py --economy`. Валідатор попереджає (не помилка), якщо бюджет кімнати менший за найдешевшу прокачку.
+
+### status_effects.json → `status_effects` (масив)
+
+Ефекти на ворогах (`EffectService`, 23.10.2026). Не стакаються, прив'язані до гравця, що наклав (урон, бали й вбивство йому).
+Джерело (зброя, пастка) може передати свої числа в `EffectService.apply`, вони важливіші за ці. Як підключати: `docs/status-effects.md`.
+
+| поле | тип | одиниці | діапазон | обов. | що означає |
+|---|---|---|---|---|---|
+| id | string | — | snake_case | так | тип ефекту (`burn`, `stun`, `slow`, `ash_curse`, або новий) |
+| kind | string | — | `dot` / `stun` / `slow` / `death_blast` | так | механіка: урон з часом / стоїть / сповільнений / вибух при смерті |
+| name_en, name_uk | string | — | — | так | назва для UI |
+| duration | number | с | ≥ 0 | так | скільки діє; 0 лише для `death_blast` = до смерті |
+| dps | number | урон/с | ≥ 0 | ні | `dot` |
+| tick | number | с | 0.05..5 | ні | `dot`: як часто знімається урон (типово 0.25) |
+| mult | number | частка | 0..1 | ні | `slow`: множник швидкості |
+| damage, radius | number | урон, studs | ≥ 0 | ні | `death_blast`: урон вибуху й радіус |
+| ignore_armor | bool | — | — | ні | урон ефекту ігнорує броню |
+| visual | string | — | `fire` | ні | візуал на ворогу |
+| fx, sound | string | — | — | ні | `death_blast`: ефект вибуху (`TD_Fx`) і звук (`Config.sounds`) |
 
 ### weapon_upgrades.json → `weapon_upgrades` (масив)
 
