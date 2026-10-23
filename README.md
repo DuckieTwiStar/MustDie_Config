@@ -49,7 +49,7 @@ tools/validate.py       перевірка перед комітом (так с�
 | players.json | так | `hp_mult`, `count_mult`, `reward_mult` (нагорода за вбивство множиться на `reward_mult`) |
 | zones.json | **ні** | довідкові дані для розрахунків балансу; маршрут задають `PathNode` на карті |
 | items.json | **так** | `ItemCatalogService` читає й публікує клієнту каталог: іконки, назви й описи валют, зброї, пасток і прокачок (kind `upgrade`). Копії в `lobby/` і `rooms/shared/` ідентичні |
-| shared/weapons.json | **так** (з TowerDefense після 19.10.2026) | каталог (`tier`, `order`, `price_soft`, `default_owned`, `rarity`) і **стати зброї**: усі числові поля накладаються на код (snake_case → camelCase). `fire_mode` довідковий: механіку пострілу визначає код. Зброя без механіки в коді пропускається |
+| shared/weapons.json | **так** (з TowerDefense після 19.10.2026) | каталог (`tier`, `order`, `price_soft`, `default_owned`, `rarity`) і **стати зброї**: усі числові поля накладаються на код (snake_case → camelCase). `defaults` у файлі = значення пропущених полів (у коді запасних значень немає, лише безпечний режим кулаки + рогатка при збої завантаження). `fire_mode` вибирає механіку в коді, числа йдуть з конфігу. Контракт: `docs/combat-config-contract.md` |
 | shared/status_effects.json | **так** (з TowerDefense після 23.10.2026, ще не опубліковано) | типи ефектів на ворогах для `EffectService`; новий рядок на наявному `kind` = новий тип без коду. Див. `docs/status-effects.md` |
 | shared/traps.json, shared/bots.json | частково | рівні й ціни пасток (`price_soft`, `cost`) і налаштування ботів читаються; числа ефектів пасток поки в коді |
 | room.json → `unlock_weapon` | **так** (з 16.10.2026) | зброя, яка відкриває кімнату: другий замок входу (`LoadoutService.meetsRoomRequirement`, потрібна зброя того ж або вищого `tier`); з неї боти беруть пул зброї й бюджет |
@@ -94,7 +94,6 @@ tools/validate.py       перевірка перед комітом (так с�
 | start_coins | int | віспи | ≥ 0 | так | віспи кожного гравця на старті забігу |
 | refund_share | number | частка | 0..1 | так | яка частка віспів повертається за знесену пастку |
 | reward_mode | string | — | `each` / `split` / `killer` | так | хто отримує віспи за вбивство: кожен повністю / поділ / лише вбивця |
-| ricochet_falloff | number | частка | 0..1 | так | частка урону, що лишається після кожного рикошету |
 | cell_size | number | studs | > 0 | так | розмір клітинки сітки пасток |
 | weapon_select_seconds | number | с | 1..120 | так | скільки триває вікно вибору зброї на старті; потім видається доступна зброя найвищого `tier`/`order` |
 | weapon_select_delay | number | с | 0..10 | так | пауза між стартом забігу (камера від третьої особи) і появою вікна вибору |
@@ -164,8 +163,8 @@ tools/validate.py       перевірка перед комітом (так с�
 | gravity | number | studs/с² | ≥ 0 | ні | падіння снаряда (рогатка) |
 | ricochet | int | — | ≥ 0 | ні | кількість рикошетів |
 | multishot | int | — | ≥ 1 | ні | снарядів за постріл |
-| crit_chance | number | частка | 0..1 | ні | шанс крита |
-| crit_mult | number | множник | ≥ 1 | ні | множник урону крита |
+| crit_chance | number | частка | 0..1 | ні | шанс крита (усі режими стрільби) |
+| crit_mult | number | множник | ≥ 1 | ні | множник урону крита (1.5 = +50%; UI показує відсотки) |
 | pellets | int | — | ≥ 1 | ні | дробин за постріл |
 | spread | number | градуси | 0..90 | ні | кут конуса дробу |
 | falloff_start | number | studs | ≥ 0 | ні | до цієї відстані повний урон дробу |
@@ -176,12 +175,27 @@ tools/validate.py       перевірка перед комітом (так с�
 | multishot_spread | number | градуси | 0..45 | ні | кут між болтами мультипострілу (віяло); 0 = черга в одну точку |
 | dual_rate, dual_spread | number | множник, градуси | ≥ 1, 0..90 | ні | револьвер з прокачкою «два револьвери»: темп × `dual_rate`, розкид `dual_spread` |
 | spread_max, spread_grow, spread_recover | number | градуси, градуси, с | | ні | автомат: розкид росте на `spread_grow` за постріл до `spread_max`, скидається після паузи `spread_recover` |
-| burn_dps, burn_time | number | урон/с, с | ≥ 0 | ні | горіння (лялька вуду; у автомата `burn_dps` дає прокачка `incendiary`) |
 | beam_time, cooldown | number | с | > 0 | ні | енергогармата: скільки горить промінь до перегріву і скільки остигає. `damage` = урон за тик, `attack_interval` = тик |
 | plasma_interval, plasma_radius | number | с, studs | > 0 | ні | плазма-кулі (з прокачки `plasma`): як часто вилітають і радіус вибуху |
-| cone | number | градуси | 1..90 | ні | лялька вуду: конус навколо прицілу, у якому шукається ціль |
-| ignore_armor | bool | — | — | ні | урон ігнорує броню ворога (вогонь вуду) |
-| splash_share, ash_radius | number | частка, studs | | ні | вуду: частка урону сусідам у радіусі (`radius`), радіус вибуху «попелястого прокляття» |
+| cone | number | градуси | 1..90 | ні | кулаки й вуду: конус навколо прицілу, у якому шукається ціль |
+| splash_share, splash_radius | number | частка, studs | 0..1, ≥ 0 | ні | вуду: частка урону сусідам у радіусі `splash_radius` |
+| targets | int | — | ≥ 1 | ні | вуду: скільки цілей вражає удар |
+| auto | bool | — | — | ні | тримати кнопку = стріляти (томмі, енергогармата) |
+| damage_type | string | — | `physical` / `fire` / `shock` | ні | тип урону (для стійкостей ворогів, етап 5) |
+| projectile_style | string | — | `arrow` / `bolt` / `pebble` | ні | вигляд снаряда |
+| stick | bool | — | — | ні | снаряд застрягає в цілі (стріла, болт) |
+| volley_delay | number | с | 0..1 | ні | пауза між снарядами черги мультипострілу |
+| ricochet_range, ricochet_damage_mult | number | studs, частка | ≥ 0, 0..1 | ні | дальність пошуку цілі для рикошету, частка урону після кожного рикошету |
+| dual | int | — | 0..1 | ні | револьвер: другий револьвер (качається) |
+| magazine, reload_time | int, number | патрони, с | ≥ 0 | ні | магазин (0 = без ліміту) і час перезарядки; механіка в етапі 1б |
+| reload_per_round, reload_interruptible | bool | — | — | ні | перезарядка по одному патрону (дробовик); її можна перервати пострілом |
+| plasma_damage, plasma_speed | number | урон, studs/с | ≥ 0, ≥ 1 | ні | плазма-кулі енергогармати (0 = немає; качається) |
+| armor_pierce | number | частка | 0..1 | ні | яку частку броні ворога урон ігнорує (вуду = 1) |
+| knockback | number | studs | ≥ 0 | ні | відкидання; поле зарезервоване, механіки ще немає |
+| bonus_vs | object | id ефекту → множник | 0..10 | ні | множник урону по ворогу з активним ефектом |
+| on_hit | object | id ефекту → числа | | ні | ефекти, які накладає зброя: `{"burn": {"chance": 1, "dps": 10, "duration": 3}}`. Параметри: `chance` 0..1, `duration`, `dps`, `tick`, `mult`, `damage`, `radius`; числа запису важливіші за числа типу ефекту. Ефект з нульовим головним числом не накладається, прокачка вмикає його |
+
+**`defaults`** (ключ поруч із `weapons`): значення необов'язкових полів, якщо їх немає в рядку зброї. Перелік обов'язкових ключів задає `DEFAULT_KEYS` у `tools/validate.py`. Поля за `fire_mode`, які мають бути в рядку або в `defaults`: melee/curse `cone`, projectile/pellets `projectile_speed`, beam `beam_time` і `cooldown`.
 
 ### bots.json → `bots` (об'єкт)
 
@@ -214,19 +228,35 @@ tools/validate.py       перевірка перед комітом (так с�
 | visual | string | — | `fire` | ні | візуал на ворогу |
 | fx, sound | string | — | — | ні | `death_blast`: ефект вибуху (`TD_Fx`) і звук (`Config.sounds`) |
 
-### weapon_upgrades.json → `weapon_upgrades` (масив)
+### weapon_upgrades.json → `upgrade_types` і `weapon_upgrades`
 
-Прокачка зброї в кімнаті за віспи, діє один забіг.
+Прокачка зброї (зараз за віспи в забігу; за планом `docs/combat-v2-plan.md` переїде в лобі за софт). Повний перелік того, що вона змінює, у `upgrade_types`; рядки рівнів у `weapon_upgrades`.
+
+**`upgrade_types`** (масив): прокачка сама каже, що змінює.
+
+| поле | тип | обов. | що означає |
+|---|---|---|---|
+| id | string | так | ідентифікатор типу, snake_case |
+| stat | string | так | що змінює: числове поле зброї (`damage`, `crit_mult`, `spread`, ...) або `on_hit.<ефект>.<параметр>` (`on_hit.burn.dps`) |
+| op | string | ні | `set` (типово: `value` стає новим значенням), `add`, `mul` |
+| name_en, name_uk | string | так | назва прокачки в UI |
+| item_id | string | ні | запис `kind: upgrade` у `items.json` (іконка й опис) |
+
+Типи: damage, attack_interval, range, projectile_speed, ricochet, multishot, crit_damage (`crit_mult`), crit_chance, pellets, choke (`spread`), dual, stability (`spread_max`), incendiary (`on_hit.burn.dps`, томмі), beam_time, cooldown, plasma (`plasma_damage`), pierce, burn (`on_hit.burn.dps`, вуду), radius (`splash_radius`), targets, ash (`on_hit.ash_curse.damage`), magazine, reload_time.
+
+**`weapon_upgrades`** (масив):
 
 | поле | тип | одиниці | діапазон | обов. | що означає |
 |---|---|---|---|---|---|
 | id | string | — | snake_case | так | `<weapon_id>_<upgrade>_<level>` |
 | weapon_id | string | — | → `weapons.id` | так | яку зброю качає |
-| upgrade | string | — | `damage` / `attack_interval` / `ricochet` / `multishot` / `crit` / `pellets` / `choke` / `dual` / `stability` / `incendiary` / `beam_time` / `cooldown` / `plasma` / `pierce` / `burn` / `radius` / `targets` / `ash` | так | параметр. `crit` змінює `crit_mult`, `choke` = `spread` дробовика, `stability` = `spread_max`, `burn` = `burn_dps`, `incendiary` = урон/с підпалу кулями, `plasma` = урон плазма-кулі, `radius` = радіус вогню вуду, `targets` = цілей за укол, `ash` = урон вибуху, `dual` = 1 (другий револьвер) |
+| upgrade | string | — | → `upgrade_types.id` | так | тип прокачки |
 | order | int | — | ≥ 0 | так | порядок рядка прокачки у вікні |
-| level | int | — | ≥ 1 | так | рівень прокачки |
+| level | int | — | 1..N без пропусків | так | рівень прокачки |
 | cost | int | віспи | ≥ 0 | так | ціна цього рівня |
-| value | number | як у параметра | — | так | нове значення параметра на цьому рівні |
+| value | number | як у `stat` | межі поля | так | нове значення поля на цьому рівні (ціле для цілих полів) |
+
+Прокачка `on_hit.<ефект>.*` вимагає, щоб у зброї вже був запис `on_hit.<ефект>` (з нульовим головним числом, якщо базово ефекту немає).
 
 ### run_rewards.json → `run_rewards` (об'єкт)
 

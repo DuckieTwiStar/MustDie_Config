@@ -1,8 +1,41 @@
 {
   "meta": {
-    "version": "BAL-0005",
-    "exported_at": "2026-10-19",
-    "note": "Арсенал 19.10.2026. tier = прогрес (замки порталів), order = сортування і порядок на вітрині лобі, rarity = рамка й кількість прокачок. Решта числових полів = стати зброї (гра читає їх поверх коду, snake_case). fire_mode довідковий: механіку визначає код. Кулаки й рогатка безкоштовні (default_owned), їх price_soft лише для бюджету ботів"
+    "version": "BAL-0006",
+    "exported_at": "2026-10-23",
+    "note": "Арсенал 19.10.2026, контракт конфігів бою 23.10.2026 (Ж-002, docs/combat-config-contract.md). tier = прогрес (замки порталів), order = сортування і порядок на вітрині лобі, rarity = рамка й кількість прокачок. defaults = значення пропущених необов'язкових полів. Решта числових полів = стати зброї (snake_case). fire_mode вибирає механіку в коді. on_hit = ефекти, які зброя накладає (id ефекту -> числа). Кулаки й рогатка безкоштовні (default_owned), їх price_soft лише для бюджету ботів"
+  },
+  "defaults": {
+    "auto": false,
+    "damage_type": "physical",
+    "armor_pierce": 0,
+    "knockback": 0,
+    "gravity": 0,
+    "stick": false,
+    "pierce": 0,
+    "multishot": 1,
+    "multishot_spread": 0,
+    "volley_delay": 0.09,
+    "ricochet": 0,
+    "ricochet_range": 30,
+    "ricochet_damage_mult": 0.5,
+    "crit_chance": 0,
+    "crit_mult": 1,
+    "spread": 0,
+    "pellets": 1,
+    "falloff_min": 1,
+    "dual": 0,
+    "dual_rate": 1,
+    "magazine": 0,
+    "reload_time": 0,
+    "reload_per_round": false,
+    "reload_interruptible": false,
+    "plasma_damage": 0,
+    "plasma_interval": 1.2,
+    "plasma_radius": 6,
+    "plasma_speed": 120,
+    "targets": 1,
+    "splash_radius": 0,
+    "splash_share": 0.5
   },
   "weapons": [
     {
@@ -17,7 +50,8 @@
       "name_uk": "Кулаки",
       "damage": 15,
       "attack_interval": 0.4,
-      "range": 7
+      "range": 7,
+      "cone": 78.5
     },
     {
       "id": "slingshot",
@@ -27,6 +61,7 @@
       "default_owned": true,
       "rarity": "common",
       "fire_mode": "projectile",
+      "projectile_style": "pebble",
       "name_en": "Slingshot",
       "name_uk": "Рогатка",
       "damage": 12,
@@ -42,6 +77,7 @@
       "price_soft": 600,
       "rarity": "uncommon",
       "fire_mode": "projectile",
+      "projectile_style": "arrow",
       "name_en": "Bow",
       "name_uk": "Лук",
       "damage": 40,
@@ -49,7 +85,8 @@
       "range": 250,
       "projectile_speed": 160,
       "ricochet": 0,
-      "multishot": 1
+      "multishot": 1,
+      "stick": true
     },
     {
       "id": "revolver",
@@ -92,6 +129,7 @@
       "price_soft": 3500,
       "rarity": "rare",
       "fire_mode": "hitscan",
+      "auto": true,
       "name_en": "Tommy Gun",
       "name_uk": "Автомат «Томмі»",
       "damage": 7,
@@ -101,7 +139,13 @@
       "spread_max": 6,
       "spread_grow": 0.6,
       "spread_recover": 0.4,
-      "burn_time": 2
+      "on_hit": {
+        "burn": {
+          "chance": 1,
+          "dps": 0,
+          "duration": 2
+        }
+      }
     },
     {
       "id": "crossbow",
@@ -110,6 +154,7 @@
       "price_soft": 5000,
       "rarity": "epic",
       "fire_mode": "projectile",
+      "projectile_style": "bolt",
       "name_en": "Demon Hunter",
       "name_uk": "Арбалет «Мисливець на демонів»",
       "damage": 70,
@@ -121,7 +166,8 @@
       "crit_mult": 1.5,
       "multishot": 1,
       "multishot_spread": 4,
-      "ricochet": 0
+      "ricochet": 0,
+      "stick": true
     },
     {
       "id": "energygun",
@@ -130,6 +176,8 @@
       "price_soft": 6000,
       "rarity": "epic",
       "fire_mode": "beam",
+      "auto": true,
+      "damage_type": "shock",
       "name_en": "Energy Gun",
       "name_uk": "Енергогармата",
       "damage": 6,
@@ -148,17 +196,27 @@
       "price_soft": 10000,
       "rarity": "legendary",
       "fire_mode": "curse",
+      "damage_type": "fire",
       "name_en": "Voodoo Doll",
       "name_uk": "Лялька вуду",
       "damage": 40,
       "attack_interval": 0.8,
       "range": 60,
       "cone": 12,
-      "burn_dps": 10,
-      "burn_time": 3,
-      "ignore_armor": true,
       "splash_share": 0.5,
-      "ash_radius": 8
+      "armor_pierce": 1,
+      "on_hit": {
+        "burn": {
+          "chance": 1,
+          "dps": 10,
+          "duration": 3
+        },
+        "ash_curse": {
+          "chance": 1,
+          "damage": 0,
+          "radius": 8
+        }
+      }
     }
   ]
 }

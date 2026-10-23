@@ -14,6 +14,8 @@
 - у кожній кімнаті є всі файли кімнати;
 - wave_delay однаковий у всіх рядках однієї хвилі (гра бере його з першого рядка);
 - копії leaderboards.json і items.json (lobby/, rooms/shared/) побайтно однакові;
+- зброя (контракт 23.10.2026, docs/combat-config-contract.md): `defaults` має всі DEFAULT_KEYS, поля за fire_mode задані, on_hit/bonus_vs посилаються на ефекти з status_effects;
+- прокачка: upgrade_types (stat = поле зброї або on_hit.<ефект>.<параметр>, item_id з items.json), рядки weapon_upgrades мають рівні 1..N, значення за типом і межами поля;
 - зброя: tier (прогрес), price_soft у всіх базових (розблокування в лобі; у default_owned це бюджет ботів), модифікація = base_id + tier бази + order бази+1..9;
 - пастки: рівні 1..N, price_soft рівня 1 = 0 (default_owned), вище > 0; room.json: unlock_weapon існує, базова, tier не спадає з номером кімнати;
 - bots.json: пул зброї ботів та бюджет на пастки; симулятор: python3 tools/validate.py --economy;
@@ -38,7 +40,6 @@ SCHEMA = {
         "start_coins": (int, True, 0, None),
         "refund_share": (NUM, True, 0, 1),
         "reward_mode": (str, True, None, None),
-        "ricochet_falloff": (NUM, True, 0, 1),
         "cell_size": (NUM, True, 0.1, None),
         "weapon_select_seconds": (NUM, True, 1, 120),
         "weapon_select_delay": (NUM, True, 0, 10),
@@ -72,11 +73,20 @@ SCHEMA = {
         "pierce": (int, False, 0, None), "multishot_spread": (NUM, False, 0, 45),
         "dual_rate": (NUM, False, 1, None), "dual_spread": (NUM, False, 0, 90),
         "spread_max": (NUM, False, 0, 90), "spread_grow": (NUM, False, 0, 90), "spread_recover": (NUM, False, 0, None),
-        "burn_dps": (NUM, False, 0, None), "burn_time": (NUM, False, 0, None),
         "beam_time": (NUM, False, 0.1, None), "cooldown": (NUM, False, 0, None),
         "plasma_interval": (NUM, False, 0.1, None), "plasma_radius": (NUM, False, 0, None),
-        "cone": (NUM, False, 1, 90), "ignore_armor": (bool, False, None, None),
-        "splash_share": (NUM, False, 0, 1), "ash_radius": (NUM, False, 0, None),
+        "cone": (NUM, False, 1, 90), "splash_share": (NUM, False, 0, 1),
+        # контракт конфігів бою 23.10.2026
+        "auto": (bool, False, None, None), "damage_type": (str, False, None, None),
+        "projectile_style": (str, False, None, None), "stick": (bool, False, None, None),
+        "volley_delay": (NUM, False, 0, 1), "ricochet_range": (NUM, False, 0, None),
+        "ricochet_damage_mult": (NUM, False, 0, 1), "dual": (int, False, 0, 1),
+        "magazine": (int, False, 0, None), "reload_time": (NUM, False, 0, None),
+        "reload_per_round": (bool, False, None, None), "reload_interruptible": (bool, False, None, None),
+        "plasma_damage": (NUM, False, 0, None), "plasma_speed": (NUM, False, 1, None),
+        "targets": (int, False, 1, None), "splash_radius": (NUM, False, 0, None),
+        "armor_pierce": (NUM, False, 0, 1), "knockback": (NUM, False, 0, None),
+        "bonus_vs": (dict, False, None, None), "on_hit": (dict, False, None, None),
     },
     "weapon_upgrades": {
         "id": (str, True, None, None), "weapon_id": (str, True, None, None), "upgrade": (str, True, None, None),
@@ -135,15 +145,34 @@ ENUMS = {
     ("enemies", "size"): {"small", "medium", "large"},
     ("traps", "mechanic"): {"snare", "wall", "turret"},
     ("traps", "placement"): {"floor", "wall"},
-    ("weapon_upgrades", "upgrade"): {
-        "damage", "attack_interval", "ricochet", "multishot", "crit", "pellets",
-        "choke", "dual", "stability", "incendiary", "beam_time", "cooldown", "plasma", "pierce", "burn", "radius", "targets", "ash",
-    },
     ("status_effects", "kind"): {"dot", "stun", "slow", "death_blast"},
     ("status_effects", "visual"): {"fire"},
     ("weapons", "rarity"): {"common", "uncommon", "rare", "epic", "legendary"},
     ("weapons", "fire_mode"): {"melee", "projectile", "hitscan", "pellets", "beam", "curse"},
+    ("weapons", "damage_type"): {"physical", "fire", "shock"},
+    ("weapons", "projectile_style"): {"arrow", "bolt", "pebble"},
 }
+# поля зброї, які не мають дефолту (ідентифікація і базові стати)
+WEAPON_IDENTITY = {"id", "order", "default_owned", "tier", "price_soft", "base_id", "name_en", "name_uk",
+                   "rarity", "fire_mode", "damage", "attack_interval", "range"}
+# поля, які код читає без запасного значення: defaults мусить містити всі
+DEFAULT_KEYS = (
+    "auto", "damage_type", "armor_pierce", "knockback", "gravity", "stick", "pierce",
+    "multishot", "multishot_spread", "volley_delay", "ricochet", "ricochet_range", "ricochet_damage_mult",
+    "crit_chance", "crit_mult", "spread", "pellets", "falloff_min", "dual", "dual_rate",
+    "magazine", "reload_time", "reload_per_round", "reload_interruptible",
+    "plasma_damage", "plasma_interval", "plasma_radius", "plasma_speed", "targets", "splash_radius", "splash_share",
+)
+# що обов'язково має бути в рядку зброї (або в defaults) для механіки fire_mode
+MODE_REQUIRED = {
+    "melee": ("cone",), "projectile": ("projectile_speed",), "hitscan": (),
+    "pellets": ("projectile_speed",), "beam": ("beam_time", "cooldown"), "curse": ("cone",),
+}
+ON_HIT_PARAMS = {"chance": (0, 1), "duration": (0, None), "dps": (0, None), "tick": (0.05, 5),
+                 "mult": (0, 1), "damage": (0, None), "radius": (0, None)}
+UPGRADE_OPS = {"set", "add", "mul"}
+TYPE_FIELDS = {"id": (str, True, None, None), "stat": (str, True, None, None), "name_en": (str, True, None, None),
+               "name_uk": (str, True, None, None), "item_id": (str, False, None, None), "op": (str, False, None, None)}
 SHARED_FILES = ["rules", "enemies", "traps", "weapons", "weapon_upgrades", "run_rewards", "items", "bots", "status_effects"]
 ICON_RE = re.compile(r"^(rbxassetid://[0-9]+)?$")
 PLACEHOLDER_RE = re.compile(r"\{([a-z0-9_]+)\}")
@@ -190,6 +219,25 @@ def type_ok(v, t):
     return isinstance(v, t)
 
 
+def check_value(path, name, key, v, spec, where):
+    """Тип, межі й enum одного значення за специфікацією (тип, обов'язкове, мін, макс). True = значення придатне."""
+    t, _req, lo, hi = spec
+    if not type_ok(v, t):
+        err(path, f"{where}: {key} має неправильний тип ({v!r})")
+        return False
+    ok = True
+    if lo is not None and v < lo:
+        err(path, f"{where}: {key}={v} менше за {lo}")
+        ok = False
+    if hi is not None and v > hi:
+        err(path, f"{where}: {key}={v} більше за {hi}")
+        ok = False
+    if (name, key) in ENUMS and v not in ENUMS[(name, key)]:
+        err(path, f"{where}: {key}={v!r} не з {sorted(ENUMS[(name, key)])}")
+        ok = False
+    return ok
+
+
 def check_fields(path, name, row, where):
     schema = SCHEMA[name]
     for key, spec in schema.items():
@@ -200,16 +248,7 @@ def check_fields(path, name, row, where):
             if req:
                 err(path, f"{where}: немає поля {key}")
             continue
-        v = row[key]
-        if not type_ok(v, t):
-            err(path, f"{where}: {key} має неправильний тип ({v!r})")
-            continue
-        if lo is not None and v < lo:
-            err(path, f"{where}: {key}={v} менше за {lo}")
-        if hi is not None and v > hi:
-            err(path, f"{where}: {key}={v} більше за {hi}")
-        if (name, key) in ENUMS and v not in ENUMS[(name, key)]:
-            err(path, f"{where}: {key}={v!r} не з {sorted(ENUMS[(name, key)])}")
+        check_value(path, name, key, row[key], spec, where)
     for key in row:
         if key not in schema or key.startswith("_"):
             err(path, f"{where}: невідоме поле {key} (додай його в схему і README)")
@@ -252,6 +291,166 @@ def check_file(path, name):
             err(path, f"{where}: повторний id {key}")
         seen.add(key)
     return body
+
+
+def load_raw(path):
+    try:
+        data = json.loads(path.read_text(encoding="utf-8"))
+    except Exception:  # noqa: BLE001
+        return {}
+    return data if isinstance(data, dict) else {}
+
+
+def check_effect_map(path, where, block, effect_ids, params=True):
+    """on_hit: {effect_id: {chance, dps, duration, ...}}; bonus_vs: {effect_id: множник}."""
+    if not isinstance(block, dict):
+        return
+    for eid, val in block.items():
+        if eid not in effect_ids:
+            err(path, f"{where}: ефекту {eid!r} немає в status_effects.json")
+        if not params:
+            if not type_ok(val, NUM) or not 0 <= val <= 10:
+                err(path, f"{where}.{eid}: множник має бути числом 0..10")
+            continue
+        if not isinstance(val, dict) or not val:
+            err(path, f"{where}.{eid}: потрібен непорожній об'єкт з числами (chance, dps, duration, ...)")
+            continue
+        for pk, pv in val.items():
+            if pk not in ON_HIT_PARAMS:
+                err(path, f"{where}.{eid}: невідомий параметр {pk} (є {sorted(ON_HIT_PARAMS)})")
+                continue
+            lo, hi = ON_HIT_PARAMS[pk]
+            if not type_ok(pv, NUM) or pv < lo or (hi is not None and pv > hi):
+                err(path, f"{where}.{eid}.{pk}: потрібне число {lo}..{hi if hi is not None else '∞'}")
+
+
+def check_weapon_extras(weapons, effect_ids):
+    """weapons.json: блок defaults, обов'язкові поля за fire_mode, on_hit і bonus_vs."""
+    path = SHARED / "weapons.json"
+    defaults = load_raw(path).get("defaults")
+    if not isinstance(defaults, dict):
+        err(path, "потрібен об'єкт defaults: значення пропущених необов'язкових полів (код не має запасних значень)")
+        defaults = {}
+    for key in DEFAULT_KEYS:
+        if key not in defaults:
+            err(path, f"defaults: немає {key}")
+    for key, v in defaults.items():
+        spec = SCHEMA["weapons"].get(key)
+        if spec is None or key in WEAPON_IDENTITY or key in ("on_hit", "bonus_vs"):
+            err(path, f"defaults.{key}: це поле не має дефолту")
+            continue
+        check_value(path, "weapons", key, v, spec, f"defaults.{key}")
+    for i, w in enumerate(weapons):
+        if not isinstance(w, dict):
+            continue
+        where = f"weapons[{i}] ({w.get('id')})"
+        check_effect_map(path, f"{where}.on_hit", w.get("on_hit"), effect_ids)
+        check_effect_map(path, f"{where}.bonus_vs", w.get("bonus_vs"), effect_ids, params=False)
+        for key in MODE_REQUIRED.get(w.get("fire_mode"), ()):
+            if key not in w and key not in defaults:
+                err(path, f"{where}: для fire_mode={w['fire_mode']} потрібне поле {key}")
+
+
+def resolve_stat(stat, effect_ids):
+    """stat прокачки: ('field', key, spec) | ('on_hit', ефект, параметр, spec) | рядок з поясненням помилки."""
+    parts = stat.split(".")
+    if len(parts) == 1:
+        spec = SCHEMA["weapons"].get(stat)
+        if spec is None or stat in WEAPON_IDENTITY - {"damage", "attack_interval", "range"}:
+            return f"stat {stat!r} це не поле зброї, яке можна качати"
+        if spec[0] not in (int, NUM):
+            return f"stat {stat!r} не числове поле"
+        return ("field", stat, spec)
+    if len(parts) == 3 and parts[0] == "on_hit":
+        _, eid, param = parts
+        if eid not in effect_ids:
+            return f"stat {stat!r}: ефекту {eid!r} немає в status_effects.json"
+        if param not in ON_HIT_PARAMS:
+            return f"stat {stat!r}: параметр {param!r} не з {sorted(ON_HIT_PARAMS)}"
+        lo, hi = ON_HIT_PARAMS[param]
+        return ("on_hit", eid, param, (NUM, True, lo, hi))
+    return f"stat {stat!r}: очікується поле зброї або on_hit.<ефект>.<параметр>"
+
+
+def check_upgrades(rows, weapons, effect_ids, items):
+    """upgrade_types (що змінює кожна прокачка) і рядки weapon_upgrades."""
+    path = SHARED / "weapon_upgrades.json"
+    raw_types = load_raw(path).get("upgrade_types")
+    if not isinstance(raw_types, list) or not raw_types:
+        err(path, "потрібен непорожній масив upgrade_types")
+        return
+    by_type = {}
+    for i, t in enumerate(raw_types):
+        where = f"upgrade_types[{i}]"
+        if not isinstance(t, dict):
+            err(path, f"{where}: не об'єкт")
+            continue
+        for key, spec in TYPE_FIELDS.items():
+            if key in t:
+                check_value(path, "upgrade_types", key, t[key], spec, where)
+            elif spec[1]:
+                err(path, f"{where}: немає поля {key}")
+        for key in t:
+            if key not in TYPE_FIELDS:
+                err(path, f"{where}: невідоме поле {key}")
+        tid = t.get("id")
+        if isinstance(tid, str):
+            if not ID_RE.match(tid):
+                err(path, f"{where}: id {tid!r} не snake_case")
+            if tid in by_type:
+                err(path, f"{where}: повторний id {tid}")
+            by_type[tid] = t
+        if t.get("op", "set") not in UPGRADE_OPS:
+            err(path, f"{where}: op має бути з {sorted(UPGRADE_OPS)}")
+        if isinstance(t.get("stat"), str):
+            r = resolve_stat(t["stat"], effect_ids)
+            if isinstance(r, str):
+                err(path, f"{where}: {r}")
+            else:
+                t["_resolved"] = r
+    # item_id <-> items.json (kind=upgrade)
+    upgrade_items = {it["id"] for it in items if isinstance(it, dict) and it.get("kind") == "upgrade"}
+    used_items = [t["item_id"] for t in by_type.values() if "item_id" in t]
+    for iid in used_items:
+        if iid not in upgrade_items:
+            err(path, f"item_id {iid!r} немає в items.json з kind=upgrade")
+    for iid in sorted(upgrade_items - set(used_items)):
+        err(path, f"предмет {iid!r} (kind=upgrade) не прив'язаний до жодного upgrade_types.item_id")
+    if len(set(used_items)) != len(used_items):
+        err(path, "item_id повторюється в upgrade_types")
+    # рядки рівнів
+    wby = {w["id"]: w for w in weapons if isinstance(w, dict) and isinstance(w.get("id"), str)}
+    levels = {}
+    for i, u in enumerate(rows):
+        if not isinstance(u, dict):
+            continue
+        where = f"weapon_upgrades[{i}] ({u.get('id')})"
+        t = by_type.get(u.get("upgrade"))
+        if t is None:
+            err(path, f"{where}: upgrade {u.get('upgrade')!r} немає в upgrade_types")
+            continue
+        if u.get("id") != f"{u.get('weapon_id')}_{u.get('upgrade')}_{u.get('level')}":
+            err(path, f"{where}: id має бути <weapon_id>_<upgrade>_<level>")
+        levels.setdefault((u.get("weapon_id"), u.get("upgrade")), []).append(u.get("level"))
+        r = t.get("_resolved")
+        w = wby.get(u.get("weapon_id"))
+        if r is None or w is None or not type_ok(u.get("value"), NUM):
+            continue
+        if t.get("op", "set") == "set":
+            spec = r[-1]
+            if spec[0] is int and not type_ok(u["value"], int):
+                err(path, f"{where}: поле {t['stat']} ціле, а value={u['value']!r}")
+            else:
+                lo, hi = spec[2], spec[3]
+                if (lo is not None and u["value"] < lo) or (hi is not None and u["value"] > hi):
+                    err(path, f"{where}: value={u['value']} поза межами {t['stat']} ({lo}..{hi})")
+        if r[0] == "on_hit" and r[1] not in (w.get("on_hit") or {}):
+            err(path, f"{where}: прокачка змінює {t['stat']}, а у зброї {w['id']} немає on_hit.{r[1]} (додай запис з нульовим головним числом)")
+    for (wid, up), lv in levels.items():
+        if sorted(lv) != list(range(1, len(lv) + 1)):
+            err(path, f"{wid}/{up}: рівні мають іти 1..N без пропусків, зараз {sorted(lv)}")
+    for t in by_type.values():
+        t.pop("_resolved", None)
 
 
 def check_items(items, weapon_ids, trap_ids, enemy_ids=frozenset()):
@@ -633,6 +832,9 @@ def main():
             err(SHARED / "traps.json", f"пастка {tid}: рівні мають іти 1..N без пропусків, зараз {sorted(levels)}")
     if not any(isinstance(w, dict) and w.get("default_owned") for w in (shared.get("weapons") or [])):
         err(SHARED / "weapons.json", "жодна зброя не default_owned: гравцю не буде з чим грати")
+    effect_ids = {e["id"] for e in (shared.get("status_effects") or []) if isinstance(e, dict) and isinstance(e.get("id"), str)}
+    check_weapon_extras(shared.get("weapons") or [], effect_ids)
+    check_upgrades(shared.get("weapon_upgrades") or [], shared.get("weapons") or [], effect_ids, shared.get("items") or [])
     check_items(shared.get("items") or [], weapon_ids, set(by_trap), enemy_ids)
     room_unlocks = []
     run_values = {}

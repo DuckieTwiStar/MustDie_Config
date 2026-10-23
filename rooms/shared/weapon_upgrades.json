@@ -1,9 +1,167 @@
 {
   "meta": {
-    "version": "BAL-0004",
-    "exported_at": "2026-10-19",
-    "note": "Прокачка зброї в кімнаті за віспи, діє один забіг. value = нове значення параметра. Арсенал 19.10.2026: рарність = скільки прокачок (Common 4, Uncommon 6-8, Rare 8-10, Epic 13-14, Legendary 16)"
+    "version": "BAL-0005",
+    "exported_at": "2026-10-23",
+    "note": "Прокачка зброї (зараз за віспи в забігу; за контрактом 23.10.2026 переїде в лобі за софт). upgrade_types: що змінює кожна прокачка (stat = поле зброї або on_hit.<ефект>.<параметр>; op set | add | mul, типово set), назва для UI, item_id = запис kind=upgrade в items.json. weapon_upgrades: рядки рівнів, value = нове значення поля на цьому рівні. Арсенал 19.10.2026: рарність = скільки прокачок (Common 4, Uncommon 6-8, Rare 8-10, Epic 13-14, Legendary 16)"
   },
+  "upgrade_types": [
+    {
+      "id": "damage",
+      "stat": "damage",
+      "name_en": "Damage",
+      "name_uk": "Урон",
+      "item_id": "upgrade_damage"
+    },
+    {
+      "id": "attack_interval",
+      "stat": "attack_interval",
+      "name_en": "Fire rate",
+      "name_uk": "Темп стрільби",
+      "item_id": "upgrade_fire_rate"
+    },
+    {
+      "id": "range",
+      "stat": "range",
+      "name_en": "Range",
+      "name_uk": "Дальність"
+    },
+    {
+      "id": "projectile_speed",
+      "stat": "projectile_speed",
+      "name_en": "Projectile speed",
+      "name_uk": "Швидкість снаряда"
+    },
+    {
+      "id": "ricochet",
+      "stat": "ricochet",
+      "name_en": "Ricochet",
+      "name_uk": "Рикошет",
+      "item_id": "upgrade_ricochet"
+    },
+    {
+      "id": "multishot",
+      "stat": "multishot",
+      "name_en": "Multishot",
+      "name_uk": "Мультипостріл",
+      "item_id": "upgrade_multishot"
+    },
+    {
+      "id": "crit_damage",
+      "stat": "crit_mult",
+      "name_en": "Crit damage",
+      "name_uk": "Крит-урон",
+      "item_id": "upgrade_crit"
+    },
+    {
+      "id": "crit_chance",
+      "stat": "crit_chance",
+      "name_en": "Crit chance",
+      "name_uk": "Шанс крита"
+    },
+    {
+      "id": "pellets",
+      "stat": "pellets",
+      "name_en": "Pellets",
+      "name_uk": "Дробини",
+      "item_id": "upgrade_pellets"
+    },
+    {
+      "id": "choke",
+      "stat": "spread",
+      "name_en": "Choke",
+      "name_uk": "Чок",
+      "item_id": "upgrade_choke"
+    },
+    {
+      "id": "dual",
+      "stat": "dual",
+      "name_en": "Two Revolvers",
+      "name_uk": "Два револьвери",
+      "item_id": "upgrade_dual"
+    },
+    {
+      "id": "stability",
+      "stat": "spread_max",
+      "name_en": "Stability",
+      "name_uk": "Стабільність",
+      "item_id": "upgrade_stability"
+    },
+    {
+      "id": "incendiary",
+      "stat": "on_hit.burn.dps",
+      "name_en": "Incendiary Rounds",
+      "name_uk": "Запальні кулі",
+      "item_id": "upgrade_incendiary"
+    },
+    {
+      "id": "beam_time",
+      "stat": "beam_time",
+      "name_en": "Beam Time",
+      "name_uk": "Час променя",
+      "item_id": "upgrade_beam_time"
+    },
+    {
+      "id": "cooldown",
+      "stat": "cooldown",
+      "name_en": "Cooling",
+      "name_uk": "Охолодження",
+      "item_id": "upgrade_cooldown"
+    },
+    {
+      "id": "plasma",
+      "stat": "plasma_damage",
+      "name_en": "Plasma Balls",
+      "name_uk": "Плазма-кулі",
+      "item_id": "upgrade_plasma"
+    },
+    {
+      "id": "pierce",
+      "stat": "pierce",
+      "name_en": "Pierce",
+      "name_uk": "Пробиття",
+      "item_id": "upgrade_pierce"
+    },
+    {
+      "id": "burn",
+      "stat": "on_hit.burn.dps",
+      "name_en": "Burning",
+      "name_uk": "Горіння",
+      "item_id": "upgrade_burn"
+    },
+    {
+      "id": "radius",
+      "stat": "splash_radius",
+      "name_en": "Fire Radius",
+      "name_uk": "Радіус вогню",
+      "item_id": "upgrade_radius"
+    },
+    {
+      "id": "targets",
+      "stat": "targets",
+      "name_en": "Targets",
+      "name_uk": "Цілі",
+      "item_id": "upgrade_targets"
+    },
+    {
+      "id": "ash",
+      "stat": "on_hit.ash_curse.damage",
+      "name_en": "Ash Curse",
+      "name_uk": "Попелясте прокляття",
+      "item_id": "upgrade_ash"
+    },
+    {
+      "id": "magazine",
+      "stat": "magazine",
+      "name_en": "Magazine",
+      "name_uk": "Магазин"
+    },
+    {
+      "id": "reload_time",
+      "stat": "reload_time",
+      "name_en": "Reload",
+      "name_uk": "Перезарядка"
+    }
+  ],
   "weapon_upgrades": [
     {
       "id": "fists_damage_1",
@@ -429,27 +587,27 @@
       "value": 3
     },
     {
-      "id": "crossbow_crit_1",
+      "id": "crossbow_crit_damage_1",
       "weapon_id": "crossbow",
-      "upgrade": "crit",
+      "upgrade": "crit_damage",
       "order": 220,
       "level": 1,
       "cost": 125,
       "value": 2
     },
     {
-      "id": "crossbow_crit_2",
+      "id": "crossbow_crit_damage_2",
       "weapon_id": "crossbow",
-      "upgrade": "crit",
+      "upgrade": "crit_damage",
       "order": 220,
       "level": 2,
       "cost": 200,
       "value": 2.5
     },
     {
-      "id": "crossbow_crit_3",
+      "id": "crossbow_crit_damage_3",
       "weapon_id": "crossbow",
-      "upgrade": "crit",
+      "upgrade": "crit_damage",
       "order": 220,
       "level": 3,
       "cost": 275,
