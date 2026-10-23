@@ -292,7 +292,7 @@ tools/validate.py       перевірка перед комітом (так с�
 
 ### weapon_upgrades.json → `upgrade_types` і `weapon_upgrades`
 
-Прокачка зброї (зараз за віспи в забігу; за планом `docs/combat-v2-plan.md` переїде в лобі за софт). Повний перелік того, що вона змінює, у `upgrade_types`; рядки рівнів у `weapon_upgrades`.
+Прокачка зброї: **постійна, купується в лобі за софт** (з 23.10.2026, етап 2 `docs/combat-v2-plan.md`). У забігу прокачки не купуються: кімната бере рівні з профілю гравця (`Items["up:<weapon_id>:<upgrade>"] = рівень`), боти отримують випадкові рівні в межах бюджету. Повний перелік того, що вона змінює, у `upgrade_types`; рядки рівнів у `weapon_upgrades`.
 
 **`upgrade_types`** (масив): прокачка сама каже, що змінює.
 
@@ -302,6 +302,8 @@ tools/validate.py       перевірка перед комітом (так с�
 | stat | string | так | що змінює: числове поле зброї (`damage`, `crit_mult`, `spread`, ...) або `on_hit.<ефект>.<параметр>` (`on_hit.burn.dps`) |
 | op | string | ні | `set` (типово: `value` стає новим значенням), `add`, `mul` |
 | name_en, name_uk | string | так | назва прокачки в UI |
+| desc_en | string | так | опис у картці магазину; плейсхолдери лише `{new}` (значення на рівні) і `{delta}` (приріст проти попереднього) |
+| display_mult | number | ні | множник значення для показу (`100` для частки, що показується у %) |
 | item_id | string | ні | запис `kind: upgrade` у `items.json` (іконка й опис) |
 
 Типи: damage, attack_interval, range, projectile_speed, ricochet, multishot, crit_damage (`crit_mult`), crit_chance, pellets, choke (`spread`), dual, stability (`spread_max`), incendiary (`on_hit.burn.dps`, томмі), beam_time, cooldown, plasma (`plasma_damage`), pierce, burn (`on_hit.burn.dps`, вуду), radius (`splash_radius`), targets, ash (`on_hit.ash_curse.damage`), magazine, reload_time.
@@ -315,7 +317,7 @@ tools/validate.py       перевірка перед комітом (так с�
 | upgrade | string | — | → `upgrade_types.id` | так | тип прокачки |
 | order | int | — | ≥ 0 | так | порядок рядка прокачки у вікні |
 | level | int | — | 1..N без пропусків | так | рівень прокачки |
-| cost | int | віспи | ≥ 0 | так | ціна цього рівня |
+| price_soft | int | софт | ≥ 1 | так | ціна цього рівня в лобі |
 | value | number | як у `stat` | межі поля | так | нове значення поля на цьому рівні (ціле для цілих полів) |
 
 Прокачка `on_hit.<ефект>.*` вимагає, щоб у зброї вже був запис `on_hit.<ефект>` (з нульовим головним числом, якщо базово ефекту немає).
@@ -404,16 +406,21 @@ tools/validate.py       перевірка перед комітом (так с�
 
 Поки UI не перейшов на каталог, назви в `weapons.json` / `traps.json` (`name_en`, `name_uk`) і поля `title`/`description` у `lobby/shop_*.json` лишаються. Коли магазини перейдуть на каталог, ці дублі видаляються.
 
-## Файл `lobby/shop_soft.json`: зброя й прокачка пасток
+## Файл `lobby/shop_soft.json`: бустери; зброя, пастки й прокачки збираються з конфігів
 
-Софт-магазин лобі. Крім шаблонних рядків (Speed Boost та ін.) продає зброю і рівні пасток через два типи нагороди:
+Софт-магазин лобі показує **картки** (горизонтальний список): по одній на зброю й пастку. Картка: іконка, назва, кнопка купівлі зброї (ціна `price_soft`) або зелена галочка, під нею рядки прокачок (іконка, текст, прогрес-бар, ціна наступного рівня). Картки лобі будує з `weapons.json`, `traps.json` і `weapon_upgrades.json` (`LobbyLoadout.shopCards`), **у `shop_soft.json` їх додавати не треба і не можна**: валідатор видає помилку, якщо там є нагороди `Weapon`, `TrapLevel` або `WeaponUpgrade`. У `shop_soft.json` лишаються прості рядки (бустери), вони показуються після карток.
+
+Типи нагород, які ставить магазин:
 
 | Нагорода | Що робить | Перевірка валідатором |
 |---|---|---|
 | `{"kind":"Weapon","id":"bow","amount":1}` | пише `Items[id] = 1` у профіль | `price` = `price_soft` зброї; зброя не `default_owned` і не премодифікація; рівно один рядок на зброю |
-| `{"kind":"TrapLevel","id":"snare","amount":2}` | пише `Items[id] = amount`, лише якщо поточний рівень = amount - 1 (рівні купуються по порядку) | `price` = `price_soft` рівня в `traps.json`; рівно один рядок на кожен рівень від 2 |
+| `{"kind":"TrapLevel","id":"snare","amount":2}` | пише `Items[id] = amount`, лише якщо поточний рівень = amount - 1 (рівні купуються по порядку) | `price` = `price_soft` рівня в `traps.json` |
+| `{"kind":"WeaponUpgrade","id":"bow:damage","amount":2}` | пише `Items["up:bow:damage"] = 2`, лише якщо зброя куплена (або `default_owned`) і поточний рівень = amount - 1 | `price` = `price_soft` рядка в `weapon_upgrades.json` |
 
-Додаєш зброю чи рівень пастки в `weapons.json`/`traps.json`, додай рядок сюди (`id` рядка довільний, `reward.id` це id зброї чи пастки). Іконку рядок бере з `items.json` за `reward.id`. Магазин читає `weapons.json` і `traps.json` з `rooms/shared` (лобі підключає цю папку як спільну).
+Додаєш зброю, рівень пастки чи прокачку в `weapons.json` / `traps.json` / `weapon_upgrades.json`: картка з'явиться сама, змінювати лобі не треба. Іконки беруться з `items.json` (`reward.id` зброї чи пастки, `item_id` типу прокачки). Магазин читає ці файли з `rooms/shared` (лобі підключає цю папку як спільну). Рядки прокачки, що купуються тихо (`quiet`): вікно лишається відкритим, без спливаючого вікна нагороди.
+
+`rooms/shared/bots.json` → `upgrade_budget_mult` (0.5): бюджет прокачок бота = `price_soft` зброї розблокування кімнати × цей множник; бот витрачає його на випадкові рівні прокачок вибраної зброї.
 
 ## Файл `lobby/portals.json`
 
