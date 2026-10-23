@@ -404,6 +404,8 @@ tools/validate.py       перевірка перед комітом (так с�
 
 Як додати зброю, пастку чи ворога: `docs/adding-items.md`.
 
+Іконки, яких ще не було, генерує `assets/icons_src/make_icons.py` (SVG-джерела лежать поруч, PNG 512x512 у `assets/icons/`; потрібні playwright і chromium). Після завантаження PNG у Creator Hub вписати Asset ID в `icon` обох копій `items.json`.
+
 Поки UI не перейшов на каталог, назви в `weapons.json` / `traps.json` (`name_en`, `name_uk`) і поля `title`/`description` у `lobby/shop_*.json` лишаються. Коли магазини перейдуть на каталог, ці дублі видаляються.
 
 ## Файл `lobby/shop_soft.json`: бустери; зброя, пастки й прокачки збираються з конфігів
