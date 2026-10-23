@@ -1,6 +1,6 @@
 # Контракт конфігів бою (зброя, вороги, пастки, ефекти, правила)
 
-Дата: 23.10.2026. Автор: Агент J. Рішення Жені. Задача `Ж-002`, етап 1 плану `docs/combat-v2-plan.md`. Статус: **затверджено Женею**. Етап 1а: дані й валідатор у репо (23.10.2026), код у Packages у роботі.
+Дата: 23.10.2026. Автор: Агент J. Рішення Жені. Задача `Ж-002`, етап 1 плану `docs/combat-v2-plan.md`. Статус: **затверджено Женею**. Етап 1а (зброя й прокачки), 1б (магазин і перезарядка), 1в (правила, вороги, пастки, ефекти, звуки): дані й валідатор у `main`, код у Packages **не опубліковано**.
 
 ## Правила
 
@@ -115,3 +115,23 @@ damage → `damage`; attack_interval → `attack_interval`; ricochet → `ricoch
 ## Узгодження
 
 Контракт змінює формат JSON і код `WeaponStats`, `ConfigLoader`, `CombatService`, `UpgradeClient`, `TrapService`, `EnemyService`. Ці модулі в зоні бойового ядра (Женя + Агент J). Вася з Агентом Коричневим: ширина коридору з рівня (`lanes` у `zones.json`), вітрина лобі, моделі й анімації ворогів.
+
+## Статус етапу 1 (23.10.2026)
+
+**Зроблено і в даних, і в коді (Packages):**
+- Зброя, прокачки, магазин і перезарядка (1а, 1б), див. вище.
+- `rules.json` по секціях `run` / `player` / `traps` / `enemies` / `combat`; `start_coins` став `start_wisps`; `refund_share` у `rules.traps` (0.5).
+- `enemies.json`: `hitbox`, `color`, `visual`, `visual_scale`. Новий ворог з JSON створюється без правки коду.
+- `traps.json`: усі стати рівнів читає код (`cost`, `damage`, `damage_type`, `armor_pierce`, `on_hit`, `cooldown`, `fire_interval`, `range`, `trigger_radius`, `hit_margin`, `wall_height`, `wall_span_max`). Капкан тримає ворога через `on_hit.stun.duration` (поле `hold_time` зникло, `EnemyService.hold` прибрано). Поведінку вибирає `mechanic`, не `id` пастки.
+- `status_effects.json`: `armor_pierce` (частка 0..1) замість `ignore_armor`; id звуку в `sound` у snake_case.
+- `sounds.json`: усі звуки; клієнт отримує їх зі знімком конфігу.
+- `lanes` у кожній зоні `zones.json` (дані й валідатор).
+
+**Свідомо відкладено (немає механіки в коді, зробимо з відповідним етапом):**
+- Вороги: `tags`, `resist`, `immune`, `effect_resist`, `knockback_resist`, `on_death` (етап 7).
+- Пастки: `footprint`, `max_per_player`, `model`, `target_priority`, `hit_once`, перекриття `reach` / `refund_share` по пастці (етап 4).
+- Ефекти: `stacking`, `max_stacks`, `damage_type`, `tags` (етап 5, окреме обговорення).
+- Ширина коридору по зонах: код поки читає одне `rules.enemies.corridor_lanes`; `lanes` із `zones.json` підключимо, коли рівень Васі буде готовий (потрібне зіставлення відстані по маршруту із зоною).
+- Клієнт показує висоту й довжину стіни при розстановці за рівнем 1 пастки.
+
+**Лишається в коді як безпечний режим** (`Config.lua`, діє лише при збої завантаження): кулаки й рогатка, рівень 1 пасток, прості правила, три ворога, чотири ефекти, без звуків.

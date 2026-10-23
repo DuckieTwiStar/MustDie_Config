@@ -23,16 +23,16 @@
 
 | id | kind | що робить | поля |
 |---|---|---|---|
-| `burn` | `dot` | урон з часом, вогонь на ворогу | `dps`, `duration`, `tick`, `ignore_armor`, `visual: "fire"` |
+| `burn` | `dot` | урон з часом, вогонь на ворогу | `dps`, `duration`, `tick`, `armor_pierce`, `visual: "fire"` |
 | `stun` | `stun` | ворог стоїть, грає анімація капкана (атрибут `HeldUntil`) | `duration` |
 | `slow` | `slow` | швидкість × `mult` | `mult` (0..1), `duration` |
-| `ash_curse` | `death_blast` | при смерті ворог вибухає, урон сусідам | `damage`, `radius`, `ignore_armor`, `fx`, `sound`, `duration` (0 = до смерті) |
+| `ash_curse` | `death_blast` | при смерті ворог вибухає, урон сусідам | `damage`, `radius`, `armor_pierce`, `fx`, `sound`, `duration` (0 = до смерті) |
 
 Механіки (`kind`): `dot`, `stun`, `slow`, `death_blast`. Нова механіка = код у `EffectService` (наша сторона, пишіть у Slack).
 **Новий тип на наявній механіці додається без коду**: рядок у `status_effects.json`, наприклад кислота:
 
 ```json
-{ "id": "acid", "kind": "dot", "name_en": "Acid", "name_uk": "Кислота", "duration": 4, "dps": 6, "ignore_armor": true }
+{ "id": "acid", "kind": "dot", "name_en": "Acid", "name_uk": "Кислота", "duration": 4, "dps": 6, "armor_pierce": 1 }
 ```
 
 ## Як підключити (пастки, сцена, будь-що)
@@ -53,7 +53,7 @@ EffectService.list(enemy)           -- усі активні (лише чита�
 ```
 
 - `apply` повертає `true`, якщо ефект накладено (`false`: такий ефект ще діє, ворог мертвий, невідомий тип або `duration <= 0`).
-- Ключі в `apply` пишуться camelCase (`ignoreArmor`), у JSON snake_case (`ignore_armor`).
+- Ключі в `apply` пишуться camelCase (`armorPierce`), у JSON snake_case (`armor_pierce`, частка броні 0..1, яку ефект ігнорує).
 
 ### Капкан і `TrapService` (ваша зона, ми її не чіпали)
 
@@ -84,7 +84,7 @@ EffectService.list(enemy)           -- усі активні (лише чита�
 | `TowerDefenseServer.Bootstrap` | `EffectService.start()` одразу після `EnemyService.start()` |
 | `TowerDefense.Shared.Config` | запасна таблиця `effects` |
 
-Ключі прокачок зброї (`burn`, `incendiary`, `ash`) і поля зброї (`burn_dps`, `burn_time`, `ash_radius`, `ignore_armor`)
+Ключі прокачок зброї (`burn`, `incendiary`, `ash`) і поля зброї (`burn_dps`, `burn_time`, `ash_radius`, `ignore_armor`; тепер `on_hit` і `armor_pierce`)
 лишились: це числа, які зброя передає в ефект. Механіка ефекту живе лише в `EffectService`.
 
 ## Статус

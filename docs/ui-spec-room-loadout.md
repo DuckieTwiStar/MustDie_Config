@@ -58,7 +58,7 @@
 
 ## Конфіг
 
-- `rules.weapon_select_seconds` (20) і `rules.weapon_select_delay` (1.5, с): `rooms/shared/rules.json`, читає `ConfigLoader`.
+- `rules.run.weapon_select_seconds` (20) і `rules.run.weapon_select_delay` (1.5, с): `rooms/shared/rules.json`, читає `ConfigLoader`.
 
 ## Етапи
 
