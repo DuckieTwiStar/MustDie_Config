@@ -1,8 +1,8 @@
 {
   "meta": {
-    "version": "BAL-0006",
+    "version": "BAL-0007",
     "exported_at": "2026-10-23",
-    "note": "Арсенал 19.10.2026, контракт конфігів бою 23.10.2026 (Ж-002, docs/combat-config-contract.md). tier = прогрес (замки порталів), order = сортування і порядок на вітрині лобі, rarity = рамка й кількість прокачок. defaults = значення пропущених необов'язкових полів. Решта числових полів = стати зброї (snake_case). fire_mode вибирає механіку в коді. on_hit = ефекти, які зброя накладає (id ефекту -> числа). Кулаки й рогатка безкоштовні (default_owned), їх price_soft лише для бюджету ботів"
+    "note": "Арсенал 19.10.2026, контракт конфігів бою 23.10.2026 (Ж-002, docs/combat-config-contract.md). tier = прогрес (замки порталів), order = сортування і порядок на вітрині лобі, rarity = рамка й кількість прокачок. defaults = значення пропущених необов'язкових полів. Решта числових полів = стати зброї (snake_case). fire_mode вибирає механіку в коді. on_hit = ефекти, які зброя накладає (id ефекту -> числа). Кулаки й рогатка безкоштовні (default_owned), їх price_soft лише для бюджету ботів. Магазин і перезарядка (23.10.2026): magazine 0 = без ліміту; reload_time = с на всю перезарядку, а при reload_per_round на один патрон; стартові часи орієнтовні"
   },
   "defaults": {
     "auto": false,
@@ -100,6 +100,9 @@
       "damage": 22,
       "attack_interval": 0.55,
       "range": 150,
+      "magazine": 6,
+      "reload_time": 1.8,
+      "reload_interruptible": true,
       "spread": 0.4,
       "dual_rate": 1.4,
       "dual_spread": 3
@@ -116,6 +119,10 @@
       "damage": 9,
       "attack_interval": 1.2,
       "range": 40,
+      "magazine": 4,
+      "reload_time": 0.6,
+      "reload_per_round": true,
+      "reload_interruptible": true,
       "projectile_speed": 260,
       "pellets": 8,
       "spread": 7,
@@ -135,6 +142,8 @@
       "damage": 7,
       "attack_interval": 0.1,
       "range": 120,
+      "magazine": 30,
+      "reload_time": 2.2,
       "spread": 2,
       "spread_max": 6,
       "spread_grow": 0.6,
