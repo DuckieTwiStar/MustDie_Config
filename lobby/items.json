@@ -50,7 +50,7 @@
     {
       "id": "revolver",
       "kind": "weapon",
-      "icon": "",
+      "icon": "rbxassetid://127418372916796",
       "title": "Revolver",
       "description": "Instant, precise shots. Upgrade to fire two revolvers at once."
     },
@@ -64,28 +64,28 @@
     {
       "id": "tommy",
       "kind": "weapon",
-      "icon": "",
+      "icon": "rbxassetid://72524918630928",
       "title": "Tommy Gun",
       "description": "Hold to spray bullets. Gets less accurate in long bursts. Can fire incendiary rounds."
     },
     {
       "id": "crossbow",
       "kind": "weapon",
-      "icon": "",
+      "icon": "rbxassetid://118204665205149",
       "title": "Demon Hunter",
       "description": "Heavy bolts pierce enemies. Upgrades add a fan of bolts, crits and ricochets."
     },
     {
       "id": "energygun",
       "kind": "weapon",
-      "icon": "",
+      "icon": "rbxassetid://122169289462767",
       "title": "Energy Gun",
       "description": "Hold for a steady energy beam. Overheats; upgrades add plasma balls and piercing."
     },
     {
       "id": "voodoo",
       "kind": "weapon",
-      "icon": "",
+      "icon": "rbxassetid://74306895496870",
       "title": "Voodoo Doll",
       "description": "Stab the doll to set the target on fire. Fire ignores armor and spreads to nearby enemies."
     },
@@ -113,7 +113,7 @@
     {
       "id": "speed_boost",
       "kind": "booster",
-      "icon": "",
+      "icon": "rbxassetid://134502851439349",
       "title": "Speed Boost",
       "description": "Run {percent}% faster for {minutes} min",
       "values": {
@@ -124,7 +124,7 @@
     {
       "id": "lucky_charm",
       "kind": "item",
-      "icon": "",
+      "icon": "rbxassetid://104975278788424",
       "title": "Lucky Charm",
       "description": "Increases drop chance by {percent}%",
       "values": {
@@ -134,7 +134,7 @@
     {
       "id": "mega_pack",
       "kind": "booster",
-      "icon": "",
+      "icon": "rbxassetid://75523009830663",
       "title": "Mega Pack",
       "description": "{count} random boosters in one pack",
       "values": {
@@ -144,14 +144,14 @@
     {
       "id": "golden_hat",
       "kind": "item",
-      "icon": "",
+      "icon": "rbxassetid://100436826067667",
       "title": "Golden Hat",
       "description": "A shiny hat. Pure style."
     },
     {
       "id": "shield",
       "kind": "booster",
-      "icon": "",
+      "icon": "rbxassetid://112503784932988",
       "title": "Shield",
       "description": "Survive {hits} hit per run",
       "values": {
@@ -161,7 +161,7 @@
     {
       "id": "magnet",
       "kind": "item",
-      "icon": "",
+      "icon": "rbxassetid://102876195241350",
       "title": "Coin Magnet",
       "description": "Pulls coins from {radius} studs",
       "values": {
@@ -223,84 +223,84 @@
     {
       "id": "upgrade_choke",
       "kind": "upgrade",
-      "icon": "",
+      "icon": "rbxassetid://78227168162245",
       "title": "Choke",
       "description": "Tighter spread and longer full-damage range."
     },
     {
       "id": "upgrade_dual",
       "kind": "upgrade",
-      "icon": "",
+      "icon": "rbxassetid://78016589787553",
       "title": "Two Revolvers",
       "description": "Fire a second revolver: faster shots, less accuracy."
     },
     {
       "id": "upgrade_stability",
       "kind": "upgrade",
-      "icon": "",
+      "icon": "rbxassetid://81165617653361",
       "title": "Stability",
       "description": "Less spread in long bursts."
     },
     {
       "id": "upgrade_incendiary",
       "kind": "upgrade",
-      "icon": "",
+      "icon": "rbxassetid://110277486024012",
       "title": "Incendiary Rounds",
       "description": "Bullets set enemies on fire."
     },
     {
       "id": "upgrade_beam_time",
       "kind": "upgrade",
-      "icon": "",
+      "icon": "rbxassetid://100255419572632",
       "title": "Beam Time",
       "description": "The beam lasts longer before overheating."
     },
     {
       "id": "upgrade_cooldown",
       "kind": "upgrade",
-      "icon": "",
+      "icon": "rbxassetid://114610611205156",
       "title": "Cooling",
       "description": "Overheat passes faster."
     },
     {
       "id": "upgrade_plasma",
       "kind": "upgrade",
-      "icon": "",
+      "icon": "rbxassetid://127674708230652",
       "title": "Plasma Balls",
       "description": "While the beam is on, plasma balls explode at the target."
     },
     {
       "id": "upgrade_pierce",
       "kind": "upgrade",
-      "icon": "",
+      "icon": "rbxassetid://99395208709563",
       "title": "Pierce",
       "description": "The beam passes through more enemies."
     },
     {
       "id": "upgrade_burn",
       "kind": "upgrade",
-      "icon": "",
+      "icon": "rbxassetid://132712929234365",
       "title": "Burning",
       "description": "Stronger fire damage over time."
     },
     {
       "id": "upgrade_radius",
       "kind": "upgrade",
-      "icon": "",
+      "icon": "rbxassetid://133704374944659",
       "title": "Fire Radius",
       "description": "Fire spreads to nearby enemies."
     },
     {
       "id": "upgrade_targets",
       "kind": "upgrade",
-      "icon": "",
+      "icon": "rbxassetid://102364831023068",
       "title": "Targets",
       "description": "Curse several enemies with one stab."
     },
     {
       "id": "upgrade_ash",
       "kind": "upgrade",
-      "icon": "",
+      "icon": "rbxassetid://80808120877969",
       "title": "Ash Curse",
       "description": "Cursed enemies explode in fire when they die."
     }
