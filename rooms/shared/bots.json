@@ -1,14 +1,15 @@
 {
   "meta": {
-    "version": "BAL-0004",
-    "exported_at": "2026-10-16",
-    "note": "Боти: зброя з пулу за кімнатою, бюджет на прокачку пасток. Гра читає (LoadoutService.rollBot)"
+    "version": "BAL-0005",
+    "exported_at": "2026-10-23",
+    "note": "Боти: зброя з пулу за кімнатою, бюджет на пастки (trap_budget_mult) і на прокачку зброї (upgrade_budget_mult) = ціна зброї кімнати x множник. Гра читає (LoadoutService.rollBot)"
   },
   "bots": {
     "weapon_pool_exclude": [
       "fists"
     ],
     "include_premium": false,
-    "trap_budget_mult": 1
+    "trap_budget_mult": 1,
+    "upgrade_budget_mult": 0.5
   }
 }

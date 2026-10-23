@@ -89,7 +89,7 @@ SCHEMA = {
     },
     "weapon_upgrades": {
         "id": (str, True, None, None), "weapon_id": (str, True, None, None), "upgrade": (str, True, None, None),
-        "order": (int, True, 0, None), "level": (int, True, 1, 10), "cost": (int, True, 0, None), "value": (NUM, True, None, None),
+        "order": (int, True, 0, None), "level": (int, True, 1, 10), "price_soft": (int, True, 1, None), "value": (NUM, True, None, None),
     },
     "run_rewards": {
         "_object": True,
@@ -107,7 +107,7 @@ SCHEMA = {
     "bots": {
         "_object": True,
         "weapon_pool_exclude": (list, True, None, None), "include_premium": (bool, True, None, None),
-        "trap_budget_mult": (NUM, True, 0, 100),
+        "trap_budget_mult": (NUM, True, 0, 100), "upgrade_budget_mult": (NUM, True, 0, 100),
     },
     "zones": {
         "id": (str, True, None, None), "order": (int, True, 0, None), "name_en": (str, True, None, None),
@@ -176,8 +176,10 @@ ON_HIT_PARAMS = {"chance": (0, 1), "duration": (0, None), "dps": (0, None), "tic
                  "mult": (0, 1), "damage": (0, None), "radius": (0, None)}
 UPGRADE_OPS = {"set", "add", "mul"}
 TYPE_FIELDS = {"id": (str, True, None, None), "stat": (str, True, None, None), "name_en": (str, True, None, None),
-               "name_uk": (str, True, None, None), "item_id": (str, False, None, None), "op": (str, False, None, None)}
+               "name_uk": (str, True, None, None), "desc_en": (str, True, None, None), "item_id": (str, False, None, None), "op": (str, False, None, None),
+               "display_mult": (NUM, False, 0.001, 1000)}
 SHARED_FILES = ["rules", "enemies", "traps", "weapons", "weapon_upgrades", "run_rewards", "items", "bots", "status_effects", "sounds"]
+GENERATED_REWARD_KINDS = {"Weapon", "TrapLevel", "WeaponUpgrade"}
 HEX_RE = re.compile(r"^#[0-9A-Fa-f]{6}$")
 REWARD_MODES = {"each", "split", "killer"}
 # rules.json -> rules: секції (поле: (тип, мін, макс)); усі поля обов'язкові, запасних значень у коді немає
@@ -506,6 +508,9 @@ def check_upgrades(rows, weapons, effect_ids, items):
         for key in t:
             if key not in TYPE_FIELDS:
                 err(path, f"{where}: невідоме поле {key}")
+        for name in PLACEHOLDER_RE.findall(t.get("desc_en") or ""):
+            if name not in ("new", "delta"):
+                err(path, f"{where}: desc_en містить {{{name}}}, дозволено лише {{new}} і {{delta}}")
         tid = t.get("id")
         if isinstance(tid, str):
             if not ID_RE.match(tid):
@@ -775,60 +780,25 @@ def economy_report(weapons, traps, bots, room_unlocks, run_values=None, runs=200
                 totals[tid] += v
             left += rest
         avg = ", ".join(f"{tid} {totals[tid] / runs:.2f}" for tid in by)
-        lines.append(f"  {room_id}: зброя {wid} (tier {w.get('tier')}), пул ботів {pool}, бюджет {budget:g}, сер. рівні пасток: {avg}, не витрачено в середньому {left / runs:.0f}")
+        lines.append(f"  {room_id}: зброя {wid} (tier {w.get('tier')}), пул ботів {pool}, бюджет {budget:g}, сер. рівні пасток: {avg}, не витрачено в середньому {left / runs:.0f}; бюджет прокачки зброї {(w.get('price_soft') or 0) * bots.get('upgrade_budget_mult', 0):g}")
         if 0 < budget < cheapest:
             warns.append(f"{room_id}: бюджет ботів {budget:g} менший за найдешевшу прокачку ({cheapest}): боти лишаться на базових пастках")
     return lines, warns
 
 
 def check_shop_soft(path, weapons, traps):
-    """lobby/shop_soft.json: рядки, що продають зброю (reward.kind=Weapon) і рівні пасток (TrapLevel), мають збігатися з weapons.json і traps.json."""
+    """lobby/shop_soft.json: тут лише звичайні предмети (бустери, косметика). Зброя, рівні пасток і прокачки зброї
+    не прописуються рядками: лобі збирає їх у картки з weapons.json, traps.json і weapon_upgrades.json (ціни лише там)."""
     if not path.exists():
         return
     try:
         rows = json.loads(path.read_text(encoding="utf-8")).get("items") or []
     except Exception:  # noqa: BLE001
         return
-    wby = {w["id"]: w for w in weapons if isinstance(w, dict) and isinstance(w.get("id"), str)}
-    levels = {}
-    for t in traps:
-        if isinstance(t, dict) and isinstance(t.get("id"), str) and isinstance(t.get("level"), int):
-            levels[(t["id"], t["level"])] = t
-    sold_w, sold_t = {}, {}
     for r in rows:
         rw = r.get("reward") if isinstance(r, dict) else None
-        if not isinstance(rw, dict):
-            continue
-        where = f"shop_soft {r.get('id')}"
-        kind, rid, amount = rw.get("kind"), rw.get("id"), rw.get("amount")
-        if kind == "Weapon":
-            w = wby.get(rid)
-            if w is None:
-                err(path, f"{where}: зброї {rid!r} немає в weapons.json")
-                continue
-            if amount != 1:
-                err(path, f"{where}: для Weapon amount має бути 1")
-            if w.get("default_owned") or w.get("base_id"):
-                err(path, f"{where}: {rid!r} видається безкоштовно або як премодифікація, у софт-магазині її не продаємо")
-            if r.get("price") != w.get("price_soft"):
-                err(path, f"{where}: price {r.get('price')} не збігається з price_soft {w.get('price_soft')} у weapons.json")
-            sold_w[rid] = sold_w.get(rid, 0) + 1
-        elif kind == "TrapLevel":
-            t = levels.get((rid, amount))
-            if t is None:
-                err(path, f"{where}: немає рядка пастки {rid!r} рівня {amount} у traps.json")
-                continue
-            if amount < 2:
-                err(path, f"{where}: рівень 1 безкоштовний, продавати можна з рівня 2")
-            if r.get("price") != t.get("price_soft"):
-                err(path, f"{where}: price {r.get('price')} не збігається з price_soft {t.get('price_soft')} у traps.json")
-            sold_t[(rid, amount)] = sold_t.get((rid, amount), 0) + 1
-    for wid, w in wby.items():
-        if w.get("price_soft") and not w.get("default_owned") and not w.get("base_id") and sold_w.get(wid, 0) != 1:
-            err(path, f"зброя {wid!r} має продаватися рівно одним рядком Weapon, зараз {sold_w.get(wid, 0)}")
-    for (tid, lvl), t in sorted(levels.items()):
-        if lvl >= 2 and sold_t.get((tid, lvl), 0) != 1:
-            err(path, f"рівень {lvl} пастки {tid!r} має продаватися рівно одним рядком TrapLevel, зараз {sold_t.get((tid, lvl), 0)}")
+        if isinstance(rw, dict) and rw.get("kind") in GENERATED_REWARD_KINDS:
+            err(path, f"shop_soft {r.get('id')}: нагорода {rw.get('kind')} збирається з weapons/traps/weapon_upgrades, рядок прибрати")
 
 
 def check_portals(path, weapons=(), room_unlocks=()):
