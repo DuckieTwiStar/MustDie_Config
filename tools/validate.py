@@ -125,14 +125,15 @@ SCHEMA = {
         "id": (str, True, None, None), "players": (int, True, 1, 4), "hp_mult": (NUM, True, 0.1, None),
         "count_mult": (NUM, True, 0.1, None), "reward_mult": (NUM, True, 0, None),
     },
-    # ефекти на ворогах (EffectService, 23.10.2026); новий id = новий тип ефекту без коду
+    # ефекти на ворогах (EffectService v2, docs/effects-v2.md): стеки, модифікатори, теги, переходи; новий id = новий ефект без коду
     "status_effects": {
-        "id": (str, True, None, None), "kind": (str, True, None, None),
-        "name_en": (str, True, None, None), "name_uk": (str, True, None, None),
-        "duration": (NUM, True, 0, None), "dps": (NUM, False, 0, None), "tick": (NUM, False, 0.05, 5),
-        "mult": (NUM, False, 0, 1), "damage": (NUM, False, 0, None), "radius": (NUM, False, 0, None),
-        "armor_pierce": (NUM, False, 0, 1), "visual": (str, False, None, None),
-        "fx": (str, False, None, None), "sound": (str, False, None, None),
+        "id": (str, True, None, None), "name_en": (str, True, None, None), "name_uk": (str, True, None, None),
+        "max_stacks": (int, False, 1, 50), "duration": (NUM, False, 0, None), "decay_interval": (NUM, False, 0, None),
+        "reapply": (str, False, None, None), "tick": (NUM, False, 0.05, 5),
+        "modifiers": (list, False, None, None), "damage_type": (str, False, None, None), "armor_pierce": (NUM, False, 0, 1),
+        "grants_tags": (list, False, None, None), "requires_tags": (list, False, None, None), "blocked_by_tags": (list, False, None, None),
+        "on_max_stacks": (dict, False, None, None), "on_end": (dict, False, None, None), "on_death": (dict, False, None, None),
+        "visual": (str, False, None, None),
     },
     "sounds": {
         "id": (str, True, None, None), "asset": (str, True, None, None),
@@ -143,17 +144,19 @@ SCHEMA = {
         "title": (str, True, None, None), "description": (str, True, None, None), "values": (dict, False, None, None),
     },
 }
+DAMAGE_TYPES = {"physical", "fire", "shock", "ice"}
 ENUMS = {
     ("items", "kind"): {"currency", "weapon", "trap", "booster", "item", "enemy", "upgrade"},
     ("enemies", "size"): {"small", "medium", "large"},
     ("traps", "mechanic"): {"snare", "wall", "turret"},
     ("traps", "placement"): {"floor", "wall"},
-    ("traps", "damage_type"): {"physical", "fire", "shock"},
-    ("status_effects", "kind"): {"dot", "stun", "slow", "death_blast"},
+    ("traps", "damage_type"): DAMAGE_TYPES,
+    ("status_effects", "damage_type"): DAMAGE_TYPES,
+    ("status_effects", "reapply"): {"refresh", "ignore"},
     ("status_effects", "visual"): {"fire"},
     ("weapons", "rarity"): {"common", "uncommon", "rare", "epic", "legendary"},
     ("weapons", "fire_mode"): {"melee", "projectile", "hitscan", "pellets", "beam", "curse"},
-    ("weapons", "damage_type"): {"physical", "fire", "shock"},
+    ("weapons", "damage_type"): DAMAGE_TYPES,
     ("weapons", "projectile_style"): {"arrow", "bolt", "pebble"},
 }
 # поля зброї, які не мають дефолту (ідентифікація і базові стати)
@@ -172,8 +175,17 @@ MODE_REQUIRED = {
     "melee": ("cone",), "projectile": ("projectile_speed",), "hitscan": (),
     "pellets": ("projectile_speed",), "beam": ("beam_time", "cooldown"), "curse": ("cone",),
 }
-ON_HIT_PARAMS = {"chance": (0, 1), "duration": (0, None), "dps": (0, None), "tick": (0.05, 5),
-                 "mult": (0, 1), "damage": (0, None), "radius": (0, None)}
+# Словник модифікаторів, який розуміє код (docs/effects-v2.md); combine, базове значення й межі задає секція stats у status_effects.json
+STAT_IDS = ("speed_mult", "damage_taken_mult", "dps", "hp_pct_per_sec")
+COMBINES = {"add", "mul", "max", "min"}
+EFFECT_INFO = {}  # id ефекту -> {"max_stacks": n, "params": {параметр джерела: (мін, макс, лише ціле)}}; заповнює check_effects
+
+
+def effect_params(eid):
+    """Які числа джерело (on_hit зброї чи пастки, прокачка) може передати цьому ефекту."""
+    return (EFFECT_INFO.get(eid) or {}).get("params") or {}
+
+
 UPGRADE_OPS = {"set", "add", "mul"}
 TYPE_FIELDS = {"id": (str, True, None, None), "stat": (str, True, None, None), "name_en": (str, True, None, None),
                "name_uk": (str, True, None, None), "desc_en": (str, True, None, None), "item_id": (str, False, None, None), "op": (str, False, None, None),
@@ -358,8 +370,216 @@ def load_raw(path):
     return data if isinstance(data, dict) else {}
 
 
+def check_effects(effects, stats_raw):
+    """status_effects.json (docs/effects-v2.md): секція stats, стекінг, модифікатори, теги, переходи, цикли. Заповнює EFFECT_INFO."""
+    path = SHARED / "status_effects.json"
+    EFFECT_INFO.clear()
+    # --- секція stats: combine, базове значення й межі кожного стата зі словника
+    stats = {}
+    if not isinstance(stats_raw, list) or not stats_raw:
+        err(path, "потрібна секція stats: масив зі статами " + ", ".join(STAT_IDS))
+        stats_raw = []
+    for i, st in enumerate(stats_raw):
+        where = f"stats[{i}]"
+        if not isinstance(st, dict) or not isinstance(st.get("id"), str):
+            err(path, f"{where}: потрібен об'єкт з id")
+            continue
+        sid = st["id"]
+        where = f"stats[{sid}]"
+        if sid not in STAT_IDS:
+            err(path, f"{where}: код не знає стата {sid!r} (є {list(STAT_IDS)})")
+            continue
+        if sid in stats:
+            err(path, f"{where}: стат описано двічі")
+            continue
+        for key in st:
+            if key not in ("id", "combine", "base", "min", "max"):
+                err(path, f"{where}: невідоме поле {key}")
+        if st.get("combine") not in COMBINES:
+            err(path, f"{where}: combine має бути одним з {sorted(COMBINES)}")
+        if not type_ok(st.get("base"), NUM):
+            err(path, f"{where}: base має бути числом")
+        for key in ("min", "max"):
+            if key in st and not type_ok(st[key], NUM):
+                err(path, f"{where}: {key} має бути числом")
+        if all(type_ok(st.get(k), NUM) for k in ("min", "max")) and st["min"] > st["max"]:
+            err(path, f"{where}: min більше за max")
+        stats[sid] = st
+    for sid in STAT_IDS:
+        if stats_raw and sid not in stats:
+            err(path, f"stats: немає опису стата {sid!r}")
+
+    by_id = {e["id"]: e for e in effects if isinstance(e, dict) and isinstance(e.get("id"), str)}
+    granted = set()
+    for e in by_id.values():
+        if isinstance(e.get("grants_tags"), list):
+            granted |= {t for t in e["grants_tags"] if isinstance(t, str)}
+
+    def tag_list(where, key, row):
+        vals = row.get(key)
+        if vals is None:
+            return
+        if not isinstance(vals, list) or not vals:
+            err(path, f"{where}: {key} має бути непорожнім масивом тегів")
+            return
+        seen = set()
+        for t in vals:
+            if not isinstance(t, str) or not ID_RE.match(t):
+                err(path, f"{where}: тег {t!r} не snake_case")
+            elif t in seen:
+                err(path, f"{where}: тег {t!r} повторюється в {key}")
+            elif key != "grants_tags" and t not in granted:
+                err(path, f"{where}: тег {t!r} ({key}) не видає жоден ефект (теги ворогів з'являться на етапі 7)")
+            seen.add(t)
+
+    edges = {}
+    for eid, e in by_id.items():
+        where = f"status_effects[{eid}]"
+        n = e.get("max_stacks", 1) if type_ok(e.get("max_stacks", 1), int) else 1
+        stackable = n > 1
+        # --- таймер чи лічильник
+        if stackable:
+            for bad in ("duration", "reapply"):
+                if bad in e:
+                    err(path, f"{where}: {bad} не для лічильника (max_stacks > 1); час життя задає decay_interval")
+        else:
+            if "duration" not in e:
+                err(path, f"{where}: для max_stacks = 1 потрібне duration (0 = до зняття або смерті)")
+            if "decay_interval" in e:
+                err(path, f"{where}: decay_interval лише для лічильника (max_stacks > 1)")
+        # --- модифікатори
+        params = {"chance": (0, 1, False)}
+        mods = e.get("modifiers")
+        has_mod = False
+        if mods is not None:
+            if not isinstance(mods, list) or not mods:
+                err(path, f"{where}: modifiers має бути непорожнім масивом")
+                mods = []
+            used = set()
+            for j, m in enumerate(mods):
+                mw = f"{where}.modifiers[{j}]"
+                if not isinstance(m, dict):
+                    err(path, f"{mw}: не об'єкт")
+                    continue
+                for key in m:
+                    if key not in ("stat", "value", "per_stack", "requires_tags"):
+                        err(path, f"{mw}: невідоме поле {key}")
+                stat = m.get("stat")
+                if not isinstance(stat, str):
+                    err(path, f"{mw}: потрібне поле stat")
+                    continue
+                base, _, typ = stat.partition(".")
+                if base not in STAT_IDS or (typ and (base != "damage_taken_mult" or typ not in DAMAGE_TYPES)):
+                    err(path, f"{mw}: stat {stat!r} не зі словника ({list(STAT_IDS)}; для damage_taken_mult можна .<тип урону>)")
+                    continue
+                has_mod = True
+                if stat in used:
+                    err(path, f"{mw}: stat {stat!r} повторюється в одному ефекті")
+                used.add(stat)
+                spec = stats.get(base)
+                if not type_ok(m.get("value"), NUM):
+                    err(path, f"{mw}: value має бути числом")
+                elif spec:
+                    lo, hi = spec.get("min"), spec.get("max")
+                    if (lo is not None and m["value"] < lo) or (hi is not None and m["value"] > hi):
+                        err(path, f"{mw}: value={m['value']} поза межами стата {base} ({lo}..{hi})")
+                if "per_stack" in m:
+                    if not isinstance(m["per_stack"], bool):
+                        err(path, f"{mw}: per_stack має бути true/false")
+                    elif m["per_stack"] and not stackable:
+                        err(path, f"{mw}: per_stack має сенс лише для max_stacks > 1")
+                    elif m["per_stack"] and spec and spec.get("combine") in ("max", "min"):
+                        err(path, f"{mw}: per_stack не поєднується з combine {spec['combine']} стата {base}")
+                if "requires_tags" in m:
+                    tag_list(mw, "requires_tags", m)
+                if not stackable and "." not in stat:
+                    lo = spec.get("min", 0) if spec else 0
+                    params[stat] = (lo if type_ok(lo, NUM) else 0, spec.get("max") if spec else None, False)
+        # --- теги й умови
+        for key in ("grants_tags", "requires_tags", "blocked_by_tags"):
+            tag_list(where, key, e)
+        # --- переходи
+        for ev in ("on_max_stacks", "on_end", "on_death"):
+            block = e.get(ev)
+            if block is None:
+                continue
+            ew = f"{where}.{ev}"
+            if not block:
+                err(path, f"{ew}: порожній об'єкт")
+                continue
+            if ev == "on_max_stacks" and not stackable:
+                err(path, f"{ew}: лише для лічильника (max_stacks > 1)")
+            allowed = {"on_max_stacks": ("consume", "apply", "stacks", "duration"),
+                       "on_end": ("apply", "stacks", "duration"), "on_death": ("blast",)}[ev]
+            for key in block:
+                if key not in allowed:
+                    err(path, f"{ew}: невідоме поле {key} (є {list(allowed)})")
+            if "consume" in block and not isinstance(block["consume"], bool):
+                err(path, f"{ew}.consume має бути true/false")
+            if "apply" in block:
+                target = block["apply"]
+                if target not in by_id:
+                    err(path, f"{ew}.apply: ефекту {target!r} немає")
+                else:
+                    edges.setdefault(eid, set()).add(target)
+                    tn = by_id[target].get("max_stacks", 1)
+                    if "stacks" in block and (not type_ok(block["stacks"], int) or not 1 <= block["stacks"] <= (tn if type_ok(tn, int) else 1)):
+                        err(path, f"{ew}.stacks: ціле 1..{tn} (max_stacks ефекту {target})")
+                    if "duration" in block and (not type_ok(block["duration"], NUM) or block["duration"] <= 0):
+                        err(path, f"{ew}.duration: число > 0")
+            elif "stacks" in block or "duration" in block:
+                err(path, f"{ew}: stacks/duration мають сенс лише разом з apply")
+            if ev == "on_death":
+                blast = block.get("blast")
+                if not isinstance(blast, dict):
+                    err(path, f"{ew}.blast: потрібен об'єкт {{damage, radius, ...}}")
+                else:
+                    bspec = {"damage": (NUM, True, 0, None), "radius": (NUM, True, 0.1, None),
+                             "damage_type": (str, False, None, None), "armor_pierce": (NUM, False, 0, 1),
+                             "fx": (str, False, None, None), "sound": (str, False, None, None)}
+                    for key, sp in bspec.items():
+                        if key not in blast:
+                            if sp[1]:
+                                err(path, f"{ew}.blast: немає поля {key}")
+                            continue
+                        if check_value(path, "status_effects", key, blast[key], sp, f"{ew}.blast") is False:
+                            continue
+                    for key in blast:
+                        if key not in bspec:
+                            err(path, f"{ew}.blast: невідоме поле {key}")
+                    if not stackable:
+                        params["damage"] = (0, None, False)
+                        params["radius"] = (0.1, None, False)
+        # --- що можна передати з джерела
+        if stackable:
+            params["stacks"] = (1, n, True)
+        else:
+            params["duration"] = (0, None, False)
+        EFFECT_INFO[eid] = {"max_stacks": n, "params": params}
+        if not (has_mod or e.get("grants_tags") or e.get("on_death") or e.get("on_end") or e.get("on_max_stacks")):
+            err(path, f"{where}: ефект нічого не робить (потрібні modifiers, grants_tags або події)")
+        if e.get("damage_type") and not any(isinstance(m, dict) and str(m.get("stat")) in ("dps", "hp_pct_per_sec") for m in (mods or [])):
+            err(path, f"{where}: damage_type/armor_pierce/tick мають сенс лише з модифікаторами dps або hp_pct_per_sec")
+
+    # --- цикли в apply (A -> B -> A)
+    state = {}
+
+    def visit(node, trail):
+        state[node] = 1
+        for nxt in sorted(edges.get(node, ())):
+            if state.get(nxt) == 1:
+                err(path, "цикл переходів: " + " -> ".join(trail + [node, nxt]))
+            elif nxt not in state:
+                visit(nxt, trail + [node])
+        state[node] = 2
+
+    for eid in sorted(edges):
+        if eid not in state:
+            visit(eid, [])
+
+
 def check_effect_map(path, where, block, effect_ids, params=True):
-    """on_hit: {effect_id: {chance, dps, duration, ...}}; bonus_vs: {effect_id: множник}."""
+    """on_hit: {effect_id: {chance, stacks, duration, <число модифікатора>, ...}}; bonus_vs: {effect_id: множник}."""
     if not isinstance(block, dict):
         return
     for eid, val in block.items():
@@ -370,15 +590,16 @@ def check_effect_map(path, where, block, effect_ids, params=True):
                 err(path, f"{where}.{eid}: множник має бути числом 0..10")
             continue
         if not isinstance(val, dict) or not val:
-            err(path, f"{where}.{eid}: потрібен непорожній об'єкт з числами (chance, dps, duration, ...)")
+            err(path, f"{where}.{eid}: потрібен непорожній об'єкт з числами (chance, stacks, duration, ...)")
             continue
+        allowed = effect_params(eid)
         for pk, pv in val.items():
-            if pk not in ON_HIT_PARAMS:
-                err(path, f"{where}.{eid}: невідомий параметр {pk} (є {sorted(ON_HIT_PARAMS)})")
+            if pk not in allowed:
+                err(path, f"{where}.{eid}: невідомий параметр {pk} (для цього ефекту є {sorted(allowed)})")
                 continue
-            lo, hi = ON_HIT_PARAMS[pk]
-            if not type_ok(pv, NUM) or pv < lo or (hi is not None and pv > hi):
-                err(path, f"{where}.{eid}.{pk}: потрібне число {lo}..{hi if hi is not None else '∞'}")
+            lo, hi, whole = allowed[pk]
+            if not type_ok(pv, int if whole else NUM) or pv < lo or (hi is not None and pv > hi):
+                err(path, f"{where}.{eid}.{pk}: потрібне {'ціле' if whole else 'число'} {lo}..{hi if hi is not None else '∞'}")
 
 
 TRAP_REQUIRED = {
@@ -425,8 +646,9 @@ def check_sound_refs(sounds, effects, rules, weapons):
     path = SHARED / "sounds.json"
     ids = {x["id"] for x in sounds if isinstance(x, dict) and isinstance(x.get("id"), str)}
     for e in effects:
-        if isinstance(e, dict) and "sound" in e and e["sound"] not in ids:
-            err(SHARED / "status_effects.json", f"status_effects {e.get('id')!r}: sound {e['sound']!r} немає в sounds.json")
+        blast = ((e.get("on_death") or {}).get("blast") or {}) if isinstance(e, dict) and isinstance(e.get("on_death"), dict) else {}
+        if isinstance(blast, dict) and "sound" in blast and blast["sound"] not in ids:
+            err(SHARED / "status_effects.json", f"status_effects {e.get('id')!r}: on_death.blast.sound {blast['sound']!r} немає в sounds.json")
     for need in ("music", "enemy_hit", "enemy_death", "click"):
         if need not in ids:
             err(path, f"немає звуку {need!r}, який грає код")
@@ -480,10 +702,11 @@ def resolve_stat(stat, effect_ids):
         _, eid, param = parts
         if eid not in effect_ids:
             return f"stat {stat!r}: ефекту {eid!r} немає в status_effects.json"
-        if param not in ON_HIT_PARAMS:
-            return f"stat {stat!r}: параметр {param!r} не з {sorted(ON_HIT_PARAMS)}"
-        lo, hi = ON_HIT_PARAMS[param]
-        return ("on_hit", eid, param, (NUM, True, lo, hi))
+        allowed = effect_params(eid)
+        if param not in allowed:
+            return f"stat {stat!r}: параметр {param!r} не з {sorted(allowed)}"
+        lo, hi, whole = allowed[param]
+        return ("on_hit", eid, param, (int if whole else NUM, True, lo, hi))
     return f"stat {stat!r}: очікується поле зброї або on_hit.<ефект>.<параметр>"
 
 
@@ -916,6 +1139,7 @@ def main():
     if not any(isinstance(w, dict) and w.get("default_owned") for w in (shared.get("weapons") or [])):
         err(SHARED / "weapons.json", "жодна зброя не default_owned: гравцю не буде з чим грати")
     effect_ids = {e["id"] for e in (shared.get("status_effects") or []) if isinstance(e, dict) and isinstance(e.get("id"), str)}
+    check_effects(shared.get("status_effects") or [], load_raw(SHARED / "status_effects.json").get("stats"))
     check_weapon_extras(shared.get("weapons") or [], effect_ids)
     check_enemy_extras(shared.get("enemies") or [])
     check_trap_extras(traps, effect_ids)

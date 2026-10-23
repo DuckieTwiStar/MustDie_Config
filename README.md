@@ -22,7 +22,7 @@ rooms/
     traps.json
     weapons.json
     weapon_upgrades.json
-    status_effects.json ефекти на ворогах (горіння, оглушення, уповільнення, прокляття), docs/status-effects.md
+    status_effects.json ефекти на ворогах v2 (стеки, модифікатори, теги), docs/effects-v2.md
     sounds.json         усі звуки гри (id, asset, volume, pitch)
     leaderboards.json   той самий вміст, що lobby/leaderboards.json
     items.json          каталог предметів (іконка, назва, опис), той самий вміст, що lobby/items.json
@@ -51,7 +51,7 @@ tools/validate.py       перевірка перед комітом (так с�
 | zones.json | **ні** | довідкові дані для розрахунків балансу; маршрут задають `PathNode` на карті. `lanes` ще не читає код (ширина йде з `rules.enemies.corridor_lanes`) |
 | items.json | **так** | `ItemCatalogService` читає й публікує клієнту каталог: іконки, назви й описи валют, зброї, пасток і прокачок (kind `upgrade`). Копії в `lobby/` і `rooms/shared/` ідентичні |
 | shared/weapons.json | **так** (з TowerDefense після 19.10.2026) | каталог (`tier`, `order`, `price_soft`, `default_owned`, `rarity`) і **стати зброї**: усі числові поля накладаються на код (snake_case → camelCase). `defaults` у файлі = значення пропущених полів (у коді запасних значень немає, лише безпечний режим кулаки + рогатка при збої завантаження). `fire_mode` вибирає механіку в коді, числа йдуть з конфігу. Контракт: `docs/combat-config-contract.md` |
-| shared/status_effects.json | **так** (з TowerDefense після 23.10.2026, ще не опубліковано) | типи ефектів на ворогах для `EffectService`; новий рядок на наявному `kind` = новий тип без коду. Див. `docs/status-effects.md` |
+| shared/status_effects.json | **так** (формат v2 з TowerDefense після публікації EffectService v2, **ще не опубліковано**) | ефекти на ворогах для `EffectService`: стеки, модифікатори, теги, переходи; новий ефект = рядок у JSON без коду. Див. `docs/effects-v2.md` (старий `docs/status-effects.md` застарів) |
 | shared/traps.json | **так** (з TowerDefense після 23.10.2026, ще не опубліковано) | усі стати пасток: `cost`, `damage`, `damage_type`, `armor_pierce`, `on_hit`, `cooldown`, `fire_interval`, `range`, `trigger_radius`, `hit_margin`, `wall_*`. `mechanic` (`snare`, `wall`, `turret`) вибирає поведінку в коді, форми й моделі поки в коді |
 | shared/bots.json | так | налаштування ботів |
 | room.json → `unlock_weapon` | **так** (з 16.10.2026) | зброя, яка відкриває кімнату: другий замок входу (`LoadoutService.meetsRoomRequirement`, потрібна зброя того ж або вищого `tier`); з неї боти беруть пул зброї й бюджет |
@@ -261,24 +261,40 @@ tools/validate.py       перевірка перед комітом (так с�
 
 Подивитися, що отримають боти в кожній кімнаті: `python3 tools/validate.py --economy`. Валідатор попереджає (не помилка), якщо бюджет кімнати менший за найдешевшу прокачку.
 
-### status_effects.json → `status_effects` (масив)
+### status_effects.json → `stats` і `status_effects`
 
-Ефекти на ворогах (`EffectService`, 23.10.2026). Не стакаються: поки ефект діє, такий самий новий не накладається. Прив'язані до гравця, що наклав (урон, бали й вбивство йому).
-Джерело (зброя, пастка) може передати свої числа в `EffectService.apply`, вони важливіші за ці. Як підключати: `docs/status-effects.md`.
+Ефекти на ворогах v2 (`EffectService`, контракт `docs/effects-v2.md`, **формат змінено 23.10.2026, FX-0003, код ще не опубліковано**). Ефекти стакаються, дають модифікатори й теги, на порозі стеків переходять в інший ефект. Прив'язані до гравців, що їх наклали (урон, бали й вбивство діляться за внеском). Джерело (зброя, пастка) у `on_hit` передає `chance`, `stacks` або `duration` і числа модифікатора (`dps`, `speed_mult`), вони важливіші за ці (лише для ефектів з `max_stacks = 1`).
+
+**`stats`** (масив): словник модифікаторів, який розуміє код. Усі модифікатори одного стата об'єднуються за `combine`.
+
+| поле | тип | що означає |
+|---|---|---|
+| id | string | `speed_mult`, `damage_taken_mult`, `dps`, `hp_pct_per_sec` (для `damage_taken_mult` модифікатор може бути `damage_taken_mult.<тип урону>`) |
+| combine | string | `add` (сума) / `mul` (добуток) / `max` / `min` (найсильніший) |
+| base | number | значення, коли модифікаторів немає |
+| min, max | number | межі значення модифікатора й підсумку (необов'язкові) |
+
+**`status_effects`** (масив):
 
 | поле | тип | одиниці | діапазон | обов. | що означає |
 |---|---|---|---|---|---|
-| id | string | — | snake_case | так | тип ефекту (`burn`, `stun`, `slow`, `ash_curse`, або новий) |
-| kind | string | — | `dot` / `stun` / `slow` / `death_blast` | так | механіка: урон з часом / стоїть / сповільнений / вибух при смерті |
+| id | string | — | snake_case | так | тип ефекту |
 | name_en, name_uk | string | — | — | так | назва для UI |
-| duration | number | с | ≥ 0 | так | скільки діє; 0 лише для `death_blast` = до смерті |
-| dps | number | урон/с | ≥ 0 | ні | `dot` |
-| tick | number | с | 0.05..5 | ні | `dot`: як часто знімається урон (типово 0.25) |
-| mult | number | частка | 0..1 | ні | `slow`: множник швидкості |
-| damage, radius | number | урон, studs | ≥ 0 | ні | `death_blast`: урон вибуху й радіус |
-| armor_pierce | number | частка | 0..1 | ні | яку частку броні ігнорує урон ефекту (0 = броня діє, 1 = ігнорує) |
+| max_stacks | int | — | 1..50 | ні | 1 (типово) = ефект із таймером, більше = лічильник стеків |
+| duration | number | с | ≥ 0 | для `max_stacks = 1` | скільки діє; 0 = до зняття або смерті |
+| decay_interval | number | с | ≥ 0 | ні | лише лічильник: один стек згасає за цей час (0 = не згасає) |
+| reapply | string | — | `refresh` / `ignore` | ні | лише таймер: повторне накладання скидає таймер (типово) або ігнорується |
+| modifiers | array | — | — | ні | `{ stat, value, per_stack?, requires_tags? }`: значення стата; `per_stack` (лише лічильник) множить на кількість стеків |
+| tick | number | с | 0.05..5 | ні | як часто нараховується урон `dps` і `hp_pct_per_sec` (типово 0.25) |
+| damage_type, armor_pierce | string, number | — | `physical` / `fire` / `shock` / `ice`; 0..1 | ні | тип урону й частка броні, яку він ігнорує (лише з `dps` або `hp_pct_per_sec`) |
+| grants_tags | array | — | snake_case | ні | теги, які ефект видає ворогу, поки діє |
+| requires_tags, blocked_by_tags | array | — | snake_case | ні | ефект накладається, лише якщо є всі `requires_tags` і немає жодного з `blocked_by_tags` |
+| on_max_stacks | object | — | — | ні | лічильник дійшов до максимуму: `{ consume?, apply?, stacks?, duration? }` |
+| on_end | object | — | — | ні | ефект закінчився сам: `{ apply?, stacks?, duration? }` |
+| on_death | object | — | — | ні | ворог помер: `{ blast: { damage, radius, damage_type?, armor_pierce?, fx?, sound? } }` (`fx` — ефект `TD_Fx`, `sound` — id з `sounds.json`) |
 | visual | string | — | `fire` | ні | візуал на ворогу |
-| fx, sound | string | — | — | ні | `death_blast`: ефект вибуху (`TD_Fx`) і id звуку з `sounds.json` (snake_case) |
+
+Валідатор перевіряє: стати зі словника, межі значень, `per_stack` лише з `add`/`mul` стата, теги (ніхто не вимагає тег, який не видає жоден ефект), посилання `apply`, `stacks` у межах `max_stacks` цільового ефекту, відсутність циклів переходів, звуки з `sounds.json`, а також параметри `on_hit` зброї й пасток і `stat` прокачок (`on_hit.<ефект>.<параметр>`: `chance`, `stacks` або `duration`, імена модифікаторів `dps`/`speed_mult`, `damage`/`radius` вибуху). Негативні тести: `python3 tools/test_validate_effects.py`.
 
 ### sounds.json → `sounds` (масив)
 
