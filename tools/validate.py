@@ -35,28 +35,27 @@ ID_RE = re.compile(r"^[a-z0-9_]+$")
 NUM = (int, float)
 # поле: (тип, обов'язкове, мін, макс)  None = без межі
 SCHEMA = {
-    "rules": {
-        "_object": True,
-        "start_coins": (int, True, 0, None),
-        "refund_share": (NUM, True, 0, 1),
-        "reward_mode": (str, True, None, None),
-        "cell_size": (NUM, True, 0.1, None),
-        "weapon_select_seconds": (NUM, True, 1, 120),
-        "weapon_select_delay": (NUM, True, 0, 10),
-    },
+    "rules": {"_object": True, "_sections": True},  # поля в RULES_SCHEMA
     "enemies": {
         "id": (str, True, None, None), "name_en": (str, True, None, None), "name_uk": (str, True, None, None),
         "size": (str, True, None, None), "hp": (NUM, True, 1, None), "speed": (NUM, True, 0.1, None),
         "armor": (NUM, True, 0, 0.95), "damage_to_base": (NUM, True, 0, None), "reward": (int, True, 0, None),
+        # контракт 23.10.2026, етап 1в: те, що було лише в Config.lua
+        "hitbox": (list, True, None, None), "color": (str, True, None, None),
+        "visual": (str, False, None, None), "visual_scale": (NUM, False, 0.1, 10),
     },
     "traps": {
         "id": (str, True, None, None), "level": (int, True, 1, 10), "order": (int, True, 0, None),
         "name_en": (str, True, None, None), "name_uk": (str, True, None, None),
         "mechanic": (str, True, None, None), "placement": (str, True, None, None),
         "cost": (int, True, 0, None), "price_soft": (int, True, 0, None), "damage": (NUM, True, 0, None),
-        "cooldown": (NUM, False, 0, None), "hold_time": (NUM, False, 0, None),
+        "cooldown": (NUM, False, 0, None),
         "fire_interval": (NUM, False, 0.01, None), "range": (NUM, False, 0, None),
         "default_owned": (bool, False, None, None),
+        # контракт 23.10.2026, етап 1в
+        "damage_type": (str, False, None, None), "armor_pierce": (NUM, False, 0, 1), "on_hit": (dict, False, None, None),
+        "trigger_radius": (NUM, False, 0.1, None), "hit_margin": (NUM, False, 0, None),
+        "wall_height": (NUM, False, 0.1, None), "wall_span_max": (NUM, False, 1, None),
     },
     "weapons": {
         "id": (str, True, None, None), "order": (int, True, 0, None), "default_owned": (bool, False, None, None),
@@ -113,6 +112,7 @@ SCHEMA = {
     "zones": {
         "id": (str, True, None, None), "order": (int, True, 0, None), "name_en": (str, True, None, None),
         "name_uk": (str, True, None, None), "length": (NUM, True, 0, None),
+        "lanes": (int, True, 1, 64),
         "spawner_id": (str, False, None, None),
     },
     "waves": {
@@ -131,8 +131,12 @@ SCHEMA = {
         "name_en": (str, True, None, None), "name_uk": (str, True, None, None),
         "duration": (NUM, True, 0, None), "dps": (NUM, False, 0, None), "tick": (NUM, False, 0.05, 5),
         "mult": (NUM, False, 0, 1), "damage": (NUM, False, 0, None), "radius": (NUM, False, 0, None),
-        "ignore_armor": (bool, False, None, None), "visual": (str, False, None, None),
+        "armor_pierce": (NUM, False, 0, 1), "visual": (str, False, None, None),
         "fx": (str, False, None, None), "sound": (str, False, None, None),
+    },
+    "sounds": {
+        "id": (str, True, None, None), "asset": (str, True, None, None),
+        "volume": (NUM, True, 0, 2), "pitch": (NUM, True, 0.1, 4),
     },
     "items": {
         "id": (str, True, None, None), "kind": (str, True, None, None), "icon": (str, True, None, None),
@@ -141,10 +145,10 @@ SCHEMA = {
 }
 ENUMS = {
     ("items", "kind"): {"currency", "weapon", "trap", "booster", "item", "enemy", "upgrade"},
-    ("rules", "reward_mode"): {"each", "split", "killer"},
     ("enemies", "size"): {"small", "medium", "large"},
     ("traps", "mechanic"): {"snare", "wall", "turret"},
     ("traps", "placement"): {"floor", "wall"},
+    ("traps", "damage_type"): {"physical", "fire", "shock"},
     ("status_effects", "kind"): {"dot", "stun", "slow", "death_blast"},
     ("status_effects", "visual"): {"fire"},
     ("weapons", "rarity"): {"common", "uncommon", "rare", "epic", "legendary"},
@@ -173,7 +177,26 @@ ON_HIT_PARAMS = {"chance": (0, 1), "duration": (0, None), "dps": (0, None), "tic
 UPGRADE_OPS = {"set", "add", "mul"}
 TYPE_FIELDS = {"id": (str, True, None, None), "stat": (str, True, None, None), "name_en": (str, True, None, None),
                "name_uk": (str, True, None, None), "item_id": (str, False, None, None), "op": (str, False, None, None)}
-SHARED_FILES = ["rules", "enemies", "traps", "weapons", "weapon_upgrades", "run_rewards", "items", "bots", "status_effects"]
+SHARED_FILES = ["rules", "enemies", "traps", "weapons", "weapon_upgrades", "run_rewards", "items", "bots", "status_effects", "sounds"]
+HEX_RE = re.compile(r"^#[0-9A-Fa-f]{6}$")
+REWARD_MODES = {"each", "split", "killer"}
+# rules.json -> rules: секції (поле: (тип, мін, макс)); усі поля обов'язкові, запасних значень у коді немає
+RULES_SCHEMA = {
+    "run": {
+        "start_wisps": (int, 0, None), "reward_mode": (str, None, None), "start_weapon": (str, None, None),
+        "restart_delay": (NUM, 0, 600), "weapon_select_seconds": (NUM, 1, 120), "weapon_select_delay": (NUM, 0, 10),
+    },
+    "player": {"walk_speed": (NUM, 1, 200), "sprint_speed": (NUM, 1, 300)},
+    "traps": {
+        "cell_size": (NUM, 0.1, None), "place_reach": (NUM, 1, 2000), "reach": (NUM, 1, 200),
+        "reach_slack": (NUM, 0, 100), "refund_share": (NUM, 0, 1),
+    },
+    "enemies": {
+        "corridor_lanes": (int, 1, 64), "turn_radius": (NUM, 0, 200), "speed_jitter": (NUM, 0, 1),
+        "spawn_jitter": (NUM, 0, 1), "drift_amplitude": (NUM, 0, 100), "drift_scale": (NUM, 1, 1000),
+    },
+    "combat": {"max_live_shots": (int, 1, 1000), "net_tolerance": (NUM, 0, 1)},
+}
 ICON_RE = re.compile(r"^(rbxassetid://[0-9]+)?$")
 PLACEHOLDER_RE = re.compile(r"\{([a-z0-9_]+)\}")
 ROOM_FILES = ["room", "zones", "waves", "players"]
@@ -254,6 +277,32 @@ def check_fields(path, name, row, where):
             err(path, f"{where}: невідоме поле {key} (додай його в схему і README)")
 
 
+def check_rules(path, body):
+    """rules.json -> rules: секції run / player / traps / enemies / combat, усі поля обов'язкові."""
+    for section, fields in RULES_SCHEMA.items():
+        block = body.get(section)
+        if not isinstance(block, dict):
+            err(path, f"rules.{section}: потрібен об'єкт")
+            continue
+        for key, (t, lo, hi) in fields.items():
+            if key not in block:
+                err(path, f"rules.{section}: немає поля {key}")
+                continue
+            check_value(path, "rules", key, block[key], (t, True, lo, hi), f"rules.{section}")
+        for key in block:
+            if key not in fields:
+                err(path, f"rules.{section}: невідоме поле {key} (додай його в схему і README)")
+    for section in body:
+        if section not in RULES_SCHEMA:
+            err(path, f"rules: невідома секція {section} (є {sorted(RULES_SCHEMA)})")
+    mode = (body.get("run") or {}).get("reward_mode")
+    if isinstance(mode, str) and mode not in REWARD_MODES:
+        err(path, f"rules.run: reward_mode={mode!r} не з {sorted(REWARD_MODES)}")
+    walk, sprint = (body.get("player") or {}).get("walk_speed"), (body.get("player") or {}).get("sprint_speed")
+    if type_ok(walk, NUM) and type_ok(sprint, NUM) and sprint < walk:
+        err(path, "rules.player: sprint_speed менша за walk_speed")
+
+
 def check_file(path, name):
     data = load(path)
     if data is None:
@@ -265,6 +314,12 @@ def check_file(path, name):
         err(path, f"немає ключа {name}")
         return None
     body = data[name]
+    if SCHEMA[name].get("_sections"):
+        if not isinstance(body, dict):
+            err(path, f"{name} має бути об'єктом")
+            return None
+        check_rules(path, body)
+        return body
     if SCHEMA[name].get("_object"):
         if not isinstance(body, dict):
             err(path, f"{name} має бути об'єктом")
@@ -322,6 +377,64 @@ def check_effect_map(path, where, block, effect_ids, params=True):
             lo, hi = ON_HIT_PARAMS[pk]
             if not type_ok(pv, NUM) or pv < lo or (hi is not None and pv > hi):
                 err(path, f"{where}.{eid}.{pk}: потрібне число {lo}..{hi if hi is not None else '∞'}")
+
+
+TRAP_REQUIRED = {
+    "snare": ("cooldown", "trigger_radius", "on_hit"),
+    "wall": ("hit_margin", "wall_height", "wall_span_max"),
+    "turret": ("fire_interval", "range"),
+}
+
+
+def check_enemy_extras(enemies):
+    path = SHARED / "enemies.json"
+    for i, e in enumerate(enemies):
+        if not isinstance(e, dict):
+            continue
+        where = f"enemies[{i}] {e.get('id')!r}"
+        hb = e.get("hitbox")
+        if isinstance(hb, list) and (len(hb) != 3 or not all(type_ok(v, NUM) and 0.1 <= v <= 100 for v in hb)):
+            err(path, f"{where}: hitbox має бути [x, y, z] студів, числа 0.1..100")
+        col = e.get("color")
+        if isinstance(col, str) and not HEX_RE.match(col):
+            err(path, f"{where}: color має бути hex #RRGGBB, зараз {col!r}")
+        if "visual_scale" in e and "visual" not in e:
+            err(path, f"{where}: visual_scale без visual")
+
+
+def check_trap_extras(traps, effect_ids):
+    path = SHARED / "traps.json"
+    for i, t in enumerate(traps):
+        if not isinstance(t, dict):
+            continue
+        where = f"traps[{i}] {t.get('id')!r} L{t.get('level')}"
+        for key in TRAP_REQUIRED.get(t.get("mechanic"), ()):
+            if key not in t:
+                err(path, f"{where}: для mechanic={t.get('mechanic')} потрібне поле {key}")
+        if "on_hit" in t:
+            check_effect_map(path, f"{where}.on_hit", t["on_hit"], effect_ids)
+        if t.get("mechanic") == "snare":
+            stun = (t.get("on_hit") or {}).get("stun") if isinstance(t.get("on_hit"), dict) else None
+            if not isinstance(stun, dict) or not type_ok(stun.get("duration"), NUM) or stun["duration"] <= 0:
+                err(path, f"{where}: капкан тримає ворога через on_hit.stun.duration > 0")
+
+
+def check_sound_refs(sounds, effects, rules, weapons):
+    path = SHARED / "sounds.json"
+    ids = {x["id"] for x in sounds if isinstance(x, dict) and isinstance(x.get("id"), str)}
+    for e in effects:
+        if isinstance(e, dict) and "sound" in e and e["sound"] not in ids:
+            err(SHARED / "status_effects.json", f"status_effects {e.get('id')!r}: sound {e['sound']!r} немає в sounds.json")
+    for need in ("music", "enemy_hit", "enemy_death", "click"):
+        if need not in ids:
+            err(path, f"немає звуку {need!r}, який грає код")
+    start = ((rules or {}).get("run") or {}).get("start_weapon")
+    by = {w["id"]: w for w in weapons if isinstance(w, dict) and isinstance(w.get("id"), str)}
+    if isinstance(start, str):
+        if start not in by:
+            err(SHARED / "rules.json", f"rules.run.start_weapon {start!r} немає в weapons.json")
+        elif not by[start].get("default_owned"):
+            err(SHARED / "rules.json", f"rules.run.start_weapon {start!r} не default_owned: гравець може її не мати")
 
 
 def check_weapon_extras(weapons, effect_ids):
@@ -834,6 +947,9 @@ def main():
         err(SHARED / "weapons.json", "жодна зброя не default_owned: гравцю не буде з чим грати")
     effect_ids = {e["id"] for e in (shared.get("status_effects") or []) if isinstance(e, dict) and isinstance(e.get("id"), str)}
     check_weapon_extras(shared.get("weapons") or [], effect_ids)
+    check_enemy_extras(shared.get("enemies") or [])
+    check_trap_extras(traps, effect_ids)
+    check_sound_refs(shared.get("sounds") or [], shared.get("status_effects") or [], shared.get("rules"), shared.get("weapons") or [])
     check_upgrades(shared.get("weapon_upgrades") or [], shared.get("weapons") or [], effect_ids, shared.get("items") or [])
     check_items(shared.get("items") or [], weapon_ids, set(by_trap), enemy_ids)
     room_unlocks = []

@@ -1,8 +1,8 @@
 {
   "meta": {
-    "version": "BAL-0004",
+    "version": "BAL-0005",
     "exported_at": "2026-10-16",
-    "note": "Пастки: рядок на пару (id, level). cost = віспи за встановлення в кімнаті. price_soft = ціна рівня в лобі (рівень 1 безкоштовний: усі три пастки доступні одразу, далі лише прокачка)"
+    "note": "Пастки: рядок на пару (id, level). cost = віспи за встановлення в кімнаті. price_soft = ціна рівня в лобі (рівень 1 безкоштовний). Усі числа пасток читає код з цього файлу (damage, cooldown, on_hit, trigger_radius, hit_margin, wall_*)"
   },
   "traps": [
     {
@@ -16,9 +16,15 @@
       "cost": 100,
       "damage": 15,
       "cooldown": 6,
-      "hold_time": 2,
       "price_soft": 0,
-      "default_owned": true
+      "default_owned": true,
+      "trigger_radius": 2.4,
+      "on_hit": {
+        "stun": {
+          "chance": 1,
+          "duration": 2
+        }
+      }
     },
     {
       "id": "snare",
@@ -31,8 +37,14 @@
       "cost": 100,
       "damage": 25,
       "cooldown": 5,
-      "hold_time": 2.5,
-      "price_soft": 75
+      "price_soft": 75,
+      "trigger_radius": 2.4,
+      "on_hit": {
+        "stun": {
+          "chance": 1,
+          "duration": 2.5
+        }
+      }
     },
     {
       "id": "snare",
@@ -45,8 +57,14 @@
       "cost": 100,
       "damage": 35,
       "cooldown": 4,
-      "hold_time": 3,
-      "price_soft": 125
+      "price_soft": 125,
+      "trigger_radius": 2.4,
+      "on_hit": {
+        "stun": {
+          "chance": 1,
+          "duration": 3
+        }
+      }
     },
     {
       "id": "energy_wall",
@@ -59,7 +77,11 @@
       "cost": 200,
       "damage": 20,
       "price_soft": 0,
-      "default_owned": true
+      "default_owned": true,
+      "damage_type": "shock",
+      "hit_margin": 0.6,
+      "wall_height": 4,
+      "wall_span_max": 30
     },
     {
       "id": "energy_wall",
@@ -71,7 +93,11 @@
       "placement": "wall",
       "cost": 200,
       "damage": 30,
-      "price_soft": 150
+      "price_soft": 150,
+      "damage_type": "shock",
+      "hit_margin": 0.6,
+      "wall_height": 4,
+      "wall_span_max": 30
     },
     {
       "id": "energy_wall",
@@ -83,7 +109,11 @@
       "placement": "wall",
       "cost": 200,
       "damage": 45,
-      "price_soft": 250
+      "price_soft": 250,
+      "damage_type": "shock",
+      "hit_margin": 0.6,
+      "wall_height": 4,
+      "wall_span_max": 30
     },
     {
       "id": "turret",

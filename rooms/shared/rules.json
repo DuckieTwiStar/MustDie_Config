@@ -1,16 +1,41 @@
 {
   "meta": {
-    "version": "BAL-0007",
+    "version": "BAL-0008",
     "exported_at": "2026-10-23",
-    "note": "Правила забігу і економіки, спільні для всіх кімнат; debug: доступ до дебаг-меню"
+    "note": "Правила забігу, гравця, пасток, ворогів і бою, спільні для всіх кімнат; debug: доступ до дебаг-меню"
   },
   "rules": {
-    "start_coins": 500,
-    "refund_share": 0.5,
-    "reward_mode": "each",
-    "cell_size": 4,
-    "weapon_select_seconds": 20,
-    "weapon_select_delay": 1.5
+    "run": {
+      "start_wisps": 500,
+      "reward_mode": "each",
+      "start_weapon": "slingshot",
+      "restart_delay": 10,
+      "weapon_select_seconds": 20,
+      "weapon_select_delay": 1.5
+    },
+    "player": {
+      "walk_speed": 16,
+      "sprint_speed": 24
+    },
+    "traps": {
+      "cell_size": 4,
+      "place_reach": 300,
+      "reach": 14,
+      "reach_slack": 6,
+      "refund_share": 0.5
+    },
+    "enemies": {
+      "corridor_lanes": 6,
+      "turn_radius": 12,
+      "speed_jitter": 0.1,
+      "spawn_jitter": 0.4,
+      "drift_amplitude": 6,
+      "drift_scale": 40
+    },
+    "combat": {
+      "max_live_shots": 60,
+      "net_tolerance": 0.05
+    }
   },
   "debug": {
     "enabled": true,

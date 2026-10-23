@@ -1,6 +1,6 @@
 {
   "meta": {
-    "version": "FX-0001",
+    "version": "FX-0002",
     "exported_at": "2026-10-23",
     "note": "Ефекти на ворогах (EffectService). Не стакаються: поки ефект цього id діє, новий такий самий не накладається. Ефект прив'язаний до гравця, що наклав: урон, бали й вбивство йому. Джерело (зброя, пастка, сцена) може передати свої числа, вони важливіші за ці. Інструкція: docs/status-effects.md"
   },
@@ -13,8 +13,8 @@
       "duration": 3,
       "dps": 10,
       "tick": 0.25,
-      "ignore_armor": false,
-      "visual": "fire"
+      "visual": "fire",
+      "armor_pierce": 0
     },
     {
       "id": "stun",
@@ -39,9 +39,9 @@
       "duration": 0,
       "damage": 100,
       "radius": 8,
-      "ignore_armor": true,
       "fx": "ash",
-      "sound": "ashBoom"
+      "sound": "ash_boom",
+      "armor_pierce": 1
     }
   ]
 }

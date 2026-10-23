@@ -2,7 +2,7 @@
   "meta": {
     "version": "BAL-0004",
     "exported_at": "2026-10-15",
-    "note": "Зони Room 2: гілка кожного спавнера (spawner_id), далі спільна частина. length для симуляції і ботів, ще не звірено з картою"
+    "note": "Зони Room 2: гілка кожного спавнера (spawner_id), далі спільна частина. length для симуляції і ботів, ще не звірено з картою. lanes = ширина зони в смугах по cell_size (зараз 6: карта ще не перебудована під 8)"
   },
   "zones": [
     {
@@ -11,7 +11,8 @@
       "name_en": "Branch A: corridor",
       "name_uk": "Гілка A: коридор",
       "length": 64,
-      "spawner_id": "s1"
+      "spawner_id": "s1",
+      "lanes": 6
     },
     {
       "id": "a_turn",
@@ -19,7 +20,8 @@
       "name_en": "Branch A: turn",
       "name_uk": "Гілка A: поворот",
       "length": 24,
-      "spawner_id": "s1"
+      "spawner_id": "s1",
+      "lanes": 6
     },
     {
       "id": "a_cross",
@@ -27,7 +29,8 @@
       "name_en": "Branch A: to the junction",
       "name_uk": "Гілка A: до вузла",
       "length": 72,
-      "spawner_id": "s1"
+      "spawner_id": "s1",
+      "lanes": 6
     },
     {
       "id": "b_down",
@@ -35,7 +38,8 @@
       "name_en": "Branch B: corridor",
       "name_uk": "Гілка B: коридор",
       "length": 64,
-      "spawner_id": "s2"
+      "spawner_id": "s2",
+      "lanes": 6
     },
     {
       "id": "b_turn",
@@ -43,7 +47,8 @@
       "name_en": "Branch B: turn",
       "name_uk": "Гілка B: поворот",
       "length": 24,
-      "spawner_id": "s2"
+      "spawner_id": "s2",
+      "lanes": 6
     },
     {
       "id": "b_cross",
@@ -51,28 +56,32 @@
       "name_en": "Branch B: to the junction",
       "name_uk": "Гілка B: до вузла",
       "length": 72,
-      "spawner_id": "s2"
+      "spawner_id": "s2",
+      "lanes": 6
     },
     {
       "id": "junction",
       "order": 70,
       "name_en": "Junction",
       "name_uk": "Вузол",
-      "length": 40
+      "length": 40,
+      "lanes": 6
     },
     {
       "id": "main",
       "order": 80,
       "name_en": "Main corridor",
       "name_uk": "Головний коридор",
-      "length": 56
+      "length": 56,
+      "lanes": 6
     },
     {
       "id": "area",
       "order": 90,
       "name_en": "Seal hall",
       "name_uk": "Зала печатки",
-      "length": 24
+      "length": 24,
+      "lanes": 6
     }
   ]
 }

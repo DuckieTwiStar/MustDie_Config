@@ -1,0 +1,189 @@
+{
+  "meta": {
+    "version": "SND-0001",
+    "exported_at": "2026-10-23",
+    "note": "Звуки: тимчасові, зі стандартного набору Roblox. id у snake_case, у коді ім'я camelCase (bow_shot = bowShot). Заміна звуку = заміна asset."
+  },
+  "sounds": [
+    {
+      "id": "punch",
+      "asset": "rbxasset://sounds/swordslash.wav",
+      "volume": 0.5,
+      "pitch": 1.3
+    },
+    {
+      "id": "bow_shot",
+      "asset": "rbxasset://sounds/swordlunge.wav",
+      "volume": 0.6,
+      "pitch": 1.5
+    },
+    {
+      "id": "slingshot_shot",
+      "asset": "rbxasset://sounds/swordslash.wav",
+      "volume": 0.45,
+      "pitch": 2.2
+    },
+    {
+      "id": "shotgun_shot",
+      "asset": "rbxasset://sounds/impact_explosion_03.mp3",
+      "volume": 0.55,
+      "pitch": 1.8
+    },
+    {
+      "id": "revolver_shot",
+      "asset": "rbxasset://sounds/impact_explosion_03.mp3",
+      "volume": 0.4,
+      "pitch": 2.6
+    },
+    {
+      "id": "tommy_shot",
+      "asset": "rbxasset://sounds/paintball.wav",
+      "volume": 0.35,
+      "pitch": 0.8
+    },
+    {
+      "id": "crossbow_shot",
+      "asset": "rbxasset://sounds/swordlunge.wav",
+      "volume": 0.7,
+      "pitch": 1.0
+    },
+    {
+      "id": "energygun_shot",
+      "asset": "rbxasset://sounds/electronicpingshort.wav",
+      "volume": 0.15,
+      "pitch": 0.6
+    },
+    {
+      "id": "voodoo_shot",
+      "asset": "rbxasset://sounds/snap.mp3",
+      "volume": 0.5,
+      "pitch": 1.6
+    },
+    {
+      "id": "plasma_boom",
+      "asset": "rbxasset://sounds/impact_explosion_03.mp3",
+      "volume": 0.5,
+      "pitch": 1.2
+    },
+    {
+      "id": "ash_boom",
+      "asset": "rbxasset://sounds/impact_explosion_03.mp3",
+      "volume": 0.6,
+      "pitch": 0.8
+    },
+    {
+      "id": "enemy_hit",
+      "asset": "rbxasset://sounds/hit.wav",
+      "volume": 0.5,
+      "pitch": 1
+    },
+    {
+      "id": "enemy_death",
+      "asset": "rbxasset://sounds/splat.wav",
+      "volume": 0.7,
+      "pitch": 1
+    },
+    {
+      "id": "base_hit",
+      "asset": "rbxasset://sounds/collide.wav",
+      "volume": 0.9,
+      "pitch": 0.8
+    },
+    {
+      "id": "door_open",
+      "asset": "rbxasset://sounds/bass.wav",
+      "volume": 0.8,
+      "pitch": 1
+    },
+    {
+      "id": "victory",
+      "asset": "rbxasset://sounds/victory.wav",
+      "volume": 0.8,
+      "pitch": 1
+    },
+    {
+      "id": "defeat",
+      "asset": "rbxasset://sounds/glassbreak.wav",
+      "volume": 0.8,
+      "pitch": 0.7
+    },
+    {
+      "id": "trap_place",
+      "asset": "rbxasset://sounds/unsheath.wav",
+      "volume": 0.6,
+      "pitch": 1
+    },
+    {
+      "id": "trap_upgrade",
+      "asset": "rbxasset://sounds/electronicpingshort.wav",
+      "volume": 0.6,
+      "pitch": 1.4
+    },
+    {
+      "id": "trap_destroy",
+      "asset": "rbxasset://sounds/Kerplunk.wav",
+      "volume": 0.6,
+      "pitch": 1
+    },
+    {
+      "id": "snare",
+      "asset": "rbxasset://sounds/snap.mp3",
+      "volume": 0.8,
+      "pitch": 1
+    },
+    {
+      "id": "turret_shot",
+      "asset": "rbxasset://sounds/paintball.wav",
+      "volume": 0.4,
+      "pitch": 1.2
+    },
+    {
+      "id": "wall_zap",
+      "asset": "rbxasset://sounds/flashbulb.wav",
+      "volume": 0.6,
+      "pitch": 1.4
+    },
+    {
+      "id": "coin",
+      "asset": "rbxasset://sounds/electronicpingshort.wav",
+      "volume": 0.35,
+      "pitch": 1.8
+    },
+    {
+      "id": "buy",
+      "asset": "rbxasset://sounds/switch.wav",
+      "volume": 0.6,
+      "pitch": 1
+    },
+    {
+      "id": "error",
+      "asset": "rbxasset://sounds/button.wav",
+      "volume": 0.6,
+      "pitch": 0.6
+    },
+    {
+      "id": "click",
+      "asset": "rbxasset://sounds/clickfast.wav",
+      "volume": 0.5,
+      "pitch": 1
+    },
+    {
+      "id": "music",
+      "asset": "rbxassetid://123095914761298",
+      "volume": 0.35,
+      "pitch": 1
+    },
+    {
+      "id": "seal_rumble",
+      "asset": "rbxasset://sounds/bass.wav",
+      "volume": 1,
+      "pitch": 0.45
+    },
+    {
+      "id": "demon_roar",
+      "asset": "rbxasset://sounds/uuhhh.mp3",
+      "volume": 1,
+      "pitch": 0.35
+    }
+  ]
+}
