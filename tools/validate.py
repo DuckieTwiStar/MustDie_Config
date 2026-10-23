@@ -70,7 +70,7 @@ SCHEMA = {
         # арсенал 19.10.2026
         "rarity": (str, True, None, None), "fire_mode": (str, True, None, None),
         "pierce": (int, False, 0, None), "multishot_spread": (NUM, False, 0, 45),
-        "dual_rate": (NUM, False, 1, None), "dual_spread": (NUM, False, 0, 90),
+        "dual_rate": (NUM, False, 1, None), "dual_spread": (NUM, False, 0, 90), "dual_magazine_mult": (NUM, False, 1, None),
         "spread_max": (NUM, False, 0, 90), "spread_grow": (NUM, False, 0, 90), "spread_recover": (NUM, False, 0, None),
         "beam_time": (NUM, False, 0.1, None), "cooldown": (NUM, False, 0, None),
         "plasma_interval": (NUM, False, 0.1, None), "plasma_radius": (NUM, False, 0, None),
@@ -163,7 +163,7 @@ WEAPON_IDENTITY = {"id", "order", "default_owned", "tier", "price_soft", "base_i
 DEFAULT_KEYS = (
     "auto", "damage_type", "armor_pierce", "knockback", "gravity", "stick", "pierce",
     "multishot", "multishot_spread", "volley_delay", "ricochet", "ricochet_range", "ricochet_damage_mult",
-    "crit_chance", "crit_mult", "spread", "pellets", "falloff_min", "dual", "dual_rate",
+    "crit_chance", "crit_mult", "spread", "pellets", "falloff_min", "dual", "dual_rate", "dual_magazine_mult",
     "magazine", "reload_time", "reload_per_round", "reload_interruptible",
     "plasma_damage", "plasma_interval", "plasma_radius", "plasma_speed", "targets", "splash_radius", "splash_share",
 )
