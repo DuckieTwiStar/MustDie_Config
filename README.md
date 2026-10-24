@@ -33,6 +33,8 @@ rooms/
     players.json
   room2/                Room 2 (два спавнери, хвилі на 4 гравців, множники < 1)
     ...                 ті самі чотири файли
+  room3/                Room 3 (фортеця в пустці: s1 пустка, s2 загін за дверима з HP; хвилі на 4 гравців, BAL-0005)
+    ...                 ті самі чотири файли
 assets/icons/          вихідні PNG іконок (512x512, прозорий фон); гра їх не читає, у грі працює rbxassetid із items.json
 docs/prices.md          де тепер ціни лобі (price_soft у weapons/traps) і як глянути економіку ботів
 tools/validate.py       перевірка перед комітом (так само її запускає GitHub Actions: .github/workflows/validate.yml)
@@ -152,7 +154,7 @@ tools/validate.py       перевірка перед комітом (так с�
 
 | поле | тип | одиниці | діапазон | обов. | що означає |
 |---|---|---|---|---|---|
-| id | string | — | snake_case | так | `grunt`, `warrior`, `brute` |
+| id | string | — | snake_case | так | `grunt`, `warrior`, `brute`, `runner` (швидкий зомбі) |
 | name_en, name_uk | string | — | — | так | назва для гравця |
 | size | string | — | `small` / `medium` / `large` | так | клас розміру |
 | hp | number | — | ≥ 1 | так | здоров'я |
@@ -466,6 +468,8 @@ tools/validate.py       перевірка перед комітом (так с�
 4. У новому Place в `ReplicatedStorage.RoomProjectConfig` поставити `roomId = "roomN"`, замінити карту (контракт карти: README в `ServerScriptService._README_FOR_CLAUDE`).
 5. Додати рядок у `lobby/portals.json` з `placeId` нової кімнати.
 6. Прогнати `python3 tools/validate.py`.
+7. Двері загону з HP (необов'язково): модель дверей з тегом `SpawnGate` і атрибутами `SpawnerId` (спавнер, чиї вороги чекають за дверима), `MaxHP` (900), `DpsPerEnemy` (1), `Push` (Vector3, куди вибивають стулку). Деталі рамки з атрибутом `GateFrame = true`, стулка з деталлю `Panel`, смуга HP — BillboardGui з Frame `Fill`. Код: `TowerDefenseServer.GateService`.
+8. Міні-карта (необов'язково): у Place з Command Bar `require(game.ServerStorage.TowerDefenseServer.MinimapBaker).bake()` після кожної зміни карти, потім Publish. Межі зони — Part з тегом `MinimapBounds`. Без `ReplicatedStorage.MinimapData` міні-карти в кімнаті немає.
 
 ## Перед кожним комітом
 
