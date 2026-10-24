@@ -145,10 +145,10 @@
 - `EffectService.apply(ворог, id, гравець, { stacks, duration, <числа джерела> })` лишається, повертає `true`, якщо щось змінилось (накладено чи додано стеки).
 - Нові: `EffectService.stacks(ворог, id)`, `EffectService.hasTag(ворог, тег)`.
 - `EffectService.has`, `remove`, `list` лишаються.
-- Підсумкові модифікатори перераховуються при кожній зміні (накладання, згасання, кінець): `enemy.speedMult`, `enemy.takenAll` (усі типи), `enemy.takenByType[тип]`, `enemy.effectTags` і `enemy.heldUntil` (час кінця, поки швидкість 0; для капкана й клієнта). `EnemyService` читає лише ці поля й не залежить від `EffectService`.
+- Підсумкові модифікатори перераховуються при кожній зміні (накладання, згасання, кінець): `enemy.speedMult`, `enemy.takenAll` (усі типи), `enemy.takenByType[тип]`, `enemy.effectTags` і `enemy.effectHeldUntil` (час кінця, поки швидкість 0; для `EnemyService`, капкана, ботів і атрибута `HeldUntil` на клієнті). Поле `heldUntil` ефекти не чіпають: його веде `GateService` (двері загону) і капкан. `EnemyService` читає лише ці поля й не залежить від `EffectService`.
 - Крок за кадром проходить усіх ворогів, але миттєво пропускає тих, у кого немає ефектів.
 - Для джерел: `EffectService.isDot(id)` (ефект дає урон з часом) і `EffectService.hasBlast(id)`. Зброя не накладає порожній ефект: якщо в `on_hit` число `dps` чи `damage` дорівнює 0, ефект вимикається (його вмикає прокачка). Число `armorPierce` джерела (вуду: 1) перекриває `armor_pierce` ефекту з таймером.
-- `TrapService` при знищенні капкана знімає оглушення (`EffectService.remove(ворог, "stun")`) і читає `heldUntil`.
+- `TrapService` при знищенні капкана знімає оглушення (`EffectService.remove(ворог, "stun")`) і перевіряє `heldUntil` та `effectHeldUntil`.
 - Старий формат JSON (поле `kind`) валідатор відхиляє: гра бере вбудовані значення, які збігаються з міграцією. Тому код можна публікувати до злиття JSON і навпаки.
 
 ## Що бачить клієнт (Вася й Агент Коричневий)
