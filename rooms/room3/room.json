@@ -1,0 +1,27 @@
+{
+  "meta": {
+    "version": "BAL-0005",
+    "exported_at": "2026-10-24",
+    "note": "Room 3: фортеця в пустці. s1 — два розломи на півночі, s2 — загін за дверима із HP у залі B (логіка дверей поки прототип у Place). Геометрія в Place"
+  },
+  "room": {
+    "id": "room3",
+    "name_en": "Room 3",
+    "name_uk": "Кімната 3",
+    "unlock_weapon": "shotgun",
+    "base_hp": 1000,
+    "door_timer": 60,
+    "spawners": [
+      {
+        "id": "s1",
+        "mode": "simultaneous",
+        "cooldown": 0
+      },
+      {
+        "id": "s2",
+        "mode": "simultaneous",
+        "cooldown": 0
+      }
+    ]
+  }
+}

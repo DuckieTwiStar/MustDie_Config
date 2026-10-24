@@ -1,0 +1,226 @@
+{
+  "meta": {
+    "version": "BAL-0005",
+    "exported_at": "2026-10-24",
+    "note": "Хвилі Room 3 під 4 гравців, жорсткіші за Room 2 (≈2–3× ворогів, швидкі зомбі runner). s2 = загін: вороги чекають за дверима, поки їх не виламають"
+  },
+  "waves": [
+    {
+      "id": "w1_s1_grunt",
+      "wave": 1,
+      "spawner_id": "s1",
+      "enemy_id": "grunt",
+      "count": 16,
+      "spawn_interval": 0.8,
+      "wave_delay": 0
+    },
+    {
+      "id": "w1_s1_runner",
+      "wave": 1,
+      "spawner_id": "s1",
+      "enemy_id": "runner",
+      "count": 6,
+      "spawn_interval": 1.5,
+      "wave_delay": 0
+    },
+    {
+      "id": "w1_s2_grunt",
+      "wave": 1,
+      "spawner_id": "s2",
+      "enemy_id": "grunt",
+      "count": 8,
+      "spawn_interval": 1.5,
+      "wave_delay": 0
+    },
+    {
+      "id": "w2_s1_grunt",
+      "wave": 2,
+      "spawner_id": "s1",
+      "enemy_id": "grunt",
+      "count": 20,
+      "spawn_interval": 0.7,
+      "wave_delay": 20
+    },
+    {
+      "id": "w2_s1_runner",
+      "wave": 2,
+      "spawner_id": "s1",
+      "enemy_id": "runner",
+      "count": 10,
+      "spawn_interval": 1.0,
+      "wave_delay": 20
+    },
+    {
+      "id": "w2_s1_warrior",
+      "wave": 2,
+      "spawner_id": "s1",
+      "enemy_id": "warrior",
+      "count": 4,
+      "spawn_interval": 2.5,
+      "wave_delay": 20
+    },
+    {
+      "id": "w2_s2_runner",
+      "wave": 2,
+      "spawner_id": "s2",
+      "enemy_id": "runner",
+      "count": 6,
+      "spawn_interval": 1.5,
+      "wave_delay": 20
+    },
+    {
+      "id": "w2_s2_warrior",
+      "wave": 2,
+      "spawner_id": "s2",
+      "enemy_id": "warrior",
+      "count": 2,
+      "spawn_interval": 4.0,
+      "wave_delay": 20
+    },
+    {
+      "id": "w3_s1_grunt",
+      "wave": 3,
+      "spawner_id": "s1",
+      "enemy_id": "grunt",
+      "count": 18,
+      "spawn_interval": 0.6,
+      "wave_delay": 22
+    },
+    {
+      "id": "w3_s1_runner",
+      "wave": 3,
+      "spawner_id": "s1",
+      "enemy_id": "runner",
+      "count": 12,
+      "spawn_interval": 0.8,
+      "wave_delay": 22
+    },
+    {
+      "id": "w3_s1_warrior",
+      "wave": 3,
+      "spawner_id": "s1",
+      "enemy_id": "warrior",
+      "count": 8,
+      "spawn_interval": 1.8,
+      "wave_delay": 22
+    },
+    {
+      "id": "w3_s2_grunt",
+      "wave": 3,
+      "spawner_id": "s2",
+      "enemy_id": "grunt",
+      "count": 12,
+      "spawn_interval": 1.0,
+      "wave_delay": 22
+    },
+    {
+      "id": "w3_s2_brute",
+      "wave": 3,
+      "spawner_id": "s2",
+      "enemy_id": "brute",
+      "count": 1,
+      "spawn_interval": 1.0,
+      "wave_delay": 22,
+      "min_players": 2
+    },
+    {
+      "id": "w4_s1_runner",
+      "wave": 4,
+      "spawner_id": "s1",
+      "enemy_id": "runner",
+      "count": 20,
+      "spawn_interval": 0.5,
+      "wave_delay": 25
+    },
+    {
+      "id": "w4_s1_warrior",
+      "wave": 4,
+      "spawner_id": "s1",
+      "enemy_id": "warrior",
+      "count": 8,
+      "spawn_interval": 1.5,
+      "wave_delay": 25
+    },
+    {
+      "id": "w4_s1_brute",
+      "wave": 4,
+      "spawner_id": "s1",
+      "enemy_id": "brute",
+      "count": 2,
+      "spawn_interval": 6.0,
+      "wave_delay": 25
+    },
+    {
+      "id": "w4_s2_grunt",
+      "wave": 4,
+      "spawner_id": "s2",
+      "enemy_id": "grunt",
+      "count": 16,
+      "spawn_interval": 0.8,
+      "wave_delay": 25
+    },
+    {
+      "id": "w4_s2_runner",
+      "wave": 4,
+      "spawner_id": "s2",
+      "enemy_id": "runner",
+      "count": 8,
+      "spawn_interval": 1.0,
+      "wave_delay": 25
+    },
+    {
+      "id": "w5_s1_grunt",
+      "wave": 5,
+      "spawner_id": "s1",
+      "enemy_id": "grunt",
+      "count": 30,
+      "spawn_interval": 0.45,
+      "wave_delay": 25
+    },
+    {
+      "id": "w5_s1_runner",
+      "wave": 5,
+      "spawner_id": "s1",
+      "enemy_id": "runner",
+      "count": 20,
+      "spawn_interval": 0.5,
+      "wave_delay": 25
+    },
+    {
+      "id": "w5_s1_warrior",
+      "wave": 5,
+      "spawner_id": "s1",
+      "enemy_id": "warrior",
+      "count": 10,
+      "spawn_interval": 1.2,
+      "wave_delay": 25
+    },
+    {
+      "id": "w5_s1_brute",
+      "wave": 5,
+      "spawner_id": "s1",
+      "enemy_id": "brute",
+      "count": 3,
+      "spawn_interval": 5.0,
+      "wave_delay": 25
+    },
+    {
+      "id": "w5_s2_warrior",
+      "wave": 5,
+      "spawner_id": "s2",
+      "enemy_id": "warrior",
+      "count": 8,
+      "spawn_interval": 1.5,
+      "wave_delay": 25
+    },
+    {
+      "id": "w5_s2_brute",
+      "wave": 5,
+      "spawner_id": "s2",
+      "enemy_id": "brute",
+      "count": 2,
+      "spawn_interval": 6.0,
+      "wave_delay": 25
+    }
+  ]
+}

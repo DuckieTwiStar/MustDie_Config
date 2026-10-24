@@ -61,6 +61,25 @@
       "color": "#5A2828",
       "visual": "Boilermaker_Rigid",
       "visual_scale": 1.15
+    },
+    {
+      "id": "runner",
+      "name_en": "Runner",
+      "name_uk": "Бігун",
+      "size": "small",
+      "hp": 40,
+      "speed": 20,
+      "armor": 0,
+      "damage_to_base": 8,
+      "reward": 20,
+      "hitbox": [
+        3,
+        5,
+        3
+      ],
+      "color": "#3C8CDC",
+      "visual": "Runner_Rigid",
+      "visual_scale": 1.3
     }
   ]
 }

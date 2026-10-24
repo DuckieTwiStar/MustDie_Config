@@ -1,0 +1,69 @@
+{
+  "meta": {
+    "version": "BAL-0005",
+    "exported_at": "2026-10-24",
+    "note": "Зони Room 3 за картою v6: коридори 32 studs = 8 смуг по 4. length приблизно з карти"
+  },
+  "zones": [
+    {
+      "id": "waste",
+      "order": 10,
+      "name_en": "Wasteland",
+      "name_uk": "Пустка",
+      "length": 200,
+      "lanes": 8,
+      "spawner_id": "s1"
+    },
+    {
+      "id": "stairs",
+      "order": 20,
+      "name_en": "Fortress stairs",
+      "name_uk": "Сходи фортеці",
+      "length": 40,
+      "lanes": 8,
+      "spawner_id": "s1"
+    },
+    {
+      "id": "hall_a",
+      "order": 30,
+      "name_en": "Entrance hall A",
+      "name_uk": "Вхідна зала A",
+      "length": 90,
+      "lanes": 8,
+      "spawner_id": "s1"
+    },
+    {
+      "id": "pen",
+      "order": 40,
+      "name_en": "Pen behind the gate",
+      "name_uk": "Загін за дверима",
+      "length": 70,
+      "lanes": 8,
+      "spawner_id": "s2"
+    },
+    {
+      "id": "hall_b",
+      "order": 50,
+      "name_en": "Main hall B",
+      "name_uk": "Головна зала B",
+      "length": 60,
+      "lanes": 8
+    },
+    {
+      "id": "stairs_c",
+      "order": 60,
+      "name_en": "Stairs C",
+      "name_uk": "Сходи C",
+      "length": 64,
+      "lanes": 8
+    },
+    {
+      "id": "hall_d",
+      "order": 70,
+      "name_en": "Portal hall D",
+      "name_uk": "Зала порталу D",
+      "length": 32,
+      "lanes": 8
+    }
+  ]
+}
