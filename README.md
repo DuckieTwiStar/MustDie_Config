@@ -19,7 +19,8 @@ rooms/
   shared/               спільне для всіх кімнат
     rules.json
     enemies.json
-    traps.json
+    traps.json          пастки: один рядок на пастку (базові стати)
+    trap_upgrades.json  прокачка пасток (як weapon_upgrades)
     weapons.json
     weapon_upgrades.json
     status_effects.json ефекти на ворогах v2 (стеки, модифікатори, теги), docs/effects-v2.md
@@ -53,8 +54,9 @@ tools/validate.py       перевірка перед комітом (так с�
 | zones.json | **ні** | довідкові дані для розрахунків балансу; маршрут задають `PathNode` на карті. `lanes` ще не читає код (ширина йде з `rules.enemies.corridor_lanes`) |
 | items.json | **так** | `ItemCatalogService` читає й публікує клієнту каталог: іконки, назви й описи валют, зброї, пасток і прокачок (kind `upgrade`). Копії в `lobby/` і `rooms/shared/` ідентичні |
 | shared/weapons.json | **так** (з TowerDefense після 19.10.2026) | каталог (`tier`, `order`, `price_soft`, `default_owned`, `rarity`) і **стати зброї**: усі числові поля накладаються на код (snake_case → camelCase). `defaults` у файлі = значення пропущених полів (у коді запасних значень немає, лише безпечний режим кулаки + рогатка при збої завантаження). `fire_mode` вибирає механіку в коді, числа йдуть з конфігу. Контракт: `docs/combat-config-contract.md` |
-| shared/status_effects.json | **так** (формат v2 з TowerDefense після публікації EffectService v2, **ще не опубліковано**) | ефекти на ворогах для `EffectService`: стеки, модифікатори, теги, переходи; новий ефект = рядок у JSON без коду. Див. `docs/effects-v2.md` (старий `docs/status-effects.md` застарів) |
-| shared/traps.json | **так** (з TowerDefense після 23.10.2026, ще не опубліковано) | усі стати пасток: `cost`, `damage`, `damage_type`, `armor_pierce`, `on_hit`, `cooldown`, `fire_interval`, `range`, `trigger_radius`, `hit_margin`, `wall_*`. `mechanic` (`snare`, `wall`, `turret`) вибирає поведінку в коді, форми й моделі поки в коді |
+| shared/status_effects.json | **так** (формат v2) | ефекти на ворогах для `EffectService`: стеки, модифікатори, теги, переходи; новий ефект = рядок у JSON без коду. Див. `docs/effects-v2.md` (старий `docs/status-effects.md` застарів) |
+| shared/traps.json | **так** | базові стати пасток (один рядок на пастку): `cost`, `damage`, `damage_type`, `armor_pierce`, `on_hit`, `cooldown`, `fire_interval`, `range`, `trigger_radius`, `hit_margin`, `wall_*`. `mechanic` (`snare`, `wall`, `turret`) вибирає поведінку в коді, форми й моделі поки в коді |
+| shared/trap_upgrades.json | **так** (з 25.10.2026) | прокачка пасток: формат як `weapon_upgrades.json`, власник `trap_id`; купується в лобі, діє на пастки при встановленні |
 | shared/bots.json | так | налаштування ботів |
 | room.json → `unlock_weapon` | **так** (з 16.10.2026) | зброя, яка відкриває кімнату: другий замок входу (`LoadoutService.meetsRoomRequirement`, потрібна зброя того ж або вищого `tier`); з неї боти беруть пул зброї й бюджет |
 
@@ -167,23 +169,22 @@ tools/validate.py       перевірка перед комітом (так с�
 | visual | string | — | — | ні | назва моделі `<Ім'я>_Rigid` у `Assets.EnemyModels` (малює клієнт). Без неї ворог показується кольоровим блоком |
 | visual_scale | number | — | 0.1..10 | ні | масштаб моделі; вимагає `visual` |
 
-### traps.json → `traps` (масив, рядок на пару `id` + `level`)
+### traps.json → `traps` (масив, один рядок на пастку)
 
-Розблокування і рівень пастки зберігаються в профілі гравця (купуються в лобі, ціна в `price_soft`). У кімнаті пастки лише встановлюються. Усі три пастки на рівні 1 доступні одразу (`default_owned`), у лобі купується лише прокачка.
+Як зброя: рядок дає **базові** стати пастки, прокачки лежать у `trap_upgrades.json` (з 25.10.2026; до того був рядок на пару `id` + `level`). Розблокування пастки й рівні прокачок зберігаються в профілі гравця (купуються в лобі за софт). У кімнаті пастки лише встановлюються; стати пастки = база + прокачки власника на мить встановлення. Усі три пастки доступні одразу (`default_owned`).
 
 | поле | тип | одиниці | діапазон | обов. | що означає |
 |---|---|---|---|---|---|
 | id | string | — | snake_case | так | `snare`, `energy_wall`, `turret`; збігається з `id` предмета в магазині лобі |
-| level | int | — | 1..N без пропусків | так | рівень пастки |
 | order | int | — | ≥ 0 | так | порядок у вікні пасток (менше = раніше) |
 | name_en, name_uk | string | — | — | так | назва |
 | mechanic | string | — | `snare` / `wall` / `turret` | так | тип механіки |
 | placement | string | — | `floor` / `wall` | так | куди ставиться |
-| cost | int | віспи | ≥ 0 | так | ціна **встановлення** пастки цього рівня в кімнаті |
-| price_soft | int | софт | ≥ 0 | так | ціна цього рівня в лобі: прокачка до цього рівня; рівень 1 = 0 (`default_owned`), рівні вище > 0 |
+| cost | int | віспи | ≥ 0 | так | ціна **встановлення** пастки в кімнаті (прокачки її не змінюють) |
+| price_soft | int | софт | ≥ 0 | так | ціна розблокування в лобі; 0 для `default_owned`, інакше > 0 |
 | damage | number | за удар; для `wall` за секунду | ≥ 0 | так | урон |
 | cooldown | number | с | ≥ 0 | `snare` | перезарядка капкана |
-| damage_type | string | — | `physical` / `fire` / `shock` | ні | вид урону (типово `physical`; енергостіна `shock`) |
+| damage_type | string | — | `physical` / `fire` / `shock` / `ice` | ні | вид урону (типово `physical`; енергостіна `shock`) |
 | armor_pierce | number | частка | 0..1 | ні | яку частку броні ігнорує урон (типово 0) |
 | on_hit | object | — | id ефекту → числа | ні | ефекти, які пастка накладає на влучання: `{ "stun": { "chance": 1, "duration": 2 } }`. Капкан **вимагає** `on_hit.stun.duration` > 0: стільки він тримає ворога |
 | trigger_radius | number | studs | 0.1..50 | `snare` | на якій відстані капкан спрацьовує |
@@ -192,7 +193,7 @@ tools/validate.py       перевірка перед комітом (так с�
 | wall_span_max | number | studs | 1..500 | `wall` | найбільша довжина стіни між кріпленнями |
 | fire_interval | number | с | > 0 | `turret` | інтервал пострілів турелі |
 | range | number | studs | ≥ 0 | `turret` | радіус турелі |
-| default_owned | bool | — | — | ні | `true` на рівні 1 пастки, яка є в усіх без покупки |
+| default_owned | bool | — | — | ні | `true`: пастка є в усіх без покупки |
 
 ### weapons.json → `weapons` (масив)
 
@@ -340,6 +341,18 @@ tools/validate.py       перевірка перед комітом (так с�
 | value | number | як у `stat` | межі поля | так | нове значення поля на цьому рівні (ціле для цілих полів) |
 
 Прокачка `on_hit.<ефект>.*` вимагає, щоб у зброї вже був запис `on_hit.<ефект>` (з нульовим головним числом, якщо базово ефекту немає).
+
+### trap_upgrades.json → `upgrade_types` і `trap_upgrades`
+
+Прокачка пасток (з 25.10.2026): **той самий формат, що `weapon_upgrades.json`**, власник `trap_id` замість `weapon_id`. Постійна, купується в лобі за софт (`Items["tup:<trap_id>:<upgrade>"] = рівень`), у кімнаті діє на пастки, які гравець ставить (числа фіксуються в мить встановлення; `TowerDefenseServer.TrapStats`). Боти витрачають бюджет пасток на розблокування й прокачки (`LoadoutService.rollBot`).
+
+**`upgrade_types`**: поля як у прокачки зброї (`id`, `stat`, `op`, `name_en`, `name_uk`, `desc_en`, `display_mult`, `item_id`). `stat` = поле пастки, яке можна качати (`damage`, `cooldown`, `fire_interval`, `range`, `trigger_radius`, `hit_margin`, `wall_span_max`, `armor_pierce`), або `on_hit.<ефект>.<параметр>` (`on_hit.stun.duration`). Поле має бути в рядку пастки; `on_hit.<ефект>` теж (якщо базово ефекту немає, додай запис з `chance: 0` або нульовим головним числом, а прокачка його вмикає). `item_id` може повторювати іконку з прокачок зброї.
+
+Типи зараз: damage, cooldown (перезарядка капкана), fire_interval (темп турелі), hold (`on_hit.stun.duration`, утримання капкана).
+
+**`trap_upgrades`** (масив): `id` = `<trap_id>_<upgrade>_<level>`, `trap_id` (→ `traps.id`), `upgrade` (→ `upgrade_types.id`), `order`, `level` (1..N без пропусків), `price_soft` (≥ 1), `value` (нове значення поля на рівні, у межах поля).
+
+На моделі встановленої пастки сервер пише атрибути для панелі на клієнті: `Damage`, `Cooldown`, `FireInterval`, `Range`, `Hold`, `Upgrades` / `UpgradesMax` (рівні прокачок власника з усіх можливих).
 
 ### run_rewards.json → `run_rewards` (об'єкт)
 
