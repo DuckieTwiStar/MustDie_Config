@@ -678,10 +678,15 @@ def check_weapon_extras(weapons, effect_ids):
             err(path, f"defaults.{key}: це поле не має дефолту")
             continue
         check_value(path, "weapons", key, v, spec, f"defaults.{key}")
+    # knockback зарезервовано контрактом, механіки в коді ще немає: не 0 = дизайнер чекає ефекту, якого не буде
+    if type_ok(defaults.get("knockback", 0), NUM) and defaults.get("knockback", 0) != 0:
+        err(path, "defaults.knockback: механіки відкидання ще немає в коді, лиши 0 (docs/combat-config-contract.md)")
     for i, w in enumerate(weapons):
         if not isinstance(w, dict):
             continue
         where = f"weapons[{i}] ({w.get('id')})"
+        if type_ok(w.get("knockback", 0), NUM) and w.get("knockback", 0) != 0:
+            err(path, f"{where}.knockback: механіки відкидання ще немає в коді, лиши 0")
         check_effect_map(path, f"{where}.on_hit", w.get("on_hit"), effect_ids)
         check_effect_map(path, f"{where}.bonus_vs", w.get("bonus_vs"), effect_ids, params=False)
         for key in MODE_REQUIRED.get(w.get("fire_mode"), ()):

@@ -47,5 +47,7 @@ results.append(run(edit("rooms/shared/traps.json", lambda d: [t for t in d["trap
 results.append(run(edit("rooms/shared/weapon_upgrades.json", lambda d: d["upgrade_types"][0].update(stat="on_hit.burn.stacks")), "прокачка: stat on_hit.burn.stacks", "stacks"))
 results.append(run(edit(SE, lambda d: eff(d, "frozen")["modifiers"].append({"stat": "damage_taken_mult.poison", "value": 1.5})), "невідомий тип урону в stat", "не зі словника"))
 results.append(run(edit(SE, lambda d: eff(d, "stun").update(damage_type="fire")), "damage_type без dps", "мають сенс лише з модифікаторами dps"))
+results.append(run(edit("rooms/shared/weapons.json", lambda d: [w for w in d["weapons"] if w["id"] == "bow"][0].update(knockback=3)), "knockback ще без механіки", "механіки відкидання ще немає"))
+results.append(run(edit("rooms/shared/weapons.json", lambda d: [w for w in d["weapons"] if w["id"] == "bow"][0].update(bonus_vs={"stun": 1.5})), "bonus_vs по ефекту (позитив)", None))
 print(f"{sum(results)}/{len(results)} passed")
 sys.exit(0 if all(results) else 1)
