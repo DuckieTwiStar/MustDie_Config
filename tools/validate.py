@@ -144,6 +144,7 @@ SCHEMA = {
         "title": (str, True, None, None), "description": (str, True, None, None), "values": (dict, False, None, None),
     },
 }
+# Той самий перелік у грі: ConfigLoader.DAMAGE_TYPES. Змінюєш тут — зміни і там, і запусти tools/studio/config_parity_test.luau
 DAMAGE_TYPES = {"physical", "fire", "shock", "ice"}
 ENUMS = {
     ("items", "kind"): {"currency", "weapon", "trap", "booster", "item", "enemy", "upgrade"},
