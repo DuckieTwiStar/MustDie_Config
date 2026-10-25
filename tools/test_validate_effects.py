@@ -1,4 +1,4 @@
-# Негативні тести валідатора ефектів v2 (docs/effects-v2.md): python3 tools/test_validate_effects.py
+# Негативні тести валідатора: ефекти v2 (docs/effects-v2.md), on_hit, прокачка пасток: python3 tools/test_validate_effects.py
 # Копіює репозиторій у тимчасову папку, псує один файл і перевіряє, що validate.py ловить саме цю помилку.
 import json, shutil, subprocess, sys, tempfile, pathlib, copy
 SRC = pathlib.Path(__file__).resolve().parent.parent
@@ -41,13 +41,21 @@ results.append(run(edit(SE, lambda d: eff(d, "slow").pop("duration")), "тайм
 results.append(run(edit(SE, lambda d: eff(d, "frozen").update(blocked_by_tags=["frozen_immune"], requires_tags=["nope_tag"])), "requires без видавця", "не видає жоден ефект"))
 results.append(run(edit(SE, lambda d: eff(d, "chill").update(max_stacks=3)), "поріг: apply stacks коректний при зміні max_stacks", None))
 results.append(run(edit("rooms/shared/weapons.json", lambda d: [w for w in d["weapons"] if w["id"] == "tommy"][0]["on_hit"]["burn"].update(stacks=2)), "stacks для нестекового burn", "невідомий параметр stacks"))
-results.append(run(edit("rooms/shared/traps.json", lambda d: [t for t in d["traps"] if t["id"] == "snare" and t["level"] == 1][0]["on_hit"].update(chill={"stacks": 2})), "пастка накладає chill stacks=2 (позитив)", None))
-results.append(run(edit("rooms/shared/traps.json", lambda d: [t for t in d["traps"] if t["id"] == "snare" and t["level"] == 1][0]["on_hit"].update(chill={"stacks": 6})), "stacks > max_stacks", "потрібне ціле 1..5"))
-results.append(run(edit("rooms/shared/traps.json", lambda d: [t for t in d["traps"] if t["id"] == "snare" and t["level"] == 1][0]["on_hit"].update(chill={"duration": 2})), "duration для лічильника", "невідомий параметр duration"))
+results.append(run(edit("rooms/shared/traps.json", lambda d: [t for t in d["traps"] if t["id"] == "snare"][0]["on_hit"].update(chill={"stacks": 2})), "пастка накладає chill stacks=2 (позитив)", None))
+results.append(run(edit("rooms/shared/traps.json", lambda d: [t for t in d["traps"] if t["id"] == "snare"][0]["on_hit"].update(chill={"stacks": 6})), "stacks > max_stacks", "потрібне ціле 1..5"))
+results.append(run(edit("rooms/shared/traps.json", lambda d: [t for t in d["traps"] if t["id"] == "snare"][0]["on_hit"].update(chill={"duration": 2})), "duration для лічильника", "невідомий параметр duration"))
 results.append(run(edit("rooms/shared/weapon_upgrades.json", lambda d: d["upgrade_types"][0].update(stat="on_hit.burn.stacks")), "прокачка: stat on_hit.burn.stacks", "stacks"))
 results.append(run(edit(SE, lambda d: eff(d, "frozen")["modifiers"].append({"stat": "damage_taken_mult.poison", "value": 1.5})), "невідомий тип урону в stat", "не зі словника"))
 results.append(run(edit(SE, lambda d: eff(d, "stun").update(damage_type="fire")), "damage_type без dps", "мають сенс лише з модифікаторами dps"))
 results.append(run(edit("rooms/shared/weapons.json", lambda d: [w for w in d["weapons"] if w["id"] == "bow"][0].update(knockback=3)), "knockback ще без механіки", "механіки відкидання ще немає"))
 results.append(run(edit("rooms/shared/weapons.json", lambda d: [w for w in d["weapons"] if w["id"] == "bow"][0].update(bonus_vs={"stun": 1.5})), "bonus_vs по ефекту (позитив)", None))
+TU = "rooms/shared/trap_upgrades.json"
+def tu_type(d, i): return {t["id"]: t for t in d["upgrade_types"]}[i]
+results.append(run(edit(TU, lambda d: d["trap_upgrades"].append({"id": "nope_damage_1", "trap_id": "nope", "upgrade": "damage", "order": 10, "level": 1, "price_soft": 10, "value": 5})), "прокачка пастки, якої немає", "немає в traps.json"))
+results.append(run(edit(TU, lambda d: tu_type(d, "damage").update(stat="cost")), "прокачка поля, яке не качається", "не поле пастки"))
+results.append(run(edit(TU, lambda d: [u for u in d["trap_upgrades"] if u["id"] == "snare_damage_1"][0].update(level=3, id="snare_damage_3")), "пропуск рівня прокачки пастки", "рівні мають іти 1..N"))
+results.append(run(edit("rooms/shared/traps.json", lambda d: d["traps"][0].update(level=1)), "старе поле level у пастці", "поле level більше не використовується"))
+results.append(run(edit(TU, lambda d: tu_type(d, "hold").update(stat="on_hit.slow.duration")), "прокачка on_hit, якого в пастці немає", "немає on_hit.slow"))
+results.append(run(edit(TU, lambda d: d["trap_upgrades"].append({"id": "energy_wall_cooldown_1", "trap_id": "energy_wall", "upgrade": "cooldown", "order": 20, "level": 1, "price_soft": 10, "value": 2})), "прокачка поля, якого в пастці немає", "немає поля cooldown"))
 print(f"{sum(results)}/{len(results)} passed")
 sys.exit(0 if all(results) else 1)

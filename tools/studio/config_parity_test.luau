@@ -39,6 +39,7 @@ end
 local files: { [string]: (any) -> (boolean, string?) } = {
 	rules = T.validateRules, enemies = T.validateEnemies, weapon_upgrades = T.validateUpgrades,
 	weapons = T.validateWeapons, traps = T.validateTraps, sounds = T.validateSounds, status_effects = T.validateEffects,
+	trap_upgrades = T.validateTrapUpgrades, -- з 25.10.2026 (прокачка пасток); у гілці без файлу тест впаде на HTTP 404
 }
 local data: { [string]: any } = {}
 for name, fn in files do
@@ -49,7 +50,7 @@ end
 
 local function snare1(d: any): any
 	for _, r in d.traps do
-		if r.id == "snare" and r.level == 1 then return r end
+		if r.id == "snare" and (r.level or 1) == 1 then return r end
 	end
 	return nil
 end

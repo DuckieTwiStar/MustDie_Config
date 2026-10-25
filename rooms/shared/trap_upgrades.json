@@ -1,0 +1,150 @@
+{
+  "meta": {
+    "version": "BAL-0010",
+    "exported_at": "2026-10-25",
+    "note": "Прокачка пасток: постійна, купується в лобі за софт (price_soft), у кімнаті діє на пастки, які гравець ставить (числа фіксуються в мить встановлення). Формат як weapon_upgrades: upgrade_types (stat = поле пастки з traps.json або on_hit.<ефект>.<параметр>; op set | add | mul, типово set; назва й опис для UI; item_id = іконка kind=upgrade з items.json), trap_upgrades = рядки рівнів (value = нове значення поля на рівні). Числа й ціни 25.10.2026 перенесено зі старих рівнів 2-3 (ціна рівня поділена між прокачками), до плейтестів"
+  },
+  "upgrade_types": [
+    {
+      "id": "damage",
+      "stat": "damage",
+      "name_en": "Damage",
+      "name_uk": "Урон",
+      "desc_en": "Hit harder: +{delta} damage",
+      "item_id": "upgrade_damage"
+    },
+    {
+      "id": "cooldown",
+      "stat": "cooldown",
+      "name_en": "Recharge",
+      "name_uk": "Перезарядка",
+      "desc_en": "Recharges faster: {new} s",
+      "item_id": "upgrade_cooldown"
+    },
+    {
+      "id": "fire_interval",
+      "stat": "fire_interval",
+      "name_en": "Fire rate",
+      "name_uk": "Темп стрільби",
+      "desc_en": "Shoots faster: {new} s between shots",
+      "item_id": "upgrade_fire_rate"
+    },
+    {
+      "id": "hold",
+      "stat": "on_hit.stun.duration",
+      "name_en": "Hold time",
+      "name_uk": "Утримання",
+      "desc_en": "Holds an enemy for {new} s"
+    }
+  ],
+  "trap_upgrades": [
+    {
+      "id": "snare_damage_1",
+      "trap_id": "snare",
+      "upgrade": "damage",
+      "order": 10,
+      "level": 1,
+      "price_soft": 25,
+      "value": 25
+    },
+    {
+      "id": "snare_damage_2",
+      "trap_id": "snare",
+      "upgrade": "damage",
+      "order": 10,
+      "level": 2,
+      "price_soft": 40,
+      "value": 35
+    },
+    {
+      "id": "snare_cooldown_1",
+      "trap_id": "snare",
+      "upgrade": "cooldown",
+      "order": 20,
+      "level": 1,
+      "price_soft": 25,
+      "value": 5
+    },
+    {
+      "id": "snare_cooldown_2",
+      "trap_id": "snare",
+      "upgrade": "cooldown",
+      "order": 20,
+      "level": 2,
+      "price_soft": 40,
+      "value": 4
+    },
+    {
+      "id": "snare_hold_1",
+      "trap_id": "snare",
+      "upgrade": "hold",
+      "order": 30,
+      "level": 1,
+      "price_soft": 25,
+      "value": 2.5
+    },
+    {
+      "id": "snare_hold_2",
+      "trap_id": "snare",
+      "upgrade": "hold",
+      "order": 30,
+      "level": 2,
+      "price_soft": 40,
+      "value": 3
+    },
+    {
+      "id": "energy_wall_damage_1",
+      "trap_id": "energy_wall",
+      "upgrade": "damage",
+      "order": 10,
+      "level": 1,
+      "price_soft": 150,
+      "value": 30
+    },
+    {
+      "id": "energy_wall_damage_2",
+      "trap_id": "energy_wall",
+      "upgrade": "damage",
+      "order": 10,
+      "level": 2,
+      "price_soft": 250,
+      "value": 45
+    },
+    {
+      "id": "turret_damage_1",
+      "trap_id": "turret",
+      "upgrade": "damage",
+      "order": 10,
+      "level": 1,
+      "price_soft": 90,
+      "value": 35
+    },
+    {
+      "id": "turret_damage_2",
+      "trap_id": "turret",
+      "upgrade": "damage",
+      "order": 10,
+      "level": 2,
+      "price_soft": 140,
+      "value": 45
+    },
+    {
+      "id": "turret_fire_interval_1",
+      "trap_id": "turret",
+      "upgrade": "fire_interval",
+      "order": 20,
+      "level": 1,
+      "price_soft": 90,
+      "value": 1.2
+    },
+    {
+      "id": "turret_fire_interval_2",
+      "trap_id": "turret",
+      "upgrade": "fire_interval",
+      "order": 20,
+      "level": 2,
+      "price_soft": 140,
+      "value": 0.9
+    }
+  ]
+}

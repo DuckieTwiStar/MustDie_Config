@@ -1,13 +1,12 @@
 {
   "meta": {
-    "version": "BAL-0005",
-    "exported_at": "2026-10-16",
-    "note": "Пастки: рядок на пару (id, level). cost = віспи за встановлення в кімнаті. price_soft = ціна рівня в лобі (рівень 1 безкоштовний). Усі числа пасток читає код з цього файлу (damage, cooldown, on_hit, trigger_radius, hit_margin, wall_*)"
+    "version": "BAL-0010",
+    "exported_at": "2026-10-25",
+    "note": "Пастки: один рядок на пастку з базовими статами (як зброя в weapons.json). Прокачка постійна, купується в лобі за софт: rooms/shared/trap_upgrades.json (як weapon_upgrades). cost = віспи за встановлення в кімнаті, price_soft = ціна розблокування в лобі (0 для default_owned). Усі числа пасток читає код з цього файлу (damage, cooldown, fire_interval, range, on_hit, trigger_radius, hit_margin, wall_*). Рівні 1-3 (BAL-0005) з 25.10.2026 стали прокачками з тими самими числами"
   },
   "traps": [
     {
       "id": "snare",
-      "level": 1,
       "order": 10,
       "name_en": "Snare",
       "name_uk": "Капкан",
@@ -27,48 +26,7 @@
       }
     },
     {
-      "id": "snare",
-      "level": 2,
-      "order": 10,
-      "name_en": "Snare",
-      "name_uk": "Капкан",
-      "mechanic": "snare",
-      "placement": "floor",
-      "cost": 100,
-      "damage": 25,
-      "cooldown": 5,
-      "price_soft": 75,
-      "trigger_radius": 2.4,
-      "on_hit": {
-        "stun": {
-          "chance": 1,
-          "duration": 2.5
-        }
-      }
-    },
-    {
-      "id": "snare",
-      "level": 3,
-      "order": 10,
-      "name_en": "Snare",
-      "name_uk": "Капкан",
-      "mechanic": "snare",
-      "placement": "floor",
-      "cost": 100,
-      "damage": 35,
-      "cooldown": 4,
-      "price_soft": 125,
-      "trigger_radius": 2.4,
-      "on_hit": {
-        "stun": {
-          "chance": 1,
-          "duration": 3
-        }
-      }
-    },
-    {
       "id": "energy_wall",
-      "level": 1,
       "order": 20,
       "name_en": "Energy Wall",
       "name_uk": "Енергостіна",
@@ -84,40 +42,7 @@
       "wall_span_max": 30
     },
     {
-      "id": "energy_wall",
-      "level": 2,
-      "order": 20,
-      "name_en": "Energy Wall",
-      "name_uk": "Енергостіна",
-      "mechanic": "wall",
-      "placement": "wall",
-      "cost": 200,
-      "damage": 30,
-      "price_soft": 150,
-      "damage_type": "shock",
-      "hit_margin": 0.6,
-      "wall_height": 4,
-      "wall_span_max": 30
-    },
-    {
-      "id": "energy_wall",
-      "level": 3,
-      "order": 20,
-      "name_en": "Energy Wall",
-      "name_uk": "Енергостіна",
-      "mechanic": "wall",
-      "placement": "wall",
-      "cost": 200,
-      "damage": 45,
-      "price_soft": 250,
-      "damage_type": "shock",
-      "hit_margin": 0.6,
-      "wall_height": 4,
-      "wall_span_max": 30
-    },
-    {
       "id": "turret",
-      "level": 1,
       "order": 30,
       "name_en": "Turret",
       "name_uk": "Турель",
@@ -129,34 +54,6 @@
       "range": 20,
       "price_soft": 0,
       "default_owned": true
-    },
-    {
-      "id": "turret",
-      "level": 2,
-      "order": 30,
-      "name_en": "Turret",
-      "name_uk": "Турель",
-      "mechanic": "turret",
-      "placement": "floor",
-      "cost": 250,
-      "damage": 35,
-      "fire_interval": 1.2,
-      "range": 20,
-      "price_soft": 175
-    },
-    {
-      "id": "turret",
-      "level": 3,
-      "order": 30,
-      "name_en": "Turret",
-      "name_uk": "Турель",
-      "mechanic": "turret",
-      "placement": "floor",
-      "cost": 250,
-      "damage": 45,
-      "fire_interval": 0.9,
-      "range": 20,
-      "price_soft": 275
     }
   ]
 }
