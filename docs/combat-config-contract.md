@@ -69,6 +69,8 @@ damage → `damage`; attack_interval → `attack_interval`; ricochet → `ricoch
 
 ## Пастки (`traps.json`)
 
+> **Оновлено 25.10.2026 (`Ж-003`):** рівні пасток замінено прокачками, як у зброї: `traps.json` — один рядок на пастку з базовими статами, `trap_upgrades.json` — прокачки (формат `weapon_upgrades`, власник `trap_id`). Опис полів: README, розділи `traps.json` і `trap_upgrades.json`.
+
 Зараз: `mechanic`, `placement`, `cost`, `damage`, `cooldown`, `hold_time`, `fire_interval`, `range`, `price_soft`. Додаємо:
 
 | Поле | Тип, дефолт | Зараз |
