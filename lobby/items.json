@@ -324,6 +324,13 @@
       "icon": "rbxassetid://80808120877969",
       "title": "Ash Curse",
       "description": "Cursed enemies explode in fire when they die."
+    },
+    {
+      "id": "tesla",
+      "kind": "trap",
+      "icon": "",
+      "title": "Tesla Coil",
+      "description": "Wall trap. Fires a chain lightning that jumps between enemies in a crowd."
     }
   ]
 }

@@ -78,6 +78,7 @@ damage → `damage`; attack_interval → `attack_interval`; ricochet → `ricoch
 | `damage_type`, `armor_pierce` | `physical`, 0 (стіна `shock`) | `"shock"` у коді |
 | `on_hit` | мапа ефектів (капкан `stun`, стіна `slow`, турель `burn`) | `EnemyService.hold` у коді |
 | `footprint_w`, `footprint_l` | цілі клітинки: ширина впоперек маршруту, довжина вздовж (ширина впоперек маршруту, довжина вздовж; поворот автоматичний за маршрутом), [1, 1]; пастки будуть різних форм і розмірів, див. `docs/traps-v2.md` | 1 клітинка, стіна 2 ключі |
+| `placement`, `jumps`, `branch`, `max_targets`, `falloff` | `placement`: `floor` \| `wall` \| `wall_mount` (панель на стіні `TrapWall` 1×2 клітинки, підлогу не займає). Ланцюг (`mechanic: chain`, тесла): `jumps` 1..20 переходів, `branch` 1..4 нових цілей від кожного враженого, `max_targets` 1..64 стеля цілей розряду, `falloff` 0..1 множник урону за перехід; радіус це `range` | у `docs/traps-v2.md` розд. 5 |
 | `trigger_radius`, `hit_margin`, `hit_once` | студи; капкан 2.4, стіна 0.6, bool | у коді |
 | `wall_height`, `wall_span_max` | 4 і 30 | `WALL_HEIGHT`, `gameplay.wallSpan` |
 | `target_priority` | `nearest`, `first`, `last`, `strongest` (турель) | `nearest` у коді |

@@ -1,6 +1,6 @@
 {
   "meta": {
-    "version": "BAL-0014",
+    "version": "BAL-0015",
     "exported_at": "2026-10-26",
     "note": "Прокачка пасток: постійна, купується в лобі за софт (price_soft), у кімнаті діє на пастки, які гравець ставить (числа фіксуються в мить встановлення). Формат як weapon_upgrades: upgrade_types (stat = поле пастки з traps.json або on_hit.<ефект>.<параметр>; op set | add | mul, типово set; назва й опис для UI; item_id = іконка kind=upgrade з items.json), trap_upgrades = рядки рівнів (value = нове значення поля на рівні). Числа й ціни 25.10.2026 перенесено зі старих рівнів 2-3 (ціна рівня поділена між прокачками), до плейтестів"
   },
@@ -98,6 +98,20 @@
       "name_en": "Rear jets",
       "name_uk": "Задні струмені",
       "desc_en": "Also fires behind the grate"
+    },
+    {
+      "id": "jumps",
+      "stat": "jumps",
+      "name_en": "Chain length",
+      "name_uk": "Довжина ланцюга",
+      "desc_en": "Lightning jumps {new} times"
+    },
+    {
+      "id": "branch",
+      "stat": "branch",
+      "name_en": "Branching",
+      "name_uk": "Розгалуження",
+      "desc_en": "Each target arcs to {new} more enemies"
     }
   ],
   "trap_upgrades": [
@@ -442,6 +456,105 @@
       "level": 1,
       "price_soft": 200,
       "value": 1
+    },
+    {
+      "id": "tesla_radius_1",
+      "trap_id": "tesla",
+      "upgrade": "radius",
+      "order": 10,
+      "level": 1,
+      "price_soft": 40,
+      "value": 18
+    },
+    {
+      "id": "tesla_radius_2",
+      "trap_id": "tesla",
+      "upgrade": "radius",
+      "order": 10,
+      "level": 2,
+      "price_soft": 60,
+      "value": 20
+    },
+    {
+      "id": "tesla_radius_3",
+      "trap_id": "tesla",
+      "upgrade": "radius",
+      "order": 10,
+      "level": 3,
+      "price_soft": 90,
+      "value": 22
+    },
+    {
+      "id": "tesla_cooldown_1",
+      "trap_id": "tesla",
+      "upgrade": "cooldown",
+      "order": 20,
+      "level": 1,
+      "price_soft": 40,
+      "value": 2.5
+    },
+    {
+      "id": "tesla_cooldown_2",
+      "trap_id": "tesla",
+      "upgrade": "cooldown",
+      "order": 20,
+      "level": 2,
+      "price_soft": 60,
+      "value": 2
+    },
+    {
+      "id": "tesla_cooldown_3",
+      "trap_id": "tesla",
+      "upgrade": "cooldown",
+      "order": 20,
+      "level": 3,
+      "price_soft": 90,
+      "value": 1.5
+    },
+    {
+      "id": "tesla_damage_1",
+      "trap_id": "tesla",
+      "upgrade": "damage",
+      "order": 30,
+      "level": 1,
+      "price_soft": 40,
+      "value": 25
+    },
+    {
+      "id": "tesla_damage_2",
+      "trap_id": "tesla",
+      "upgrade": "damage",
+      "order": 30,
+      "level": 2,
+      "price_soft": 60,
+      "value": 30
+    },
+    {
+      "id": "tesla_damage_3",
+      "trap_id": "tesla",
+      "upgrade": "damage",
+      "order": 30,
+      "level": 3,
+      "price_soft": 90,
+      "value": 40
+    },
+    {
+      "id": "tesla_jumps_1",
+      "trap_id": "tesla",
+      "upgrade": "jumps",
+      "order": 40,
+      "level": 1,
+      "price_soft": 200,
+      "value": 6
+    },
+    {
+      "id": "tesla_branch_1",
+      "trap_id": "tesla",
+      "upgrade": "branch",
+      "order": 50,
+      "level": 1,
+      "price_soft": 200,
+      "value": 2
     }
   ]
 }
