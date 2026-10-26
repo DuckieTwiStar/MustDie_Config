@@ -1,7 +1,7 @@
 {
   "meta": {
-    "version": "BAL-0010",
-    "exported_at": "2026-10-25",
+    "version": "BAL-0011",
+    "exported_at": "2026-10-26",
     "note": "Прокачка пасток: постійна, купується в лобі за софт (price_soft), у кімнаті діє на пастки, які гравець ставить (числа фіксуються в мить встановлення). Формат як weapon_upgrades: upgrade_types (stat = поле пастки з traps.json або on_hit.<ефект>.<параметр>; op set | add | mul, типово set; назва й опис для UI; item_id = іконка kind=upgrade з items.json), trap_upgrades = рядки рівнів (value = нове значення поля на рівні). Числа й ціни 25.10.2026 перенесено зі старих рівнів 2-3 (ціна рівня поділена між прокачками), до плейтестів"
   },
   "upgrade_types": [
@@ -35,6 +35,27 @@
       "name_en": "Hold time",
       "name_uk": "Утримання",
       "desc_en": "Holds an enemy for {new} s"
+    },
+    {
+      "id": "slow",
+      "stat": "on_hit.tar.speed_mult",
+      "name_en": "Stickiness",
+      "name_uk": "Липкість",
+      "desc_en": "Enemies move at {new}x speed in the tar"
+    },
+    {
+      "id": "linger",
+      "stat": "on_hit.tar.duration",
+      "name_en": "Residue",
+      "name_uk": "Залишки смоли",
+      "desc_en": "Slow lingers {new} s after leaving the tar"
+    },
+    {
+      "id": "length",
+      "stat": "footprint_l",
+      "name_en": "Longer pool",
+      "name_uk": "Довша калюжа",
+      "desc_en": "The pool grows to {new} cells long"
     }
   ],
   "trap_upgrades": [
@@ -145,6 +166,60 @@
       "level": 2,
       "price_soft": 140,
       "value": 0.9
+    },
+    {
+      "id": "tar_slow_1",
+      "trap_id": "tar",
+      "upgrade": "slow",
+      "order": 10,
+      "level": 1,
+      "price_soft": 40,
+      "value": 0.55
+    },
+    {
+      "id": "tar_slow_2",
+      "trap_id": "tar",
+      "upgrade": "slow",
+      "order": 10,
+      "level": 2,
+      "price_soft": 60,
+      "value": 0.45
+    },
+    {
+      "id": "tar_slow_3",
+      "trap_id": "tar",
+      "upgrade": "slow",
+      "order": 10,
+      "level": 3,
+      "price_soft": 90,
+      "value": 0.35
+    },
+    {
+      "id": "tar_linger_1",
+      "trap_id": "tar",
+      "upgrade": "linger",
+      "order": 20,
+      "level": 1,
+      "price_soft": 40,
+      "value": 1
+    },
+    {
+      "id": "tar_linger_2",
+      "trap_id": "tar",
+      "upgrade": "linger",
+      "order": 20,
+      "level": 2,
+      "price_soft": 60,
+      "value": 1.5
+    },
+    {
+      "id": "tar_length_1",
+      "trap_id": "tar",
+      "upgrade": "length",
+      "order": 30,
+      "level": 1,
+      "price_soft": 150,
+      "value": 6
     }
   ]
 }

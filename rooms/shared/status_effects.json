@@ -1,7 +1,7 @@
 {
   "meta": {
-    "version": "FX-0003",
-    "exported_at": "2026-10-23",
+    "version": "FX-0004",
+    "exported_at": "2026-10-26",
     "note": "Ефекти на ворогах v2 (EffectService, docs/effects-v2.md): стеки, модифікатори, теги, переходи. max_stacks = 1: ефект із таймером (duration, reapply refresh|ignore); max_stacks > 1: лічильник стеків, один стек згасає за decay_interval. modifiers змінюють stat (speed_mult, damage_taken_mult[.тип], dps, hp_pct_per_sec), правило об'єднання й межі стата в секції stats. Теги: grants_tags видає ефект, requires_tags і blocked_by_tags задають умови. Переходи: on_max_stacks, on_end, on_death. Джерело (зброя, пастка) у on_hit передає chance, stacks (лічильник) або duration і числа модифікатора (dps, speed_mult), вони важливіші за ці. ФОРМАТ ЗМІНЕНО відносно FX-0002 (kind зник): новий JSON у release лише разом з опублікованим EffectService v2"
   },
   "stats": [
@@ -165,6 +165,23 @@
       "reapply": "ignore",
       "grants_tags": [
         "frozen_immune"
+      ]
+    },
+    {
+      "id": "tar",
+      "name_en": "Tarred",
+      "name_uk": "Смола",
+      "max_stacks": 1,
+      "duration": 0.5,
+      "reapply": "refresh",
+      "grants_tags": [
+        "tarred"
+      ],
+      "modifiers": [
+        {
+          "stat": "speed_mult",
+          "value": 0.65
+        }
       ]
     }
   ]

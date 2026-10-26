@@ -111,6 +111,13 @@
       "description": "Floor trap. Automatically shoots enemies in range."
     },
     {
+      "id": "tar",
+      "kind": "trap",
+      "icon": "",
+      "title": "Tar",
+      "description": "Floor trap. A pool of tar that slows every enemy walking through it."
+    },
+    {
       "id": "speed_boost",
       "kind": "booster",
       "icon": "rbxassetid://134502851439349",

@@ -56,6 +56,8 @@ SCHEMA = {
         "damage_type": (str, False, None, None), "armor_pierce": (NUM, False, 0, 1), "on_hit": (dict, False, None, None),
         "trigger_radius": (NUM, False, 0.1, None), "hit_margin": (NUM, False, 0, None),
         "wall_height": (NUM, False, 0.1, None), "wall_span_max": (NUM, False, 1, None),
+        # пастки v2 (docs/traps-v2.md): прямокутник у клітинках (ширина впоперек, довжина вздовж маршруту), крок зони
+        "footprint_w": (int, False, 1, 32), "footprint_l": (int, False, 1, 32), "zone_tick": (NUM, False, 0.05, 5),
     },
     "weapons": {
         "id": (str, True, None, None), "order": (int, True, 0, None), "default_owned": (bool, False, None, None),
@@ -154,7 +156,7 @@ DAMAGE_TYPES = {"physical", "fire", "shock", "ice"}
 ENUMS = {
     ("items", "kind"): {"currency", "weapon", "trap", "booster", "item", "enemy", "upgrade"},
     ("enemies", "size"): {"small", "medium", "large"},
-    ("traps", "mechanic"): {"snare", "wall", "turret"},
+    ("traps", "mechanic"): {"snare", "wall", "turret", "zone"},
     ("traps", "placement"): {"floor", "wall"},
     ("traps", "damage_type"): DAMAGE_TYPES,
     ("status_effects", "damage_type"): DAMAGE_TYPES,
@@ -612,6 +614,7 @@ TRAP_REQUIRED = {
     "snare": ("cooldown", "trigger_radius", "on_hit"),
     "wall": ("hit_margin", "wall_height", "wall_span_max"),
     "turret": ("fire_interval", "range"),
+    "zone": ("zone_tick", "on_hit"),
 }
 
 
@@ -700,7 +703,7 @@ def check_weapon_extras(weapons, effect_ids):
 
 
 # Поля пастки, які можна качати (решта: каталог, механіка, розміщення)
-TRAP_UPGRADABLE = {"damage", "cooldown", "fire_interval", "range", "trigger_radius", "hit_margin", "wall_span_max", "armor_pierce"}
+TRAP_UPGRADABLE = {"damage", "cooldown", "fire_interval", "range", "trigger_radius", "hit_margin", "wall_span_max", "armor_pierce", "footprint_l"}
 
 
 def resolve_stat(stat, effect_ids, owner="weapons"):
