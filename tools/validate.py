@@ -51,7 +51,7 @@ SCHEMA = {
         "cost": (int, True, 0, None), "price_soft": (int, True, 0, None), "damage": (NUM, True, 0, None),
         "cooldown": (NUM, False, 0, None),
         "fire_interval": (NUM, False, 0.01, None), "range": (NUM, False, 0, None),
-        "default_owned": (bool, False, None, None),
+        "default_owned": (bool, False, None, None), "enabled": (bool, False, None, None),
         # контракт 23.10.2026, етап 1в
         "damage_type": (str, False, None, None), "armor_pierce": (NUM, False, 0, 1), "on_hit": (dict, False, None, None),
         "trigger_radius": (NUM, False, 0.1, None), "hit_margin": (NUM, False, 0, None),
