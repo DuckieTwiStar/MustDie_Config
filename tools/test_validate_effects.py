@@ -62,6 +62,8 @@ results.append(run(edit("rooms/shared/traps.json", lambda d: [t for t in d["trap
 results.append(run(edit("rooms/shared/traps.json", lambda d: [t for t in d["traps"] if t["id"] == "fire_grate"][0].pop("jet_time")), "решітка без jet_time", "потрібне поле jet_time"))
 results.append(run(edit("rooms/shared/traps.json", lambda d: [t for t in d["traps"] if t["id"] == "fire_grate"][0].update(zone_length=9)), "zone_length поза межами", "більше за 8"))
 results.append(run(edit("rooms/shared/traps.json", lambda d: [t for t in d["traps"] if t["id"] == "tesla"][0].pop("jumps")), "ланцюг без jumps", "потрібне поле jumps"))
+results.append(run(edit("rooms/shared/traps.json", lambda d: [t for t in d["traps"] if t["id"] == "darts"][0].pop("mount_depth")), "залп без mount_depth", "потрібне поле mount_depth"))
+results.append(run(edit(SE, lambda d: eff(d, "poison")["on_max_stacks"].update(apply="nope")), "отрута веде в невідомий ефект", "ефекту 'nope' немає"))
 results.append(run(edit("rooms/shared/traps.json", lambda d: [t for t in d["traps"] if t["id"] == "tesla"][0].update(falloff=1.5)), "falloff поза межами", "falloff"))
 results.append(run(edit("rooms/shared/traps.json", lambda d: [t for t in d["traps"] if t["id"] == "tesla"][0].update(placement="ceiling")), "невідоме кріплення", "placement"))
 results.append(run(edit("rooms/shared/traps.json", lambda d: d["traps"][0].update(level=1)), "старе поле level у пастці", "поле level більше не використовується"))

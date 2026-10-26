@@ -331,6 +331,13 @@
       "icon": "",
       "title": "Tesla Coil",
       "description": "Wall trap. Fires a chain lightning that jumps between enemies in a crowd."
+    },
+    {
+      "id": "darts",
+      "kind": "trap",
+      "icon": "",
+      "title": "Darts",
+      "description": "Floor or wall trap. Fires a volley of darts at enemies in its zone; poison can be added."
     }
   ]
 }

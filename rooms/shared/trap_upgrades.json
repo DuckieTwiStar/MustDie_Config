@@ -1,6 +1,6 @@
 {
   "meta": {
-    "version": "BAL-0015",
+    "version": "BAL-0016",
     "exported_at": "2026-10-26",
     "note": "Прокачка пасток: постійна, купується в лобі за софт (price_soft), у кімнаті діє на пастки, які гравець ставить (числа фіксуються в мить встановлення). Формат як weapon_upgrades: upgrade_types (stat = поле пастки з traps.json або on_hit.<ефект>.<параметр>; op set | add | mul, типово set; назва й опис для UI; item_id = іконка kind=upgrade з items.json), trap_upgrades = рядки рівнів (value = нове значення поля на рівні). Числа й ціни 25.10.2026 перенесено зі старих рівнів 2-3 (ціна рівня поділена між прокачками), до плейтестів"
   },
@@ -112,6 +112,13 @@
       "name_en": "Branching",
       "name_uk": "Розгалуження",
       "desc_en": "Each target arcs to {new} more enemies"
+    },
+    {
+      "id": "poison",
+      "stat": "on_hit.poison.chance",
+      "name_en": "Poison darts",
+      "name_uk": "Отруйні дротики",
+      "desc_en": "Darts are coated with poison: stacks build up and weaken enemies"
     }
   ],
   "trap_upgrades": [
@@ -555,6 +562,69 @@
       "level": 1,
       "price_soft": 200,
       "value": 2
+    },
+    {
+      "id": "darts_cooldown_1",
+      "trap_id": "darts",
+      "upgrade": "cooldown",
+      "order": 10,
+      "level": 1,
+      "price_soft": 40,
+      "value": 3
+    },
+    {
+      "id": "darts_cooldown_2",
+      "trap_id": "darts",
+      "upgrade": "cooldown",
+      "order": 10,
+      "level": 2,
+      "price_soft": 60,
+      "value": 2.5
+    },
+    {
+      "id": "darts_cooldown_3",
+      "trap_id": "darts",
+      "upgrade": "cooldown",
+      "order": 10,
+      "level": 3,
+      "price_soft": 90,
+      "value": 2
+    },
+    {
+      "id": "darts_damage_1",
+      "trap_id": "darts",
+      "upgrade": "damage",
+      "order": 20,
+      "level": 1,
+      "price_soft": 40,
+      "value": 25
+    },
+    {
+      "id": "darts_damage_2",
+      "trap_id": "darts",
+      "upgrade": "damage",
+      "order": 20,
+      "level": 2,
+      "price_soft": 60,
+      "value": 30
+    },
+    {
+      "id": "darts_damage_3",
+      "trap_id": "darts",
+      "upgrade": "damage",
+      "order": 20,
+      "level": 3,
+      "price_soft": 90,
+      "value": 40
+    },
+    {
+      "id": "darts_poison_1",
+      "trap_id": "darts",
+      "upgrade": "poison",
+      "order": 30,
+      "level": 1,
+      "price_soft": 250,
+      "value": 1
     }
   ]
 }

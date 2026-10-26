@@ -60,6 +60,7 @@ SCHEMA = {
         "footprint_w": (int, False, 1, 32), "footprint_l": (int, False, 1, 32), "zone_tick": (NUM, False, 0.05, 5),
         "active_time": (NUM, False, 0.1, 60), "aura_tick": (NUM, False, 0.1, 5),
         "zone_length": (int, False, 1, 8), "jet_time": (NUM, False, 0.1, 5), "rear_zone": (int, False, 0, 1),
+        "mount_w": (int, False, 1, 8), "mount_depth": (int, False, 1, 16),
         "jumps": (int, False, 1, 20), "branch": (int, False, 1, 4), "max_targets": (int, False, 1, 64), "falloff": (NUM, False, 0, 1),
     },
     "weapons": {
@@ -159,8 +160,8 @@ DAMAGE_TYPES = {"physical", "fire", "shock", "ice"}
 ENUMS = {
     ("items", "kind"): {"currency", "weapon", "trap", "booster", "item", "enemy", "upgrade"},
     ("enemies", "size"): {"small", "medium", "large"},
-    ("traps", "mechanic"): {"snare", "wall", "turret", "zone", "aura", "burst", "chain"},
-    ("traps", "placement"): {"floor", "wall", "wall_mount"},
+    ("traps", "mechanic"): {"snare", "wall", "turret", "zone", "aura", "burst", "chain", "volley"},
+    ("traps", "placement"): {"floor", "wall", "wall_mount", "floor_wall"},
     ("traps", "damage_type"): DAMAGE_TYPES,
     ("status_effects", "damage_type"): DAMAGE_TYPES,
     ("status_effects", "reapply"): {"refresh", "ignore"},
@@ -620,6 +621,7 @@ TRAP_REQUIRED = {
     "zone": ("zone_tick", "on_hit"),
     "aura": ("cooldown", "range", "active_time", "aura_tick", "on_hit"),
     "burst": ("cooldown", "zone_length", "jet_time", "rear_zone"),
+    "volley": ("cooldown", "mount_w", "mount_depth"),
     "chain": ("cooldown", "range", "jumps", "branch", "max_targets", "falloff"),
 }
 
