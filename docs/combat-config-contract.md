@@ -77,7 +77,7 @@ damage → `damage`; attack_interval → `attack_interval`; ricochet → `ricoch
 |---|---|---|
 | `damage_type`, `armor_pierce` | `physical`, 0 (стіна `shock`) | `"shock"` у коді |
 | `on_hit` | мапа ефектів (капкан `stun`, стіна `slow`, турель `burn`) | `EnemyService.hold` у коді |
-| `footprint` | [x, z] клітинок, [1, 1]; пастки будуть різних форм і розмірів | 1 клітинка, стіна 2 ключі |
+| `footprint` | [ширина, довжина] клітинок (ширина впоперек маршруту, довжина вздовж; поворот автоматичний за маршрутом), [1, 1]; пастки будуть різних форм і розмірів, див. `docs/traps-v2.md` | 1 клітинка, стіна 2 ключі |
 | `trigger_radius`, `hit_margin`, `hit_once` | студи; капкан 2.4, стіна 0.6, bool | у коді |
 | `wall_height`, `wall_span_max` | 4 і 30 | `WALL_HEIGHT`, `gameplay.wallSpan` |
 | `target_priority` | `nearest`, `first`, `last`, `strongest` (турель) | `nearest` у коді |
