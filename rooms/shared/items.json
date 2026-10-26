@@ -118,6 +118,13 @@
       "description": "Floor trap. A pool of tar that slows every enemy walking through it."
     },
     {
+      "id": "frost_fan",
+      "kind": "trap",
+      "icon": "",
+      "title": "Frost Fan",
+      "description": "Floor trap. Blows freezing air in a circle when enemies come close: chill builds up and enemies freeze."
+    },
+    {
       "id": "speed_boost",
       "kind": "booster",
       "icon": "rbxassetid://134502851439349",

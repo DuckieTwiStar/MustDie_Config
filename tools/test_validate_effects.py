@@ -57,6 +57,8 @@ results.append(run(edit(TU, lambda d: [u for u in d["trap_upgrades"] if u["id"] 
 results.append(run(edit("rooms/shared/traps.json", lambda d: [t for t in d["traps"] if t["id"] == "tar"][0].update(footprint_w=2.5)), "footprint_w дробове", "неправильний тип"))
 results.append(run(edit("rooms/shared/traps.json", lambda d: [t for t in d["traps"] if t["id"] == "tar"][0].pop("zone_tick")), "зона без zone_tick", "потрібне поле zone_tick"))
 results.append(run(edit(TU, lambda d: d["trap_upgrades"].append({"id": "snare_length_1", "trap_id": "snare", "upgrade": "length", "order": 40, "level": 1, "price_soft": 10, "value": 3})), "прокачка довжини пастки без footprint_l", "немає поля footprint_l"))
+results.append(run(edit("rooms/shared/traps.json", lambda d: [t for t in d["traps"] if t["id"] == "frost_fan"][0].pop("active_time")), "аура без active_time", "потрібне поле active_time"))
+results.append(run(edit("rooms/shared/traps.json", lambda d: [t for t in d["traps"] if t["id"] == "frost_fan"][0]["on_hit"]["chill"].update(stacks=6)), "chill stacks > 5 у вентиляторі", "потрібне ціле 1..5"))
 results.append(run(edit("rooms/shared/traps.json", lambda d: d["traps"][0].update(level=1)), "старе поле level у пастці", "поле level більше не використовується"))
 results.append(run(edit(TU, lambda d: tu_type(d, "hold").update(stat="on_hit.slow.duration")), "прокачка on_hit, якого в пастці немає", "немає on_hit.slow"))
 results.append(run(edit(TU, lambda d: d["trap_upgrades"].append({"id": "energy_wall_cooldown_1", "trap_id": "energy_wall", "upgrade": "cooldown", "order": 20, "level": 1, "price_soft": 10, "value": 2})), "прокачка поля, якого в пастці немає", "немає поля cooldown"))

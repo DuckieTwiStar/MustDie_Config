@@ -1,6 +1,6 @@
 {
   "meta": {
-    "version": "BAL-0012",
+    "version": "BAL-0013",
     "exported_at": "2026-10-26",
     "note": "Пастки: один рядок на пастку з базовими статами (як зброя в weapons.json). Прокачка постійна, купується в лобі за софт: rooms/shared/trap_upgrades.json (як weapon_upgrades). cost = віспи за встановлення в кімнаті, price_soft = ціна розблокування в лобі (0 для default_owned). Усі числа пасток читає код з цього файлу (damage, cooldown, fire_interval, range, on_hit, trigger_radius, hit_margin, wall_*). Рівні 1-3 (BAL-0005) з 25.10.2026 стали прокачками з тими самими числами. enabled: false вимикає пастку (немає в грі й лобі; прокачки й предмети лишаються). 26.10.2026: старі snare, energy_wall, turret вимкнені, їх замінюють пастки v2 (docs/traps-v2.md)"
   },
@@ -77,6 +77,31 @@
           "chance": 1,
           "duration": 0.5,
           "speed_mult": 0.65
+        }
+      }
+    },
+    {
+      "id": "frost_fan",
+      "order": 50,
+      "name_en": "Frost Fan",
+      "name_uk": "Морозний вентилятор",
+      "mechanic": "aura",
+      "placement": "floor",
+      "footprint_w": 2,
+      "footprint_l": 2,
+      "cost": 200,
+      "damage": 0,
+      "price_soft": 0,
+      "default_owned": true,
+      "cooldown": 6,
+      "range": 10,
+      "active_time": 3,
+      "aura_tick": 0.5,
+      "damage_type": "ice",
+      "on_hit": {
+        "chill": {
+          "chance": 1,
+          "stacks": 1
         }
       }
     }

@@ -1,6 +1,6 @@
 {
   "meta": {
-    "version": "BAL-0011",
+    "version": "BAL-0013",
     "exported_at": "2026-10-26",
     "note": "Прокачка пасток: постійна, купується в лобі за софт (price_soft), у кімнаті діє на пастки, які гравець ставить (числа фіксуються в мить встановлення). Формат як weapon_upgrades: upgrade_types (stat = поле пастки з traps.json або on_hit.<ефект>.<параметр>; op set | add | mul, типово set; назва й опис для UI; item_id = іконка kind=upgrade з items.json), trap_upgrades = рядки рівнів (value = нове значення поля на рівні). Числа й ціни 25.10.2026 перенесено зі старих рівнів 2-3 (ціна рівня поділена між прокачками), до плейтестів"
   },
@@ -56,6 +56,27 @@
       "name_en": "Longer pool",
       "name_uk": "Довша калюжа",
       "desc_en": "The pool grows to {new} cells long"
+    },
+    {
+      "id": "radius",
+      "stat": "range",
+      "name_en": "Radius",
+      "name_uk": "Радіус",
+      "desc_en": "Effect radius grows to {new} studs"
+    },
+    {
+      "id": "chill_power",
+      "stat": "on_hit.chill.stacks",
+      "name_en": "Chill power",
+      "name_uk": "Ефективність холоду",
+      "desc_en": "Each pulse adds {new} chill stacks"
+    },
+    {
+      "id": "active_time",
+      "stat": "active_time",
+      "name_en": "Active time",
+      "name_uk": "Час дії",
+      "desc_en": "Stays active for {new} s"
     }
   ],
   "trap_upgrades": [
@@ -220,6 +241,96 @@
       "level": 1,
       "price_soft": 150,
       "value": 6
+    },
+    {
+      "id": "frost_fan_cooldown_1",
+      "trap_id": "frost_fan",
+      "upgrade": "cooldown",
+      "order": 10,
+      "level": 1,
+      "price_soft": 40,
+      "value": 5
+    },
+    {
+      "id": "frost_fan_cooldown_2",
+      "trap_id": "frost_fan",
+      "upgrade": "cooldown",
+      "order": 10,
+      "level": 2,
+      "price_soft": 60,
+      "value": 4
+    },
+    {
+      "id": "frost_fan_cooldown_3",
+      "trap_id": "frost_fan",
+      "upgrade": "cooldown",
+      "order": 10,
+      "level": 3,
+      "price_soft": 90,
+      "value": 3
+    },
+    {
+      "id": "frost_fan_chill_power_1",
+      "trap_id": "frost_fan",
+      "upgrade": "chill_power",
+      "order": 20,
+      "level": 1,
+      "price_soft": 60,
+      "value": 2
+    },
+    {
+      "id": "frost_fan_chill_power_2",
+      "trap_id": "frost_fan",
+      "upgrade": "chill_power",
+      "order": 20,
+      "level": 2,
+      "price_soft": 100,
+      "value": 3
+    },
+    {
+      "id": "frost_fan_active_time_1",
+      "trap_id": "frost_fan",
+      "upgrade": "active_time",
+      "order": 30,
+      "level": 1,
+      "price_soft": 50,
+      "value": 4
+    },
+    {
+      "id": "frost_fan_active_time_2",
+      "trap_id": "frost_fan",
+      "upgrade": "active_time",
+      "order": 30,
+      "level": 2,
+      "price_soft": 80,
+      "value": 5
+    },
+    {
+      "id": "frost_fan_radius_1",
+      "trap_id": "frost_fan",
+      "upgrade": "radius",
+      "order": 40,
+      "level": 1,
+      "price_soft": 40,
+      "value": 12
+    },
+    {
+      "id": "frost_fan_radius_2",
+      "trap_id": "frost_fan",
+      "upgrade": "radius",
+      "order": 40,
+      "level": 2,
+      "price_soft": 60,
+      "value": 14
+    },
+    {
+      "id": "frost_fan_radius_3",
+      "trap_id": "frost_fan",
+      "upgrade": "radius",
+      "order": 40,
+      "level": 3,
+      "price_soft": 90,
+      "value": 16
     }
   ]
 }
