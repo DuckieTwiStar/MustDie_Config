@@ -1,6 +1,6 @@
 {
   "meta": {
-    "version": "BAL-0013",
+    "version": "BAL-0014",
     "exported_at": "2026-10-26",
     "note": "Прокачка пасток: постійна, купується в лобі за софт (price_soft), у кімнаті діє на пастки, які гравець ставить (числа фіксуються в мить встановлення). Формат як weapon_upgrades: upgrade_types (stat = поле пастки з traps.json або on_hit.<ефект>.<параметр>; op set | add | mul, типово set; назва й опис для UI; item_id = іконка kind=upgrade з items.json), trap_upgrades = рядки рівнів (value = нове значення поля на рівні). Числа й ціни 25.10.2026 перенесено зі старих рівнів 2-3 (ціна рівня поділена між прокачками), до плейтестів"
   },
@@ -77,6 +77,27 @@
       "name_en": "Active time",
       "name_uk": "Час дії",
       "desc_en": "Stays active for {new} s"
+    },
+    {
+      "id": "jet_length",
+      "stat": "zone_length",
+      "name_en": "Jet length",
+      "name_uk": "Довжина струменя",
+      "desc_en": "Jet reaches {new} cells"
+    },
+    {
+      "id": "burn_power",
+      "stat": "on_hit.burn.dps",
+      "name_en": "Burn power",
+      "name_uk": "Сила горіння",
+      "desc_en": "Burning deals {new} damage per second"
+    },
+    {
+      "id": "rear_jets",
+      "stat": "rear_zone",
+      "name_en": "Rear jets",
+      "name_uk": "Задні струмені",
+      "desc_en": "Also fires behind the grate"
     }
   ],
   "trap_upgrades": [
@@ -331,6 +352,96 @@
       "level": 3,
       "price_soft": 90,
       "value": 16
+    },
+    {
+      "id": "fire_grate_cooldown_1",
+      "trap_id": "fire_grate",
+      "upgrade": "cooldown",
+      "order": 10,
+      "level": 1,
+      "price_soft": 40,
+      "value": 3.5
+    },
+    {
+      "id": "fire_grate_cooldown_2",
+      "trap_id": "fire_grate",
+      "upgrade": "cooldown",
+      "order": 10,
+      "level": 2,
+      "price_soft": 60,
+      "value": 3
+    },
+    {
+      "id": "fire_grate_cooldown_3",
+      "trap_id": "fire_grate",
+      "upgrade": "cooldown",
+      "order": 10,
+      "level": 3,
+      "price_soft": 90,
+      "value": 2.5
+    },
+    {
+      "id": "fire_grate_jet_length_1",
+      "trap_id": "fire_grate",
+      "upgrade": "jet_length",
+      "order": 20,
+      "level": 1,
+      "price_soft": 40,
+      "value": 2
+    },
+    {
+      "id": "fire_grate_jet_length_2",
+      "trap_id": "fire_grate",
+      "upgrade": "jet_length",
+      "order": 20,
+      "level": 2,
+      "price_soft": 60,
+      "value": 3
+    },
+    {
+      "id": "fire_grate_jet_length_3",
+      "trap_id": "fire_grate",
+      "upgrade": "jet_length",
+      "order": 20,
+      "level": 3,
+      "price_soft": 90,
+      "value": 4
+    },
+    {
+      "id": "fire_grate_burn_power_1",
+      "trap_id": "fire_grate",
+      "upgrade": "burn_power",
+      "order": 30,
+      "level": 1,
+      "price_soft": 40,
+      "value": 15
+    },
+    {
+      "id": "fire_grate_burn_power_2",
+      "trap_id": "fire_grate",
+      "upgrade": "burn_power",
+      "order": 30,
+      "level": 2,
+      "price_soft": 60,
+      "value": 20
+    },
+    {
+      "id": "fire_grate_burn_power_3",
+      "trap_id": "fire_grate",
+      "upgrade": "burn_power",
+      "order": 30,
+      "level": 3,
+      "price_soft": 90,
+      "value": 30
+    },
+    {
+      "id": "fire_grate_rear_jets_1",
+      "trap_id": "fire_grate",
+      "upgrade": "rear_jets",
+      "order": 40,
+      "level": 1,
+      "price_soft": 200,
+      "value": 1
     }
   ]
 }

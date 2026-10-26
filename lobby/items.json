@@ -125,6 +125,13 @@
       "description": "Floor trap. Blows freezing air in a circle when enemies come close: chill builds up and enemies freeze."
     },
     {
+      "id": "fire_grate",
+      "kind": "trap",
+      "icon": "",
+      "title": "Fire Grate",
+      "description": "Floor trap. Fire jets burst from the floor at enemies approaching it and set them ablaze."
+    },
+    {
       "id": "speed_boost",
       "kind": "booster",
       "icon": "rbxassetid://134502851439349",
