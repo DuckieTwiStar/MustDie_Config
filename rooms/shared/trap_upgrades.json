@@ -1,6 +1,6 @@
 {
   "meta": {
-    "version": "BAL-0016",
+    "version": "BAL-0017",
     "exported_at": "2026-10-26",
     "note": "Прокачка пасток: постійна, купується в лобі за софт (price_soft), у кімнаті діє на пастки, які гравець ставить (числа фіксуються в мить встановлення). Формат як weapon_upgrades: upgrade_types (stat = поле пастки з traps.json або on_hit.<ефект>.<параметр>; op set | add | mul, типово set; назва й опис для UI; item_id = іконка kind=upgrade з items.json), trap_upgrades = рядки рівнів (value = нове значення поля на рівні). Числа й ціни 25.10.2026 перенесено зі старих рівнів 2-3 (ціна рівня поділена між прокачками), до плейтестів"
   },
@@ -119,6 +119,13 @@
       "name_en": "Poison darts",
       "name_uk": "Отруйні дротики",
       "desc_en": "Darts are coated with poison: stacks build up and weaken enemies"
+    },
+    {
+      "id": "vortex",
+      "stat": "on_hit.vortex.chance",
+      "name_en": "Vortex",
+      "name_uk": "Воронка",
+      "desc_en": "Once per burst each enemy in range is caught in a vortex, spun around and thrown into another lane"
     }
   ],
   "trap_upgrades": [
@@ -622,6 +629,15 @@
       "trap_id": "darts",
       "upgrade": "poison",
       "order": 30,
+      "level": 1,
+      "price_soft": 250,
+      "value": 1
+    },
+    {
+      "id": "frost_fan_vortex_1",
+      "trap_id": "frost_fan",
+      "upgrade": "vortex",
+      "order": 50,
       "level": 1,
       "price_soft": 250,
       "value": 1

@@ -1,6 +1,6 @@
 {
   "meta": {
-    "version": "FX-0005",
+    "version": "FX-0006",
     "exported_at": "2026-10-26",
     "note": "Ефекти на ворогах v2 (EffectService, docs/effects-v2.md): стеки, модифікатори, теги, переходи. max_stacks = 1: ефект із таймером (duration, reapply refresh|ignore); max_stacks > 1: лічильник стеків, один стек згасає за decay_interval. modifiers змінюють stat (speed_mult, damage_taken_mult[.тип], dps, hp_pct_per_sec), правило об'єднання й межі стата в секції stats. Теги: grants_tags видає ефект, requires_tags і blocked_by_tags задають умови. Переходи: on_max_stacks, on_end, on_death. Джерело (зброя, пастка) у on_hit передає chance, stacks (лічильник) або duration і числа модифікатора (dps, speed_mult), вони важливіші за ці. ФОРМАТ ЗМІНЕНО відносно FX-0002 (kind зник): новий JSON у release лише разом з опублікованим EffectService v2"
   },
@@ -261,6 +261,41 @@
       "reapply": "ignore",
       "grants_tags": [
         "weakened_immune"
+      ]
+    },
+    {
+      "id": "vortex",
+      "name_en": "Caught in a vortex",
+      "name_uk": "У воронці",
+      "max_stacks": 1,
+      "duration": 1.5,
+      "reapply": "ignore",
+      "grants_tags": [
+        "vortex"
+      ],
+      "blocked_by_tags": [
+        "frozen",
+        "vortex_immune"
+      ],
+      "modifiers": [
+        {
+          "stat": "speed_mult",
+          "value": 0
+        }
+      ],
+      "on_end": {
+        "apply": "vortex_immune"
+      }
+    },
+    {
+      "id": "vortex_immune",
+      "name_en": "Dizzy",
+      "name_uk": "Паморочиться",
+      "max_stacks": 1,
+      "duration": 3,
+      "reapply": "ignore",
+      "grants_tags": [
+        "vortex_immune"
       ]
     }
   ]
