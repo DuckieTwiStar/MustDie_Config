@@ -4,7 +4,7 @@
   "portals": [
     { "id": "1", "title": "Room 1", "placeId": 93270022021031, "enabled": true },
     { "id": "2", "title": "Room 2", "placeId": 139112539660279, "enabled": true, "requires": "bow" },
-    { "id": "3", "title": "Room 3", "placeId": 106479522236251, "enabled": false, "requires": "shotgun" },
+    { "id": "3", "title": "Room 3", "placeId": 106479522236251, "enabled": true, "requires": "shotgun" },
     { "id": "4", "title": "Room 4", "placeId": 0, "enabled": false }
   ]
 }
