@@ -4,7 +4,7 @@
   "groupId": 873927772,
   "infoText": "Get a unique gift for joining",
   "reward": {
-    "icon": "",
+    "icon": "rbxassetid://120728741244450",
     "kind": "SoftCurrency",
     "title": "1000 Coins",
     "amount": 1000

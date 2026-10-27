@@ -3,7 +3,7 @@
     {
       "days": 6,
       "reward": {
-        "icon": "",
+        "icon": "rbxassetid://120728741244450",
         "kind": "SoftCurrency",
         "title": "500 Coins",
         "amount": 500
@@ -12,7 +12,7 @@
     {
       "days": 15,
       "reward": {
-        "icon": "",
+        "icon": "rbxassetid://120728741244450",
         "kind": "SoftCurrency",
         "title": "2000 Coins",
         "amount": 2000
@@ -21,7 +21,7 @@
     {
       "days": 30,
       "reward": {
-        "icon": "",
+        "icon": "rbxassetid://120728741244450",
         "kind": "SoftCurrency",
         "title": "5000 Coins",
         "amount": 5000
@@ -32,43 +32,43 @@
   "cycles": [
     [
       {
-        "icon": "",
+        "icon": "rbxassetid://120728741244450",
         "kind": "SoftCurrency",
         "title": "100 Coins",
         "amount": 100
       },
       {
-        "icon": "",
+        "icon": "rbxassetid://120728741244450",
         "kind": "SoftCurrency",
         "title": "150 Coins",
         "amount": 150
       },
       {
-        "icon": "",
+        "icon": "rbxassetid://120728741244450",
         "kind": "SoftCurrency",
         "title": "200 Coins",
         "amount": 200
       },
       {
-        "icon": "",
+        "icon": "rbxassetid://120728741244450",
         "kind": "SoftCurrency",
         "title": "300 Coins",
         "amount": 300
       },
       {
-        "icon": "",
+        "icon": "rbxassetid://120728741244450",
         "kind": "SoftCurrency",
         "title": "400 Coins",
         "amount": 400
       },
       {
-        "icon": "",
+        "icon": "rbxassetid://120728741244450",
         "kind": "SoftCurrency",
         "title": "500 Coins",
         "amount": 500
       },
       {
-        "icon": "",
+        "icon": "rbxassetid://120728741244450",
         "kind": "SoftCurrency",
         "title": "1000 Coins",
         "amount": 1000
