@@ -113,21 +113,21 @@
     {
       "id": "tar",
       "kind": "trap",
-      "icon": "",
+      "icon": "rbxassetid://110090099875820",
       "title": "Tar",
       "description": "Floor trap. A pool of tar that slows every enemy walking through it."
     },
     {
       "id": "frost_fan",
       "kind": "trap",
-      "icon": "",
+      "icon": "rbxassetid://74716240756144",
       "title": "Frost Fan",
       "description": "Floor trap. Blows freezing air in a circle when enemies come close: chill builds up and enemies freeze."
     },
     {
       "id": "fire_grate",
       "kind": "trap",
-      "icon": "",
+      "icon": "rbxassetid://77157199190377",
       "title": "Fire Grate",
       "description": "Floor trap. Fire jets burst from the floor at enemies approaching it and set them ablaze."
     },
@@ -328,98 +328,98 @@
     {
       "id": "tesla",
       "kind": "trap",
-      "icon": "",
+      "icon": "rbxassetid://94830934288870",
       "title": "Tesla Coil",
       "description": "Wall trap. Fires a chain lightning that jumps between enemies in a crowd."
     },
     {
       "id": "darts",
       "kind": "trap",
-      "icon": "",
+      "icon": "rbxassetid://79272441646366",
       "title": "Darts",
       "description": "Floor or wall trap. Fires a volley of darts at enemies in its zone; poison can be added."
     },
     {
       "id": "upgrade_slow",
       "kind": "upgrade",
-      "icon": "",
+      "icon": "rbxassetid://131257077876511",
       "title": "Stickiness",
       "description": "Tar slows enemies more."
     },
     {
       "id": "upgrade_linger",
       "kind": "upgrade",
-      "icon": "",
+      "icon": "rbxassetid://134521916186550",
       "title": "Tar Residue",
       "description": "Enemies stay slowed longer after leaving the tar."
     },
     {
       "id": "upgrade_length",
       "kind": "upgrade",
-      "icon": "",
+      "icon": "rbxassetid://128163511111837",
       "title": "Longer Pool",
       "description": "The tar pool gets longer."
     },
     {
       "id": "upgrade_chill_power",
       "kind": "upgrade",
-      "icon": "",
+      "icon": "rbxassetid://131040668100874",
       "title": "Chill Power",
       "description": "Chill builds up faster."
     },
     {
       "id": "upgrade_active_time",
       "kind": "upgrade",
-      "icon": "",
+      "icon": "rbxassetid://117616513045190",
       "title": "Active Time",
       "description": "The trap stays active longer."
     },
     {
       "id": "upgrade_jet_length",
       "kind": "upgrade",
-      "icon": "",
+      "icon": "rbxassetid://133974424798334",
       "title": "Jet Length",
       "description": "Fire jets reach further."
     },
     {
       "id": "upgrade_burn_power",
       "kind": "upgrade",
-      "icon": "",
+      "icon": "rbxassetid://72233462991632",
       "title": "Burn Power",
       "description": "Fire burns harder."
     },
     {
       "id": "upgrade_rear_jets",
       "kind": "upgrade",
-      "icon": "",
+      "icon": "rbxassetid://79794104059136",
       "title": "Rear Jets",
       "description": "Adds jets behind the grate."
     },
     {
       "id": "upgrade_jumps",
       "kind": "upgrade",
-      "icon": "",
+      "icon": "rbxassetid://136786904149281",
       "title": "Chain Length",
       "description": "Lightning jumps to more enemies."
     },
     {
       "id": "upgrade_branch",
       "kind": "upgrade",
-      "icon": "",
+      "icon": "rbxassetid://109589548890796",
       "title": "Branching",
       "description": "Lightning splits into branches."
     },
     {
       "id": "upgrade_poison",
       "kind": "upgrade",
-      "icon": "",
+      "icon": "rbxassetid://107705195783080",
       "title": "Poison Darts",
       "description": "Darts poison enemies."
     },
     {
       "id": "upgrade_vortex",
       "kind": "upgrade",
-      "icon": "",
+      "icon": "rbxassetid://123560627619665",
       "title": "Vortex",
       "description": "Unique upgrade: the fan pulls enemies into a whirlwind."
     }
