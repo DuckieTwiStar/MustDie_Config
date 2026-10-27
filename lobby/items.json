@@ -426,7 +426,7 @@
     {
       "id": "upgrade_trap_radius",
       "kind": "upgrade",
-      "icon": "",
+      "icon": "rbxassetid://73890886901452",
       "title": "Radius",
       "description": "The trap's effect zone gets wider."
     }
