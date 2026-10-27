@@ -338,6 +338,90 @@
       "icon": "",
       "title": "Darts",
       "description": "Floor or wall trap. Fires a volley of darts at enemies in its zone; poison can be added."
+    },
+    {
+      "id": "upgrade_slow",
+      "kind": "upgrade",
+      "icon": "",
+      "title": "Stickiness",
+      "description": "Tar slows enemies more."
+    },
+    {
+      "id": "upgrade_linger",
+      "kind": "upgrade",
+      "icon": "",
+      "title": "Tar Residue",
+      "description": "Enemies stay slowed longer after leaving the tar."
+    },
+    {
+      "id": "upgrade_length",
+      "kind": "upgrade",
+      "icon": "",
+      "title": "Longer Pool",
+      "description": "The tar pool gets longer."
+    },
+    {
+      "id": "upgrade_chill_power",
+      "kind": "upgrade",
+      "icon": "",
+      "title": "Chill Power",
+      "description": "Chill builds up faster."
+    },
+    {
+      "id": "upgrade_active_time",
+      "kind": "upgrade",
+      "icon": "",
+      "title": "Active Time",
+      "description": "The trap stays active longer."
+    },
+    {
+      "id": "upgrade_jet_length",
+      "kind": "upgrade",
+      "icon": "",
+      "title": "Jet Length",
+      "description": "Fire jets reach further."
+    },
+    {
+      "id": "upgrade_burn_power",
+      "kind": "upgrade",
+      "icon": "",
+      "title": "Burn Power",
+      "description": "Fire burns harder."
+    },
+    {
+      "id": "upgrade_rear_jets",
+      "kind": "upgrade",
+      "icon": "",
+      "title": "Rear Jets",
+      "description": "Adds jets behind the grate."
+    },
+    {
+      "id": "upgrade_jumps",
+      "kind": "upgrade",
+      "icon": "",
+      "title": "Chain Length",
+      "description": "Lightning jumps to more enemies."
+    },
+    {
+      "id": "upgrade_branch",
+      "kind": "upgrade",
+      "icon": "",
+      "title": "Branching",
+      "description": "Lightning splits into branches."
+    },
+    {
+      "id": "upgrade_poison",
+      "kind": "upgrade",
+      "icon": "",
+      "title": "Poison Darts",
+      "description": "Darts poison enemies."
+    },
+    {
+      "id": "upgrade_vortex",
+      "kind": "upgrade",
+      "icon": "",
+      "title": "Vortex",
+      "description": "Unique upgrade: the fan pulls enemies into a whirlwind."
     }
   ]
 }

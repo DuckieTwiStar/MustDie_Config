@@ -41,91 +41,104 @@
       "stat": "on_hit.tar.speed_mult",
       "name_en": "Stickiness",
       "name_uk": "Липкість",
-      "desc_en": "Enemies move at {new}x speed in the tar"
+      "desc_en": "Enemies move at {new}x speed in the tar",
+      "item_id": "upgrade_slow"
     },
     {
       "id": "linger",
       "stat": "on_hit.tar.duration",
       "name_en": "Residue",
       "name_uk": "Залишки смоли",
-      "desc_en": "Slow lingers {new} s after leaving the tar"
+      "desc_en": "Slow lingers {new} s after leaving the tar",
+      "item_id": "upgrade_linger"
     },
     {
       "id": "length",
       "stat": "footprint_l",
       "name_en": "Longer pool",
       "name_uk": "Довша калюжа",
-      "desc_en": "The pool grows to {new} cells long"
+      "desc_en": "The pool grows to {new} cells long",
+      "item_id": "upgrade_length"
     },
     {
       "id": "radius",
       "stat": "range",
       "name_en": "Radius",
       "name_uk": "Радіус",
-      "desc_en": "Effect radius grows to {new} studs"
+      "desc_en": "Effect radius grows to {new} studs",
+      "item_id": "upgrade_radius"
     },
     {
       "id": "chill_power",
       "stat": "on_hit.chill.stacks",
       "name_en": "Chill power",
       "name_uk": "Ефективність холоду",
-      "desc_en": "Each pulse adds {new} chill stacks"
+      "desc_en": "Each pulse adds {new} chill stacks",
+      "item_id": "upgrade_chill_power"
     },
     {
       "id": "active_time",
       "stat": "active_time",
       "name_en": "Active time",
       "name_uk": "Час дії",
-      "desc_en": "Stays active for {new} s"
+      "desc_en": "Stays active for {new} s",
+      "item_id": "upgrade_active_time"
     },
     {
       "id": "jet_length",
       "stat": "zone_length",
       "name_en": "Jet length",
       "name_uk": "Довжина струменя",
-      "desc_en": "Jet reaches {new} cells"
+      "desc_en": "Jet reaches {new} cells",
+      "item_id": "upgrade_jet_length"
     },
     {
       "id": "burn_power",
       "stat": "on_hit.burn.dps",
       "name_en": "Burn power",
       "name_uk": "Сила горіння",
-      "desc_en": "Burning deals {new} damage per second"
+      "desc_en": "Burning deals {new} damage per second",
+      "item_id": "upgrade_burn_power"
     },
     {
       "id": "rear_jets",
       "stat": "rear_zone",
       "name_en": "Rear jets",
       "name_uk": "Задні струмені",
-      "desc_en": "Also fires behind the grate"
+      "desc_en": "Also fires behind the grate",
+      "item_id": "upgrade_rear_jets"
     },
     {
       "id": "jumps",
       "stat": "jumps",
       "name_en": "Chain length",
       "name_uk": "Довжина ланцюга",
-      "desc_en": "Lightning jumps {new} times"
+      "desc_en": "Lightning jumps {new} times",
+      "item_id": "upgrade_jumps"
     },
     {
       "id": "branch",
       "stat": "branch",
       "name_en": "Branching",
       "name_uk": "Розгалуження",
-      "desc_en": "Each target arcs to {new} more enemies"
+      "desc_en": "Each target arcs to {new} more enemies",
+      "item_id": "upgrade_branch"
     },
     {
       "id": "poison",
       "stat": "on_hit.poison.chance",
       "name_en": "Poison darts",
       "name_uk": "Отруйні дротики",
-      "desc_en": "Darts are coated with poison: stacks build up and weaken enemies"
+      "desc_en": "Darts are coated with poison: stacks build up and weaken enemies",
+      "item_id": "upgrade_poison"
     },
     {
       "id": "vortex",
       "stat": "on_hit.vortex.chance",
       "name_en": "Vortex",
       "name_uk": "Воронка",
-      "desc_en": "Once per burst each enemy in range is caught in a vortex, spun around and thrown into another lane"
+      "desc_en": "Once per burst each enemy in range is caught in a vortex, spun around and thrown into another lane",
+      "item_id": "upgrade_vortex"
     }
   ],
   "trap_upgrades": [
