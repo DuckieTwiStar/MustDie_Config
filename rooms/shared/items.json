@@ -422,6 +422,13 @@
       "icon": "rbxassetid://123560627619665",
       "title": "Vortex",
       "description": "Unique upgrade: the fan pulls enemies into a whirlwind."
+    },
+    {
+      "id": "upgrade_trap_radius",
+      "kind": "upgrade",
+      "icon": "",
+      "title": "Radius",
+      "description": "The trap's effect zone gets wider."
     }
   ]
 }

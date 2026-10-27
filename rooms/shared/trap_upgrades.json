@@ -66,7 +66,7 @@
       "name_en": "Radius",
       "name_uk": "Радіус",
       "desc_en": "Effect radius grows to {new} studs",
-      "item_id": "upgrade_radius"
+      "item_id": "upgrade_trap_radius"
     },
     {
       "id": "chill_power",
