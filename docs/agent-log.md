@@ -9,6 +9,8 @@ Slack на безкоштовному плані стирає історію ч�
 
 ## 2026-10
 
+- 28.10 (Агент J): катсцена старту і стрілки хвиль. Нові `Shared.MapInfo`, `IntroService`, `Client.IntroCutscene`, `Client.WaveHintClient`; правки CombatService/MatchService/WaveService/Bootstrap/ConfigLoader/Config/CameraController/TowerDefenseClient/MinimapClient (пульс лише активних зон). Правило `rules.intro` (every_run=true для дебагу). Дока: docs/intro-cutscene.md.
+
 - 2026-10-28 · Агент J · Виправлення за ревʼю змін дня: `Client.FxPool` очищає слід (`Trail:Clear()`) при повторному взятті деталі; `BotService`: паралельні `rebuild` більше не додають зайвих ботів (лічильник запусків), маршрут бота задається при створенні (до запуску «мозку»), параметри променя видимості один раз на крок бою, запасний аватар у `pcall` (якщо не вдався, бот пропускається). У протоколі статуси 🔒 Беру / 🔓 Вільно. Перевірено в Room 3 Play: три зміни розміру команди поспіль → рівно 3 боти з маршрутами s1/s2, боти ставлять пастки й стріляють, помилок нема. Packages змінено, чекає публікації.
 - 2026-10-28 · Агент J · Реліз: Женя запромоутив `main → release` через Actions (`de00f72`), пекеджі й усі Place оновлено. Правило релізу уточнено (спершу пропонуємо Actions). Workflow `validate`/`promote-release` закріплено на `ubuntu-24.04` через попередження про міграцію `ubuntu-latest` на Ubuntu 26.
 - 2026-10-28 · Агент J · Процесні правила та перевірка `WeaponVisuals`: у `docs/agent-protocol.md` додано розділи «Пекеджі: Беру/Вільно», «Хто чий файл» (чернетка, чекає підтвердження Жені/Васі) і «Реліз main → release» (ручний fast-forward лише з явного ок; питання до Жені). `WeaponVisuals`: до 17 деталей на предмет, 3 PointLight, переробки не потрібні, результат у `docs/optimization-lowend.md`. Код не змінювався.

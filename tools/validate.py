@@ -213,6 +213,7 @@ RULES_SCHEMA = {
         "restart_delay": (NUM, 0, 600), "weapon_select_seconds": (NUM, 1, 120), "weapon_select_delay": (NUM, 0, 10),
     },
     "player": {"walk_speed": (NUM, 1, 200), "sprint_speed": (NUM, 1, 300)},
+    "intro": {"enabled": (bool, None, None), "cooldown_hours": (NUM, 0, 8760), "every_run": (bool, None, None), "seconds": (NUM, 3, 30)},
     "traps": {
         "cell_size": (NUM, 0.1, None), "place_reach": (NUM, 1, 2000), "reach": (NUM, 1, 200),
         "reach_slack": (NUM, 0, 100), "refund_share": (NUM, 0, 1),
