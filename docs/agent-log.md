@@ -9,6 +9,7 @@ Slack на безкоштовному плані стирає історію ч�
 
 ## 2026-10
 
+- 2026-10-28 · Агент J · Реліз: Женя запромоутив `main → release` через Actions (`de00f72`), пекеджі й усі Place оновлено. Правило релізу уточнено (спершу пропонуємо Actions). Workflow `validate`/`promote-release` закріплено на `ubuntu-24.04` через попередження про міграцію `ubuntu-latest` на Ubuntu 26.
 - 2026-10-28 · Агент J · Процесні правила та перевірка `WeaponVisuals`: у `docs/agent-protocol.md` додано розділи «Пекеджі: Беру/Вільно», «Хто чий файл» (чернетка, чекає підтвердження Жені/Васі) і «Реліз main → release» (ручний fast-forward лише з явного ок; питання до Жені). `WeaponVisuals`: до 17 деталей на предмет, 3 PointLight, переробки не потрібні, результат у `docs/optimization-lowend.md`. Код не змінювався.
 - 2026-10-28 · Агент J · Строга типізація: `BotService`, `TeamService`, `Client.EnemyVisuals` переведено на `--!strict` (тепер весь TowerDefense strict). Бот: `export type Bot` (метатаблиця), на межі викликів сервісів `asPlayer(bot)`; `TeamService.BotActor`, `members(): {Player}`. Заодно прибрано `Instance.new("Animator", humanoid)` з батьком. `EnemyVisuals`: типи `Pose`/`Profile`/`Visual`, атрибути читаються з перевіркою типу. Поведінка та сама. Перевірено в Room 3 Play: 3 боти (анімації, пастки, постріли), вороги з моделями на хітбоксах, помилок у консолі нема. Packages змінено, чекає публікації.
 
