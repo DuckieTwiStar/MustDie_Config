@@ -220,6 +220,7 @@ RULES_SCHEMA = {
     "enemies": {
         "corridor_lanes": (int, 1, 64), "turn_radius": (NUM, 0, 200), "speed_jitter": (NUM, 0, 1),
         "spawn_jitter": (NUM, 0, 1), "drift_amplitude": (NUM, 0, 100), "drift_scale": (NUM, 1, 1000),
+        "client_motion": (bool, None, None),
     },
     "combat": {"max_live_shots": (int, 1, 1000), "net_tolerance": (NUM, 0, 1)},
 }

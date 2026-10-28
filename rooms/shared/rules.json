@@ -30,7 +30,8 @@
       "speed_jitter": 0.1,
       "spawn_jitter": 0.4,
       "drift_amplitude": 6,
-      "drift_scale": 40
+      "drift_scale": 40,
+      "client_motion": false
     },
     "combat": {
       "max_live_shots": 60,
