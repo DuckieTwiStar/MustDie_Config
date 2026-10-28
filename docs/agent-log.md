@@ -9,6 +9,8 @@ Slack на безкоштовному плані стирає історію ч�
 
 ## 2026-10
 
+- 2026-10-28 · Агент J · Катсцена v3: старт зі спавнера, один найдовший маршрут першої хвилі, камера їде назад до печаті, коло навколо печаті, потім за спину гравця. Боти чекають під час сцени (`State.IntroUntil`, правка в `BotService.brain`).
+
 - 2026-10-28 · Агент J · Катсцена v2: чорний екран підвантаження (3.5 с, `RequestStreamAroundAsync` по печаті й маршрутах), проліт камери вздовж кожного маршруту замість огляду зверху, `rules.intro.seconds` 12; сервер: `IntroStartAt = now + 3.5`.
 
 - 28.10 (Агент J): катсцена старту і стрілки хвиль. Нові `Shared.MapInfo`, `IntroService`, `Client.IntroCutscene`, `Client.WaveHintClient`; правки CombatService/MatchService/WaveService/Bootstrap/ConfigLoader/Config/CameraController/TowerDefenseClient/MinimapClient (пульс лише активних зон). Правило `rules.intro` (every_run=true для дебагу). Дока: docs/intro-cutscene.md.
