@@ -2,7 +2,7 @@
   "meta": {
     "version": "BAL-0001",
     "exported_at": "2026-10-29",
-    "note": "Зони Room 4 за блокаутом v1 (довжини приблизні)"
+    "note": "Зони Room 4, блокаут v2 (s1 і s2 по ≈560 studs до бази, довжини приблизні)"
   },
   "zones": [
     {
@@ -24,11 +24,11 @@
       "spawner_id": "s1"
     },
     {
-      "id": "a_loop",
+      "id": "a_mid",
       "order": 30,
-      "name_en": "A: switchback",
-      "name_uk": "A: серпантин",
-      "length": 440,
+      "name_en": "A: upper corridor",
+      "name_uk": "A: верхній коридор",
+      "length": 120,
       "lanes": 8,
       "spawner_id": "s1"
     },
@@ -46,7 +46,7 @@
       "order": 50,
       "name_en": "A: to the crossroads",
       "name_uk": "A: до перехрестя",
-      "length": 144,
+      "length": 104,
       "lanes": 8,
       "spawner_id": "s1"
     },
@@ -69,11 +69,11 @@
       "spawner_id": "s2"
     },
     {
-      "id": "b_north",
+      "id": "b_mid",
       "order": 80,
-      "name_en": "B: north wing",
-      "name_uk": "B: північне крило",
-      "length": 152,
+      "name_en": "B: upper corridor",
+      "name_uk": "B: верхній коридор",
+      "length": 120,
       "lanes": 8,
       "spawner_id": "s2"
     },
@@ -91,7 +91,7 @@
       "order": 100,
       "name_en": "B: to the crossroads",
       "name_uk": "B: до перехрестя",
-      "length": 176,
+      "length": 104,
       "lanes": 8,
       "spawner_id": "s2"
     },
