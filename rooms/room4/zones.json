@@ -1,87 +1,132 @@
 {
   "meta": {
-    "version": "BAL-0004",
-    "exported_at": "2026-10-15",
-    "note": "Зони Room 2: гілка кожного спавнера (spawner_id), далі спільна частина. length для симуляції і ботів, ще не звірено з картою. lanes = ширина зони в смугах по cell_size (зараз 6: карта ще не перебудована під 8)"
+    "version": "BAL-0001",
+    "exported_at": "2026-10-29",
+    "note": "Зони Room 4 за блокаутом v1 (довжини приблизні)"
   },
   "zones": [
     {
-      "id": "a_down",
+      "id": "a_flat1",
       "order": 10,
-      "name_en": "Branch A: corridor",
-      "name_uk": "Гілка A: коридор",
-      "length": 64,
-      "spawner_id": "s1",
-      "lanes": 6
+      "name_en": "A: lower corridor",
+      "name_uk": "A: нижній коридор",
+      "length": 88,
+      "lanes": 8,
+      "spawner_id": "s1"
     },
     {
-      "id": "a_turn",
+      "id": "a_st1",
       "order": 20,
-      "name_en": "Branch A: turn",
-      "name_uk": "Гілка A: поворот",
-      "length": 24,
-      "spawner_id": "s1",
-      "lanes": 6
+      "name_en": "A: stairs 1",
+      "name_uk": "A: сходи 1",
+      "length": 45,
+      "lanes": 8,
+      "spawner_id": "s1"
     },
     {
-      "id": "a_cross",
+      "id": "a_loop",
       "order": 30,
-      "name_en": "Branch A: to the junction",
-      "name_uk": "Гілка A: до вузла",
-      "length": 72,
-      "spawner_id": "s1",
-      "lanes": 6
+      "name_en": "A: switchback",
+      "name_uk": "A: серпантин",
+      "length": 440,
+      "lanes": 8,
+      "spawner_id": "s1"
     },
     {
-      "id": "b_down",
+      "id": "a_st2",
       "order": 40,
-      "name_en": "Branch B: corridor",
-      "name_uk": "Гілка B: коридор",
-      "length": 64,
-      "spawner_id": "s2",
-      "lanes": 6
+      "name_en": "A: stairs 2",
+      "name_uk": "A: сходи 2",
+      "length": 45,
+      "lanes": 8,
+      "spawner_id": "s1"
     },
     {
-      "id": "b_turn",
+      "id": "a_to_x",
       "order": 50,
-      "name_en": "Branch B: turn",
-      "name_uk": "Гілка B: поворот",
-      "length": 24,
-      "spawner_id": "s2",
-      "lanes": 6
+      "name_en": "A: to the crossroads",
+      "name_uk": "A: до перехрестя",
+      "length": 144,
+      "lanes": 8,
+      "spawner_id": "s1"
     },
     {
-      "id": "b_cross",
+      "id": "b_flat1",
       "order": 60,
-      "name_en": "Branch B: to the junction",
-      "name_uk": "Гілка B: до вузла",
-      "length": 72,
-      "spawner_id": "s2",
-      "lanes": 6
+      "name_en": "B: lower corridor",
+      "name_uk": "B: нижній коридор",
+      "length": 88,
+      "lanes": 8,
+      "spawner_id": "s2"
     },
     {
-      "id": "junction",
+      "id": "b_st1",
       "order": 70,
-      "name_en": "Junction",
-      "name_uk": "Вузол",
-      "length": 40,
-      "lanes": 6
+      "name_en": "B: stairs 1",
+      "name_uk": "B: сходи 1",
+      "length": 45,
+      "lanes": 8,
+      "spawner_id": "s2"
     },
     {
-      "id": "main",
+      "id": "b_north",
       "order": 80,
-      "name_en": "Main corridor",
-      "name_uk": "Головний коридор",
-      "length": 56,
-      "lanes": 6
+      "name_en": "B: north wing",
+      "name_uk": "B: північне крило",
+      "length": 152,
+      "lanes": 8,
+      "spawner_id": "s2"
     },
     {
-      "id": "area",
+      "id": "b_st2",
       "order": 90,
-      "name_en": "Seal hall",
-      "name_uk": "Зала печатки",
-      "length": 24,
-      "lanes": 6
+      "name_en": "B: stairs 2",
+      "name_uk": "B: сходи 2",
+      "length": 45,
+      "lanes": 8,
+      "spawner_id": "s2"
+    },
+    {
+      "id": "b_to_x",
+      "order": 100,
+      "name_en": "B: to the crossroads",
+      "name_uk": "B: до перехрестя",
+      "length": 176,
+      "lanes": 8,
+      "spawner_id": "s2"
+    },
+    {
+      "id": "pen",
+      "order": 110,
+      "name_en": "Squad pen",
+      "name_uk": "Загін за воротами",
+      "length": 60,
+      "lanes": 8,
+      "spawner_id": "s3"
+    },
+    {
+      "id": "cross",
+      "order": 120,
+      "name_en": "Crossroads",
+      "name_uk": "Перехрестя",
+      "length": 32,
+      "lanes": 8
+    },
+    {
+      "id": "st3",
+      "order": 130,
+      "name_en": "Final stairs",
+      "name_uk": "Фінальні сходи",
+      "length": 45,
+      "lanes": 8
+    },
+    {
+      "id": "final",
+      "order": 140,
+      "name_en": "Final straight",
+      "name_uk": "Фінальна пряма",
+      "length": 66,
+      "lanes": 8
     }
   ]
 }

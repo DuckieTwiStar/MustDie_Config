@@ -1,22 +1,22 @@
 {
   "meta": {
-    "version": "BAL-0004",
-    "exported_at": "2026-10-15",
-    "note": "Room 2: хвилі під 4 гравців, для меншої команди множники < 1"
+    "version": "BAL-0005",
+    "exported_at": "2026-10-24",
+    "note": "Room 4: множники від кількості гравців, копія Room 3"
   },
   "players": [
     {
       "id": "p1",
       "players": 1,
-      "hp_mult": 0.8,
-      "count_mult": 0.45,
+      "hp_mult": 0.85,
+      "count_mult": 0.5,
       "reward_mult": 1
     },
     {
       "id": "p2",
       "players": 2,
-      "hp_mult": 0.9,
-      "count_mult": 0.65,
+      "hp_mult": 0.95,
+      "count_mult": 0.7,
       "reward_mult": 1
     },
     {

@@ -1,16 +1,16 @@
 {
   "meta": {
-    "version": "BAL-0004",
-    "exported_at": "2026-10-15",
-    "note": "Room 4 (школа/Hard Climb-натхнення): стартова копія template, числа балансуємо після блокауту"
+    "version": "BAL-0001",
+    "exported_at": "2026-10-29",
+    "note": "Room 4: висока «школа/Hard Climb», два головні спавнери s1/s2 + загін s3 біля перехрестя. Геометрія в Place"
   },
   "room": {
     "id": "room4",
     "name_en": "Room 4",
     "name_uk": "Кімната 4",
     "unlock_weapon": "tommy",
-    "base_hp": 900,
-    "door_timer": 75,
+    "base_hp": 1000,
+    "door_timer": 60,
     "spawners": [
       {
         "id": "s1",
@@ -19,6 +19,11 @@
       },
       {
         "id": "s2",
+        "mode": "simultaneous",
+        "cooldown": 0
+      },
+      {
+        "id": "s3",
         "mode": "simultaneous",
         "cooldown": 0
       }
