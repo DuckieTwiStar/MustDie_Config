@@ -2,11 +2,11 @@
   "meta": {
     "version": "BAL-0001",
     "exported_at": "2026-10-29",
-    "note": "Зони Room 4, блокаут v2 (s1 і s2 по ≈560 studs до бази, довжини приблизні)"
+    "note": "Зони Room 4, блокаут v3 (s1 656, s2 488 studs до бази, довжини приблизні)"
   },
   "zones": [
     {
-      "id": "a_flat1",
+      "id": "a_low",
       "order": 10,
       "name_en": "A: lower corridor",
       "name_uk": "A: нижній коридор",
@@ -24,44 +24,62 @@
       "spawner_id": "s1"
     },
     {
-      "id": "a_mid",
+      "id": "a_top",
       "order": 30,
-      "name_en": "A: upper corridor",
-      "name_uk": "A: верхній коридор",
-      "length": 120,
+      "name_en": "A: upper turn",
+      "name_uk": "A: верхній поворот",
+      "length": 72,
+      "lanes": 8,
+      "spawner_id": "s1"
+    },
+    {
+      "id": "a_long",
+      "order": 40,
+      "name_en": "A: long straight",
+      "name_uk": "A: пряма вниз",
+      "length": 72,
+      "lanes": 8,
+      "spawner_id": "s1"
+    },
+    {
+      "id": "a_mid",
+      "order": 50,
+      "name_en": "A: turn",
+      "name_uk": "A: поворот",
+      "length": 48,
       "lanes": 8,
       "spawner_id": "s1"
     },
     {
       "id": "a_st2",
-      "order": 40,
+      "order": 60,
       "name_en": "A: stairs 2",
-      "name_uk": "A: сходи 2",
+      "name_uk": "A: сходи 2 перед перехрестям",
       "length": 45,
       "lanes": 8,
       "spawner_id": "s1"
     },
     {
       "id": "a_to_x",
-      "order": 50,
+      "order": 70,
       "name_en": "A: to the crossroads",
       "name_uk": "A: до перехрестя",
-      "length": 104,
+      "length": 112,
       "lanes": 8,
       "spawner_id": "s1"
     },
     {
-      "id": "b_flat1",
-      "order": 60,
+      "id": "b_low",
+      "order": 110,
       "name_en": "B: lower corridor",
       "name_uk": "B: нижній коридор",
-      "length": 88,
+      "length": 68,
       "lanes": 8,
       "spawner_id": "s2"
     },
     {
       "id": "b_st1",
-      "order": 70,
+      "order": 120,
       "name_en": "B: stairs 1",
       "name_uk": "B: сходи 1",
       "length": 45,
@@ -69,35 +87,35 @@
       "spawner_id": "s2"
     },
     {
-      "id": "b_mid",
-      "order": 80,
+      "id": "b_up",
+      "order": 130,
       "name_en": "B: upper corridor",
       "name_uk": "B: верхній коридор",
+      "length": 44,
+      "lanes": 8,
+      "spawner_id": "s2"
+    },
+    {
+      "id": "b_long",
+      "order": 140,
+      "name_en": "B: long straight",
+      "name_uk": "B: пряма до перехрестя",
       "length": 120,
       "lanes": 8,
       "spawner_id": "s2"
     },
     {
       "id": "b_st2",
-      "order": 90,
+      "order": 150,
       "name_en": "B: stairs 2",
-      "name_uk": "B: сходи 2",
+      "name_uk": "B: сходи 2 перед перехрестям",
       "length": 45,
       "lanes": 8,
       "spawner_id": "s2"
     },
     {
-      "id": "b_to_x",
-      "order": 100,
-      "name_en": "B: to the crossroads",
-      "name_uk": "B: до перехрестя",
-      "length": 104,
-      "lanes": 8,
-      "spawner_id": "s2"
-    },
-    {
       "id": "pen",
-      "order": 110,
+      "order": 210,
       "name_en": "Squad pen",
       "name_uk": "Загін за воротами",
       "length": 60,
@@ -106,7 +124,7 @@
     },
     {
       "id": "cross",
-      "order": 120,
+      "order": 220,
       "name_en": "Crossroads",
       "name_uk": "Перехрестя",
       "length": 32,
@@ -114,7 +132,7 @@
     },
     {
       "id": "st3",
-      "order": 130,
+      "order": 230,
       "name_en": "Final stairs",
       "name_uk": "Фінальні сходи",
       "length": 45,
@@ -122,7 +140,7 @@
     },
     {
       "id": "final",
-      "order": 140,
+      "order": 240,
       "name_en": "Final straight",
       "name_uk": "Фінальна пряма",
       "length": 66,
