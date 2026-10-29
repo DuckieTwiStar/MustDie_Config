@@ -32,3 +32,7 @@
 1. Декору поставити `MinimapIgnore = true` (інакше папки декору з назвою `Walls` малюються як стіни, а юніони як великі прямокутники).
 2. Сходи без `TrapFloor`: `MinimapKind = "floor"`; ворота загону (`Panel`): `MinimapKind = "door"`.
 3. Запекти з Command Bar: `require(game.ServerStorage.TowerDefenseServer.MinimapBaker).bake()`, потім File → Publish. Перепікати після кожної зміни карти.
+
+## 4. Точка появи гравця
+
+`SpawnLocation` повернути передом (`LookVector`, синя грань Front) **назустріч ворогам**: персонаж і камера після появи дивляться туди, куди дивиться спавн. У Room 4 спавн дивився на печать, і гравець з'являвся спиною до маршруту (боти розвертаються самі, тому з ними проблеми не було). Швидко: `SpawnLocation.CFrame = CFrame.lookAt(pos, точка_звідки_йдуть_вороги)` (на рівні pos.Y).
