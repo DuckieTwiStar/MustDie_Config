@@ -21,7 +21,7 @@
       "enabled": true,
       "cooldown_hours": 48,
       "every_run": true,
-      "seconds": 12
+      "seconds": 14
     },
     "traps": {
       "cell_size": 4,
