@@ -31,7 +31,7 @@
       "refund_share": 0.5
     },
     "enemies": {
-      "corridor_lanes": 6,
+      "corridor_lanes": 8,
       "turn_radius": 12,
       "speed_jitter": 0.1,
       "spawn_jitter": 0.4,
