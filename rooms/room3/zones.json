@@ -1,7 +1,7 @@
 {
   "meta": {
-    "version": "BAL-0005",
-    "exported_at": "2026-10-24",
+    "version": "BAL-0006",
+    "exported_at": "2026-11-01",
     "note": "Зони Room 3 за картою v6: коридори 32 studs = 8 смуг по 4. length приблизно з карти"
   },
   "zones": [

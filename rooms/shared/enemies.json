@@ -1,8 +1,8 @@
 {
   "meta": {
-    "version": "BAL-0004",
-    "exported_at": "2026-10-15",
-    "note": "Вороги: стати, хітбокс (studs), колір, модель вигляду (visual, малює клієнт) і її масштаб"
+    "version": "BAL-0006",
+    "exported_at": "2026-11-01",
+    "note": "Вороги: стати, хітбокс (studs), колір, модель вигляду (visual, малює клієнт) і її масштаб; movement=jump - стрибун (жаба)"
   },
   "enemies": [
     {
@@ -80,6 +80,30 @@
       "color": "#3C8CDC",
       "visual": "Runner_Rigid",
       "visual_scale": 1.3
+    },
+    {
+      "id": "toad",
+      "name_en": "Gama Toad",
+      "name_uk": "Жаба Ґама",
+      "size": "small",
+      "hp": 50,
+      "speed": 10,
+      "armor": 0,
+      "damage_to_base": 15,
+      "reward": 30,
+      "hitbox": [
+        4,
+        3.5,
+        4
+      ],
+      "color": "#3C6E28",
+      "visual": "Gama_Rigid",
+      "visual_scale": 1,
+      "movement": "jump",
+      "jump_cells": 5,
+      "jump_windup": 1.2,
+      "jump_air": 0.7,
+      "jump_height": 6
     }
   ]
 }
