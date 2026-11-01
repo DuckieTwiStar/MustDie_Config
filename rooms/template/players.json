@@ -1,37 +1,41 @@
 {
   "meta": {
-    "version": "BAL-0004",
-    "exported_at": "2026-10-15",
-    "note": "Room 2: хвилі під 4 гравців, для меншої команди множники < 1"
+    "version": "BAL-0008",
+    "exported_at": "2026-11-01",
+    "note": "Шаблон: хвилі під 4 гравців. hp_mult 1.15 = загальна ціна кімнати під зброю її tier (BAL-0008). interval_mult = 1/count_mult: хвиля триває однаково, менша команда отримує ворогів рідше. Навантаження на гравця майже рівне (соло трохи легше за пропорцію: 0.3 замість 0.25 кількості)"
   },
   "players": [
     {
       "id": "p1",
       "players": 1,
-      "hp_mult": 0.8,
-      "count_mult": 0.45,
-      "reward_mult": 1
+      "hp_mult": 1.15,
+      "count_mult": 0.3,
+      "reward_mult": 1,
+      "interval_mult": 3.333
     },
     {
       "id": "p2",
       "players": 2,
-      "hp_mult": 0.9,
-      "count_mult": 0.65,
-      "reward_mult": 1
+      "hp_mult": 1.15,
+      "count_mult": 0.55,
+      "reward_mult": 1,
+      "interval_mult": 1.818
     },
     {
       "id": "p3",
       "players": 3,
-      "hp_mult": 1,
-      "count_mult": 0.85,
-      "reward_mult": 1
+      "hp_mult": 1.15,
+      "count_mult": 0.8,
+      "reward_mult": 1,
+      "interval_mult": 1.25
     },
     {
       "id": "p4",
       "players": 4,
-      "hp_mult": 1,
-      "count_mult": 1,
-      "reward_mult": 1
+      "hp_mult": 1.15,
+      "count_mult": 1.0,
+      "reward_mult": 1,
+      "interval_mult": 1.0
     }
   ]
 }
