@@ -1,7 +1,7 @@
 {
   "meta": {
-    "version": "BAL-0006",
-    "exported_at": "2026-11-01",
+    "version": "BAL-0001",
+    "exported_at": "2026-10-29",
     "note": "Зони Room 4, блокаут v3 (s1 656, s2 488 studs до бази, довжини приблизні)"
   },
   "zones": [

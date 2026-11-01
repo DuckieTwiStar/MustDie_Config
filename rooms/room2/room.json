@@ -1,7 +1,7 @@
 {
   "meta": {
-    "version": "BAL-0006",
-    "exported_at": "2026-11-01",
+    "version": "BAL-0004",
+    "exported_at": "2026-10-15",
     "note": "Room 2: два спавнери, гілки сходяться у вузлі. Геометрія в Place"
   },
   "room": {

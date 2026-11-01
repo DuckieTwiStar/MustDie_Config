@@ -1,7 +1,7 @@
 {
   "meta": {
-    "version": "BAL-0006",
-    "exported_at": "2026-11-01",
+    "version": "BAL-0003",
+    "exported_at": "2026-10-15",
     "note": "Room 1: параметри кімнати. Геометрія в Place"
   },
   "room": {

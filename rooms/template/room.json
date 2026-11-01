@@ -1,7 +1,7 @@
 {
   "meta": {
-    "version": "BAL-0006",
-    "exported_at": "2026-11-01",
+    "version": "BAL-0004",
+    "exported_at": "2026-10-15",
     "note": "Заготовка нової кімнати: копія параметрів Room 2. Скопіюй папку в rooms/<roomId>, поправ room.id і числа. Геометрія в Place"
   },
   "room": {

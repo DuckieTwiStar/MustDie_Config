@@ -43,9 +43,6 @@ SCHEMA = {
         # контракт 23.10.2026, етап 1в: те, що було лише в Config.lua
         "hitbox": (list, True, None, None), "color": (str, True, None, None),
         "visual": (str, False, None, None), "visual_scale": (NUM, False, 0.1, 10),
-        # стрибуни (жаба, 01.11.2026): movement = "walk" (типово) | "jump"; для jump потрібні jump_*
-        "movement": (str, False, None, None), "jump_cells": (NUM, False, 1, 20), "jump_windup": (NUM, False, 0.1, 10),
-        "jump_air": (NUM, False, 0.1, 5), "jump_height": (NUM, False, 0, 50),
     },
     "traps": {
         "id": (str, True, None, None), "order": (int, True, 0, None),
@@ -138,8 +135,6 @@ SCHEMA = {
     "players": {
         "id": (str, True, None, None), "players": (int, True, 1, 4), "hp_mult": (NUM, True, 0.1, None),
         "count_mult": (NUM, True, 0.1, None), "reward_mult": (NUM, True, 0, None),
-        # BAL-0008: множник паузи між спавнами (1 = як у waves.json)
-        "interval_mult": (NUM, False, 0.1, 10),
     },
     # ефекти на ворогах (EffectService v2, docs/effects-v2.md): стеки, модифікатори, теги, переходи; новий id = новий ефект без коду
     "status_effects": {
@@ -647,13 +642,6 @@ def check_enemy_extras(enemies):
             err(path, f"{where}: color має бути hex #RRGGBB, зараз {col!r}")
         if "visual_scale" in e and "visual" not in e:
             err(path, f"{where}: visual_scale без visual")
-        mv = e.get("movement", "walk")
-        if mv not in ("walk", "jump"):
-            err(path, f"{where}: movement має бути walk або jump, зараз {mv!r}")
-        if mv == "jump":
-            for k in ("jump_cells", "jump_windup", "jump_air", "jump_height"):
-                if k not in e:
-                    err(path, f"{where}: для movement=jump потрібне поле {k}")
 
 
 def check_trap_extras(traps, effect_ids):

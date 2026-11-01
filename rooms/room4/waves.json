@@ -1,7 +1,7 @@
 {
   "meta": {
-    "version": "BAL-0006",
-    "exported_at": "2026-11-01",
+    "version": "BAL-0001",
+    "exported_at": "2026-10-29",
     "note": "Room 4 ЧЕРНЕТКА: хвилі на 4 гравців з Room 3 (s1 x0.65, s2 x0.55, загін s3 = s2 Room 3 x1.25) + хвиля 6. Балансувати після блокауту й тесту"
   },
   "waves": [
@@ -190,17 +190,8 @@
       "wave": 3,
       "spawner_id": "s3",
       "enemy_id": "grunt",
-      "count": 10,
+      "count": 15,
       "spawn_interval": 0.9,
-      "wave_delay": 22
-    },
-    {
-      "id": "w3_s3_toad",
-      "wave": 3,
-      "spawner_id": "s3",
-      "enemy_id": "toad",
-      "count": 6,
-      "spawn_interval": 1.6,
       "wave_delay": 22
     },
     {
@@ -289,7 +280,7 @@
       "wave": 5,
       "spawner_id": "s1",
       "enemy_id": "grunt",
-      "count": 15,
+      "count": 20,
       "spawn_interval": 0.54,
       "wave_delay": 25
     },
@@ -325,7 +316,7 @@
       "wave": 5,
       "spawner_id": "s2",
       "enemy_id": "grunt",
-      "count": 11,
+      "count": 16,
       "spawn_interval": 0.59,
       "wave_delay": 25
     },
@@ -366,24 +357,6 @@
       "wave_delay": 25
     },
     {
-      "id": "w5_s1_toad",
-      "wave": 5,
-      "spawner_id": "s1",
-      "enemy_id": "toad",
-      "count": 6,
-      "spawn_interval": 1.5,
-      "wave_delay": 25
-    },
-    {
-      "id": "w5_s2_toad",
-      "wave": 5,
-      "spawner_id": "s2",
-      "enemy_id": "toad",
-      "count": 6,
-      "spawn_interval": 1.5,
-      "wave_delay": 25
-    },
-    {
       "id": "w6_s1_brute",
       "wave": 6,
       "spawner_id": "s1",
@@ -397,7 +370,7 @@
       "wave": 6,
       "spawner_id": "s1",
       "enemy_id": "grunt",
-      "count": 24,
+      "count": 30,
       "spawn_interval": 0.4,
       "wave_delay": 25
     },
@@ -460,15 +433,6 @@
       "wave": 6,
       "spawner_id": "s3",
       "enemy_id": "warrior",
-      "count": 10,
-      "spawn_interval": 1.2,
-      "wave_delay": 25
-    },
-    {
-      "id": "w6_s3_toad",
-      "wave": 6,
-      "spawner_id": "s3",
-      "enemy_id": "toad",
       "count": 10,
       "spawn_interval": 1.2,
       "wave_delay": 25

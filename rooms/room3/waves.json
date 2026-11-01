@@ -1,7 +1,7 @@
 {
   "meta": {
-    "version": "BAL-0006",
-    "exported_at": "2026-11-01",
+    "version": "BAL-0005",
+    "exported_at": "2026-10-24",
     "note": "Хвилі Room 3 під 4 гравців, жорсткіші за Room 2 (≈2–3× ворогів, швидкі зомбі runner). s2 = загін: вороги чекають за дверима, поки їх не виламають"
   },
   "waves": [
@@ -37,7 +37,7 @@
       "wave": 2,
       "spawner_id": "s1",
       "enemy_id": "grunt",
-      "count": 16,
+      "count": 20,
       "spawn_interval": 0.7,
       "wave_delay": 20
     },
@@ -75,15 +75,6 @@
       "enemy_id": "warrior",
       "count": 2,
       "spawn_interval": 4.0,
-      "wave_delay": 20
-    },
-    {
-      "id": "w2_s1_toad",
-      "wave": 2,
-      "spawner_id": "s1",
-      "enemy_id": "toad",
-      "count": 5,
-      "spawn_interval": 2.0,
       "wave_delay": 20
     },
     {
@@ -164,7 +155,7 @@
       "wave": 4,
       "spawner_id": "s2",
       "enemy_id": "grunt",
-      "count": 10,
+      "count": 16,
       "spawn_interval": 0.8,
       "wave_delay": 25
     },
@@ -178,20 +169,11 @@
       "wave_delay": 25
     },
     {
-      "id": "w4_s2_toad",
-      "wave": 4,
-      "spawner_id": "s2",
-      "enemy_id": "toad",
-      "count": 8,
-      "spawn_interval": 1.4,
-      "wave_delay": 25
-    },
-    {
       "id": "w5_s1_grunt",
       "wave": 5,
       "spawner_id": "s1",
       "enemy_id": "grunt",
-      "count": 22,
+      "count": 30,
       "spawn_interval": 0.45,
       "wave_delay": 25
     },
@@ -238,15 +220,6 @@
       "enemy_id": "brute",
       "count": 2,
       "spawn_interval": 6.0,
-      "wave_delay": 25
-    },
-    {
-      "id": "w5_s1_toad",
-      "wave": 5,
-      "spawner_id": "s1",
-      "enemy_id": "toad",
-      "count": 10,
-      "spawn_interval": 1.0,
       "wave_delay": 25
     }
   ]

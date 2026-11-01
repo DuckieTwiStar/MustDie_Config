@@ -1,7 +1,7 @@
 {
   "meta": {
-    "version": "BAL-0006",
-    "exported_at": "2026-11-01",
+    "version": "BAL-0004",
+    "exported_at": "2026-10-15",
     "note": "Хвилі Room 2, розраховані на 4 гравців; для меншої команди players.json зменшує кількість. min_players: рядок лише для команди від N гравців"
   },
   "waves": [
@@ -74,17 +74,8 @@
       "wave": 3,
       "spawner_id": "s2",
       "enemy_id": "grunt",
-      "count": 3,
+      "count": 6,
       "spawn_interval": 1.0,
-      "wave_delay": 22
-    },
-    {
-      "id": "w3_s2_toad",
-      "wave": 3,
-      "spawner_id": "s2",
-      "enemy_id": "toad",
-      "count": 4,
-      "spawn_interval": 2.0,
       "wave_delay": 22
     },
     {
@@ -128,7 +119,7 @@
       "wave": 5,
       "spawner_id": "s2",
       "enemy_id": "grunt",
-      "count": 19,
+      "count": 24,
       "spawn_interval": 0.5,
       "wave_delay": 25
     },
@@ -159,15 +150,6 @@
       "spawn_interval": 0,
       "wave_delay": 25,
       "min_players": 3
-    },
-    {
-      "id": "w5_s1_toad",
-      "wave": 5,
-      "spawner_id": "s1",
-      "enemy_id": "toad",
-      "count": 6,
-      "spawn_interval": 1.6,
-      "wave_delay": 25
     },
     {
       "id": "w6_s1_grunt",
@@ -237,7 +219,7 @@
       "wave": 7,
       "spawner_id": "s2",
       "enemy_id": "grunt",
-      "count": 14,
+      "count": 20,
       "spawn_interval": 0.5,
       "wave_delay": 30
     },
@@ -252,29 +234,11 @@
       "min_players": 4
     },
     {
-      "id": "w7_s1_toad",
-      "wave": 7,
-      "spawner_id": "s1",
-      "enemy_id": "toad",
-      "count": 6,
-      "spawn_interval": 1.5,
-      "wave_delay": 30
-    },
-    {
-      "id": "w7_s2_toad",
-      "wave": 7,
-      "spawner_id": "s2",
-      "enemy_id": "toad",
-      "count": 6,
-      "spawn_interval": 1.5,
-      "wave_delay": 30
-    },
-    {
       "id": "w8_s1_grunt",
       "wave": 8,
       "spawner_id": "s1",
       "enemy_id": "grunt",
-      "count": 16,
+      "count": 20,
       "spawn_interval": 0.5,
       "wave_delay": 30
     },
@@ -283,7 +247,7 @@
       "wave": 8,
       "spawner_id": "s2",
       "enemy_id": "grunt",
-      "count": 16,
+      "count": 20,
       "spawn_interval": 0.5,
       "wave_delay": 30
     },
@@ -332,24 +296,6 @@
       "spawn_interval": 0,
       "wave_delay": 30,
       "min_players": 4
-    },
-    {
-      "id": "w8_s1_toad",
-      "wave": 8,
-      "spawner_id": "s1",
-      "enemy_id": "toad",
-      "count": 5,
-      "spawn_interval": 1.5,
-      "wave_delay": 30
-    },
-    {
-      "id": "w8_s2_toad",
-      "wave": 8,
-      "spawner_id": "s2",
-      "enemy_id": "toad",
-      "count": 5,
-      "spawn_interval": 1.5,
-      "wave_delay": 30
     }
   ]
 }
