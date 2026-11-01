@@ -228,7 +228,7 @@ RULES_SCHEMA = {
 ICON_RE = re.compile(r"^(rbxassetid://[0-9]+)?$")
 PLACEHOLDER_RE = re.compile(r"\{([a-z0-9_]+)\}")
 ROOM_FILES = ["room", "zones", "waves", "players"]
-ROOM_OPTIONAL_FILES = ["run_rewards"]  # перекриває rooms/shared цілим файлом (ConfigService не зливає ключі)
+ROOM_OPTIONAL_FILES = ["run_rewards", "sounds"]  # sounds: своя музика кімнати (room4, 01.11.2026); перекриває rooms/shared цілим файлом (ConfigService не зливає ключі)
 SKIP = {"leaderboards"}  # формат лідербордів веде сторона Жені
 
 errors = []
