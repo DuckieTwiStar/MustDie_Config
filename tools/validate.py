@@ -65,6 +65,7 @@ SCHEMA = {
         "zone_length": (int, False, 1, 8), "jet_time": (NUM, False, 0.1, 5), "rear_zone": (int, False, 0, 1),
         "mount_w": (int, False, 1, 8), "mount_depth": (int, False, 1, 16),
         "jumps": (int, False, 1, 20), "branch": (int, False, 1, 4), "max_targets": (int, False, 1, 64), "falloff": (NUM, False, 0, 1),
+        "assist_share": (NUM, False, 0, 1),
     },
     "weapons": {
         "id": (str, True, None, None), "order": (int, True, 0, None), "default_owned": (bool, False, None, None),
@@ -110,7 +111,7 @@ SCHEMA = {
         "damage_per_soft": (NUM, True, 0.01, None), "wisps_per_soft": (NUM, True, 0.01, None),
         "base_hp_per_soft": (NUM, True, 0.01, None), "results_delay": (NUM, True, 0, 30),
         "results_timer": (NUM, True, 5, 300), "damage_dealer_min_players": (int, True, 1, 4),
-        "wave_soft": (list, True, None, None),
+        "wave_soft": (list, True, None, None), "participation_only": (bool, False, None, None),
     },
     "room": {
         "_object": True,
@@ -210,11 +211,11 @@ TYPE_FIELDS = {"id": (str, True, None, None), "stat": (str, True, None, None), "
 SHARED_FILES = ["rules", "enemies", "traps", "trap_upgrades", "weapons", "weapon_upgrades", "run_rewards", "items", "bots", "status_effects", "sounds"]
 GENERATED_REWARD_KINDS = {"Weapon", "TrapLevel", "WeaponUpgrade", "TrapUpgrade"}
 HEX_RE = re.compile(r"^#[0-9A-Fa-f]{6}$")
-REWARD_MODES = {"each", "split", "killer"}
+REWARD_MODES = {"each", "split", "killer", "contribution"}
 # rules.json -> rules: секції (поле: (тип, мін, макс)); усі поля обов'язкові, запасних значень у коді немає
 RULES_SCHEMA = {
     "run": {
-        "start_wisps": (int, 0, None), "reward_mode": (str, None, None), "start_weapon": (str, None, None),
+        "start_wisps": (int, 0, None), "reward_mode": (str, None, None), "assist_cap": (NUM, 0, 1), "start_weapon": (str, None, None),
         "restart_delay": (NUM, 0, 600), "weapon_select_seconds": (NUM, 1, 120), "weapon_select_delay": (NUM, 0, 10),
     },
     "player": {"walk_speed": (NUM, 1, 200), "sprint_speed": (NUM, 1, 300)},
