@@ -26,7 +26,7 @@
     },
     "traps": {
       "cell_size": 4,
-      "place_reach": 300,
+      "place_reach": 14,
       "reach": 14,
       "reach_slack": 6,
       "refund_share": 0.5
