@@ -1,8 +1,8 @@
 {
   "meta": {
-    "version": "BAL-0006",
-    "exported_at": "2026-11-01",
-    "note": "Хвилі Room 2, розраховані на 4 гравців; для меншої команди players.json зменшує кількість. min_players: рядок лише для команди від N гравців"
+    "version": "BAL-0018_1",
+    "exported_at": "2026-11-02",
+    "note": "Хвилі room2 (BAL-0018_1): згенеровано моделлю з цільової кривої індексу тиску 0.5→1.6, вікно спавну 16→34 с, на 4 учасники"
   },
   "waves": [
     {
@@ -10,8 +10,8 @@
       "wave": 1,
       "spawner_id": "s1",
       "enemy_id": "grunt",
-      "count": 8,
-      "spawn_interval": 1.2,
+      "count": 12,
+      "spawn_interval": 1.35,
       "wave_delay": 0
     },
     {
@@ -19,8 +19,8 @@
       "wave": 1,
       "spawner_id": "s2",
       "enemy_id": "grunt",
-      "count": 8,
-      "spawn_interval": 1.2,
+      "count": 13,
+      "spawn_interval": 1.25,
       "wave_delay": 0
     },
     {
@@ -28,55 +28,63 @@
       "wave": 2,
       "spawner_id": "s1",
       "enemy_id": "grunt",
-      "count": 12,
-      "spawn_interval": 1.0,
-      "wave_delay": 20
+      "count": 13,
+      "spawn_interval": 1.45,
+      "wave_delay": 18
     },
     {
       "id": "w2_s2_grunt",
       "wave": 2,
       "spawner_id": "s2",
       "enemy_id": "grunt",
-      "count": 12,
-      "spawn_interval": 1.0,
-      "wave_delay": 20
+      "count": 13,
+      "spawn_interval": 1.45,
+      "wave_delay": 18
     },
     {
-      "id": "w2_s1_warrior",
+      "id": "w2_s1_toad",
       "wave": 2,
       "spawner_id": "s1",
-      "enemy_id": "warrior",
-      "count": 2,
-      "spawn_interval": 3.0,
-      "wave_delay": 20,
-      "min_players": 3
+      "enemy_id": "toad",
+      "count": 4,
+      "spawn_interval": 4.75,
+      "wave_delay": 18
+    },
+    {
+      "id": "w2_s2_toad",
+      "wave": 2,
+      "spawner_id": "s2",
+      "enemy_id": "toad",
+      "count": 4,
+      "spawn_interval": 4.75,
+      "wave_delay": 18
     },
     {
       "id": "w3_s1_grunt",
       "wave": 3,
       "spawner_id": "s1",
       "enemy_id": "grunt",
-      "count": 10,
-      "spawn_interval": 0.9,
-      "wave_delay": 22
-    },
-    {
-      "id": "w3_s2_warrior",
-      "wave": 3,
-      "spawner_id": "s2",
-      "enemy_id": "warrior",
-      "count": 5,
+      "count": 11,
       "spawn_interval": 2.0,
-      "wave_delay": 22
+      "wave_delay": 20
     },
     {
       "id": "w3_s2_grunt",
       "wave": 3,
       "spawner_id": "s2",
       "enemy_id": "grunt",
-      "count": 3,
-      "spawn_interval": 1.0,
-      "wave_delay": 22
+      "count": 11,
+      "spawn_interval": 2.0,
+      "wave_delay": 20
+    },
+    {
+      "id": "w3_s1_toad",
+      "wave": 3,
+      "spawner_id": "s1",
+      "enemy_id": "toad",
+      "count": 4,
+      "spawn_interval": 5.5,
+      "wave_delay": 20
     },
     {
       "id": "w3_s2_toad",
@@ -84,35 +92,71 @@
       "spawner_id": "s2",
       "enemy_id": "toad",
       "count": 4,
-      "spawn_interval": 2.0,
-      "wave_delay": 22
+      "spawn_interval": 5.5,
+      "wave_delay": 20
     },
     {
-      "id": "w4_s1_warrior",
-      "wave": 4,
+      "id": "w3_s1_warrior",
+      "wave": 3,
       "spawner_id": "s1",
       "enemy_id": "warrior",
-      "count": 6,
-      "spawn_interval": 1.8,
-      "wave_delay": 25
+      "count": 3,
+      "spawn_interval": 7.35,
+      "wave_delay": 20
     },
     {
-      "id": "w4_s2_warrior",
-      "wave": 4,
+      "id": "w3_s2_warrior",
+      "wave": 3,
       "spawner_id": "s2",
       "enemy_id": "warrior",
-      "count": 6,
-      "spawn_interval": 1.8,
-      "wave_delay": 25
+      "count": 3,
+      "spawn_interval": 7.35,
+      "wave_delay": 20
     },
     {
       "id": "w4_s1_grunt",
       "wave": 4,
       "spawner_id": "s1",
       "enemy_id": "grunt",
-      "count": 14,
-      "spawn_interval": 0.7,
-      "wave_delay": 25
+      "count": 10,
+      "spawn_interval": 2.5,
+      "wave_delay": 20
+    },
+    {
+      "id": "w4_s2_grunt",
+      "wave": 4,
+      "spawner_id": "s2",
+      "enemy_id": "grunt",
+      "count": 10,
+      "spawn_interval": 2.5,
+      "wave_delay": 20
+    },
+    {
+      "id": "w4_s1_warrior",
+      "wave": 4,
+      "spawner_id": "s1",
+      "enemy_id": "warrior",
+      "count": 4,
+      "spawn_interval": 6.25,
+      "wave_delay": 20
+    },
+    {
+      "id": "w4_s2_warrior",
+      "wave": 4,
+      "spawner_id": "s2",
+      "enemy_id": "warrior",
+      "count": 4,
+      "spawn_interval": 6.25,
+      "wave_delay": 20
+    },
+    {
+      "id": "w4_s1_brute",
+      "wave": 4,
+      "spawner_id": "s1",
+      "enemy_id": "brute",
+      "count": 1,
+      "spawn_interval": 0,
+      "wave_delay": 20
     },
     {
       "id": "w4_s2_brute",
@@ -121,16 +165,43 @@
       "enemy_id": "brute",
       "count": 1,
       "spawn_interval": 0,
-      "wave_delay": 25
+      "wave_delay": 20
+    },
+    {
+      "id": "w5_s1_grunt",
+      "wave": 5,
+      "spawner_id": "s1",
+      "enemy_id": "grunt",
+      "count": 11,
+      "spawn_interval": 2.55,
+      "wave_delay": 22
     },
     {
       "id": "w5_s2_grunt",
       "wave": 5,
       "spawner_id": "s2",
       "enemy_id": "grunt",
-      "count": 19,
-      "spawn_interval": 0.5,
-      "wave_delay": 25
+      "count": 11,
+      "spawn_interval": 2.55,
+      "wave_delay": 22
+    },
+    {
+      "id": "w5_s1_toad",
+      "wave": 5,
+      "spawner_id": "s1",
+      "enemy_id": "toad",
+      "count": 6,
+      "spawn_interval": 4.65,
+      "wave_delay": 22
+    },
+    {
+      "id": "w5_s2_toad",
+      "wave": 5,
+      "spawner_id": "s2",
+      "enemy_id": "toad",
+      "count": 7,
+      "spawn_interval": 4,
+      "wave_delay": 22
     },
     {
       "id": "w5_s1_warrior",
@@ -138,8 +209,17 @@
       "spawner_id": "s1",
       "enemy_id": "warrior",
       "count": 4,
-      "spawn_interval": 2.0,
-      "wave_delay": 25
+      "spawn_interval": 7.0,
+      "wave_delay": 22
+    },
+    {
+      "id": "w5_s2_warrior",
+      "wave": 5,
+      "spawner_id": "s2",
+      "enemy_id": "warrior",
+      "count": 5,
+      "spawn_interval": 5.6,
+      "wave_delay": 22
     },
     {
       "id": "w5_s1_brute",
@@ -148,7 +228,7 @@
       "enemy_id": "brute",
       "count": 1,
       "spawn_interval": 0,
-      "wave_delay": 25
+      "wave_delay": 22
     },
     {
       "id": "w5_s2_brute",
@@ -157,71 +237,133 @@
       "enemy_id": "brute",
       "count": 1,
       "spawn_interval": 0,
-      "wave_delay": 25,
-      "min_players": 3
-    },
-    {
-      "id": "w5_s1_toad",
-      "wave": 5,
-      "spawner_id": "s1",
-      "enemy_id": "toad",
-      "count": 6,
-      "spawn_interval": 1.6,
-      "wave_delay": 25
+      "wave_delay": 22
     },
     {
       "id": "w6_s1_grunt",
       "wave": 6,
       "spawner_id": "s1",
       "enemy_id": "grunt",
-      "count": 16,
-      "spawn_interval": 0.6,
-      "wave_delay": 28
+      "count": 14,
+      "spawn_interval": 2.2,
+      "wave_delay": 22
     },
     {
       "id": "w6_s2_grunt",
       "wave": 6,
       "spawner_id": "s2",
       "enemy_id": "grunt",
-      "count": 16,
-      "spawn_interval": 0.6,
-      "wave_delay": 28
+      "count": 14,
+      "spawn_interval": 2.2,
+      "wave_delay": 22
+    },
+    {
+      "id": "w6_s1_toad",
+      "wave": 6,
+      "spawner_id": "s1",
+      "enemy_id": "toad",
+      "count": 6,
+      "spawn_interval": 5.15,
+      "wave_delay": 22
+    },
+    {
+      "id": "w6_s2_toad",
+      "wave": 6,
+      "spawner_id": "s2",
+      "enemy_id": "toad",
+      "count": 5,
+      "spawn_interval": 6.2,
+      "wave_delay": 22
     },
     {
       "id": "w6_s1_warrior",
       "wave": 6,
       "spawner_id": "s1",
       "enemy_id": "warrior",
-      "count": 8,
-      "spawn_interval": 1.5,
-      "wave_delay": 28
+      "count": 6,
+      "spawn_interval": 5.15,
+      "wave_delay": 22
+    },
+    {
+      "id": "w6_s2_warrior",
+      "wave": 6,
+      "spawner_id": "s2",
+      "enemy_id": "warrior",
+      "count": 7,
+      "spawn_interval": 4.45,
+      "wave_delay": 22
+    },
+    {
+      "id": "w6_s1_brute",
+      "wave": 6,
+      "spawner_id": "s1",
+      "enemy_id": "brute",
+      "count": 1,
+      "spawn_interval": 0,
+      "wave_delay": 22
     },
     {
       "id": "w6_s2_brute",
       "wave": 6,
       "spawner_id": "s2",
       "enemy_id": "brute",
-      "count": 2,
-      "spawn_interval": 5,
-      "wave_delay": 28
+      "count": 1,
+      "spawn_interval": 0,
+      "wave_delay": 22
+    },
+    {
+      "id": "w7_s1_grunt",
+      "wave": 7,
+      "spawner_id": "s1",
+      "enemy_id": "grunt",
+      "count": 14,
+      "spawn_interval": 2.45,
+      "wave_delay": 25
+    },
+    {
+      "id": "w7_s2_grunt",
+      "wave": 7,
+      "spawner_id": "s2",
+      "enemy_id": "grunt",
+      "count": 15,
+      "spawn_interval": 2.25,
+      "wave_delay": 25
+    },
+    {
+      "id": "w7_s1_toad",
+      "wave": 7,
+      "spawner_id": "s1",
+      "enemy_id": "toad",
+      "count": 10,
+      "spawn_interval": 3.4,
+      "wave_delay": 25
+    },
+    {
+      "id": "w7_s2_toad",
+      "wave": 7,
+      "spawner_id": "s2",
+      "enemy_id": "toad",
+      "count": 11,
+      "spawn_interval": 3.1,
+      "wave_delay": 25
     },
     {
       "id": "w7_s1_warrior",
       "wave": 7,
       "spawner_id": "s1",
       "enemy_id": "warrior",
-      "count": 10,
-      "spawn_interval": 1.2,
-      "wave_delay": 30
+      "count": 7,
+      "spawn_interval": 4.85,
+      "wave_delay": 25
     },
     {
       "id": "w7_s2_warrior",
       "wave": 7,
       "spawner_id": "s2",
       "enemy_id": "warrior",
-      "count": 10,
-      "spawn_interval": 1.2,
-      "wave_delay": 30
+      "count": 7,
+      "spawn_interval": 4.85,
+      "wave_delay": 25
     },
     {
       "id": "w7_s1_brute",
@@ -229,17 +371,8 @@
       "spawner_id": "s1",
       "enemy_id": "brute",
       "count": 2,
-      "spawn_interval": 5,
-      "wave_delay": 30
-    },
-    {
-      "id": "w7_s2_grunt",
-      "wave": 7,
-      "spawner_id": "s2",
-      "enemy_id": "grunt",
-      "count": 14,
-      "spawn_interval": 0.5,
-      "wave_delay": 30
+      "spawn_interval": 17,
+      "wave_delay": 25
     },
     {
       "id": "w7_s2_brute",
@@ -248,108 +381,7 @@
       "enemy_id": "brute",
       "count": 1,
       "spawn_interval": 0,
-      "wave_delay": 30,
-      "min_players": 4
-    },
-    {
-      "id": "w7_s1_toad",
-      "wave": 7,
-      "spawner_id": "s1",
-      "enemy_id": "toad",
-      "count": 6,
-      "spawn_interval": 1.5,
-      "wave_delay": 30
-    },
-    {
-      "id": "w7_s2_toad",
-      "wave": 7,
-      "spawner_id": "s2",
-      "enemy_id": "toad",
-      "count": 6,
-      "spawn_interval": 1.5,
-      "wave_delay": 30
-    },
-    {
-      "id": "w8_s1_grunt",
-      "wave": 8,
-      "spawner_id": "s1",
-      "enemy_id": "grunt",
-      "count": 16,
-      "spawn_interval": 0.5,
-      "wave_delay": 30
-    },
-    {
-      "id": "w8_s2_grunt",
-      "wave": 8,
-      "spawner_id": "s2",
-      "enemy_id": "grunt",
-      "count": 16,
-      "spawn_interval": 0.5,
-      "wave_delay": 30
-    },
-    {
-      "id": "w8_s1_warrior",
-      "wave": 8,
-      "spawner_id": "s1",
-      "enemy_id": "warrior",
-      "count": 10,
-      "spawn_interval": 1.2,
-      "wave_delay": 30
-    },
-    {
-      "id": "w8_s2_warrior",
-      "wave": 8,
-      "spawner_id": "s2",
-      "enemy_id": "warrior",
-      "count": 10,
-      "spawn_interval": 1.2,
-      "wave_delay": 30
-    },
-    {
-      "id": "w8_s1_brute",
-      "wave": 8,
-      "spawner_id": "s1",
-      "enemy_id": "brute",
-      "count": 2,
-      "spawn_interval": 4,
-      "wave_delay": 30
-    },
-    {
-      "id": "w8_s2_brute",
-      "wave": 8,
-      "spawner_id": "s2",
-      "enemy_id": "brute",
-      "count": 2,
-      "spawn_interval": 4,
-      "wave_delay": 30
-    },
-    {
-      "id": "w8_s1_brute_2",
-      "wave": 8,
-      "spawner_id": "s1",
-      "enemy_id": "brute",
-      "count": 1,
-      "spawn_interval": 0,
-      "wave_delay": 30,
-      "min_players": 4
-    },
-    {
-      "id": "w8_s1_toad",
-      "wave": 8,
-      "spawner_id": "s1",
-      "enemy_id": "toad",
-      "count": 5,
-      "spawn_interval": 1.5,
-      "wave_delay": 30
-    },
-    {
-      "id": "w8_s2_toad",
-      "wave": 8,
-      "spawner_id": "s2",
-      "enemy_id": "toad",
-      "count": 5,
-      "spawn_interval": 1.5,
-      "wave_delay": 30
+      "wave_delay": 25
     }
   ]
 }

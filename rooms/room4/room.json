@@ -1,7 +1,7 @@
 {
   "meta": {
-    "version": "BAL-0006",
-    "exported_at": "2026-11-01",
+    "version": "BAL-0018_1",
+    "exported_at": "2026-11-02",
     "note": "Room 4: висока «школа/Hard Climb», два головні спавнери s1/s2 + загін s3 біля перехрестя. Геометрія в Place"
   },
   "room": {
@@ -9,7 +9,7 @@
     "name_en": "Room 4",
     "name_uk": "Кімната 4",
     "unlock_weapon": "tommy",
-    "base_hp": 1000,
+    "base_hp": 1550,
     "door_timer": 60,
     "spawners": [
       {

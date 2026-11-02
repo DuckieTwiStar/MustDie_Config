@@ -1,7 +1,7 @@
 {
   "meta": {
-    "version": "BAL-0009",
-    "exported_at": "2026-10-23",
+    "version": "BAL-0018_1",
+    "exported_at": "2026-11-02",
     "note": "Прокачка зброї: постійна, купується в лобі за софт (price_soft), у забігу лише діє. upgrade_types: що змінює кожна прокачка (stat = поле зброї або on_hit.<ефект>.<параметр>; op set | add | mul, типово set), назва для UI, item_id = запис kind=upgrade в items.json. weapon_upgrades: рядки рівнів, price_soft = ціна рівня в софті, value = нове значення поля на цьому рівні. Ціни 23.10.2026 поставлені попередньо (50% від старих віспових цін, до плейтестів). Арсенал 19.10.2026: рарність = скільки прокачок"
   },
   "upgrade_types": [
@@ -193,8 +193,8 @@
       "upgrade": "damage",
       "order": 10,
       "level": 1,
-      "price_soft": 40,
-      "value": 20
+      "price_soft": 20,
+      "value": 18
     },
     {
       "id": "fists_damage_2",
@@ -202,8 +202,8 @@
       "upgrade": "damage",
       "order": 10,
       "level": 2,
-      "price_soft": 60,
-      "value": 25
+      "price_soft": 40,
+      "value": 21
     },
     {
       "id": "fists_attack_interval_1",
@@ -211,8 +211,8 @@
       "upgrade": "attack_interval",
       "order": 20,
       "level": 1,
-      "price_soft": 40,
-      "value": 0.36
+      "price_soft": 20,
+      "value": 0.352
     },
     {
       "id": "fists_attack_interval_2",
@@ -220,8 +220,8 @@
       "upgrade": "attack_interval",
       "order": 20,
       "level": 2,
-      "price_soft": 60,
-      "value": 0.32
+      "price_soft": 40,
+      "value": 0.304
     },
     {
       "id": "slingshot_damage_1",
@@ -230,7 +230,7 @@
       "order": 30,
       "level": 1,
       "price_soft": 40,
-      "value": 16
+      "value": 17
     },
     {
       "id": "slingshot_damage_2",
@@ -248,7 +248,7 @@
       "order": 40,
       "level": 1,
       "price_soft": 40,
-      "value": 0.5
+      "value": 0.484
     },
     {
       "id": "slingshot_attack_interval_2",
@@ -257,7 +257,7 @@
       "order": 40,
       "level": 2,
       "price_soft": 60,
-      "value": 0.4
+      "value": 0.418
     },
     {
       "id": "bow_damage_1",
@@ -265,8 +265,8 @@
       "upgrade": "damage",
       "order": 50,
       "level": 1,
-      "price_soft": 50,
-      "value": 50
+      "price_soft": 25,
+      "value": 54
     },
     {
       "id": "bow_damage_2",
@@ -274,8 +274,8 @@
       "upgrade": "damage",
       "order": 50,
       "level": 2,
-      "price_soft": 75,
-      "value": 60
+      "price_soft": 35,
+      "value": 63
     },
     {
       "id": "bow_damage_3",
@@ -283,8 +283,8 @@
       "upgrade": "damage",
       "order": 50,
       "level": 3,
-      "price_soft": 100,
-      "value": 70
+      "price_soft": 55,
+      "value": 72
     },
     {
       "id": "bow_attack_interval_1",
@@ -292,8 +292,8 @@
       "upgrade": "attack_interval",
       "order": 60,
       "level": 1,
-      "price_soft": 50,
-      "value": 0.85
+      "price_soft": 25,
+      "value": 0.88
     },
     {
       "id": "bow_attack_interval_2",
@@ -301,8 +301,8 @@
       "upgrade": "attack_interval",
       "order": 60,
       "level": 2,
-      "price_soft": 75,
-      "value": 0.7
+      "price_soft": 35,
+      "value": 0.76
     },
     {
       "id": "bow_attack_interval_3",
@@ -310,8 +310,8 @@
       "upgrade": "attack_interval",
       "order": 60,
       "level": 3,
-      "price_soft": 100,
-      "value": 0.6
+      "price_soft": 55,
+      "value": 0.64
     },
     {
       "id": "bow_ricochet_1",
@@ -319,7 +319,7 @@
       "upgrade": "ricochet",
       "order": 70,
       "level": 1,
-      "price_soft": 75,
+      "price_soft": 70,
       "value": 1
     },
     {
@@ -328,7 +328,7 @@
       "upgrade": "ricochet",
       "order": 70,
       "level": 2,
-      "price_soft": 125,
+      "price_soft": 100,
       "value": 2
     },
     {
@@ -337,8 +337,8 @@
       "upgrade": "damage",
       "order": 80,
       "level": 1,
-      "price_soft": 50,
-      "value": 27
+      "price_soft": 85,
+      "value": 36
     },
     {
       "id": "revolver_damage_2",
@@ -346,8 +346,8 @@
       "upgrade": "damage",
       "order": 80,
       "level": 2,
-      "price_soft": 75,
-      "value": 32
+      "price_soft": 135,
+      "value": 42
     },
     {
       "id": "revolver_damage_3",
@@ -355,8 +355,8 @@
       "upgrade": "damage",
       "order": 80,
       "level": 3,
-      "price_soft": 100,
-      "value": 36
+      "price_soft": 205,
+      "value": 48
     },
     {
       "id": "revolver_attack_interval_1",
@@ -364,8 +364,8 @@
       "upgrade": "attack_interval",
       "order": 90,
       "level": 1,
-      "price_soft": 60,
-      "value": 0.47
+      "price_soft": 85,
+      "value": 0.44
     },
     {
       "id": "revolver_attack_interval_2",
@@ -373,8 +373,8 @@
       "upgrade": "attack_interval",
       "order": 90,
       "level": 2,
-      "price_soft": 100,
-      "value": 0.4
+      "price_soft": 135,
+      "value": 0.38
     },
     {
       "id": "revolver_dual_1",
@@ -382,7 +382,7 @@
       "upgrade": "dual",
       "order": 100,
       "level": 1,
-      "price_soft": 200,
+      "price_soft": 255,
       "value": 1
     },
     {
@@ -391,8 +391,8 @@
       "upgrade": "damage",
       "order": 110,
       "level": 1,
-      "price_soft": 50,
-      "value": 11
+      "price_soft": 125,
+      "value": 13
     },
     {
       "id": "shotgun_damage_2",
@@ -400,8 +400,8 @@
       "upgrade": "damage",
       "order": 110,
       "level": 2,
-      "price_soft": 90,
-      "value": 13
+      "price_soft": 200,
+      "value": 15
     },
     {
       "id": "shotgun_pellets_1",
@@ -409,7 +409,7 @@
       "upgrade": "pellets",
       "order": 120,
       "level": 1,
-      "price_soft": 75,
+      "price_soft": 125,
       "value": 10
     },
     {
@@ -418,7 +418,7 @@
       "upgrade": "pellets",
       "order": 120,
       "level": 2,
-      "price_soft": 125,
+      "price_soft": 200,
       "value": 12
     },
     {
@@ -427,8 +427,8 @@
       "upgrade": "attack_interval",
       "order": 130,
       "level": 1,
-      "price_soft": 60,
-      "value": 1.0
+      "price_soft": 125,
+      "value": 0.792
     },
     {
       "id": "shotgun_attack_interval_2",
@@ -436,8 +436,8 @@
       "upgrade": "attack_interval",
       "order": 130,
       "level": 2,
-      "price_soft": 100,
-      "value": 0.8
+      "price_soft": 200,
+      "value": 0.684
     },
     {
       "id": "shotgun_choke_1",
@@ -445,7 +445,7 @@
       "upgrade": "choke",
       "order": 140,
       "level": 1,
-      "price_soft": 60,
+      "price_soft": 125,
       "value": 5
     },
     {
@@ -454,7 +454,7 @@
       "upgrade": "choke",
       "order": 140,
       "level": 2,
-      "price_soft": 100,
+      "price_soft": 200,
       "value": 4
     },
     {
@@ -463,8 +463,8 @@
       "upgrade": "damage",
       "order": 150,
       "level": 1,
-      "price_soft": 50,
-      "value": 8
+      "price_soft": 185,
+      "value": 11
     },
     {
       "id": "tommy_damage_2",
@@ -472,8 +472,8 @@
       "upgrade": "damage",
       "order": 150,
       "level": 2,
-      "price_soft": 75,
-      "value": 9
+      "price_soft": 300,
+      "value": 13
     },
     {
       "id": "tommy_damage_3",
@@ -481,8 +481,8 @@
       "upgrade": "damage",
       "order": 150,
       "level": 3,
-      "price_soft": 110,
-      "value": 11
+      "price_soft": 460,
+      "value": 14
     },
     {
       "id": "tommy_attack_interval_1",
@@ -490,8 +490,8 @@
       "upgrade": "attack_interval",
       "order": 160,
       "level": 1,
-      "price_soft": 75,
-      "value": 0.085
+      "price_soft": 185,
+      "value": 0.088
     },
     {
       "id": "tommy_attack_interval_2",
@@ -499,8 +499,8 @@
       "upgrade": "attack_interval",
       "order": 160,
       "level": 2,
-      "price_soft": 125,
-      "value": 0.075
+      "price_soft": 300,
+      "value": 0.076
     },
     {
       "id": "tommy_stability_1",
@@ -508,7 +508,7 @@
       "upgrade": "stability",
       "order": 170,
       "level": 1,
-      "price_soft": 50,
+      "price_soft": 185,
       "value": 4
     },
     {
@@ -517,7 +517,7 @@
       "upgrade": "stability",
       "order": 170,
       "level": 2,
-      "price_soft": 90,
+      "price_soft": 300,
       "value": 2.5
     },
     {
@@ -526,7 +526,7 @@
       "upgrade": "incendiary",
       "order": 180,
       "level": 1,
-      "price_soft": 100,
+      "price_soft": 575,
       "value": 4
     },
     {
@@ -535,7 +535,7 @@
       "upgrade": "incendiary",
       "order": 180,
       "level": 2,
-      "price_soft": 150,
+      "price_soft": 810,
       "value": 6
     },
     {
@@ -544,8 +544,8 @@
       "upgrade": "damage",
       "order": 190,
       "level": 1,
-      "price_soft": 75,
-      "value": 85
+      "price_soft": 165,
+      "value": 114
     },
     {
       "id": "crossbow_damage_2",
@@ -553,8 +553,8 @@
       "upgrade": "damage",
       "order": 190,
       "level": 2,
-      "price_soft": 110,
-      "value": 100
+      "price_soft": 270,
+      "value": 133
     },
     {
       "id": "crossbow_damage_3",
@@ -562,8 +562,8 @@
       "upgrade": "damage",
       "order": 190,
       "level": 3,
-      "price_soft": 150,
-      "value": 115
+      "price_soft": 415,
+      "value": 152
     },
     {
       "id": "crossbow_attack_interval_1",
@@ -571,8 +571,8 @@
       "upgrade": "attack_interval",
       "order": 200,
       "level": 1,
-      "price_soft": 75,
-      "value": 1.2
+      "price_soft": 165,
+      "value": 1.144
     },
     {
       "id": "crossbow_attack_interval_2",
@@ -580,8 +580,8 @@
       "upgrade": "attack_interval",
       "order": 200,
       "level": 2,
-      "price_soft": 110,
-      "value": 1.0
+      "price_soft": 270,
+      "value": 0.988
     },
     {
       "id": "crossbow_attack_interval_3",
@@ -589,8 +589,8 @@
       "upgrade": "attack_interval",
       "order": 200,
       "level": 3,
-      "price_soft": 150,
-      "value": 0.85
+      "price_soft": 415,
+      "value": 0.832
     },
     {
       "id": "crossbow_multishot_1",
@@ -598,7 +598,7 @@
       "upgrade": "multishot",
       "order": 210,
       "level": 1,
-      "price_soft": 175,
+      "price_soft": 520,
       "value": 2
     },
     {
@@ -607,7 +607,7 @@
       "upgrade": "multishot",
       "order": 210,
       "level": 2,
-      "price_soft": 275,
+      "price_soft": 730,
       "value": 3
     },
     {
@@ -616,7 +616,7 @@
       "upgrade": "crit_damage",
       "order": 220,
       "level": 1,
-      "price_soft": 60,
+      "price_soft": 165,
       "value": 2
     },
     {
@@ -625,7 +625,7 @@
       "upgrade": "crit_damage",
       "order": 220,
       "level": 2,
-      "price_soft": 100,
+      "price_soft": 270,
       "value": 2.5
     },
     {
@@ -634,7 +634,7 @@
       "upgrade": "crit_damage",
       "order": 220,
       "level": 3,
-      "price_soft": 140,
+      "price_soft": 415,
       "value": 3
     },
     {
@@ -643,7 +643,7 @@
       "upgrade": "ricochet",
       "order": 230,
       "level": 1,
-      "price_soft": 75,
+      "price_soft": 520,
       "value": 1
     },
     {
@@ -652,7 +652,7 @@
       "upgrade": "ricochet",
       "order": 230,
       "level": 2,
-      "price_soft": 110,
+      "price_soft": 730,
       "value": 2
     },
     {
@@ -661,7 +661,7 @@
       "upgrade": "ricochet",
       "order": 230,
       "level": 3,
-      "price_soft": 150,
+      "price_soft": 940,
       "value": 3
     },
     {
@@ -670,8 +670,8 @@
       "upgrade": "damage",
       "order": 240,
       "level": 1,
-      "price_soft": 75,
-      "value": 7
+      "price_soft": 210,
+      "value": 14
     },
     {
       "id": "energygun_damage_2",
@@ -679,8 +679,8 @@
       "upgrade": "damage",
       "order": 240,
       "level": 2,
-      "price_soft": 110,
-      "value": 8
+      "price_soft": 340,
+      "value": 17
     },
     {
       "id": "energygun_damage_3",
@@ -688,8 +688,8 @@
       "upgrade": "damage",
       "order": 240,
       "level": 3,
-      "price_soft": 150,
-      "value": 9
+      "price_soft": 520,
+      "value": 19
     },
     {
       "id": "energygun_beam_time_1",
@@ -697,7 +697,7 @@
       "upgrade": "beam_time",
       "order": 250,
       "level": 1,
-      "price_soft": 60,
+      "price_soft": 210,
       "value": 4
     },
     {
@@ -706,7 +706,7 @@
       "upgrade": "beam_time",
       "order": 250,
       "level": 2,
-      "price_soft": 100,
+      "price_soft": 340,
       "value": 5
     },
     {
@@ -715,7 +715,7 @@
       "upgrade": "beam_time",
       "order": 250,
       "level": 3,
-      "price_soft": 140,
+      "price_soft": 520,
       "value": 6
     },
     {
@@ -724,7 +724,7 @@
       "upgrade": "cooldown",
       "order": 260,
       "level": 1,
-      "price_soft": 75,
+      "price_soft": 210,
       "value": 1.2
     },
     {
@@ -733,7 +733,7 @@
       "upgrade": "cooldown",
       "order": 260,
       "level": 2,
-      "price_soft": 125,
+      "price_soft": 340,
       "value": 0.9
     },
     {
@@ -742,7 +742,7 @@
       "upgrade": "plasma",
       "order": 270,
       "level": 1,
-      "price_soft": 125,
+      "price_soft": 655,
       "value": 40
     },
     {
@@ -751,7 +751,7 @@
       "upgrade": "plasma",
       "order": 270,
       "level": 2,
-      "price_soft": 175,
+      "price_soft": 915,
       "value": 60
     },
     {
@@ -760,7 +760,7 @@
       "upgrade": "plasma",
       "order": 270,
       "level": 3,
-      "price_soft": 225,
+      "price_soft": 1175,
       "value": 80
     },
     {
@@ -769,7 +769,7 @@
       "upgrade": "pierce",
       "order": 280,
       "level": 1,
-      "price_soft": 150,
+      "price_soft": 655,
       "value": 1
     },
     {
@@ -778,7 +778,7 @@
       "upgrade": "pierce",
       "order": 280,
       "level": 2,
-      "price_soft": 225,
+      "price_soft": 915,
       "value": 2
     },
     {
@@ -787,8 +787,8 @@
       "upgrade": "damage",
       "order": 290,
       "level": 1,
-      "price_soft": 75,
-      "value": 50
+      "price_soft": 230,
+      "value": 54
     },
     {
       "id": "voodoo_damage_2",
@@ -796,8 +796,8 @@
       "upgrade": "damage",
       "order": 290,
       "level": 2,
-      "price_soft": 110,
-      "value": 60
+      "price_soft": 375,
+      "value": 63
     },
     {
       "id": "voodoo_damage_3",
@@ -805,8 +805,8 @@
       "upgrade": "damage",
       "order": 290,
       "level": 3,
-      "price_soft": 150,
-      "value": 70
+      "price_soft": 575,
+      "value": 72
     },
     {
       "id": "voodoo_attack_interval_1",
@@ -814,8 +814,8 @@
       "upgrade": "attack_interval",
       "order": 300,
       "level": 1,
-      "price_soft": 75,
-      "value": 0.7
+      "price_soft": 230,
+      "value": 0.704
     },
     {
       "id": "voodoo_attack_interval_2",
@@ -823,8 +823,8 @@
       "upgrade": "attack_interval",
       "order": 300,
       "level": 2,
-      "price_soft": 110,
-      "value": 0.6
+      "price_soft": 375,
+      "value": 0.608
     },
     {
       "id": "voodoo_attack_interval_3",
@@ -832,8 +832,8 @@
       "upgrade": "attack_interval",
       "order": 300,
       "level": 3,
-      "price_soft": 150,
-      "value": 0.5
+      "price_soft": 575,
+      "value": 0.512
     },
     {
       "id": "voodoo_burn_1",
@@ -841,7 +841,7 @@
       "upgrade": "burn",
       "order": 310,
       "level": 1,
-      "price_soft": 60,
+      "price_soft": 230,
       "value": 15
     },
     {
@@ -850,7 +850,7 @@
       "upgrade": "burn",
       "order": 310,
       "level": 2,
-      "price_soft": 100,
+      "price_soft": 375,
       "value": 20
     },
     {
@@ -859,7 +859,7 @@
       "upgrade": "burn",
       "order": 310,
       "level": 3,
-      "price_soft": 140,
+      "price_soft": 575,
       "value": 25
     },
     {
@@ -868,7 +868,7 @@
       "upgrade": "radius",
       "order": 320,
       "level": 1,
-      "price_soft": 100,
+      "price_soft": 720,
       "value": 5
     },
     {
@@ -877,7 +877,7 @@
       "upgrade": "radius",
       "order": 320,
       "level": 2,
-      "price_soft": 150,
+      "price_soft": 1005,
       "value": 8
     },
     {
@@ -886,7 +886,7 @@
       "upgrade": "radius",
       "order": 320,
       "level": 3,
-      "price_soft": 200,
+      "price_soft": 1295,
       "value": 12
     },
     {
@@ -895,7 +895,7 @@
       "upgrade": "targets",
       "order": 330,
       "level": 1,
-      "price_soft": 200,
+      "price_soft": 720,
       "value": 2
     },
     {
@@ -904,7 +904,7 @@
       "upgrade": "targets",
       "order": 330,
       "level": 2,
-      "price_soft": 300,
+      "price_soft": 1005,
       "value": 3
     },
     {
@@ -913,7 +913,7 @@
       "upgrade": "ash",
       "order": 340,
       "level": 1,
-      "price_soft": 250,
+      "price_soft": 720,
       "value": 100
     }
   ]

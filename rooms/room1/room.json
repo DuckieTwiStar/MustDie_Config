@@ -1,7 +1,7 @@
 {
   "meta": {
-    "version": "BAL-0006",
-    "exported_at": "2026-11-01",
+    "version": "BAL-0018_1",
+    "exported_at": "2026-11-02",
     "note": "Room 1: параметри кімнати. Геометрія в Place"
   },
   "room": {
@@ -9,8 +9,8 @@
     "name_en": "Room 1",
     "name_uk": "Кімната 1",
     "unlock_weapon": "slingshot",
-    "base_hp": 650,
-    "door_timer": 60,
+    "base_hp": 500,
+    "door_timer": 45,
     "spawners": [
       {
         "id": "s1",
