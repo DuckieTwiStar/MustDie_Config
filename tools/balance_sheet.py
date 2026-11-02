@@ -142,7 +142,41 @@ def reorder_like(new, orig):
                 o = orig[i]
             res.append(reorder_like(n, o) if o is not None else n)
         return res
+    # 1.0 у файлі лишається 1.0, хоч таблиця віддає 1
+    if isinstance(orig, float) and isinstance(new, int) and not isinstance(new, bool):
+        return float(new)
     return new
+
+
+def dump_inline(v, ind=0):
+    """indent 2, але масиви з одних скалярів в один рядок: [3, 5, 3]."""
+    p = "  " * ind
+    if isinstance(v, dict):
+        if not v:
+            return "{}"
+        body = ",\n".join(f"{p}  {json.dumps(k, ensure_ascii=False)}: {dump_inline(x, ind + 1)}" for k, x in v.items())
+        return "{\n" + body + f"\n{p}}}"
+    if isinstance(v, list):
+        if not v:
+            return "[]"
+        if all(not isinstance(x, (dict, list)) for x in v):
+            return "[" + ", ".join(dump_inline(x) for x in v) + "]"
+        body = ",\n".join(f"{p}  {dump_inline(x, ind + 1)}" for x in v)
+        return "[\n" + body + f"\n{p}]"
+    return json.dumps(v, ensure_ascii=False)
+
+
+def dump_std(v):
+    return json.dumps(v, ensure_ascii=False, indent=2)
+
+
+def dump_like(doc, orig_text):
+    """Пишемо тим стилем, яким записаний оригінал, щоб у git не було шуму."""
+    orig = json.loads(orig_text)
+    for fn in (dump_inline, dump_std):
+        if fn(orig) + "\n" == orig_text:
+            return fn(doc) + "\n"
+    return dump_std(doc) + "\n"
 
 
 def from_table(rows):
@@ -192,7 +226,9 @@ def import_all(sheets, outdir):
     for r in sheets[META_SHEET][1:]:
         metas.setdefault(r[0], {})[r[1]] = r[2]
     for f, parts in files.items():
-        orig = load(f)
+        with open(os.path.join(ROOT, f), encoding="utf-8") as fh:
+            orig_text = fh.read()
+        orig = json.loads(orig_text)
         doc = {}
         # порядок ключів файлу як в оригіналі, meta першим, якщо там він був
         for k in orig:
@@ -203,8 +239,7 @@ def import_all(sheets, outdir):
         path = os.path.join(outdir, f)
         os.makedirs(os.path.dirname(path), exist_ok=True)
         with open(path, "w", encoding="utf-8") as fh:
-            json.dump(doc, fh, ensure_ascii=False, indent=2)
-            fh.write("\n")
+            fh.write(dump_like(doc, orig_text))
     return list(files)
 
 
@@ -231,6 +266,9 @@ def check(sheets=None):
             with open(os.path.join(tmp, f), encoding="utf-8") as fh:
                 got = json.load(fh)
             errors += [f"{f}{e}" for e in same(load(f), got)]
+            with open(os.path.join(tmp, f), encoding="utf-8") as fh, open(os.path.join(ROOT, f), encoding="utf-8") as fo:
+                if not errors and fh.read() != fo.read():
+                    errors.append(f"{f}: текст файлу відрізняється (форматування)")
     return errors
 
 
