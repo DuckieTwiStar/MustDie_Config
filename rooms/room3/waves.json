@@ -275,6 +275,24 @@
       "count": 1,
       "spawn_interval": 1.0,
       "wave_delay": 25
+    },
+    {
+      "id": "w1_s1_shieldbearer",
+      "wave": 1,
+      "spawner_id": "s1",
+      "enemy_id": "shieldbearer",
+      "count": 3,
+      "spawn_interval": 3.0,
+      "wave_delay": 0
+    },
+    {
+      "id": "w1_s2_warlord",
+      "wave": 1,
+      "spawner_id": "s2",
+      "enemy_id": "warlord",
+      "count": 1,
+      "spawn_interval": 1.0,
+      "wave_delay": 0
     }
   ]
 }
