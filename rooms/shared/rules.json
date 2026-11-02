@@ -8,6 +8,7 @@
     "run": {
       "start_wisps": 500,
       "reward_mode": "each",
+      "assist_cap": 0.5,
       "start_weapon": "slingshot",
       "restart_delay": 10,
       "weapon_select_seconds": 20,
