@@ -202,7 +202,7 @@
       ],
       "color": "#A0641E",
       "visual": "Boilermaker_Rigid",
-      "visual_scale": 1.5,
+      "visual_scale": 1.4,
       "boss": true,
       "hp_by_players": [
         1200,
