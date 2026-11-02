@@ -78,7 +78,8 @@
           "duration": 0.5,
           "speed_mult": 0.65
         }
-      }
+      },
+      "assist_share": 0.15
     },
     {
       "id": "frost_fan",
@@ -107,7 +108,8 @@
           "chance": 0,
           "duration": 1.5
         }
-      }
+      },
+      "assist_share": 0.2
     },
     {
       "id": "fire_grate",

@@ -7,7 +7,7 @@
   "rules": {
     "run": {
       "start_wisps": 500,
-      "reward_mode": "each",
+      "reward_mode": "contribution",
       "assist_cap": 0.5,
       "start_weapon": "slingshot",
       "restart_delay": 10,

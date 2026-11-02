@@ -11,6 +11,7 @@
     "results_delay": 1.5,
     "results_timer": 20,
     "damage_dealer_min_players": 1,
+    "participation_only": true,
     "wave_soft": [5, 10, 10, 15, 15, 30, 30, 50]
   }
 }
