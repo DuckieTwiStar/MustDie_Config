@@ -1,13 +1,13 @@
 {
   "meta": {
-    "version": "BAL-0008",
-    "exported_at": "2026-10-23",
+    "version": "BAL-0019",
+    "exported_at": "2026-11-02",
     "note": "Правила забігу, гравця, пасток, ворогів і бою, спільні для всіх кімнат; debug: доступ до дебаг-меню"
   },
   "rules": {
     "run": {
       "start_wisps": 500,
-      "reward_mode": "each",
+      "reward_mode": "contribution",
       "assist_cap": 0.5,
       "start_weapon": "slingshot",
       "restart_delay": 10,

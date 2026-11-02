@@ -1,14 +1,14 @@
 {
   "meta": {
-    "version": "BAL-0008",
-    "exported_at": "2026-11-01",
-    "note": "Room 1 рахує хвилі на 1 гравця. hp_mult 0.9 = загальна ціна кімнати під зброю її tier (BAL-0008). interval_mult = 1/count_mult: хвиля триває однаково, менша команда отримує ворогів рідше. Навантаження на гравця майже рівне (соло трохи легше за пропорцію: 0.3 замість 0.25 кількості)"
+    "version": "BAL-0019",
+    "exported_at": "2026-11-02",
+    "note": "Room 1 рахує хвилі на 1 гравця. BAL-0019: прихованого множника HP нема (було 0.9), вороги однакові в усіх кімнатах; складність кімнати задана кількістю ворогів у хвилях."
   },
   "players": [
     {
       "id": "p1",
       "players": 1,
-      "hp_mult": 0.9,
+      "hp_mult": 1.0,
       "count_mult": 1.0,
       "reward_mult": 1,
       "interval_mult": 1.0
@@ -16,7 +16,7 @@
     {
       "id": "p2",
       "players": 2,
-      "hp_mult": 0.9,
+      "hp_mult": 1.0,
       "count_mult": 1.9,
       "reward_mult": 1,
       "interval_mult": 0.526
@@ -24,7 +24,7 @@
     {
       "id": "p3",
       "players": 3,
-      "hp_mult": 0.9,
+      "hp_mult": 1.0,
       "count_mult": 2.8,
       "reward_mult": 1,
       "interval_mult": 0.357
@@ -32,7 +32,7 @@
     {
       "id": "p4",
       "players": 4,
-      "hp_mult": 0.9,
+      "hp_mult": 1.0,
       "count_mult": 3.7,
       "reward_mult": 1,
       "interval_mult": 0.27

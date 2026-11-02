@@ -1,7 +1,7 @@
 {
   "meta": {
-    "version": "BAL-0006",
-    "exported_at": "2026-11-01",
+    "version": "BAL-0019",
+    "exported_at": "2026-11-02",
     "note": "Вороги: стати, хітбокс (studs), колір, модель вигляду (visual, малює клієнт) і її масштаб; movement=jump - стрибун (жаба)"
   },
   "enemies": [
@@ -183,6 +183,32 @@
           "speed": 8,
           "armor": 0.1
         }
+      ]
+    },
+    {
+      "id": "gatekeeper",
+      "name_en": "Gatekeeper",
+      "name_uk": "Вартовий",
+      "size": "large",
+      "hp": 1200,
+      "speed": 5,
+      "armor": 0.1,
+      "damage_to_base": 999,
+      "reward": 150,
+      "hitbox": [
+        7,
+        10,
+        7
+      ],
+      "color": "#A0641E",
+      "visual": "Boilermaker_Rigid",
+      "visual_scale": 1.4,
+      "boss": true,
+      "hp_by_players": [
+        1200,
+        2200,
+        3200,
+        4200
       ]
     }
   ]

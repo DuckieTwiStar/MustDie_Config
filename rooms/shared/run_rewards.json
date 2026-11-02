@@ -1,16 +1,26 @@
 {
   "meta": {
-    "version": "BAL-0004",
-    "exported_at": "2026-10-15",
-    "note": "Нагороди вікна підсумків забігу (софт). Все округлюється вниз. Кімната може перекрити цілим файлом rooms/<id>/run_rewards.json. wave_soft: софт за кожну відбиту хвилю по номеру; хвилі більше за довжину списку нічого не дають"
+    "version": "BAL-0019",
+    "exported_at": "2026-11-02",
+    "note": "Нагороди вікна підсумків забігу (софт). BAL-0019: урон 40 за 1 софт, 1 софт за 5 HP бази, віспи 200 за 1 софт (гірший курс, ніж урон), софт за хвилі лише тим, хто брав участь (participation_only). Кімната перекриває цілим файлом rooms/<id>/run_rewards.json: wave_soft там свій під довжину кімнати. wave_soft: софт за кожну відбиту хвилю по номеру; хвилі більше за довжину списку нічого не дають"
   },
   "run_rewards": {
-    "damage_per_soft": 100,
-    "wisps_per_soft": 100,
-    "base_hp_per_soft": 10,
+    "damage_per_soft": 40,
+    "wisps_per_soft": 200,
+    "base_hp_per_soft": 5,
     "results_delay": 1.5,
     "results_timer": 20,
     "damage_dealer_min_players": 1,
-    "wave_soft": [5, 10, 10, 15, 15, 30, 30, 50]
+    "wave_soft": [
+      20,
+      30,
+      45,
+      60,
+      80,
+      110,
+      140,
+      180
+    ],
+    "participation_only": true
   }
 }
