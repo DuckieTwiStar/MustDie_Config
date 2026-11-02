@@ -46,6 +46,8 @@ SCHEMA = {
         # стрибуни (жаба, 01.11.2026): movement = "walk" (типово) | "jump"; для jump потрібні jump_*
         "movement": (str, False, None, None), "jump_cells": (NUM, False, 1, 20), "jump_windup": (NUM, False, 0.1, 10),
         "jump_air": (NUM, False, 0.1, 5), "jump_height": (NUM, False, 0, 50),
+        # фази/щит/бос (02.11.2026, docs/enemy-phases.md)
+        "phases": (list, False, None, None), "boss": (bool, False, None, None), "hp_by_players": (list, False, None, None),
     },
     "traps": {
         "id": (str, True, None, None), "order": (int, True, 0, None),
@@ -654,6 +656,59 @@ def check_enemy_extras(enemies):
             for k in ("jump_cells", "jump_windup", "jump_air", "jump_height"):
                 if k not in e:
                     err(path, f"{where}: для movement=jump потрібне поле {k}")
+        if "boss" in e and not isinstance(e["boss"], bool):
+            err(path, f"{where}: boss має бути true/false")
+        hp = e.get("hp_by_players")
+        if hp is not None and (not isinstance(hp, list) or not 1 <= len(hp) <= 4 or not all(type_ok(v, NUM) and v > 0 for v in hp)):
+            err(path, f"{where}: hp_by_players має бути списком 1..4 додатних чисел (HP боса для 1..4 гравців)")
+        ph = e.get("phases")
+        if ph is not None:
+            check_phases(path, where, ph)
+
+
+PHASE_KEYS = {"id": str, "speed": NUM, "armor": NUM, "damage_to_base": NUM, "shield_hp": NUM, "shield_mult": dict, "until": dict}
+
+
+def check_phases(path, where, phases):
+    """enemies[].phases: послідовні фази. Усі поля, крім id, необов'язкові (не задане = береться з рядка ворога)."""
+    if not isinstance(phases, list) or not phases:
+        err(path, f"{where}: phases має бути непорожнім списком")
+        return
+    for j, p in enumerate(phases):
+        pw = f"{where}.phases[{j}]"
+        if not isinstance(p, dict):
+            err(path, f"{pw}: має бути об'єктом")
+            continue
+        for k in p:
+            if k not in PHASE_KEYS:
+                err(path, f"{pw}: невідоме поле {k} (є {sorted(PHASE_KEYS)})")
+        if not isinstance(p.get("id"), str) or not p.get("id"):
+            err(path, f"{pw}: немає id")
+        for k, lo, hi in (("speed", 0.1, None), ("armor", 0, 0.99), ("damage_to_base", 0, None), ("shield_hp", 1, None)):
+            if k in p and not (type_ok(p[k], NUM) and p[k] >= lo and (hi is None or p[k] <= hi)):
+                err(path, f"{pw}: {k} має бути числом {lo}..{hi if hi is not None else '∞'}")
+        for t, m in (p.get("shield_mult") or {}).items():
+            if t not in DAMAGE_TYPES:
+                err(path, f"{pw}.shield_mult: тип {t!r} не з {sorted(DAMAGE_TYPES)}")
+            elif not (type_ok(m, NUM) and 0 <= m <= 10):
+                err(path, f"{pw}.shield_mult.{t}: має бути числом 0..10")
+        u = p.get("until")
+        last = j == len(phases) - 1
+        if u is None:
+            if not last:
+                err(path, f"{pw}: нефінальна фаза без until (коли переходити далі?)")
+        else:
+            if last:
+                err(path, f"{pw}: фінальна фаза не має until")
+            for k in u:
+                if k not in ("hp_below", "shield_broken"):
+                    err(path, f"{pw}.until: невідоме поле {k} (є hp_below, shield_broken)")
+            if "hp_below" in u and not (type_ok(u["hp_below"], NUM) and 0 < u["hp_below"] < 1):
+                err(path, f"{pw}.until.hp_below: має бути числом строго між 0 і 1 (частка HP)")
+            if "shield_broken" in u and not isinstance(u["shield_broken"], bool):
+                err(path, f"{pw}.until.shield_broken: має бути true/false")
+            if not u:
+                err(path, f"{pw}.until: порожній")
 
 
 def check_trap_extras(traps, effect_ids):
