@@ -44,7 +44,7 @@ for _f, _k, _t, _s in [
     SPEC.append((_s, _f, _k, _t))
 for _r in ROOMS:
     for _n, _k, _t in [("room", "room", "kv"), ("zones", "zones", "table"), ("players", "players", "table"),
-                       ("waves", "waves", "table")]:
+                       ("waves", "waves", "table"), ("run_rewards", "run_rewards", "kv")]:  # run_rewards кімнати: з BAL-0019
         SPEC.append((f"{_r}_{_n}", f"rooms/{_r}/{_n}.json", _k, _t))
 
 META_SHEET = "meta"

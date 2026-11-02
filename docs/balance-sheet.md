@@ -1,9 +1,9 @@
 # Зведена таблиця балансу `[MD]Balance_vXXXX`
 
-Google Sheets у папці Balance на Диску. Імена: `[MD]Balance_vXXXX`, де XXXX = найбільша BAL-версія серед файлів у листі `meta` (зараз v0018). Старі таблиці лежать у `Balance/Old`.
+Google Sheets у папці Balance на Диску. Імена: `[MD]Balance_vXXXX`, де XXXX = найбільша BAL-версія серед файлів у листі `meta` (зараз v0019). Старі таблиці лежать у `Balance/Old`.
 
 ## Що всередині
-34 листи: README, links, 14 спільних (rules, debug, run_rewards, bots, enemies, weapons_defaults, weapons, weapon_upgrade_types, weapon_upgrades, traps, trap_upgrade_types, trap_upgrades, effect_stats, status_effects), 16 листів кімнат (room1..4 × room, zones, players, waves), waves_summary, meta.
+38 листів: README, links, 14 спільних (rules, debug, run_rewards, bots, enemies, weapons_defaults, weapons, weapon_upgrade_types, weapon_upgrades, traps, trap_upgrade_types, trap_upgrades, effect_stats, status_effects), 20 листів кімнат (room1..4 × room, zones, players, waves, run_rewards), waves_summary, meta.
 Не входять: template, lobby, items, sounds, leaderboards.
 
 ## Лист curves (діаграми)
