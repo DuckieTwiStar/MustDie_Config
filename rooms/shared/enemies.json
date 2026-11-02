@@ -121,8 +121,8 @@
         4
       ],
       "color": "#3C6EA0",
-      "visual": "Hatter_Rigid",
-      "visual_scale": 1.15,
+      "visual": "Octopus_Rigid",
+      "visual_scale": 1,
       "phases": [
         {
           "id": "shield",
