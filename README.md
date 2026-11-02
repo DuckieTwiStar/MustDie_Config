@@ -174,6 +174,9 @@ tools/validate.py       перевірка перед комітом (так с�
 | jump_windup | number | с | 0.1..10 | для `jump` | підготовка (роздування) перед стрибком; оглушення її скидає, уповільнення розтягує |
 | jump_air | number | с | 0.1..5 | для `jump` | тривалість польоту |
 | jump_height | number | studs | 0..50 | для `jump` | висота дуги стрибка |
+| phases | array | — | — | ні | фази ворога (щитоносець, бос): див. `docs/enemy-phases.md`. Поля фази: `id`, `speed`, `armor`, `damage_to_base`, `shield_hp`, `shield_mult{тип:0..10}`, `until{shield_broken|hp_below}`; не задане береться з рядка ворога |
+| boss | bool | — | — | ні | бос: його HP/щит показує смуга зверху екрана; дійшов до печаті = поразка |
+| hp_by_players | array | HP | 1..4 додатних | ні | HP боса для 1..4 гравців (замінює `hp`) |
 
 ### traps.json → `traps` (масив, один рядок на пастку)
 

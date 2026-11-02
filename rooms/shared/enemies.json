@@ -104,6 +104,86 @@
       "jump_windup": 1.2,
       "jump_air": 0.7,
       "jump_height": 6
+    },
+    {
+      "id": "shieldbearer",
+      "name_en": "Shield-bearer",
+      "name_uk": "Щитоносець",
+      "size": "medium",
+      "hp": 220,
+      "speed": 10,
+      "armor": 0.15,
+      "damage_to_base": 25,
+      "reward": 60,
+      "hitbox": [
+        4,
+        6,
+        4
+      ],
+      "color": "#3C6EA0",
+      "visual": "Hatter_Rigid",
+      "visual_scale": 1.15,
+      "phases": [
+        {
+          "id": "shield",
+          "speed": 6,
+          "shield_hp": 140,
+          "shield_mult": {
+            "physical": 0.5,
+            "fire": 1.5,
+            "shock": 1.5,
+            "ice": 1.0
+          },
+          "until": {
+            "shield_broken": true
+          }
+        },
+        {
+          "id": "rage",
+          "speed": 13,
+          "armor": 0.0,
+          "damage_to_base": 40
+        }
+      ]
+    },
+    {
+      "id": "warlord",
+      "name_en": "Warlord",
+      "name_uk": "Воєвода",
+      "size": "large",
+      "hp": 3000,
+      "speed": 5,
+      "armor": 0.2,
+      "damage_to_base": 999,
+      "reward": 400,
+      "hitbox": [
+        8,
+        12,
+        8
+      ],
+      "color": "#8C1E1E",
+      "visual": "Boilermaker_Rigid",
+      "visual_scale": 1.6,
+      "boss": true,
+      "hp_by_players": [
+        3000,
+        5500,
+        8000,
+        10500
+      ],
+      "phases": [
+        {
+          "id": "march",
+          "until": {
+            "hp_below": 0.4
+          }
+        },
+        {
+          "id": "fury",
+          "speed": 8,
+          "armor": 0.1
+        }
+      ]
     }
   ]
 }
