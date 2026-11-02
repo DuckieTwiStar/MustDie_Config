@@ -6,6 +6,9 @@ Google Sheets у папці Balance на Диску. Імена: `[MD]Balance_vX
 34 листи: README, links, 14 спільних (rules, debug, run_rewards, bots, enemies, weapons_defaults, weapons, weapon_upgrade_types, weapon_upgrades, traps, trap_upgrade_types, trap_upgrades, effect_stats, status_effects), 16 листів кімнат (room1..4 × room, zones, players, waves), waves_summary, meta.
 Не входять: template, lobby, items, sounds, leaderboards.
 
+## Лист curves (діаграми)
+5 діаграм складності по кімнатах (HP хвилі, нагорода, частка HP бази, потрібний DPS на гравця, індекс тиску). Формули беруть дані з waves/waves_summary, enemies, weapons (`dps_calc`), players, zones. Вхід: `curves!B3:B5` (гравців, ефективність DPS, ворог для швидкості). Допоміжні колонки: `window_calc` у waves, `spawn_window_calc` і `key_calc` у waves_summary, `dps_calc` у weapons. Усе `*_calc` і лист curves у JSON не йде. Припущення: без on_hit-ефектів і пасток; потрібний DPS = HP / (вікно спавну + час маршруту) / гравців.
+
 ## Правила перетворення (`tools/balance_sheet.py`)
 - колекція файлу = лист; масив об'єктів = таблиця (рядок = запис, перший рядок = імена полів), об'єкт = лист `key,value`;
 - вкладені об'єкти розгортаються в колонки через крапку (`on_hit.stun.chance`), масиви й порожні об'єкти лежать у клітинці як компактний JSON;
