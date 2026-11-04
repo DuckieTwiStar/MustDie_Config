@@ -115,6 +115,7 @@ SCHEMA = {
         "base_hp_per_soft": (NUM, True, 0.01, None), "results_delay": (NUM, True, 0, 30),
         "results_timer": (NUM, True, 5, 300), "damage_dealer_min_players": (int, True, 1, 4),
         "wave_soft": (list, True, None, None), "participation_only": (bool, False, None, None),
+        "wave_wisps": (list, False, None, None),
     },
     "room": {
         "_object": True,
@@ -220,6 +221,7 @@ RULES_SCHEMA = {
     "run": {
         "start_wisps": (int, 0, None), "reward_mode": (str, None, None), "assist_cap": (NUM, 0, 1), "start_weapon": (str, None, None),
         "restart_delay": (NUM, 0, 600), "weapon_select_seconds": (NUM, 1, 120), "weapon_select_delay": (NUM, 0, 10),
+        "wave_clear_pause": (NUM, 0, 120),
     },
     "player": {"walk_speed": (NUM, 1, 200), "sprint_speed": (NUM, 1, 300)},
     "intro": {"enabled": (bool, None, None), "cooldown_hours": (NUM, 0, 8760), "every_run": (bool, None, None), "seconds": (NUM, 3, 30)},
@@ -1328,6 +1330,23 @@ def main():
             for i, v in enumerate(soft):
                 if not isinstance(v, int) or isinstance(v, bool) or v < 0:
                     err(room_dir / "waves.json", f"run_rewards.wave_soft[{i}]: ціле >= 0")
+        # бонус віспів за відбиту хвилю: масив по номеру хвилі, потребує паузи від зачистки (rules.run.wave_clear_pause > 0)
+        wisps = rewards.get("wave_wisps") if isinstance(rewards, dict) else None
+        if isinstance(wisps, list):
+            for i, v in enumerate(wisps):
+                if not isinstance(v, int) or isinstance(v, bool) or v < 0:
+                    err(room_dir / "run_rewards.json", f"run_rewards.wave_wisps[{i}]: ціле >= 0")
+            if wave_nums and len(wisps) > max(wave_nums):
+                err(room_dir / "run_rewards.json", f"wave_wisps має {len(wisps)} значень, а хвиль {max(wave_nums)}")
+            pause = ((shared.get("rules") or {}).get("run") or {}).get("wave_clear_pause", 0)
+            if any(isinstance(v, int) and v > 0 for v in wisps) and not (isinstance(pause, (int, float)) and pause > 0):
+                err(room_dir / "run_rewards.json", "wave_wisps > 0 потребує rules.run.wave_clear_pause > 0 (бонус видається на зачистці хвилі)")
+        # кожна хвиля має ворогів для будь-якого розміру команди (min_players лише додає рядки)
+        for wn in sorted(n for n in wave_nums if isinstance(n, int)):
+            rows = [wv for wv in (files.get("waves") or []) if isinstance(wv, dict) and wv.get("wave") == wn]
+            for team in (1, 2, 3, 4):
+                if not any(r.get("min_players", 1) <= team for r in rows):
+                    err(room_dir / "waves.json", f"хвиля {wn}: для команди з {team} немає жодного рядка (min_players)")
         counts = sorted(p.get("players") for p in (files.get("players") or []) if isinstance(p, dict))
         if counts and counts != [1, 2, 3, 4]:
             err(room_dir / "players.json", f"потрібні рядки для 1, 2, 3, 4 гравців, зараз {counts}")

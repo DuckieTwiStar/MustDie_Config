@@ -19,6 +19,14 @@
       25,
       30
     ],
-    "participation_only": true
+    "participation_only": true,
+    "wave_wisps": [
+      60,
+      110,
+      140,
+      190,
+      220,
+      0
+    ]
   }
 }

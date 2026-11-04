@@ -21,7 +21,7 @@
       "enemy_id": "grunt",
       "count": 9,
       "spawn_interval": 1.2,
-      "wave_delay": 20
+      "wave_delay": 15
     },
     {
       "id": "w3_grunt",
@@ -30,7 +30,7 @@
       "enemy_id": "grunt",
       "count": 7,
       "spawn_interval": 1,
-      "wave_delay": 20
+      "wave_delay": 15
     },
     {
       "id": "w3_warrior",
@@ -39,7 +39,7 @@
       "enemy_id": "warrior",
       "count": 3,
       "spawn_interval": 2.5,
-      "wave_delay": 20
+      "wave_delay": 15
     },
     {
       "id": "w4_grunt",
@@ -48,25 +48,16 @@
       "enemy_id": "grunt",
       "count": 4,
       "spawn_interval": 0.8,
-      "wave_delay": 25
-    },
-    {
-      "id": "w4_toad",
-      "wave": 4,
-      "spawner_id": "s1",
-      "enemy_id": "toad",
-      "count": 3,
-      "spawn_interval": 2.5,
-      "wave_delay": 25
+      "wave_delay": 15
     },
     {
       "id": "w4_warrior",
       "wave": 4,
       "spawner_id": "s1",
       "enemy_id": "warrior",
-      "count": 5,
+      "count": 8,
       "spawn_interval": 2,
-      "wave_delay": 25
+      "wave_delay": 15
     },
     {
       "id": "w5_brute",
@@ -75,25 +66,25 @@
       "enemy_id": "brute",
       "count": 1,
       "spawn_interval": 0,
-      "wave_delay": 25
+      "wave_delay": 15
     },
     {
       "id": "w5_grunt",
       "wave": 5,
       "spawner_id": "s1",
       "enemy_id": "grunt",
-      "count": 11,
+      "count": 13,
       "spawn_interval": 0.8,
-      "wave_delay": 25
+      "wave_delay": 15
     },
     {
-      "id": "w5_s1_shieldbearer",
+      "id": "w5_warrior",
       "wave": 5,
       "spawner_id": "s1",
-      "enemy_id": "shieldbearer",
+      "enemy_id": "warrior",
       "count": 1,
       "spawn_interval": 2.0,
-      "wave_delay": 25
+      "wave_delay": 15
     },
     {
       "id": "w6_brute",
@@ -102,16 +93,18 @@
       "enemy_id": "brute",
       "count": 2,
       "spawn_interval": 6,
-      "wave_delay": 30
+      "wave_delay": 15,
+      "min_players": 2
     },
     {
       "id": "w6_grunt",
       "wave": 6,
       "spawner_id": "s1",
       "enemy_id": "grunt",
-      "count": 6,
+      "count": 10,
       "spawn_interval": 0.7,
-      "wave_delay": 30
+      "wave_delay": 15,
+      "min_players": 2
     },
     {
       "id": "w6_s1_gatekeeper",
@@ -120,34 +113,17 @@
       "enemy_id": "gatekeeper",
       "count": 1,
       "spawn_interval": 1.0,
-      "wave_delay": 30
-    },
-    {
-      "id": "w6_s1_shieldbearer",
-      "wave": 6,
-      "spawner_id": "s1",
-      "enemy_id": "shieldbearer",
-      "count": 2,
-      "spawn_interval": 3.0,
-      "wave_delay": 30
-    },
-    {
-      "id": "w6_toad",
-      "wave": 6,
-      "spawner_id": "s1",
-      "enemy_id": "toad",
-      "count": 4,
-      "spawn_interval": 2.0,
-      "wave_delay": 30
+      "wave_delay": 15
     },
     {
       "id": "w6_warrior",
       "wave": 6,
       "spawner_id": "s1",
       "enemy_id": "warrior",
-      "count": 3,
+      "count": 9,
       "spawn_interval": 1.5,
-      "wave_delay": 30
+      "wave_delay": 15,
+      "min_players": 2
     }
   ]
 }
