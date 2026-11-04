@@ -212,7 +212,7 @@
       "order": 20,
       "level": 1,
       "price_soft": 20,
-      "value": 0.36
+      "value": 0.18
     },
     {
       "id": "fists_attack_interval_2",
@@ -221,7 +221,7 @@
       "order": 20,
       "level": 2,
       "price_soft": 40,
-      "value": 0.32
+      "value": 0.1
     },
     {
       "id": "slingshot_damage_1",
