@@ -70,5 +70,13 @@ results.append(run(edit("rooms/shared/traps.json", lambda d: [t for t in d["trap
 results.append(run(edit("rooms/shared/traps.json", lambda d: d["traps"][0].update(level=1)), "старе поле level у пастці", "поле level більше не використовується"))
 results.append(run(edit(TU, lambda d: tu_type(d, "hold").update(stat="on_hit.slow.duration")), "прокачка on_hit, якого в пастці немає", "немає on_hit.slow"))
 results.append(run(edit(TU, lambda d: d["trap_upgrades"].append({"id": "energy_wall_cooldown_1", "trap_id": "energy_wall", "upgrade": "cooldown", "order": 20, "level": 1, "price_soft": 10, "value": 2})), "прокачка поля, якого в пастці немає", "немає поля cooldown"))
+RW1 = "rooms/room1/run_rewards.json"
+W1 = "rooms/room1/waves.json"
+RU = "rooms/shared/rules.json"
+results.append(run(edit(RW1, lambda d: d["run_rewards"].update(wave_wisps=[10, -1])), "wave_wisps від'ємне", "wave_wisps[1]: ціле >= 0"))
+results.append(run(edit(RW1, lambda d: d["run_rewards"].update(wave_wisps=[1] * 9)), "wave_wisps довший за кількість хвиль", "а хвиль"))
+results.append(run(edit(RU, lambda d: d["rules"]["run"].update(wave_clear_pause=0)), "wave_wisps без паузи від зачистки", "потребує rules.run.wave_clear_pause"))
+results.append(run(edit(RU, lambda d: d["rules"]["run"].update(wave_clear_pause=500)), "wave_clear_pause поза межами", "wave_clear_pause"))
+results.append(run(edit(W1, lambda d: [r.update(min_players=2) for r in d["waves"] if r["wave"] == 6]), "хвиля без рядків для 1 гравця", "хвиля 6: для команди з 1"))
 print(f"{sum(results)}/{len(results)} passed")
 sys.exit(0 if all(results) else 1)
