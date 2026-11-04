@@ -590,7 +590,7 @@
       "order": 10,
       "level": 1,
       "price_soft": 600,
-      "value": 3
+      "value": 2
     },
     {
       "id": "darts_cooldown_2",
@@ -599,7 +599,7 @@
       "order": 10,
       "level": 2,
       "price_soft": 900,
-      "value": 2.5
+      "value": 1.5
     },
     {
       "id": "darts_cooldown_3",
@@ -608,7 +608,7 @@
       "order": 10,
       "level": 3,
       "price_soft": 1350,
-      "value": 2
+      "value": 1
     },
     {
       "id": "darts_damage_1",
