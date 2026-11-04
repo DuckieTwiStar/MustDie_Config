@@ -2,7 +2,7 @@
   "meta": {
     "version": "BAL-0006",
     "exported_at": "2026-11-01",
-    "note": "Зони Room 2: гілка кожного спавнера (spawner_id), далі спільна частина. length для симуляції і ботів, ще не звірено з картою. lanes = ширина зони в смугах по cell_size (зараз 6: карта ще не перебудована під 8)"
+    "note": "Зони Room 2: гілка кожного спавнера (spawner_id), далі спільна частина. length для симуляції і ботів, ще не звірено з картою. lanes = ширина зони в смугах по cell_size (8: карти Room 1 і 2 розширено до 32 studs, В-004)"
   },
   "zones": [
     {
@@ -12,7 +12,7 @@
       "name_uk": "Гілка A: коридор",
       "length": 64,
       "spawner_id": "s1",
-      "lanes": 6
+      "lanes": 8
     },
     {
       "id": "a_turn",
@@ -21,7 +21,7 @@
       "name_uk": "Гілка A: поворот",
       "length": 24,
       "spawner_id": "s1",
-      "lanes": 6
+      "lanes": 8
     },
     {
       "id": "a_cross",
@@ -30,7 +30,7 @@
       "name_uk": "Гілка A: до вузла",
       "length": 72,
       "spawner_id": "s1",
-      "lanes": 6
+      "lanes": 8
     },
     {
       "id": "b_down",
@@ -39,7 +39,7 @@
       "name_uk": "Гілка B: коридор",
       "length": 64,
       "spawner_id": "s2",
-      "lanes": 6
+      "lanes": 8
     },
     {
       "id": "b_turn",
@@ -48,7 +48,7 @@
       "name_uk": "Гілка B: поворот",
       "length": 24,
       "spawner_id": "s2",
-      "lanes": 6
+      "lanes": 8
     },
     {
       "id": "b_cross",
@@ -57,7 +57,7 @@
       "name_uk": "Гілка B: до вузла",
       "length": 72,
       "spawner_id": "s2",
-      "lanes": 6
+      "lanes": 8
     },
     {
       "id": "junction",
@@ -65,7 +65,7 @@
       "name_en": "Junction",
       "name_uk": "Вузол",
       "length": 40,
-      "lanes": 6
+      "lanes": 8
     },
     {
       "id": "main",
@@ -73,7 +73,7 @@
       "name_en": "Main corridor",
       "name_uk": "Головний коридор",
       "length": 56,
-      "lanes": 6
+      "lanes": 8
     },
     {
       "id": "area",
@@ -81,7 +81,7 @@
       "name_en": "Seal hall",
       "name_uk": "Зала печатки",
       "length": 24,
-      "lanes": 6
+      "lanes": 8
     }
   ]
 }

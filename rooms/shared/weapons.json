@@ -54,7 +54,7 @@
       "range": 12,
       "cone": 90,
       "knockback": 10,
-      "knockback_scatter": 3
+      "knockback_scatter": 8
     },
     {
       "id": "slingshot",
