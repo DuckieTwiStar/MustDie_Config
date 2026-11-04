@@ -50,12 +50,12 @@
       "name_en": "Fists",
       "name_uk": "Кулаки",
       "damage": 15,
-      "attack_interval": 0.2,
+      "attack_interval": 0.25,
       "range": 10,
-      "cone": 80,
+      "cone": 60,
       "knockback": 7,
       "knockback_scatter": 6,
-      "knockback_stun": 0.5
+      "knockback_stun": 0.3
     },
     {
       "id": "slingshot",
