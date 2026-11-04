@@ -53,7 +53,7 @@
       "attack_interval": 0.36,
       "range": 12,
       "cone": 90,
-      "knockback": 6,
+      "knockback": 10,
       "knockback_scatter": 3
     },
     {
