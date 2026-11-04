@@ -10,8 +10,8 @@
       "wave": 1,
       "spawner_id": "s1",
       "enemy_id": "grunt",
-      "count": 5,
-      "spawn_interval": 1.5,
+      "count": 8,
+      "spawn_interval": 1.2,
       "wave_delay": 0
     },
     {
@@ -19,54 +19,54 @@
       "wave": 2,
       "spawner_id": "s1",
       "enemy_id": "grunt",
-      "count": 9,
-      "spawn_interval": 1.2,
-      "wave_delay": 15
+      "count": 10,
+      "spawn_interval": 1.0,
+      "wave_delay": 10
     },
     {
       "id": "w3_grunt",
       "wave": 3,
       "spawner_id": "s1",
       "enemy_id": "grunt",
-      "count": 7,
-      "spawn_interval": 1,
-      "wave_delay": 15
+      "count": 8,
+      "spawn_interval": 0.8,
+      "wave_delay": 10
     },
     {
       "id": "w3_warrior",
       "wave": 3,
       "spawner_id": "s1",
       "enemy_id": "warrior",
-      "count": 3,
+      "count": 4,
       "spawn_interval": 2.5,
-      "wave_delay": 15
+      "wave_delay": 10
     },
     {
       "id": "w4_grunt",
       "wave": 4,
       "spawner_id": "s1",
       "enemy_id": "grunt",
-      "count": 4,
-      "spawn_interval": 0.8,
-      "wave_delay": 15
+      "count": 10,
+      "spawn_interval": 0.6,
+      "wave_delay": 10
     },
     {
       "id": "w4_warrior",
       "wave": 4,
       "spawner_id": "s1",
       "enemy_id": "warrior",
-      "count": 8,
-      "spawn_interval": 2,
-      "wave_delay": 15
+      "count": 6,
+      "spawn_interval": 1.5,
+      "wave_delay": 10
     },
     {
       "id": "w5_brute",
       "wave": 5,
       "spawner_id": "s1",
       "enemy_id": "brute",
-      "count": 1,
-      "spawn_interval": 0,
-      "wave_delay": 15
+      "count": 2,
+      "spawn_interval": 4,
+      "wave_delay": 10
     },
     {
       "id": "w5_grunt",
@@ -74,17 +74,17 @@
       "spawner_id": "s1",
       "enemy_id": "grunt",
       "count": 13,
-      "spawn_interval": 0.8,
-      "wave_delay": 15
+      "spawn_interval": 0.6,
+      "wave_delay": 10
     },
     {
       "id": "w5_warrior",
       "wave": 5,
       "spawner_id": "s1",
       "enemy_id": "warrior",
-      "count": 1,
-      "spawn_interval": 2.0,
-      "wave_delay": 15
+      "count": 4,
+      "spawn_interval": 1.5,
+      "wave_delay": 10
     },
     {
       "id": "w6_brute",
@@ -93,7 +93,7 @@
       "enemy_id": "brute",
       "count": 2,
       "spawn_interval": 6,
-      "wave_delay": 15,
+      "wave_delay": 10,
       "min_players": 2
     },
     {
@@ -103,7 +103,7 @@
       "enemy_id": "grunt",
       "count": 10,
       "spawn_interval": 0.7,
-      "wave_delay": 15,
+      "wave_delay": 10,
       "min_players": 2
     },
     {
@@ -113,7 +113,7 @@
       "enemy_id": "gatekeeper",
       "count": 1,
       "spawn_interval": 1.0,
-      "wave_delay": 15
+      "wave_delay": 10
     },
     {
       "id": "w6_warrior",
@@ -122,7 +122,7 @@
       "enemy_id": "warrior",
       "count": 9,
       "spawn_interval": 1.5,
-      "wave_delay": 15,
+      "wave_delay": 10,
       "min_players": 2
     }
   ]
