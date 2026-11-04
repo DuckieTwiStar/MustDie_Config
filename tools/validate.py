@@ -48,6 +48,7 @@ SCHEMA = {
         "jump_air": (NUM, False, 0.1, 5), "jump_height": (NUM, False, 0, 50),
         # фази/щит/бос (02.11.2026, docs/enemy-phases.md)
         "phases": (list, False, None, None), "boss": (bool, False, None, None), "hp_by_players": (list, False, None, None),
+        "knockback_resist": (NUM, False, 0, 1),
     },
     "traps": {
         "id": (str, True, None, None), "order": (int, True, 0, None),
@@ -96,7 +97,7 @@ SCHEMA = {
         "reload_per_round": (bool, False, None, None), "reload_interruptible": (bool, False, None, None),
         "plasma_damage": (NUM, False, 0, None), "plasma_speed": (NUM, False, 1, None),
         "targets": (int, False, 1, None), "splash_radius": (NUM, False, 0, None),
-        "armor_pierce": (NUM, False, 0, 1), "knockback": (NUM, False, 0, None),
+        "armor_pierce": (NUM, False, 0, 1), "knockback": (NUM, False, 0, None), "knockback_scatter": (NUM, False, 0, None),
         "bonus_vs": (dict, False, None, None), "on_hit": (dict, False, None, None),
     },
     "weapon_upgrades": {
@@ -764,15 +765,18 @@ def check_weapon_extras(weapons, effect_ids):
             err(path, f"defaults.{key}: це поле не має дефолту")
             continue
         check_value(path, "weapons", key, v, spec, f"defaults.{key}")
-    # knockback зарезервовано контрактом, механіки в коді ще немає: не 0 = дизайнер чекає ефекту, якого не буде
+    # відкидання (В-010) працює лише в ударі кулаків (fire_mode melee): у defaults лишається 0
     if type_ok(defaults.get("knockback", 0), NUM) and defaults.get("knockback", 0) != 0:
-        err(path, "defaults.knockback: механіки відкидання ще немає в коді, лиши 0 (docs/combat-config-contract.md)")
+        err(path, "defaults.knockback: відкидання задається окремій зброї, у defaults лиши 0 (docs/combat-config-contract.md)")
+    if type_ok(defaults.get("knockback_scatter", 0), NUM) and defaults.get("knockback_scatter", 0) != 0:
+        err(path, "defaults.knockback_scatter: у defaults лиши 0")
     for i, w in enumerate(weapons):
         if not isinstance(w, dict):
             continue
         where = f"weapons[{i}] ({w.get('id')})"
-        if type_ok(w.get("knockback", 0), NUM) and w.get("knockback", 0) != 0:
-            err(path, f"{where}.knockback: механіки відкидання ще немає в коді, лиши 0")
+        for kb_key in ("knockback", "knockback_scatter"):
+            if type_ok(w.get(kb_key, 0), NUM) and w.get(kb_key, 0) != 0 and w.get("fire_mode") != "melee":
+                err(path, f"{where}.{kb_key}: відкидання поки працює лише в ударі кулаків (fire_mode melee)")
         check_effect_map(path, f"{where}.on_hit", w.get("on_hit"), effect_ids)
         check_effect_map(path, f"{where}.bonus_vs", w.get("bonus_vs"), effect_ids, params=False)
         for key in MODE_REQUIRED.get(w.get("fire_mode"), ()):

@@ -144,7 +144,8 @@
           "armor": 0.0,
           "damage_to_base": 40
         }
-      ]
+      ],
+      "knockback_resist": 0.5
     },
     {
       "id": "warlord",
@@ -183,7 +184,8 @@
           "speed": 8,
           "armor": 0.1
         }
-      ]
+      ],
+      "knockback_resist": 1
     },
     {
       "id": "gatekeeper",
@@ -209,7 +211,8 @@
         2200,
         3200,
         4200
-      ]
+      ],
+      "knockback_resist": 1
     }
   ]
 }

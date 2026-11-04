@@ -49,10 +49,12 @@
       "fire_mode": "melee",
       "name_en": "Fists",
       "name_uk": "Кулаки",
-      "damage": 15,
-      "attack_interval": 0.4,
-      "range": 7,
-      "cone": 78.5
+      "damage": 20,
+      "attack_interval": 0.36,
+      "range": 12,
+      "cone": 90,
+      "knockback": 6,
+      "knockback_scatter": 3
     },
     {
       "id": "slingshot",
