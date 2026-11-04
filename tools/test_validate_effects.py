@@ -78,5 +78,6 @@ results.append(run(edit(RW1, lambda d: d["run_rewards"].update(wave_wisps=[1] * 
 results.append(run(edit(RU, lambda d: d["rules"]["run"].update(wave_clear_pause=0)), "wave_wisps без паузи від зачистки", "потребує rules.run.wave_clear_pause"))
 results.append(run(edit(RU, lambda d: d["rules"]["run"].update(wave_clear_pause=500)), "wave_clear_pause поза межами", "wave_clear_pause"))
 results.append(run(edit(W1, lambda d: [r.update(min_players=2) for r in d["waves"] if r["wave"] == 6]), "хвиля без рядків для 1 гравця", "хвиля 6: для команди з 1"))
+results.append(run(edit(RU, lambda d: d["rules"]["run"].update(wave_clear_timeout=-5)), "wave_clear_timeout від'ємний", "wave_clear_timeout"))
 print(f"{sum(results)}/{len(results)} passed")
 sys.exit(0 if all(results) else 1)

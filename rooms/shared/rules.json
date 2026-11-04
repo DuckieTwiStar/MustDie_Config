@@ -13,7 +13,8 @@
       "restart_delay": 10,
       "weapon_select_seconds": 20,
       "weapon_select_delay": 1.5,
-      "wave_clear_pause": 15
+      "wave_clear_pause": 15,
+      "wave_clear_timeout": 90
     },
     "player": {
       "walk_speed": 16,

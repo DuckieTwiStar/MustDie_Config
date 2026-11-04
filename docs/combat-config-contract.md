@@ -97,7 +97,7 @@ damage → `damage`; attack_interval → `attack_interval`; ricochet → `ricoch
 | Секція | Поля | Зараз |
 |---|---|---|
 | `rules.player` | `walk_speed` 16, `sprint_speed` 24 | `gameplay` |
-| `rules.traps` | `place_reach` 14, `reach` 14, `reach_slack` 6, `refund_share` **0.5** | `gameplay`, `REACH_SLACK`, `rules` |
+| `rules.traps` | `place_reach` 40, `reach` 14, `reach_slack` 6, `refund_share` **0.5** | `gameplay`, `REACH_SLACK`, `rules` |
 | `rules.enemies` | `turn_radius` 12, `speed_jitter`, `spawn_jitter`, `drift_*` | `gameplay` |
 | `rules.combat` | `max_live_shots` 60, `net_tolerance` 0.05, правило повного магазину | `CombatService` |
 | `rules.run` | `restart_delay` 10, `start_weapon`, `start_wisps` (замість `start_coins`) | `gameplay`, `Config.startWeapon`, `rules` |

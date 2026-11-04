@@ -221,7 +221,7 @@ RULES_SCHEMA = {
     "run": {
         "start_wisps": (int, 0, None), "reward_mode": (str, None, None), "assist_cap": (NUM, 0, 1), "start_weapon": (str, None, None),
         "restart_delay": (NUM, 0, 600), "weapon_select_seconds": (NUM, 1, 120), "weapon_select_delay": (NUM, 0, 10),
-        "wave_clear_pause": (NUM, 0, 120),
+        "wave_clear_pause": (NUM, 0, 120), "wave_clear_timeout": (NUM, 0, 600),
     },
     "player": {"walk_speed": (NUM, 1, 200), "sprint_speed": (NUM, 1, 300)},
     "intro": {"enabled": (bool, None, None), "cooldown_hours": (NUM, 0, 8760), "every_run": (bool, None, None), "seconds": (NUM, 3, 30)},
