@@ -2,7 +2,7 @@
   "meta": {
     "version": "SND-0001",
     "exported_at": "2026-10-23",
-    "note": "Звуки: тимчасові, зі стандартного набору Roblox. id у snake_case, у коді ім'я camelCase (bow_shot = bowShot). Заміна звуку = заміна asset."
+    "note": "Звуки: тимчасові, зі стандартного набору Roblox. id у snake_case, у коді ім'я camelCase (bow_shot = bowShot). Заміна звуку = заміна asset. mark_hit/mark_crack (В-014): тон mark_hit у коді множиться на 1.0..1.6 зі стаками мітки; asset тимчасовий."
   },
   "sounds": [
     {
@@ -76,6 +76,18 @@
       "asset": "rbxasset://sounds/hit.wav",
       "volume": 0.5,
       "pitch": 1
+    },
+    {
+      "id": "mark_hit",
+      "asset": "rbxasset://sounds/electronicpingshort.wav",
+      "volume": 0.3,
+      "pitch": 1.0
+    },
+    {
+      "id": "mark_crack",
+      "asset": "rbxasset://sounds/glassbreak.wav",
+      "volume": 0.35,
+      "pitch": 1.6
     },
     {
       "id": "enemy_death",
