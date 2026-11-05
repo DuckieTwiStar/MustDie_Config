@@ -783,8 +783,8 @@ def check_weapon_extras(weapons, effect_ids):
             continue
         where = f"weapons[{i}] ({w.get('id')})"
         for kb_key in ("knockback", "knockback_scatter", "knockback_stun"):
-            if type_ok(w.get(kb_key, 0), NUM) and w.get(kb_key, 0) != 0 and w.get("fire_mode") != "melee":
-                err(path, f"{where}.{kb_key}: відкидання поки працює лише в ударі кулаків (fire_mode melee)")
+            if type_ok(w.get(kb_key, 0), NUM) and w.get(kb_key, 0) != 0 and w.get("fire_mode") not in ("melee", "projectile"):
+                err(path, f"{where}.{kb_key}: відкидання поки працює лише в ударі кулаків (melee) і снарядах (projectile)")
         if any(k in w for k in ("mark_step", "mark_max", "mark_window", "mark_transfer", "mark_all_damage")):
             if w.get("fire_mode") != "projectile":
                 err(path, f"{where}: мітка фокусу (mark_*) поки працює лише для fire_mode projectile")

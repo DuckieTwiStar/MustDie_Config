@@ -47,7 +47,8 @@ results.append(run(edit("rooms/shared/traps.json", lambda d: [t for t in d["trap
 results.append(run(edit("rooms/shared/weapon_upgrades.json", lambda d: d["upgrade_types"][0].update(stat="on_hit.burn.stacks")), "прокачка: stat on_hit.burn.stacks", "stacks"))
 results.append(run(edit(SE, lambda d: eff(d, "frozen")["modifiers"].append({"stat": "damage_taken_mult.poison", "value": 1.5})), "невідомий тип урону в stat", "не зі словника"))
 results.append(run(edit(SE, lambda d: eff(d, "stun").update(damage_type="fire")), "damage_type без dps", "мають сенс лише з модифікаторами dps"))
-results.append(run(edit("rooms/shared/weapons.json", lambda d: [w for w in d["weapons"] if w["id"] == "bow"][0].update(knockback=3)), "knockback лише для melee", "лише в ударі кулаків"))
+results.append(run(edit("rooms/shared/weapons.json", lambda d: [w for w in d["weapons"] if w["id"] == "revolver"][0].update(knockback=3)), "knockback лише для melee і projectile", "лише в ударі кулаків"))
+results.append(run(edit("rooms/shared/weapons.json", lambda d: [w for w in d["weapons"] if w["id"] == "bow"][0].update(knockback=3)), "knockback для projectile (позитив)", None))
 results.append(run(edit("rooms/shared/weapons.json", lambda d: [w for w in d["weapons"] if w["id"] == "bow"][0].update(bonus_vs={"stun": 1.5})), "bonus_vs по ефекту (позитив)", None))
 TU = "rooms/shared/trap_upgrades.json"
 def tu_type(d, i): return {t["id"]: t for t in d["upgrade_types"]}[i]
