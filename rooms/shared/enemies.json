@@ -187,7 +187,8 @@
           "armor": 0.1
         }
       ],
-      "knockback_resist": 0.95
+      "knockback_resist": 0.95,
+      "base_hit_windup": 1.2
     },
     {
       "id": "gatekeeper",
@@ -215,6 +216,7 @@
         5040
       ],
       "knockback_resist": 0.95,
+      "base_hit_windup": 1.2,
       "phases": [
         {
           "id": "march",

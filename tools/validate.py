@@ -49,6 +49,8 @@ SCHEMA = {
         # фази/щит/бос (02.11.2026, docs/enemy-phases.md)
         "phases": (list, False, None, None), "boss": (bool, False, None, None), "hp_by_players": (list, False, None, None),
         "knockback_resist": (NUM, False, -1, 1),
+        # замах по печаті (В-013): секунд, 0 = миттєвий удар; типово 0.6 у коді
+        "base_hit_windup": (NUM, False, 0, 10),
     },
     "traps": {
         "id": (str, True, None, None), "order": (int, True, 0, None),
