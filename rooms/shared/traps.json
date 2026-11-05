@@ -92,7 +92,7 @@
       "footprint_l": 2,
       "cost": 200,
       "damage": 0,
-      "price_soft": 400,
+      "price_soft": 600,
       "default_owned": false,
       "cooldown": 6,
       "range": 10,
