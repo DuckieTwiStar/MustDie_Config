@@ -214,7 +214,19 @@
         3840,
         5040
       ],
-      "knockback_resist": 1
+      "knockback_resist": 1,
+      "phases": [
+        {
+          "id": "march",
+          "until": {
+            "hp_below": 0.2
+          }
+        },
+        {
+          "id": "fury",
+          "speed": 7.5
+        }
+      ]
     }
   ]
 }
