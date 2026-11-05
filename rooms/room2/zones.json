@@ -1,8 +1,8 @@
 {
   "meta": {
     "version": "BAL-0006",
-    "exported_at": "2026-11-01",
-    "note": "Зони Room 2: гілка кожного спавнера (spawner_id), далі спільна частина. length для симуляції і ботів, ще не звірено з картою. lanes = ширина зони в смугах по cell_size (8: карти Room 1 і 2 розширено до 32 studs, В-004)"
+    "exported_at": "2026-11-05",
+    "note": "Зони Room 2: гілка кожного спавнера (spawner_id), далі спільна частина. length для симуляції і ботів, ще не звірено з картою. lanes = ширина зони в смугах по cell_size (8: карти Room 1 і 2 розширено до 32 studs, В-004); 2026-11-05: гілки A/B і головний коридор подовжено на 16 studs (стилізація ТЦ)"
   },
   "zones": [
     {
@@ -10,7 +10,7 @@
       "order": 10,
       "name_en": "Branch A: corridor",
       "name_uk": "Гілка A: коридор",
-      "length": 64,
+      "length": 80,
       "spawner_id": "s1",
       "lanes": 8
     },
@@ -37,7 +37,7 @@
       "order": 40,
       "name_en": "Branch B: corridor",
       "name_uk": "Гілка B: коридор",
-      "length": 64,
+      "length": 80,
       "spawner_id": "s2",
       "lanes": 8
     },
@@ -72,7 +72,7 @@
       "order": 80,
       "name_en": "Main corridor",
       "name_uk": "Головний коридор",
-      "length": 56,
+      "length": 72,
       "lanes": 8
     },
     {
