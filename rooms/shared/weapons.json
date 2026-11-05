@@ -72,7 +72,12 @@
       "attack_interval": 0.6,
       "range": 150,
       "projectile_speed": 110,
-      "gravity": 35
+      "gravity": 35,
+      "mark_step": 0.1,
+      "mark_max": 0.5,
+      "mark_window": 3,
+      "mark_transfer": 0.5,
+      "mark_all_damage": true
     },
     {
       "id": "bow",

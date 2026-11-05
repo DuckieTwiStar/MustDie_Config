@@ -101,6 +101,9 @@ SCHEMA = {
         "targets": (int, False, 1, None), "splash_radius": (NUM, False, 0, None),
         "armor_pierce": (NUM, False, 0, 1), "knockback": (NUM, False, 0, None), "knockback_scatter": (NUM, False, 0, None), "knockback_stun": (NUM, False, 0, 5),
         "bonus_vs": (dict, False, None, None), "on_hit": (dict, False, None, None),
+        # мітка фокусу (В-014): лише projectile; step = +множник за влучання, max = стеля бонусу, window = с до зникнення, transfer = частка стаків при зміні цілі
+        "mark_step": (NUM, False, 0, 1), "mark_max": (NUM, False, 0, 5), "mark_window": (NUM, False, 0.1, 30),
+        "mark_transfer": (NUM, False, 0, 1), "mark_all_damage": (bool, False, None, None),
     },
     "weapon_upgrades": {
         "id": (str, True, None, None), "weapon_id": (str, True, None, None), "upgrade": (str, True, None, None),
@@ -782,6 +785,13 @@ def check_weapon_extras(weapons, effect_ids):
         for kb_key in ("knockback", "knockback_scatter", "knockback_stun"):
             if type_ok(w.get(kb_key, 0), NUM) and w.get(kb_key, 0) != 0 and w.get("fire_mode") != "melee":
                 err(path, f"{where}.{kb_key}: відкидання поки працює лише в ударі кулаків (fire_mode melee)")
+        if any(k in w for k in ("mark_step", "mark_max", "mark_window", "mark_transfer", "mark_all_damage")):
+            if w.get("fire_mode") != "projectile":
+                err(path, f"{where}: мітка фокусу (mark_*) поки працює лише для fire_mode projectile")
+            elif not (type_ok(w.get("mark_step"), NUM) and w["mark_step"] > 0):
+                err(path, f"{where}: mark_* без mark_step > 0 нічого не робить")
+            elif type_ok(w.get("mark_max", 0.5), NUM) and w.get("mark_max", 0.5) < w["mark_step"]:
+                err(path, f"{where}: mark_max менший за mark_step (мітка не виросте)")
         check_effect_map(path, f"{where}.on_hit", w.get("on_hit"), effect_ids)
         check_effect_map(path, f"{where}.bonus_vs", w.get("bonus_vs"), effect_ids, params=False)
         for key in MODE_REQUIRED.get(w.get("fire_mode"), ()):
