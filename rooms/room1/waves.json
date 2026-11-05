@@ -42,6 +42,15 @@
       "wave_delay": 10
     },
     {
+      "id": "w3_runner",
+      "wave": 3,
+      "spawner_id": "s1",
+      "enemy_id": "runner",
+      "count": 4,
+      "spawn_interval": 2.0,
+      "wave_delay": 10
+    },
+    {
       "id": "w4_grunt",
       "wave": 4,
       "spawner_id": "s1",
@@ -55,6 +64,15 @@
       "wave": 4,
       "spawner_id": "s1",
       "enemy_id": "warrior",
+      "count": 6,
+      "spawn_interval": 1.5,
+      "wave_delay": 10
+    },
+    {
+      "id": "w4_runner",
+      "wave": 4,
+      "spawner_id": "s1",
+      "enemy_id": "runner",
       "count": 6,
       "spawn_interval": 1.5,
       "wave_delay": 10
@@ -84,6 +102,15 @@
       "enemy_id": "warrior",
       "count": 4,
       "spawn_interval": 1.5,
+      "wave_delay": 10
+    },
+    {
+      "id": "w5_runner",
+      "wave": 5,
+      "spawner_id": "s1",
+      "enemy_id": "runner",
+      "count": 8,
+      "spawn_interval": 1.2,
       "wave_delay": 10
     },
     {
@@ -122,6 +149,16 @@
       "enemy_id": "warrior",
       "count": 9,
       "spawn_interval": 1.5,
+      "wave_delay": 10,
+      "min_players": 2
+    },
+    {
+      "id": "w6_runner",
+      "wave": 6,
+      "spawner_id": "s1",
+      "enemy_id": "runner",
+      "count": 6,
+      "spawn_interval": 1.0,
       "wave_delay": 10,
       "min_players": 2
     }

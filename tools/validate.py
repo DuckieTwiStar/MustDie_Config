@@ -48,7 +48,7 @@ SCHEMA = {
         "jump_air": (NUM, False, 0.1, 5), "jump_height": (NUM, False, 0, 50),
         # фази/щит/бос (02.11.2026, docs/enemy-phases.md)
         "phases": (list, False, None, None), "boss": (bool, False, None, None), "hp_by_players": (list, False, None, None),
-        "knockback_resist": (NUM, False, 0, 1),
+        "knockback_resist": (NUM, False, -1, 1),
     },
     "traps": {
         "id": (str, True, None, None), "order": (int, True, 0, None),
