@@ -47,7 +47,7 @@
 
 ## Як рахувати позицію зараз `now = workspace:GetServerTimeNow()`
 
-- `lane`: `run = now - MT`; якщо `MHold > MT` то `run = max(0, now - MHold)`. `s = MS + MSpeed * MMult * run`. Позиція `Route.lanePos(route, s, MOffset, MLimit, MSeed, rules.driftAmplitude, rules.driftScale)`. Якщо `s >= route.total` ворог дійшов до бази (сервер сам його прибере).
+- `lane`: `run = now - MT`; якщо `MHold > MT` то `run = max(0, now - MHold)`. `dist = MSpeed * MMult * run`, `s = Route.advance(route, MS, dist, pos)`, де `pos(s) = Route.lanePos(route, s, MOffset, MLimit, MSeed, rules.driftAmplitude, rules.driftScale)`: ворог проходить `dist` по своїй траєкторії (смуга + дрейф), а не по осі, тому на поворотах швидкість однакова для будь-якої смуги (з 2026-11-06, Ж-013). Клієнт кешує крок між синками атрибутів. Позиція `pos(s)`. Якщо `s >= route.total` ворог дійшов до бази (сервер сам його прибере).
 - `approach`: той самий `run`; `pos = MPos + (MJoin - MPos).Unit * MSpeed * MMult * run`, але не далі за `MJoin`.
 - `orbit`: `t = now - MOStart`; кут `MOAngle0 + MOOmega * t`; `pos = (MOCenter.X + cos * MORadius, MOY, MOCenter.Z + sin * MORadius)`, підйом `1.2 * sin(pi * t / MODur)` (див. `ORBIT_LIFT` у `EnemyService`). Через `MODur` с режим зміниться на `glide`.
 - `glide`: `a = (now - MGStart) / 0.4`, `smooth = a*a*(3-2a)`, `pos = MGFrom:Lerp(lanePos(s = MS, нова MOffset), smooth)`. `s` у цей час не росте.
