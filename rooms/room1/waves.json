@@ -118,7 +118,7 @@
       "wave": 6,
       "spawner_id": "s1",
       "enemy_id": "brute",
-      "count": 2,
+      "count": 1,
       "spawn_interval": 6,
       "wave_delay": 10,
       "min_players": 2
@@ -147,7 +147,7 @@
       "wave": 6,
       "spawner_id": "s1",
       "enemy_id": "warrior",
-      "count": 9,
+      "count": 5,
       "spawn_interval": 1.5,
       "wave_delay": 10,
       "min_players": 2
