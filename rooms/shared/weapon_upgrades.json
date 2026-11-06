@@ -230,7 +230,7 @@
       "order": 30,
       "level": 1,
       "price_soft": 45,
-      "value": 16
+      "value": 20
     },
     {
       "id": "slingshot_damage_2",
@@ -239,7 +239,7 @@
       "order": 30,
       "level": 2,
       "price_soft": 75,
-      "value": 20
+      "value": 25
     },
     {
       "id": "slingshot_attack_interval_1",
@@ -248,7 +248,7 @@
       "order": 40,
       "level": 1,
       "price_soft": 45,
-      "value": 0.5
+      "value": 0.4
     },
     {
       "id": "slingshot_attack_interval_2",
@@ -257,7 +257,7 @@
       "order": 40,
       "level": 2,
       "price_soft": 75,
-      "value": 0.4
+      "value": 0.3
     },
     {
       "id": "bow_damage_1",

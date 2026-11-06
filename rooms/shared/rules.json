@@ -17,8 +17,8 @@
       "wave_clear_timeout": 90
     },
     "player": {
-      "walk_speed": 16,
-      "sprint_speed": 24
+      "walk_speed": 24,
+      "sprint_speed": 36
     },
     "intro": {
       "enabled": true,
