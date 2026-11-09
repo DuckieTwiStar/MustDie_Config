@@ -10,7 +10,7 @@
     "name_uk": "Кімната 1",
     "unlock_weapon": "slingshot",
     "base_hp": 650,
-    "door_timer": 40,
+    "door_timer": 35,
     "spawners": [
       {
         "id": "s1",

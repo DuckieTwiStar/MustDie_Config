@@ -10,7 +10,7 @@
     "name_uk": "Кімната 4",
     "unlock_weapon": "tommy",
     "base_hp": 1000,
-    "door_timer": 60,
+    "door_timer": 35,
     "spawners": [
       {
         "id": "s1",

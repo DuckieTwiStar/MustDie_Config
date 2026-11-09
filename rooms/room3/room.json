@@ -10,7 +10,7 @@
     "name_uk": "Кімната 3",
     "unlock_weapon": "shotgun",
     "base_hp": 1000,
-    "door_timer": 60,
+    "door_timer": 35,
     "spawners": [
       {
         "id": "s1",

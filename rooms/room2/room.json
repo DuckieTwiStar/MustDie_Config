@@ -10,7 +10,7 @@
     "name_uk": "Кімната 2",
     "unlock_weapon": "bow",
     "base_hp": 900,
-    "door_timer": 75,
+    "door_timer": 35,
     "spawners": [
       {
         "id": "s1",
