@@ -38,6 +38,8 @@ rooms/
     ...                 ті самі чотири файли
 assets/icons/          вихідні PNG іконок (512x512, прозорий фон); гра їх не читає, у грі працює rbxassetid із items.json
 docs/prices.md          де тепер ціни лобі (price_soft у weapons/traps) і як глянути економіку ботів
+localization/strings.csv  тексти UI 8 мовами (формат LocalizationTable Roblox); джерело: таблиця [MD]Localization, docs/localization.md
+tools/localization_sheet.py  таблиця локалізації <-> strings.csv (import / export / check)
 tools/validate.py       перевірка перед комітом (так само її запускає GitHub Actions: .github/workflows/validate.yml)
 ```
 
