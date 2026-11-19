@@ -13,7 +13,7 @@
 - посилання між файлами: waves -> enemies і спавнери кімнати, weapon_upgrades -> weapons, trap_upgrades -> traps;
 - у кожній кімнаті є всі файли кімнати;
 - wave_delay однаковий у всіх рядках однієї хвилі (гра бере його з першого рядка);
-- копії leaderboards.json і items.json (lobby/, rooms/shared/) побайтно однакові;
+- копії leaderboards.json, items.json і localization.json (lobby/, rooms/shared/) побайтно однакові; localization.json збігається зі strings.csv (python3 tools/localization_sheet.py check);
 - зброя (контракт 23.10.2026, docs/combat-config-contract.md): `defaults` має всі DEFAULT_KEYS, поля за fire_mode задані, on_hit/bonus_vs посилаються на ефекти з status_effects;
 - прокачка: upgrade_types (stat = поле зброї / пастки або on_hit.<ефект>.<параметр>, item_id з items.json), рядки weapon_upgrades і trap_upgrades мають рівні 1..N, значення за типом і межами поля;
 - зброя: tier (прогрес), price_soft у всіх базових (розблокування в лобі; у default_owned це бюджет ботів), модифікація = base_id + tier бази + order бази+1..9;
@@ -1370,7 +1370,7 @@ def main():
     check_shop_soft(ROOT / "lobby" / "shop_soft.json", shared.get("weapons") or [], shared.get("traps") or [])
 
     # leaderboards.json і items.json лежать у кількох місцях, бо різні частини гри читають різні адреси: копії мають бути ідентичними
-    for fname in ("leaderboards.json", "items.json"):
+    for fname in ("leaderboards.json", "items.json", "localization.json"):
         copies = [ROOT / "lobby" / fname, SHARED / fname]
         copies = [p for p in copies if p.exists()]
         if len(copies) > 1:

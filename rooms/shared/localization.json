@@ -1,0 +1,2654 @@
+{
+ "languages": [
+  "en",
+  "de",
+  "fr",
+  "it",
+  "es",
+  "pt-pt",
+  "pt-br",
+  "uk"
+ ],
+ "strings": {
+  "room.phase.start_in": {
+   "en": "START IN",
+   "de": "START IN",
+   "fr": "DÉBUT DANS",
+   "it": "INIZIO TRA",
+   "es": "EMPIEZA EN",
+   "pt-pt": "COMEÇA EM",
+   "pt-br": "COMEÇA EM",
+   "uk": "СТАРТ ЧЕРЕЗ"
+  },
+  "room.phase.next_wave": {
+   "en": "NEXT WAVE",
+   "de": "NÄCHSTE WELLE",
+   "fr": "PROCHAINE VAGUE",
+   "it": "PROSSIMA ONDATA",
+   "es": "SIGUIENTE OLEADA",
+   "pt-pt": "PRÓXIMA VAGA",
+   "pt-br": "PRÓXIMA ONDA",
+   "uk": "НАСТУПНА ХВИЛЯ"
+  },
+  "room.phase.wave": {
+   "en": "WAVE",
+   "de": "WELLE",
+   "fr": "VAGUE",
+   "it": "ONDATA",
+   "es": "OLEADA",
+   "pt-pt": "VAGA",
+   "pt-br": "ONDA",
+   "uk": "ХВИЛЯ"
+  },
+  "room.phase.results": {
+   "en": "RESULTS",
+   "de": "ERGEBNIS",
+   "fr": "RÉSULTATS",
+   "it": "RISULTATI",
+   "es": "RESULTADOS",
+   "pt-pt": "RESULTADOS",
+   "pt-br": "RESULTADOS",
+   "uk": "ПІДСУМКИ"
+  },
+  "room.phase.victory": {
+   "en": "VICTORY!",
+   "de": "SIEG!",
+   "fr": "VICTOIRE !",
+   "it": "VITTORIA!",
+   "es": "¡VICTORIA!",
+   "pt-pt": "VITÓRIA!",
+   "pt-br": "VITÓRIA!",
+   "uk": "ПЕРЕМОГА!"
+  },
+  "room.phase.defeat": {
+   "en": "DEFEAT",
+   "de": "NIEDERLAGE",
+   "fr": "DÉFAITE",
+   "it": "SCONFITTA",
+   "es": "DERROTA",
+   "pt-pt": "DERROTA",
+   "pt-br": "DERROTA",
+   "uk": "ПОРАЗКА"
+  },
+  "room.hud.weapon_button": {
+   "en": "WEAPON",
+   "de": "WAFFE",
+   "fr": "ARME",
+   "it": "ARMA",
+   "es": "ARMA",
+   "pt-pt": "ARMA",
+   "pt-br": "ARMA",
+   "uk": "ЗБРОЯ"
+  },
+  "room.hud.weapon_button_key": {
+   "en": "WEAPON [B]",
+   "de": "WAFFE [B]",
+   "fr": "ARME [B]",
+   "it": "ARMA [B]",
+   "es": "ARMA [B]",
+   "pt-pt": "ARMA [B]",
+   "pt-br": "ARMA [B]",
+   "uk": "ЗБРОЯ [B]"
+  },
+  "room.hud.weapon_current": {
+   "en": "Weapon: {name}",
+   "de": "Waffe: {name}",
+   "fr": "Arme : {name}",
+   "it": "Arma: {name}",
+   "es": "Arma: {name}",
+   "pt-pt": "Arma: {name}",
+   "pt-br": "Arma: {name}",
+   "uk": "Зброя: {name}"
+  },
+  "room.hud.sprint_on": {
+   "en": "Sprint ON",
+   "de": "Sprint AN",
+   "fr": "Sprint ACTIVÉ",
+   "it": "Scatto ATTIVO",
+   "es": "Sprint ACTIVADO",
+   "pt-pt": "Corrida ATIVA",
+   "pt-br": "Corrida LIGADA",
+   "uk": "Біг УВІМК."
+  },
+  "room.hud.pen_gate": {
+   "en": "PEN GATE",
+   "de": "PFERCHTOR",
+   "fr": "PORTE DE L'ENCLOS",
+   "it": "CANCELLO DEL RECINTO",
+   "es": "PUERTA DEL CORRAL",
+   "pt-pt": "PORTÃO DO CERCADO",
+   "pt-br": "PORTÃO DO CURRAL",
+   "uk": "ВОРОТА ЗАГОНУ"
+  },
+  "room.hud.wave_bonus": {
+   "en": "WAVE BONUS",
+   "de": "WELLENBONUS",
+   "fr": "BONUS DE VAGUE",
+   "it": "BONUS ONDATA",
+   "es": "BONUS DE OLEADA",
+   "pt-pt": "BÓNUS DE VAGA",
+   "pt-br": "BÔNUS DE ONDA",
+   "uk": "БОНУС ЗА ХВИЛЮ"
+  },
+  "room.hud.distance_m": {
+   "en": "{value} m",
+   "de": "{value} m",
+   "fr": "{value} m",
+   "it": "{value} m",
+   "es": "{value} m",
+   "pt-pt": "{value} m",
+   "pt-br": "{value} m",
+   "uk": "{value} м"
+  },
+  "room.controls.pc.attack": {
+   "en": "<b>LMB / F</b>   Attack",
+   "de": "<b>LMT / F</b>   Angriff",
+   "fr": "<b>Clic G / F</b>   Attaquer",
+   "it": "<b>Clic sin. / F</b>   Attacca",
+   "es": "<b>Clic izq. / F</b>   Atacar",
+   "pt-pt": "<b>Clique esq. / F</b>   Atacar",
+   "pt-br": "<b>Clique esq. / F</b>   Atacar",
+   "uk": "<b>ЛКМ / F</b>   Атака"
+  },
+  "room.controls.pc.change_weapon": {
+   "en": "<b>B</b>   Change weapon",
+   "de": "<b>B</b>   Waffe wechseln",
+   "fr": "<b>B</b>   Changer d'arme",
+   "it": "<b>B</b>   Cambia arma",
+   "es": "<b>B</b>   Cambiar arma",
+   "pt-pt": "<b>B</b>   Mudar de arma",
+   "pt-br": "<b>B</b>   Trocar arma",
+   "uk": "<b>B</b>   Змінити зброю"
+  },
+  "room.controls.pc.reload": {
+   "en": "<b>R</b>   Reload",
+   "de": "<b>R</b>   Nachladen",
+   "fr": "<b>R</b>   Recharger",
+   "it": "<b>R</b>   Ricarica",
+   "es": "<b>R</b>   Recargar",
+   "pt-pt": "<b>R</b>   Recarregar",
+   "pt-br": "<b>R</b>   Recarregar",
+   "uk": "<b>R</b>   Перезарядка"
+  },
+  "room.controls.pc.place_trap": {
+   "en": "<b>1 - 0</b>   Place trap",
+   "de": "<b>1 - 0</b>   Falle platzieren",
+   "fr": "<b>1 - 0</b>   Poser un piège",
+   "it": "<b>1 - 0</b>   Piazza trappola",
+   "es": "<b>1 - 0</b>   Colocar trampa",
+   "pt-pt": "<b>1 - 0</b>   Colocar armadilha",
+   "pt-br": "<b>1 - 0</b>   Colocar armadilha",
+   "uk": "<b>1 - 0</b>   Поставити пастку"
+  },
+  "room.controls.pc.sprint": {
+   "en": "<b>Shift</b>   Sprint",
+   "de": "<b>Shift</b>   Sprinten",
+   "fr": "<b>Maj</b>   Sprinter",
+   "it": "<b>Shift</b>   Scatto",
+   "es": "<b>Shift</b>   Correr",
+   "pt-pt": "<b>Shift</b>   Correr",
+   "pt-br": "<b>Shift</b>   Correr",
+   "uk": "<b>Shift</b>   Біг"
+  },
+  "room.controls.pc.camera": {
+   "en": "<b>V</b>   Camera view",
+   "de": "<b>V</b>   Kameraansicht",
+   "fr": "<b>V</b>   Vue caméra",
+   "it": "<b>V</b>   Visuale",
+   "es": "<b>V</b>   Vista de cámara",
+   "pt-pt": "<b>V</b>   Vista da câmara",
+   "pt-br": "<b>V</b>   Visão da câmera",
+   "uk": "<b>V</b>   Вид камери"
+  },
+  "room.controls.pc.cancel": {
+   "en": "<b>Q</b>   Cancel placing",
+   "de": "<b>Q</b>   Platzieren abbrechen",
+   "fr": "<b>Q</b>   Annuler la pose",
+   "it": "<b>Q</b>   Annulla piazzamento",
+   "es": "<b>Q</b>   Cancelar colocación",
+   "pt-pt": "<b>Q</b>   Cancelar",
+   "pt-br": "<b>Q</b>   Cancelar",
+   "uk": "<b>Q</b>   Скасувати"
+  },
+  "room.controls.pc.destroy": {
+   "en": "<b>X</b>   Destroy trap",
+   "de": "<b>X</b>   Falle zerstören",
+   "fr": "<b>X</b>   Détruire le piège",
+   "it": "<b>X</b>   Distruggi trappola",
+   "es": "<b>X</b>   Destruir trampa",
+   "pt-pt": "<b>X</b>   Destruir armadilha",
+   "pt-br": "<b>X</b>   Destruir armadilha",
+   "uk": "<b>X</b>   Знищити пастку"
+  },
+  "room.controls.pc.cursor": {
+   "en": "<b>G</b>   Free cursor",
+   "de": "<b>G</b>   Freier Cursor",
+   "fr": "<b>G</b>   Curseur libre",
+   "it": "<b>G</b>   Cursore libero",
+   "es": "<b>G</b>   Cursor libre",
+   "pt-pt": "<b>G</b>   Cursor livre",
+   "pt-br": "<b>G</b>   Cursor livre",
+   "uk": "<b>G</b>   Вільний курсор"
+  },
+  "room.controls.pad.attack": {
+   "en": "<b>R2</b>   Attack / place trap",
+   "de": "<b>R2</b>   Angriff / Falle platzieren",
+   "fr": "<b>R2</b>   Attaquer / poser un piège",
+   "it": "<b>R2</b>   Attacca / piazza trappola",
+   "es": "<b>R2</b>   Atacar / colocar trampa",
+   "pt-pt": "<b>R2</b>   Atacar / colocar armadilha",
+   "pt-br": "<b>R2</b>   Atacar / colocar armadilha",
+   "uk": "<b>R2</b>   Атака / поставити пастку"
+  },
+  "room.controls.pad.change_weapon": {
+   "en": "<b>Y</b>   Change weapon",
+   "de": "<b>Y</b>   Waffe wechseln",
+   "fr": "<b>Y</b>   Changer d'arme",
+   "it": "<b>Y</b>   Cambia arma",
+   "es": "<b>Y</b>   Cambiar arma",
+   "pt-pt": "<b>Y</b>   Mudar de arma",
+   "pt-br": "<b>Y</b>   Trocar arma",
+   "uk": "<b>Y</b>   Змінити зброю"
+  },
+  "room.controls.pad.reload": {
+   "en": "<b>X</b>   Reload (hold: destroy trap)",
+   "de": "<b>X</b>   Nachladen (halten: Falle zerstören)",
+   "fr": "<b>X</b>   Recharger (maintenir : détruire le piège)",
+   "it": "<b>X</b>   Ricarica (tieni premuto: distruggi trappola)",
+   "es": "<b>X</b>   Recargar (mantener: destruir trampa)",
+   "pt-pt": "<b>X</b>   Recarregar (manter: destruir armadilha)",
+   "pt-br": "<b>X</b>   Recarregar (segurar: destruir armadilha)",
+   "uk": "<b>X</b>   Перезарядка (утримати: знищити пастку)"
+  },
+  "room.controls.pad.select_trap": {
+   "en": "<b>LB / RB</b>   Select trap",
+   "de": "<b>LB / RB</b>   Falle wählen",
+   "fr": "<b>LB / RB</b>   Choisir un piège",
+   "it": "<b>LB / RB</b>   Scegli trappola",
+   "es": "<b>LB / RB</b>   Elegir trampa",
+   "pt-pt": "<b>LB / RB</b>   Escolher armadilha",
+   "pt-br": "<b>LB / RB</b>   Escolher armadilha",
+   "uk": "<b>LB / RB</b>   Вибрати пастку"
+  },
+  "room.controls.pad.ghost": {
+   "en": "<b>Hold L2</b>   Trap ghost",
+   "de": "<b>L2 halten</b>   Fallenvorschau",
+   "fr": "<b>Maintenir L2</b>   Aperçu du piège",
+   "it": "<b>Tieni L2</b>   Anteprima trappola",
+   "es": "<b>Mantener L2</b>   Vista previa de trampa",
+   "pt-pt": "<b>Manter L2</b>   Pré-visualizar armadilha",
+   "pt-br": "<b>Segurar L2</b>   Prévia da armadilha",
+   "uk": "<b>Утримати L2</b>   Привид пастки"
+  },
+  "room.controls.pad.sprint": {
+   "en": "<b>L3</b>   Sprint",
+   "de": "<b>L3</b>   Sprinten",
+   "fr": "<b>L3</b>   Sprinter",
+   "it": "<b>L3</b>   Scatto",
+   "es": "<b>L3</b>   Correr",
+   "pt-pt": "<b>L3</b>   Correr",
+   "pt-br": "<b>L3</b>   Correr",
+   "uk": "<b>L3</b>   Біг"
+  },
+  "room.controls.pad.camera": {
+   "en": "<b>R3</b>   Camera view",
+   "de": "<b>R3</b>   Kameraansicht",
+   "fr": "<b>R3</b>   Vue caméra",
+   "it": "<b>R3</b>   Visuale",
+   "es": "<b>R3</b>   Vista de cámara",
+   "pt-pt": "<b>R3</b>   Vista da câmara",
+   "pt-br": "<b>R3</b>   Visão da câmera",
+   "uk": "<b>R3</b>   Вид камери"
+  },
+  "room.controls.pad.cancel": {
+   "en": "<b>B</b>   Cancel placing",
+   "de": "<b>B</b>   Platzieren abbrechen",
+   "fr": "<b>B</b>   Annuler la pose",
+   "it": "<b>B</b>   Annulla piazzamento",
+   "es": "<b>B</b>   Cancelar colocación",
+   "pt-pt": "<b>B</b>   Cancelar",
+   "pt-br": "<b>B</b>   Cancelar",
+   "uk": "<b>B</b>   Скасувати"
+  },
+  "room.trap.hint_floor_or_wall": {
+   "en": "Pick a floor cell or aim at a wall: click to place, Q to cancel",
+   "de": "Wähle ein Bodenfeld oder ziele auf eine Wand: Klicken zum Platzieren, Q zum Abbrechen",
+   "fr": "Choisis une case au sol ou vise un mur : clic pour poser, Q pour annuler",
+   "it": "Scegli una casella del pavimento o mira a un muro: clic per piazzare, Q per annullare",
+   "es": "Elige una casilla del suelo o apunta a una pared: clic para colocar, Q para cancelar",
+   "pt-pt": "Escolhe uma casa no chão ou aponta para uma parede: clica para colocar, Q para cancelar",
+   "pt-br": "Escolha uma casa no chão ou mire numa parede: clique para colocar, Q para cancelar",
+   "uk": "Обери клітинку на підлозі або наведи на стіну: клік — поставити, Q — скасувати"
+  },
+  "room.trap.hint_wall": {
+   "en": "Aim at a wall or column: click to place, Q to cancel",
+   "de": "Ziele auf eine Wand oder Säule: Klicken zum Platzieren, Q zum Abbrechen",
+   "fr": "Vise un mur ou une colonne : clic pour poser, Q pour annuler",
+   "it": "Mira a un muro o a una colonna: clic per piazzare, Q per annullare",
+   "es": "Apunta a una pared o columna: clic para colocar, Q para cancelar",
+   "pt-pt": "Aponta para uma parede ou coluna: clica para colocar, Q para cancelar",
+   "pt-br": "Mire numa parede ou coluna: clique para colocar, Q para cancelar",
+   "uk": "Наведи на стіну або колону: клік — поставити, Q — скасувати"
+  },
+  "room.trap.hint_floor": {
+   "en": "Pick a floor cell: click to place, Q to cancel",
+   "de": "Wähle ein Bodenfeld: Klicken zum Platzieren, Q zum Abbrechen",
+   "fr": "Choisis une case au sol : clic pour poser, Q pour annuler",
+   "it": "Scegli una casella del pavimento: clic per piazzare, Q per annullare",
+   "es": "Elige una casilla del suelo: clic para colocar, Q para cancelar",
+   "pt-pt": "Escolhe uma casa no chão: clica para colocar, Q para cancelar",
+   "pt-br": "Escolha uma casa no chão: clique para colocar, Q para cancelar",
+   "uk": "Обери клітинку на підлозі: клік — поставити, Q — скасувати"
+  },
+  "room.trap.too_far_hint": {
+   "en": "Too far: come closer to place the trap",
+   "de": "Zu weit weg: Geh näher ran, um die Falle zu platzieren",
+   "fr": "Trop loin : rapproche-toi pour poser le piège",
+   "it": "Troppo lontano: avvicinati per piazzare la trappola",
+   "es": "Demasiado lejos: acércate para colocar la trampa",
+   "pt-pt": "Demasiado longe: aproxima-te para colocar a armadilha",
+   "pt-br": "Longe demais: chegue mais perto para colocar a armadilha",
+   "uk": "Задалеко: підійди ближче, щоб поставити пастку"
+  },
+  "room.trap.stat_damage": {
+   "en": "Damage: {value}",
+   "de": "Schaden: {value}",
+   "fr": "Dégâts : {value}",
+   "it": "Danno: {value}",
+   "es": "Daño: {value}",
+   "pt-pt": "Dano: {value}",
+   "pt-br": "Dano: {value}",
+   "uk": "Шкода: {value}"
+  },
+  "room.trap.stat_hold": {
+   "en": "Hold: {value} s",
+   "de": "Festhalten: {value} s",
+   "fr": "Immobilisation : {value} s",
+   "it": "Blocco: {value} s",
+   "es": "Inmovilización: {value} s",
+   "pt-pt": "Prende por: {value} s",
+   "pt-br": "Prende por: {value} s",
+   "uk": "Утримання: {value} с"
+  },
+  "room.trap.stat_cooldown": {
+   "en": "Cooldown: {value} s",
+   "de": "Abklingzeit: {value} s",
+   "fr": "Recharge : {value} s",
+   "it": "Ricarica: {value} s",
+   "es": "Recarga: {value} s",
+   "pt-pt": "Recarga: {value} s",
+   "pt-br": "Recarga: {value} s",
+   "uk": "Перезарядка: {value} с"
+  },
+  "room.trap.stat_fire_every": {
+   "en": "Fire every: {value} s",
+   "de": "Schuss alle: {value} s",
+   "fr": "Tir toutes les : {value} s",
+   "it": "Colpo ogni: {value} s",
+   "es": "Dispara cada: {value} s",
+   "pt-pt": "Dispara a cada: {value} s",
+   "pt-br": "Dispara a cada: {value} s",
+   "uk": "Постріл кожні: {value} с"
+  },
+  "room.trap.stat_range": {
+   "en": "Range: {value}",
+   "de": "Reichweite: {value}",
+   "fr": "Portée : {value}",
+   "it": "Portata: {value}",
+   "es": "Alcance: {value}",
+   "pt-pt": "Alcance: {value}",
+   "pt-br": "Alcance: {value}",
+   "uk": "Радіус: {value}"
+  },
+  "room.trap.upgrades": {
+   "en": "Upgrades {current}/{max}",
+   "de": "Upgrades {current}/{max}",
+   "fr": "Améliorations {current}/{max}",
+   "it": "Potenziamenti {current}/{max}",
+   "es": "Mejoras {current}/{max}",
+   "pt-pt": "Melhorias {current}/{max}",
+   "pt-br": "Melhorias {current}/{max}",
+   "uk": "Покращення {current}/{max}"
+  },
+  "room.trap.not_yours": {
+   "en": "(not yours)",
+   "de": "(nicht deine)",
+   "fr": "(pas à toi)",
+   "it": "(non tua)",
+   "es": "(no es tuya)",
+   "pt-pt": "(não é tua)",
+   "pt-br": "(não é sua)",
+   "uk": "(не твоя)"
+  },
+  "room.trap.destroy": {
+   "en": "[X] Destroy  (+{amount})",
+   "de": "[X] Zerstören  (+{amount})",
+   "fr": "[X] Détruire  (+{amount})",
+   "it": "[X] Distruggi  (+{amount})",
+   "es": "[X] Destruir  (+{amount})",
+   "pt-pt": "[X] Destruir  (+{amount})",
+   "pt-br": "[X] Destruir  (+{amount})",
+   "uk": "[X] Знищити  (+{amount})"
+  },
+  "msg.trap.not_unlocked": {
+   "en": "This trap is not unlocked",
+   "de": "Diese Falle ist nicht freigeschaltet",
+   "fr": "Ce piège n'est pas débloqué",
+   "it": "Questa trappola non è sbloccata",
+   "es": "Esta trampa no está desbloqueada",
+   "pt-pt": "Esta armadilha não foi desbloqueada",
+   "pt-br": "Esta armadilha não foi desbloqueada",
+   "uk": "Цю пастку ще не відкрито"
+  },
+  "msg.trap.wall_needs_sides": {
+   "en": "Energy wall needs a wall or column on both sides",
+   "de": "Die Energiewand braucht auf beiden Seiten eine Wand oder Säule",
+   "fr": "Le mur d'énergie a besoin d'un mur ou d'une colonne de chaque côté",
+   "it": "Il muro di energia ha bisogno di un muro o di una colonna su entrambi i lati",
+   "es": "El muro de energía necesita una pared o columna a ambos lados",
+   "pt-pt": "A parede de energia precisa de uma parede ou coluna dos dois lados",
+   "pt-br": "A parede de energia precisa de uma parede ou coluna dos dois lados",
+   "uk": "Енергостіні потрібна стіна або колона з обох боків"
+  },
+  "msg.trap.wall_only": {
+   "en": "This trap mounts on a wall or column",
+   "de": "Diese Falle wird an einer Wand oder Säule angebracht",
+   "fr": "Ce piège se fixe sur un mur ou une colonne",
+   "it": "Questa trappola va su un muro o una colonna",
+   "es": "Esta trampa se coloca en una pared o columna",
+   "pt-pt": "Esta armadilha vai numa parede ou coluna",
+   "pt-br": "Esta armadilha vai numa parede ou coluna",
+   "uk": "Цю пастку ставлять на стіну або колону"
+  },
+  "msg.trap.cant_place": {
+   "en": "Can't place a trap here",
+   "de": "Hier kann keine Falle platziert werden",
+   "fr": "Impossible de poser un piège ici",
+   "it": "Qui non puoi piazzare una trappola",
+   "es": "No se puede colocar una trampa aquí",
+   "pt-pt": "Não podes colocar uma armadilha aqui",
+   "pt-br": "Não dá para colocar uma armadilha aqui",
+   "uk": "Тут не можна поставити пастку"
+  },
+  "msg.trap.cell_taken": {
+   "en": "This cell is taken",
+   "de": "Dieses Feld ist belegt",
+   "fr": "Cette case est occupée",
+   "it": "Questa casella è occupata",
+   "es": "Esta casilla está ocupada",
+   "pt-pt": "Esta casa está ocupada",
+   "pt-br": "Esta casa está ocupada",
+   "uk": "Ця клітинка зайнята"
+  },
+  "msg.trap.not_enough_wisps": {
+   "en": "Not enough wisps",
+   "de": "Nicht genug Irrlichter",
+   "fr": "Pas assez de feux follets",
+   "it": "Fuochi fatui insufficienti",
+   "es": "No tienes suficientes fuegos fatuos",
+   "pt-pt": "Fogos-fátuos insuficientes",
+   "pt-br": "Fogos-fátuos insuficientes",
+   "uk": "Не вистачає вогників"
+  },
+  "msg.trap.not_yours": {
+   "en": "This trap belongs to another player",
+   "de": "Diese Falle gehört einem anderen Spieler",
+   "fr": "Ce piège appartient à un autre joueur",
+   "it": "Questa trappola appartiene a un altro giocatore",
+   "es": "Esta trampa es de otro jugador",
+   "pt-pt": "Esta armadilha é de outro jogador",
+   "pt-br": "Esta armadilha é de outro jogador",
+   "uk": "Ця пастка належить іншому гравцю"
+  },
+  "msg.trap.broke_refund": {
+   "en": "A trap broke and was removed. Wisps refunded.",
+   "de": "Eine Falle ist kaputtgegangen und wurde entfernt. Irrlichter erstattet.",
+   "fr": "Un piège s'est cassé et a été retiré. Feux follets remboursés.",
+   "it": "Una trappola si è rotta ed è stata rimossa. Fuochi fatui rimborsati.",
+   "es": "Una trampa se rompió y se retiró. Fuegos fatuos devueltos.",
+   "pt-pt": "Uma armadilha partiu-se e foi removida. Fogos-fátuos devolvidos.",
+   "pt-br": "Uma armadilha quebrou e foi removida. Fogos-fátuos devolvidos.",
+   "uk": "Пастка зламалась і зникла. Вогники повернуто."
+  },
+  "msg.trap.too_far": {
+   "en": "Too far",
+   "de": "Zu weit weg",
+   "fr": "Trop loin",
+   "it": "Troppo lontano",
+   "es": "Demasiado lejos",
+   "pt-pt": "Demasiado longe",
+   "pt-br": "Longe demais",
+   "uk": "Задалеко"
+  },
+  "msg.trap.upgrades_in_lobby": {
+   "en": "Trap upgrades are bought in the lobby",
+   "de": "Fallen-Upgrades kaufst du in der Lobby",
+   "fr": "Les améliorations de pièges s'achètent dans le lobby",
+   "it": "I potenziamenti delle trappole si comprano nella lobby",
+   "es": "Las mejoras de trampas se compran en el lobby",
+   "pt-pt": "As melhorias de armadilhas compram-se no lobby",
+   "pt-br": "As melhorias de armadilhas são compradas no lobby",
+   "uk": "Покращення пасток купують у лобі"
+  },
+  "msg.weapon.not_owned": {
+   "en": "Weapon not owned",
+   "de": "Du besitzt diese Waffe nicht",
+   "fr": "Tu ne possèdes pas cette arme",
+   "it": "Non possiedi quest'arma",
+   "es": "No tienes esta arma",
+   "pt-pt": "Não tens esta arma",
+   "pt-br": "Você não tem esta arma",
+   "uk": "Цієї зброї в тебе немає"
+  },
+  "msg.weapon.room_needs": {
+   "en": "This room needs: {name}. Buy it in the lobby shop.",
+   "de": "Dieser Raum erfordert: {name}. Kauf sie im Lobby-Shop.",
+   "fr": "Cette salle nécessite : {name}. Achète-la dans la boutique du lobby.",
+   "it": "Questa stanza richiede: {name}. Comprala nel negozio della lobby.",
+   "es": "Esta sala requiere: {name}. Cómprala en la tienda del lobby.",
+   "pt-pt": "Esta sala exige: {name}. Compra-a na loja do lobby.",
+   "pt-br": "Esta sala exige: {name}. Compre na loja do lobby.",
+   "uk": "Для цієї кімнати потрібно: {name}. Купи в магазині в лобі."
+  },
+  "msg.weapon.stronger": {
+   "en": "a stronger weapon",
+   "de": "eine stärkere Waffe",
+   "fr": "une arme plus puissante",
+   "it": "un'arma più potente",
+   "es": "un arma más fuerte",
+   "pt-pt": "uma arma mais forte",
+   "pt-br": "uma arma mais forte",
+   "uk": "сильніша зброя"
+  },
+  "room.weapons.choose_title": {
+   "en": "Choose to start",
+   "de": "Wähle deinen Start",
+   "fr": "Choisis pour commencer",
+   "it": "Scegli per iniziare",
+   "es": "Elige para empezar",
+   "pt-pt": "Escolhe para começar",
+   "pt-br": "Escolha para começar",
+   "uk": "Обери, з чим почати"
+  },
+  "room.weapons.change_title": {
+   "en": "Change equipment",
+   "de": "Ausrüstung wechseln",
+   "fr": "Changer d'équipement",
+   "it": "Cambia equipaggiamento",
+   "es": "Cambiar equipo",
+   "pt-pt": "Mudar equipamento",
+   "pt-br": "Trocar equipamento",
+   "uk": "Змінити спорядження"
+  },
+  "room.weapons.equip": {
+   "en": "Equip",
+   "de": "Ausrüsten",
+   "fr": "Équiper",
+   "it": "Equipaggia",
+   "es": "Equipar",
+   "pt-pt": "Equipar",
+   "pt-br": "Equipar",
+   "uk": "Взяти"
+  },
+  "room.weapons.equipped": {
+   "en": "Equipped",
+   "de": "Ausgerüstet",
+   "fr": "Équipé",
+   "it": "Equipaggiata",
+   "es": "Equipada",
+   "pt-pt": "Equipada",
+   "pt-br": "Equipada",
+   "uk": "Вибрано"
+  },
+  "room.weapons.auto_equip": {
+   "en": "Auto equip in {seconds}",
+   "de": "Automatisch in {seconds}",
+   "fr": "Équipement auto dans {seconds}",
+   "it": "Scelta automatica tra {seconds}",
+   "es": "Equipo automático en {seconds}",
+   "pt-pt": "Equipamento automático em {seconds}",
+   "pt-br": "Equipar automaticamente em {seconds}",
+   "uk": "Автовибір через {seconds}"
+  },
+  "room.intro.skip_touch": {
+   "en": "Tap to skip",
+   "de": "Tippen zum Überspringen",
+   "fr": "Touche pour passer",
+   "it": "Tocca per saltare",
+   "es": "Toca para saltar",
+   "pt-pt": "Toca para saltar",
+   "pt-br": "Toque para pular",
+   "uk": "Торкнись, щоб пропустити"
+  },
+  "room.intro.skip_key": {
+   "en": "Press any key to skip",
+   "de": "Beliebige Taste zum Überspringen",
+   "fr": "Appuie sur une touche pour passer",
+   "it": "Premi un tasto per saltare",
+   "es": "Pulsa cualquier tecla para saltar",
+   "pt-pt": "Prime qualquer tecla para saltar",
+   "pt-br": "Aperte qualquer tecla para pular",
+   "uk": "Натисни будь-яку клавішу, щоб пропустити"
+  },
+  "room.intro.enemies_here": {
+   "en": "Enemies come from here",
+   "de": "Hier kommen die Gegner",
+   "fr": "Les ennemis arrivent d'ici",
+   "it": "I nemici arrivano da qui",
+   "es": "Los enemigos vienen de aquí",
+   "pt-pt": "Os inimigos vêm daqui",
+   "pt-br": "Os inimigos vêm daqui",
+   "uk": "Вороги йдуть звідси"
+  },
+  "room.intro.also_here": {
+   "en": "And from here too!",
+   "de": "Und auch von hier!",
+   "fr": "Et d'ici aussi !",
+   "it": "E anche da qui!",
+   "es": "¡Y también de aquí!",
+   "pt-pt": "E daqui também!",
+   "pt-br": "E daqui também!",
+   "uk": "І звідси теж!"
+  },
+  "room.intro.protect_seal": {
+   "en": "Protect the seal",
+   "de": "Beschütze das Siegel",
+   "fr": "Protège le sceau",
+   "it": "Proteggi il sigillo",
+   "es": "Protege el sello",
+   "pt-pt": "Protege o selo",
+   "pt-br": "Proteja o selo",
+   "uk": "Захисти печать"
+  },
+  "room.intro.get_ready": {
+   "en": "Get ready!",
+   "de": "Mach dich bereit!",
+   "fr": "Prépare-toi !",
+   "it": "Preparati!",
+   "es": "¡Prepárate!",
+   "pt-pt": "Prepara-te!",
+   "pt-br": "Prepare-se!",
+   "uk": "Приготуйся!"
+  },
+  "room.leave.button": {
+   "en": "Leave to lobby",
+   "de": "Zur Lobby",
+   "fr": "Retour au lobby",
+   "it": "Torna alla lobby",
+   "es": "Volver al lobby",
+   "pt-pt": "Voltar ao lobby",
+   "pt-br": "Voltar ao lobby",
+   "uk": "Вийти в лобі"
+  },
+  "room.leave.confirm_title": {
+   "en": "Leave to lobby?",
+   "de": "Zur Lobby gehen?",
+   "fr": "Retourner au lobby ?",
+   "it": "Tornare alla lobby?",
+   "es": "¿Volver al lobby?",
+   "pt-pt": "Voltar ao lobby?",
+   "pt-br": "Voltar ao lobby?",
+   "uk": "Вийти в лобі?"
+  },
+  "room.leave.confirm_body": {
+   "en": "Rewards for this run will be lost.\nYour team can join you in the lobby later.",
+   "de": "Die Belohnungen für diese Runde gehen verloren.\nDein Team kann später in der Lobby zu dir stoßen.",
+   "fr": "Les récompenses de cette partie seront perdues.\nTon équipe pourra te rejoindre au lobby plus tard.",
+   "it": "Le ricompense di questa partita andranno perse.\nLa tua squadra potrà raggiungerti nella lobby più tardi.",
+   "es": "Perderás las recompensas de esta partida.\nTu equipo podrá unirse a ti en el lobby más tarde.",
+   "pt-pt": "As recompensas desta partida serão perdidas.\nA tua equipa pode juntar-se a ti no lobby mais tarde.",
+   "pt-br": "As recompensas desta partida serão perdidas.\nSeu time pode se juntar a você no lobby depois.",
+   "uk": "Нагороди за цей забіг буде втрачено.\nКоманда зможе приєднатися до тебе в лобі пізніше."
+  },
+  "room.leave.stay": {
+   "en": "Stay",
+   "de": "Bleiben",
+   "fr": "Rester",
+   "it": "Resta",
+   "es": "Quedarse",
+   "pt-pt": "Ficar",
+   "pt-br": "Ficar",
+   "uk": "Залишитись"
+  },
+  "room.leave.leave": {
+   "en": "Leave",
+   "de": "Verlassen",
+   "fr": "Quitter",
+   "it": "Esci",
+   "es": "Salir",
+   "pt-pt": "Sair",
+   "pt-br": "Sair",
+   "uk": "Вийти"
+  },
+  "room.leave.leaving": {
+   "en": "Leaving...",
+   "de": "Verlassen...",
+   "fr": "Départ...",
+   "it": "Uscita...",
+   "es": "Saliendo...",
+   "pt-pt": "Saindo...",
+   "pt-br": "Saindo...",
+   "uk": "Виходимо..."
+  },
+  "room.leave.returning": {
+   "en": "Returning to lobby...",
+   "de": "Zurück zur Lobby...",
+   "fr": "Retour au lobby...",
+   "it": "Ritorno alla lobby...",
+   "es": "Volviendo al lobby...",
+   "pt-pt": "Voltando ao lobby...",
+   "pt-br": "Voltando ao lobby...",
+   "uk": "Повертаємось у лобі..."
+  },
+  "room.results.victory": {
+   "en": "VICTORY",
+   "de": "SIEG",
+   "fr": "VICTOIRE",
+   "it": "VITTORIA",
+   "es": "VICTORIA",
+   "pt-pt": "VITÓRIA",
+   "pt-br": "VITÓRIA",
+   "uk": "ПЕРЕМОГА"
+  },
+  "room.results.defeat": {
+   "en": "DEFEAT",
+   "de": "NIEDERLAGE",
+   "fr": "DÉFAITE",
+   "it": "SCONFITTA",
+   "es": "DERROTA",
+   "pt-pt": "DERROTA",
+   "pt-br": "DERROTA",
+   "uk": "ПОРАЗКА"
+  },
+  "room.results.total": {
+   "en": "Total",
+   "de": "Gesamt",
+   "fr": "Total",
+   "it": "Totale",
+   "es": "Total",
+   "pt-pt": "Total",
+   "pt-br": "Total",
+   "uk": "Разом"
+  },
+  "room.results.play_again": {
+   "en": "Play again",
+   "de": "Nochmal spielen",
+   "fr": "Rejouer",
+   "it": "Gioca ancora",
+   "es": "Jugar otra vez",
+   "pt-pt": "Jogar de novo",
+   "pt-br": "Jogar de novo",
+   "uk": "Грати ще"
+  },
+  "room.results.play_again_voted": {
+   "en": "✓  Play again",
+   "de": "✓  Nochmal spielen",
+   "fr": "✓  Rejouer",
+   "it": "✓  Gioca ancora",
+   "es": "✓  Jugar otra vez",
+   "pt-pt": "✓  Jogar de novo",
+   "pt-br": "✓  Jogar de novo",
+   "uk": "✓  Грати ще"
+  },
+  "room.results.damage_dealt": {
+   "en": "Damage dealt",
+   "de": "Verursachter Schaden",
+   "fr": "Dégâts infligés",
+   "it": "Danno inflitto",
+   "es": "Daño infligido",
+   "pt-pt": "Dano causado",
+   "pt-br": "Dano causado",
+   "uk": "Завдано шкоди"
+  },
+  "room.results.waves_defended": {
+   "en": "Waves defended",
+   "de": "Abgewehrte Wellen",
+   "fr": "Vagues repoussées",
+   "it": "Ondate respinte",
+   "es": "Oleadas resistidas",
+   "pt-pt": "Vagas defendidas",
+   "pt-br": "Ondas defendidas",
+   "uk": "Відбито хвиль"
+  },
+  "room.results.coins_per_wave": {
+   "en": "coins for each wave",
+   "de": "Münzen pro Welle",
+   "fr": "pièces par vague",
+   "it": "monete per ogni ondata",
+   "es": "monedas por cada oleada",
+   "pt-pt": "moedas por vaga",
+   "pt-br": "moedas por onda",
+   "uk": "монет за кожну хвилю"
+  },
+  "room.results.wisps_left": {
+   "en": "Wisps left",
+   "de": "Übrige Irrlichter",
+   "fr": "Feux follets restants",
+   "it": "Fuochi fatui rimasti",
+   "es": "Fuegos fatuos restantes",
+   "pt-pt": "Fogos-fátuos restantes",
+   "pt-br": "Fogos-fátuos restantes",
+   "uk": "Залишок вогників"
+  },
+  "room.results.base_health": {
+   "en": "Base health",
+   "de": "Lebenspunkte der Basis",
+   "fr": "Santé de la base",
+   "it": "Salute della base",
+   "es": "Salud de la base",
+   "pt-pt": "Vida da base",
+   "pt-br": "Vida da base",
+   "uk": "Здоров'я бази"
+  },
+  "room.results.rate_damage": {
+   "en": "{n} damage = 1",
+   "de": "{n} Schaden = 1",
+   "fr": "{n} dégâts = 1",
+   "it": "{n} danno = 1",
+   "es": "{n} de daño = 1",
+   "pt-pt": "{n} de dano = 1",
+   "pt-br": "{n} de dano = 1",
+   "uk": "{n} шкоди = 1"
+  },
+  "room.results.rate_wisps": {
+   "en": "{n} wisps = 1",
+   "de": "{n} Irrlichter = 1",
+   "fr": "{n} feux follets = 1",
+   "it": "{n} fuochi fatui = 1",
+   "es": "{n} fuegos fatuos = 1",
+   "pt-pt": "{n} fogos-fátuos = 1",
+   "pt-br": "{n} fogos-fátuos = 1",
+   "uk": "{n} вогників = 1"
+  },
+  "room.results.rate_health": {
+   "en": "{n} health = 1",
+   "de": "{n} Lebenspunkte = 1",
+   "fr": "{n} santé = 1",
+   "it": "{n} salute = 1",
+   "es": "{n} de salud = 1",
+   "pt-pt": "{n} de vida = 1",
+   "pt-br": "{n} de vida = 1",
+   "uk": "{n} здоров'я = 1"
+  },
+  "room.results.damage_dealer": {
+   "en": "DAMAGE DEALER!",
+   "de": "SCHADENSKÖNIG!",
+   "fr": "ROI DES DÉGÂTS !",
+   "it": "RE DEI DANNI!",
+   "es": "¡REY DEL DAÑO!",
+   "pt-pt": "REI DO DANO!",
+   "pt-br": "REI DO DANO!",
+   "uk": "ГОЛОВНИЙ ДАМАГЕР!"
+  },
+  "room.results.confirm_title": {
+   "en": "Leave the room?",
+   "de": "Raum verlassen?",
+   "fr": "Quitter la salle ?",
+   "it": "Lasciare la stanza?",
+   "es": "¿Salir de la sala?",
+   "pt-pt": "Sair da sala?",
+   "pt-br": "Sair da sala?",
+   "uk": "Вийти з кімнати?"
+  },
+  "room.results.confirm_body": {
+   "en": "Are you sure you don't want to play another round?",
+   "de": "Willst du wirklich keine weitere Runde spielen?",
+   "fr": "Tu es sûr de ne pas vouloir jouer une autre manche ?",
+   "it": "Sei sicuro di non voler giocare un altro round?",
+   "es": "¿Seguro que no quieres jugar otra ronda?",
+   "pt-pt": "Tens a certeza de que não queres jogar outra ronda?",
+   "pt-br": "Tem certeza de que não quer jogar outra rodada?",
+   "uk": "Точно не хочеш зіграти ще раунд?"
+  },
+  "room.results.confirm_stay": {
+   "en": "Stay and play",
+   "de": "Bleiben und spielen",
+   "fr": "Rester et jouer",
+   "it": "Resta e gioca",
+   "es": "Quedarse y jugar",
+   "pt-pt": "Ficar e jogar",
+   "pt-br": "Ficar e jogar",
+   "uk": "Залишитись і грати"
+  },
+  "sys.kick.load_failed": {
+   "en": "Couldn't load your data. Please try joining again.",
+   "de": "Deine Daten konnten nicht geladen werden. Bitte versuche es erneut.",
+   "fr": "Impossible de charger tes données. Réessaie de te connecter.",
+   "it": "Impossibile caricare i tuoi dati. Riprova a entrare.",
+   "es": "No se pudieron cargar tus datos. Intenta entrar de nuevo.",
+   "pt-pt": "Não foi possível carregar os teus dados. Tenta entrar de novo.",
+   "pt-br": "Não foi possível carregar seus dados. Tente entrar de novo.",
+   "uk": "Не вдалося завантажити твої дані. Спробуй зайти ще раз."
+  },
+  "sys.kick.session_ended": {
+   "en": "Your data session ended. Please join again.",
+   "de": "Deine Datensitzung wurde beendet. Bitte tritt erneut bei.",
+   "fr": "Ta session de données est terminée. Reconnecte-toi.",
+   "it": "La tua sessione dati è terminata. Rientra nel gioco.",
+   "es": "Tu sesión de datos terminó. Vuelve a entrar.",
+   "pt-pt": "A tua sessão de dados terminou. Entra de novo.",
+   "pt-br": "Sua sessão de dados terminou. Entre de novo.",
+   "uk": "Сесію даних завершено. Зайди ще раз."
+  },
+  "lobby.portal.room": {
+   "en": "Room {n}",
+   "de": "Raum {n}",
+   "fr": "Salle {n}",
+   "it": "Stanza {n}",
+   "es": "Sala {n}",
+   "pt-pt": "Sala {n}",
+   "pt-br": "Sala {n}",
+   "uk": "Кімната {n}"
+  },
+  "lobby.portal.choose_team": {
+   "en": "Choose your team size",
+   "de": "Wähle deine Teamgröße",
+   "fr": "Choisis la taille de ton équipe",
+   "it": "Scegli quanti siete in squadra",
+   "es": "Elige el tamaño de tu equipo",
+   "pt-pt": "Escolhe o tamanho da tua equipa",
+   "pt-br": "Escolha o tamanho do seu time",
+   "uk": "Обери розмір команди"
+  },
+  "lobby.portal.team_size": {
+   "en": "Team size",
+   "de": "Teamgröße",
+   "fr": "Taille de l'équipe",
+   "it": "Dimensione squadra",
+   "es": "Tamaño del equipo",
+   "pt-pt": "Tamanho da equipa",
+   "pt-br": "Tamanho do time",
+   "uk": "Розмір команди"
+  },
+  "lobby.portal.bot": {
+   "en": "BOT",
+   "de": "BOT",
+   "fr": "BOT",
+   "it": "BOT",
+   "es": "BOT",
+   "pt-pt": "BOT",
+   "pt-br": "BOT",
+   "uk": "БОТ"
+  },
+  "lobby.portal.player": {
+   "en": "Player",
+   "de": "Spieler",
+   "fr": "Joueur",
+   "it": "Giocatore",
+   "es": "Jugador",
+   "pt-pt": "Jogador",
+   "pt-br": "Jogador",
+   "uk": "Гравець"
+  },
+  "lobby.portal.invite": {
+   "en": "Invite friend",
+   "de": "Freund einladen",
+   "fr": "Inviter un ami",
+   "it": "Invita un amico",
+   "es": "Invitar a un amigo",
+   "pt-pt": "Convidar amigo",
+   "pt-br": "Convidar amigo",
+   "uk": "Запросити друга"
+  },
+  "lobby.portal.leave": {
+   "en": "Leave",
+   "de": "Verlassen",
+   "fr": "Quitter",
+   "it": "Esci",
+   "es": "Salir",
+   "pt-pt": "Sair",
+   "pt-br": "Sair",
+   "uk": "Вийти"
+  },
+  "lobby.portal.start": {
+   "en": "Start",
+   "de": "Start",
+   "fr": "Lancer",
+   "it": "Avvia",
+   "es": "Empezar",
+   "pt-pt": "Começar",
+   "pt-br": "Começar",
+   "uk": "Почати"
+  },
+  "lobby.portal.waiting_host": {
+   "en": "Waiting for the host...",
+   "de": "Warte auf den Host...",
+   "fr": "En attente de l'hôte...",
+   "it": "In attesa dell'host...",
+   "es": "Esperando al anfitrión...",
+   "pt-pt": "À espera do anfitrião...",
+   "pt-br": "Esperando o anfitrião...",
+   "uk": "Чекаємо на ведучого..."
+  },
+  "lobby.portal.waiting_for": {
+   "en": "Waiting for {name} to start",
+   "de": "Warte, bis {name} startet",
+   "fr": "En attente que {name} lance la partie",
+   "it": "In attesa che {name} avvii la partita",
+   "es": "Esperando a que {name} empiece",
+   "pt-pt": "À espera que {name} comece",
+   "pt-br": "Esperando {name} começar",
+   "uk": "Чекаємо, поки {name} почне"
+  },
+  "lobby.portal.the_host": {
+   "en": "the host",
+   "de": "der Host",
+   "fr": "l'hôte",
+   "it": "l'host",
+   "es": "el anfitrión",
+   "pt-pt": "o anfitrião",
+   "pt-br": "o anfitrião",
+   "uk": "ведучий"
+  },
+  "lobby.portal.coming_soon": {
+   "en": "Coming soon",
+   "de": "Demnächst",
+   "fr": "Bientôt disponible",
+   "it": "Prossimamente",
+   "es": "Próximamente",
+   "pt-pt": "Em breve",
+   "pt-br": "Em breve",
+   "uk": "Незабаром"
+  },
+  "lobby.portal.invites_unavailable": {
+   "en": "Invites are not available here",
+   "de": "Einladungen sind hier nicht verfügbar",
+   "fr": "Les invitations ne sont pas disponibles ici",
+   "it": "Gli inviti non sono disponibili qui",
+   "es": "Las invitaciones no están disponibles aquí",
+   "pt-pt": "Convites não estão disponíveis aqui",
+   "pt-br": "Convites não estão disponíveis aqui",
+   "uk": "Запрошення тут недоступні"
+  },
+  "lobby.portal.invite_text": {
+   "en": "Join my group!",
+   "de": "Tritt meiner Gruppe bei!",
+   "fr": "Rejoins mon groupe !",
+   "it": "Unisciti al mio gruppo!",
+   "es": "¡Únete a mi grupo!",
+   "pt-pt": "Junta-te ao meu grupo!",
+   "pt-br": "Entre no meu grupo!",
+   "uk": "Приєднуйся до моєї групи!"
+  },
+  "lobby.portal.requires": {
+   "en": "Requires {item}",
+   "de": "Benötigt: {item}",
+   "fr": "Nécessite : {item}",
+   "it": "Richiede: {item}",
+   "es": "Requiere: {item}",
+   "pt-pt": "Requer: {item}",
+   "pt-br": "Requer: {item}",
+   "uk": "Потрібно: {item}"
+  },
+  "lobby.portal.get_in_shop": {
+   "en": "Get it in the shop to enter",
+   "de": "Hol es dir im Shop, um einzutreten",
+   "fr": "Obtiens-le dans la boutique pour entrer",
+   "it": "Ottienilo nel negozio per entrare",
+   "es": "Consíguelo en la tienda para entrar",
+   "pt-pt": "Obtém-no na loja para entrar",
+   "pt-br": "Pegue na loja para entrar",
+   "uk": "Купи це в магазині, щоб увійти"
+  },
+  "lobby.portal.open_shop": {
+   "en": "Open shop",
+   "de": "Shop öffnen",
+   "fr": "Ouvrir la boutique",
+   "it": "Apri negozio",
+   "es": "Abrir tienda",
+   "pt-pt": "Abrir loja",
+   "pt-br": "Abrir loja",
+   "uk": "Відкрити магазин"
+  },
+  "lobby.portal.group_full": {
+   "en": "This group is full",
+   "de": "Diese Gruppe ist voll",
+   "fr": "Ce groupe est complet",
+   "it": "Questo gruppo è pieno",
+   "es": "Este grupo está lleno",
+   "pt-pt": "Este grupo está cheio",
+   "pt-br": "Este grupo está cheio",
+   "uk": "Ця група заповнена"
+  },
+  "lobby.portal.teleport_studio": {
+   "en": "Teleport does not work in Studio. Test it in the published game.",
+   "de": "Teleportieren funktioniert in Studio nicht. Teste es im veröffentlichten Spiel.",
+   "fr": "La téléportation ne fonctionne pas dans Studio. Teste-la dans le jeu publié.",
+   "it": "Il teletrasporto non funziona in Studio. Provalo nel gioco pubblicato.",
+   "es": "El teletransporte no funciona en Studio. Pruébalo en el juego publicado.",
+   "pt-pt": "O teletransporte não funciona no Studio. Testa no jogo publicado.",
+   "pt-br": "O teleporte não funciona no Studio. Teste no jogo publicado.",
+   "uk": "Телепорт не працює в Studio. Перевір у опублікованій грі."
+  },
+  "lobby.portal.start_failed": {
+   "en": "Could not start, try again",
+   "de": "Start fehlgeschlagen, versuche es erneut",
+   "fr": "Impossible de lancer, réessaie",
+   "it": "Impossibile avviare, riprova",
+   "es": "No se pudo empezar, inténtalo de nuevo",
+   "pt-pt": "Não foi possível começar, tenta de novo",
+   "pt-br": "Não foi possível começar, tente de novo",
+   "uk": "Не вдалося почати, спробуй ще раз"
+  },
+  "lobby.portal.unavailable": {
+   "en": "This portal is unavailable",
+   "de": "Dieses Portal ist nicht verfügbar",
+   "fr": "Ce portail n'est pas disponible",
+   "it": "Questo portale non è disponibile",
+   "es": "Este portal no está disponible",
+   "pt-pt": "Este portal não está disponível",
+   "pt-br": "Este portal não está disponível",
+   "uk": "Цей портал недоступний"
+  },
+  "lobby.portal.group_disbanded": {
+   "en": "Group disbanded",
+   "de": "Gruppe aufgelöst",
+   "fr": "Groupe dissous",
+   "it": "Gruppo sciolto",
+   "es": "Grupo disuelto",
+   "pt-pt": "Grupo desfeito",
+   "pt-br": "Grupo desfeito",
+   "uk": "Групу розпущено"
+  },
+  "lobby.portal.cant_enter_yet": {
+   "en": "{name} can't enter yet",
+   "de": "{name} kann noch nicht eintreten",
+   "fr": "{name} ne peut pas encore entrer",
+   "it": "{name} non può ancora entrare",
+   "es": "{name} aún no puede entrar",
+   "pt-pt": "{name} ainda não pode entrar",
+   "pt-br": "{name} ainda não pode entrar",
+   "uk": "{name} поки не може увійти"
+  },
+  "lobby.portal.entering": {
+   "en": "Entering {room}...",
+   "de": "Betrete {room}...",
+   "fr": "Entrée dans {room}...",
+   "it": "Entrata in {room}...",
+   "es": "Entrando en {room}...",
+   "pt-pt": "Entrando em {room}...",
+   "pt-br": "Entrando em {room}...",
+   "uk": "Входимо: {room}..."
+  },
+  "lobby.shop.merchant": {
+   "en": "Merchant",
+   "de": "Händler",
+   "fr": "Marchand",
+   "it": "Mercante",
+   "es": "Mercader",
+   "pt-pt": "Mercador",
+   "pt-br": "Mercador",
+   "uk": "Торговець"
+  },
+  "lobby.shop.robux_shop": {
+   "en": "Robux Shop",
+   "de": "Robux-Shop",
+   "fr": "Boutique Robux",
+   "it": "Negozio Robux",
+   "es": "Tienda de Robux",
+   "pt-pt": "Loja de Robux",
+   "pt-br": "Loja de Robux",
+   "uk": "Магазин Robux"
+  },
+  "lobby.shop.play_more": {
+   "en": "Play more, earn more!",
+   "de": "Mehr spielen, mehr verdienen!",
+   "fr": "Joue plus, gagne plus !",
+   "it": "Gioca di più, guadagna di più!",
+   "es": "¡Juega más, gana más!",
+   "pt-pt": "Joga mais, ganha mais!",
+   "pt-br": "Jogue mais, ganhe mais!",
+   "uk": "Більше граєш — більше заробляєш!"
+  },
+  "lobby.shop.unlock_first": {
+   "en": "Unlock {name} first",
+   "de": "Schalte zuerst {name} frei",
+   "fr": "Débloque d'abord {name}",
+   "it": "Prima sblocca {name}",
+   "es": "Primero desbloquea {name}",
+   "pt-pt": "Desbloqueia {name} primeiro",
+   "pt-br": "Desbloqueie {name} primeiro",
+   "uk": "Спершу відкрий: {name}"
+  },
+  "lobby.shop.no_upgrades": {
+   "en": "No upgrades",
+   "de": "Keine Upgrades",
+   "fr": "Aucune amélioration",
+   "it": "Nessun potenziamento",
+   "es": "Sin mejoras",
+   "pt-pt": "Sem melhorias",
+   "pt-br": "Sem melhorias",
+   "uk": "Немає покращень"
+  },
+  "lobby.shop.max_level": {
+   "en": "Maximum level",
+   "de": "Maximale Stufe",
+   "fr": "Niveau maximum",
+   "it": "Livello massimo",
+   "es": "Nivel máximo",
+   "pt-pt": "Nível máximo",
+   "pt-br": "Nível máximo",
+   "uk": "Максимальний рівень"
+  },
+  "lobby.shop.not_enough": {
+   "en": "not enough",
+   "de": "nicht genug",
+   "fr": "pas assez",
+   "it": "non abbastanza",
+   "es": "no es suficiente",
+   "pt-pt": "insuficiente",
+   "pt-br": "insuficiente",
+   "uk": "не вистачає"
+  },
+  "lobby.shop.opens_room": {
+   "en": "buy the weapon that opens this room",
+   "de": "kauf die Waffe, die diesen Raum öffnet",
+   "fr": "achète l'arme qui ouvre cette salle",
+   "it": "compra l'arma che apre questa stanza",
+   "es": "compra el arma que abre esta sala",
+   "pt-pt": "compra a arma que abre esta sala",
+   "pt-br": "compre a arma que abre esta sala",
+   "uk": "купи зброю, яка відкриває цю кімнату"
+  },
+  "lobby.shop.coins": {
+   "en": "Coins",
+   "de": "Münzen",
+   "fr": "Pièces",
+   "it": "Monete",
+   "es": "Monedas",
+   "pt-pt": "Moedas",
+   "pt-br": "Moedas",
+   "uk": "Монети"
+  },
+  "lobby.shop.robux": {
+   "en": "Robux",
+   "de": "Robux",
+   "fr": "Robux",
+   "it": "Robux",
+   "es": "Robux",
+   "pt-pt": "Robux",
+   "pt-br": "Robux",
+   "uk": "Robux"
+  },
+  "lobby.shop.offer": {
+   "en": "Offer",
+   "de": "Angebot",
+   "fr": "Offre",
+   "it": "Offerta",
+   "es": "Oferta",
+   "pt-pt": "Oferta",
+   "pt-br": "Oferta",
+   "uk": "Пропозиція"
+  },
+  "lobby.shop.get_coins": {
+   "en": "Get {amount} coins",
+   "de": "Erhalte {amount} Münzen",
+   "fr": "Obtiens {amount} pièces",
+   "it": "Ottieni {amount} monete",
+   "es": "Consigue {amount} monedas",
+   "pt-pt": "Recebe {amount} moedas",
+   "pt-br": "Ganhe {amount} moedas",
+   "uk": "Отримай {amount} монет"
+  },
+  "lobby.shop.pile_of_coins": {
+   "en": "Pile of Coins",
+   "de": "Münzhaufen",
+   "fr": "Tas de pièces",
+   "it": "Mucchio di monete",
+   "es": "Montón de monedas",
+   "pt-pt": "Pilha de moedas",
+   "pt-br": "Pilha de moedas",
+   "uk": "Купка монет"
+  },
+  "lobby.shop.chest_of_coins": {
+   "en": "Chest of Coins",
+   "de": "Münztruhe",
+   "fr": "Coffre de pièces",
+   "it": "Forziere di monete",
+   "es": "Cofre de monedas",
+   "pt-pt": "Arca de moedas",
+   "pt-br": "Baú de moedas",
+   "uk": "Скриня монет"
+  },
+  "lobby.shop.starter_pack": {
+   "en": "Starter Pack",
+   "de": "Starterpaket",
+   "fr": "Pack de départ",
+   "it": "Pacchetto iniziale",
+   "es": "Pack de inicio",
+   "pt-pt": "Pacote inicial",
+   "pt-br": "Pacote inicial",
+   "uk": "Стартовий набір"
+  },
+  "lobby.shop.starter_pack_desc": {
+   "en": "{amount} coins and a Lucky Charm. One time only!",
+   "de": "{amount} Münzen und ein Glücksbringer. Nur einmal!",
+   "fr": "{amount} pièces et un Porte-bonheur. Une seule fois !",
+   "it": "{amount} monete e un Portafortuna. Solo una volta!",
+   "es": "{amount} monedas y un Amuleto de la suerte. ¡Solo una vez!",
+   "pt-pt": "{amount} moedas e um Amuleto da sorte. Só uma vez!",
+   "pt-br": "{amount} moedas e um Amuleto da sorte. Só uma vez!",
+   "uk": "{amount} монет і Талісман удачі. Лише один раз!"
+  },
+  "lobby.showcase.stats": {
+   "en": "Damage <b>{damage}</b>   Every <b>{interval} s</b>\nUpgrades in a run: <b>{ups}</b>",
+   "de": "Schaden <b>{damage}</b>   Alle <b>{interval} s</b>\nUpgrades pro Runde: <b>{ups}</b>",
+   "fr": "Dégâts <b>{damage}</b>   Toutes les <b>{interval} s</b>\nAméliorations par partie : <b>{ups}</b>",
+   "it": "Danno <b>{damage}</b>   Ogni <b>{interval} s</b>\nPotenziamenti per partita: <b>{ups}</b>",
+   "es": "Daño <b>{damage}</b>   Cada <b>{interval} s</b>\nMejoras por partida: <b>{ups}</b>",
+   "pt-pt": "Dano <b>{damage}</b>   A cada <b>{interval} s</b>\nMelhorias por partida: <b>{ups}</b>",
+   "pt-br": "Dano <b>{damage}</b>   A cada <b>{interval} s</b>\nMelhorias por partida: <b>{ups}</b>",
+   "uk": "Шкода <b>{damage}</b>   Кожні <b>{interval} с</b>\nПокращень за забіг: <b>{ups}</b>"
+  },
+  "lobby.daily.title": {
+   "en": "Daily Rewards",
+   "de": "Tägliche Belohnungen",
+   "fr": "Récompenses quotidiennes",
+   "it": "Ricompense giornaliere",
+   "es": "Recompensas diarias",
+   "pt-pt": "Recompensas diárias",
+   "pt-br": "Recompensas diárias",
+   "uk": "Щоденні нагороди"
+  },
+  "lobby.daily.claim": {
+   "en": "Claim",
+   "de": "Abholen",
+   "fr": "Récupérer",
+   "it": "Riscuoti",
+   "es": "Reclamar",
+   "pt-pt": "Receber",
+   "pt-br": "Resgatar",
+   "uk": "Забрати"
+  },
+  "lobby.daily.day": {
+   "en": "Day {n}",
+   "de": "Tag {n}",
+   "fr": "Jour {n}",
+   "it": "Giorno {n}",
+   "es": "Día {n}",
+   "pt-pt": "Dia {n}",
+   "pt-br": "Dia {n}",
+   "uk": "День {n}"
+  },
+  "lobby.daily.coins": {
+   "en": "{n} Coins",
+   "de": "{n} Münzen",
+   "fr": "{n} pièces",
+   "it": "{n} monete",
+   "es": "{n} monedas",
+   "pt-pt": "{n} moedas",
+   "pt-br": "{n} moedas",
+   "uk": "{n} монет"
+  },
+  "lobby.rate.title": {
+   "en": "Join our Community",
+   "de": "Tritt unserer Community bei",
+   "fr": "Rejoins notre communauté",
+   "it": "Unisciti alla nostra community",
+   "es": "Únete a nuestra comunidad",
+   "pt-pt": "Junta-te à nossa comunidade",
+   "pt-br": "Entre na nossa comunidade",
+   "uk": "Приєднуйся до спільноти"
+  },
+  "lobby.rate.info": {
+   "en": "Get a unique gift for joining",
+   "de": "Hol dir ein einzigartiges Geschenk fürs Beitreten",
+   "fr": "Reçois un cadeau unique en nous rejoignant",
+   "it": "Ricevi un regalo unico unendoti",
+   "es": "Consigue un regalo único por unirte",
+   "pt-pt": "Recebe um presente exclusivo ao entrares",
+   "pt-br": "Ganhe um presente exclusivo ao entrar",
+   "uk": "Отримай унікальний подарунок за вступ"
+  },
+  "lobby.rate.join": {
+   "en": "Join",
+   "de": "Beitreten",
+   "fr": "Rejoindre",
+   "it": "Unisciti",
+   "es": "Unirse",
+   "pt-pt": "Juntar-me",
+   "pt-br": "Entrar",
+   "uk": "Приєднатися"
+  },
+  "lobby.rate.free": {
+   "en": "Free",
+   "de": "Gratis",
+   "fr": "Gratuit",
+   "it": "Gratis",
+   "es": "Gratis",
+   "pt-pt": "Grátis",
+   "pt-br": "Grátis",
+   "uk": "Безкоштовно"
+  },
+  "lobby.rate.rate_us": {
+   "en": "Rate Us",
+   "de": "Bewerte uns",
+   "fr": "Note-nous",
+   "it": "Valutaci",
+   "es": "Valóranos",
+   "pt-pt": "Avalia-nos",
+   "pt-br": "Avalie-nos",
+   "uk": "Оціни нас"
+  },
+  "lobby.leaderboard.title": {
+   "en": "Leaderboard",
+   "de": "Bestenliste",
+   "fr": "Classement",
+   "it": "Classifica",
+   "es": "Clasificación",
+   "pt-pt": "Classificação",
+   "pt-br": "Ranking",
+   "uk": "Таблиця лідерів"
+  },
+  "lobby.reward.received": {
+   "en": "reward received",
+   "de": "Belohnung erhalten",
+   "fr": "récompense reçue",
+   "it": "ricompensa ricevuta",
+   "es": "recompensa recibida",
+   "pt-pt": "recompensa recebida",
+   "pt-br": "recompensa recebida",
+   "uk": "нагороду отримано"
+  },
+  "lobby.time.dh": {
+   "en": "{d} d {h} h",
+   "de": "{d} T {h} Std",
+   "fr": "{d} j {h} h",
+   "it": "{d} g {h} h",
+   "es": "{d} d {h} h",
+   "pt-pt": "{d} d {h} h",
+   "pt-br": "{d} d {h} h",
+   "uk": "{d} д {h} год"
+  },
+  "lobby.time.hm": {
+   "en": "{h} h {m} m",
+   "de": "{h} Std {m} Min",
+   "fr": "{h} h {m} min",
+   "it": "{h} h {m} min",
+   "es": "{h} h {m} min",
+   "pt-pt": "{h} h {m} min",
+   "pt-br": "{h} h {m} min",
+   "uk": "{h} год {m} хв"
+  },
+  "lobby.time.ms": {
+   "en": "{m} m {s} s",
+   "de": "{m} Min {s} s",
+   "fr": "{m} min {s} s",
+   "it": "{m} min {s} s",
+   "es": "{m} min {s} s",
+   "pt-pt": "{m} min {s} s",
+   "pt-br": "{m} min {s} s",
+   "uk": "{m} хв {s} с"
+  },
+  "lobby.time.s": {
+   "en": "{s} s",
+   "de": "{s} s",
+   "fr": "{s} s",
+   "it": "{s} s",
+   "es": "{s} s",
+   "pt-pt": "{s} s",
+   "pt-br": "{s} s",
+   "uk": "{s} с"
+  },
+  "item.soft.title": {
+   "en": "Coins",
+   "de": "Münzen",
+   "fr": "Pièces",
+   "it": "Monete",
+   "es": "Monedas",
+   "pt-pt": "Moedas",
+   "pt-br": "Moedas",
+   "uk": "Монети"
+  },
+  "item.soft.desc": {
+   "en": "Earned by clearing waves in runs. Spend it in the shop to unlock weapons and traps.",
+   "de": "Verdienst du, indem du in Runden Wellen besiegst. Gib sie im Shop aus, um Waffen und Fallen freizuschalten.",
+   "fr": "Gagnées en repoussant des vagues. Dépense-les dans la boutique pour débloquer armes et pièges.",
+   "it": "Si guadagnano respingendo le ondate. Spendile nel negozio per sbloccare armi e trappole.",
+   "es": "Se ganan superando oleadas en las partidas. Gástalas en la tienda para desbloquear armas y trampas.",
+   "pt-pt": "Ganham-se ao vencer vagas nas partidas. Gasta-as na loja para desbloquear armas e armadilhas.",
+   "pt-br": "Ganhas ao vencer ondas nas partidas. Gaste na loja para desbloquear armas e armadilhas.",
+   "uk": "Заробляються за зачищені хвилі в забігах. Витрачай у магазині, щоб відкривати зброю та пастки."
+  },
+  "item.hard.title": {
+   "en": "Robux",
+   "de": "Robux",
+   "fr": "Robux",
+   "it": "Robux",
+   "es": "Robux",
+   "pt-pt": "Robux",
+   "pt-br": "Robux",
+   "uk": "Robux"
+  },
+  "item.hard.desc": {
+   "en": "Premium currency, paid for with real Robux in the Robux Shop.",
+   "de": "Premiumwährung, bezahlt mit echten Robux im Robux-Shop.",
+   "fr": "Monnaie premium, payée en vrais Robux dans la boutique Robux.",
+   "it": "Valuta premium, pagata con veri Robux nel negozio Robux.",
+   "es": "Moneda premium, se paga con Robux reales en la tienda de Robux.",
+   "pt-pt": "Moeda premium, paga com Robux reais na loja de Robux.",
+   "pt-br": "Moeda premium, paga com Robux de verdade na loja de Robux.",
+   "uk": "Преміум-валюта, оплачується справжніми Robux у магазині Robux."
+  },
+  "item.wisps.title": {
+   "en": "Wisps",
+   "de": "Irrlichter",
+   "fr": "Feux follets",
+   "it": "Fuochi fatui",
+   "es": "Fuegos fatuos",
+   "pt-pt": "Fogos-fátuos",
+   "pt-br": "Fogos-fátuos",
+   "uk": "Вогники"
+  },
+  "item.wisps.desc": {
+   "en": "Run currency. Dropped by enemies. Spend it on weapon upgrades and placing traps. Resets every run.",
+   "de": "Rundenwährung. Wird von Gegnern fallen gelassen. Gib sie für Waffen-Upgrades und Fallen aus. Wird jede Runde zurückgesetzt.",
+   "fr": "Monnaie de partie. Laissée par les ennemis. Dépense-la en améliorations d'armes et en pièges. Remise à zéro à chaque partie.",
+   "it": "Valuta della partita. Lasciata dai nemici. Spendila in potenziamenti delle armi e trappole. Si azzera a ogni partita.",
+   "es": "Moneda de la partida. La sueltan los enemigos. Gástala en mejoras de armas y en colocar trampas. Se reinicia en cada partida.",
+   "pt-pt": "Moeda da partida. Largada pelos inimigos. Gasta-a em melhorias de armas e em armadilhas. Reinicia a cada partida.",
+   "pt-br": "Moeda da partida. Cai dos inimigos. Gaste em melhorias de armas e em armadilhas. Zera a cada partida.",
+   "uk": "Валюта забігу. Випадає з ворогів. Витрачай на покращення зброї та встановлення пасток. Обнуляється щозабігу."
+  },
+  "item.fists.title": {
+   "en": "Fists",
+   "de": "Fäuste",
+   "fr": "Poings",
+   "it": "Pugni",
+   "es": "Puños",
+   "pt-pt": "Punhos",
+   "pt-br": "Punhos",
+   "uk": "Кулаки"
+  },
+  "item.fists.desc": {
+   "en": "Always with you. Fast punches up close.",
+   "de": "Immer dabei. Schnelle Schläge aus nächster Nähe.",
+   "fr": "Toujours avec toi. Coups rapides au corps à corps.",
+   "it": "Sempre con te. Pugni rapidi a distanza ravvicinata.",
+   "es": "Siempre contigo. Golpes rápidos cuerpo a cuerpo.",
+   "pt-pt": "Sempre contigo. Socos rápidos de perto.",
+   "pt-br": "Sempre com você. Socos rápidos de perto.",
+   "uk": "Завжди з тобою. Швидкі удари впритул."
+  },
+  "item.slingshot.title": {
+   "en": "Slingshot",
+   "de": "Steinschleuder",
+   "fr": "Lance-pierre",
+   "it": "Fionda",
+   "es": "Tirachinas",
+   "pt-pt": "Fisga",
+   "pt-br": "Estilingue",
+   "uk": "Рогатка"
+  },
+  "item.slingshot.desc": {
+   "en": "Free starter. Pebbles fly in an arc.",
+   "de": "Kostenlose Startwaffe. Kiesel fliegen im Bogen.",
+   "fr": "Arme de départ gratuite. Les cailloux volent en arc.",
+   "it": "Arma iniziale gratuita. I sassi volano ad arco.",
+   "es": "Arma inicial gratuita. Las piedras vuelan en arco.",
+   "pt-pt": "Arma inicial gratuita. As pedrinhas voam em arco.",
+   "pt-br": "Arma inicial grátis. As pedrinhas voam em arco.",
+   "uk": "Безкоштовна стартова зброя. Камінці летять по дузі."
+  },
+  "item.bow.title": {
+   "en": "Bow",
+   "de": "Bogen",
+   "fr": "Arc",
+   "it": "Arco",
+   "es": "Arco",
+   "pt-pt": "Arco",
+   "pt-br": "Arco",
+   "uk": "Лук"
+  },
+  "item.bow.desc": {
+   "en": "Long range and high damage per shot. Arrows can ricochet.",
+   "de": "Große Reichweite und hoher Schaden pro Schuss. Pfeile können abprallen.",
+   "fr": "Longue portée et gros dégâts par tir. Les flèches peuvent ricocher.",
+   "it": "Lunga gittata e alto danno per colpo. Le frecce possono rimbalzare.",
+   "es": "Largo alcance y mucho daño por disparo. Las flechas pueden rebotar.",
+   "pt-pt": "Longo alcance e muito dano por tiro. As flechas podem ricochetear.",
+   "pt-br": "Longo alcance e muito dano por tiro. As flechas podem ricochetear.",
+   "uk": "Велика дальність і висока шкода за постріл. Стріли можуть рикошетити."
+  },
+  "item.revolver.title": {
+   "en": "Revolver",
+   "de": "Revolver",
+   "fr": "Revolver",
+   "it": "Revolver",
+   "es": "Revólver",
+   "pt-pt": "Revólver",
+   "pt-br": "Revólver",
+   "uk": "Револьвер"
+  },
+  "item.revolver.desc": {
+   "en": "Instant, precise shots. Upgrade to fire two revolvers at once.",
+   "de": "Sofortige, präzise Schüsse. Upgrade für zwei Revolver gleichzeitig.",
+   "fr": "Tirs instantanés et précis. Améliore-le pour tirer avec deux revolvers à la fois.",
+   "it": "Colpi istantanei e precisi. Potenzialo per sparare con due revolver insieme.",
+   "es": "Disparos instantáneos y precisos. Mejóralo para disparar con dos revólveres a la vez.",
+   "pt-pt": "Tiros instantâneos e precisos. Melhora-o para disparar com dois revólveres ao mesmo tempo.",
+   "pt-br": "Tiros instantâneos e precisos. Melhore para atirar com dois revólveres ao mesmo tempo.",
+   "uk": "Миттєві влучні постріли. Покращ, щоб стріляти з двох револьверів одразу."
+  },
+  "item.shotgun.title": {
+   "en": "Shotgun",
+   "de": "Schrotflinte",
+   "fr": "Fusil à pompe",
+   "it": "Fucile a pompa",
+   "es": "Escopeta",
+   "pt-pt": "Caçadeira",
+   "pt-br": "Escopeta",
+   "uk": "Дробовик"
+  },
+  "item.shotgun.desc": {
+   "en": "Close range burst: many pellets per shot, weaker the farther the target.",
+   "de": "Salve aus kurzer Distanz: viele Schrotkugeln pro Schuss, schwächer, je weiter das Ziel.",
+   "fr": "Rafale à courte portée : beaucoup de plombs par tir, plus faible quand la cible est loin.",
+   "it": "Raffica a corto raggio: molti pallini per colpo, più debole se il bersaglio è lontano.",
+   "es": "Ráfaga a corta distancia: muchos perdigones por disparo, más débil cuanto más lejos está el objetivo.",
+   "pt-pt": "Rajada de perto: muitos chumbos por tiro, mais fraca quanto mais longe estiver o alvo.",
+   "pt-br": "Rajada de perto: muitos chumbinhos por tiro, mais fraca quanto mais longe o alvo.",
+   "uk": "Залп зблизька: багато дробин за постріл, слабше, що далі ціль."
+  },
+  "item.tommy.title": {
+   "en": "Tommy Gun",
+   "de": "Tommy Gun",
+   "fr": "Mitraillette Thompson",
+   "it": "Mitra Thompson",
+   "es": "Metralleta Thompson",
+   "pt-pt": "Metralhadora Thompson",
+   "pt-br": "Metralhadora Thompson",
+   "uk": "Автомат Томпсона"
+  },
+  "item.tommy.desc": {
+   "en": "Hold to spray bullets. Gets less accurate in long bursts. Can fire incendiary rounds.",
+   "de": "Halten für Dauerfeuer. Wird bei langen Salven ungenauer. Kann Brandmunition verschießen.",
+   "fr": "Maintiens pour arroser de balles. Moins précise en longues rafales. Peut tirer des balles incendiaires.",
+   "it": "Tieni premuto per una pioggia di proiettili. Meno preciso nelle raffiche lunghe. Può sparare proiettili incendiari.",
+   "es": "Mantén pulsado para disparar en ráfaga. Pierde precisión en ráfagas largas. Puede disparar balas incendiarias.",
+   "pt-pt": "Mantém premido para disparar uma chuva de balas. Perde precisão em rajadas longas. Pode disparar balas incendiárias.",
+   "pt-br": "Segure para disparar uma chuva de balas. Perde precisão em rajadas longas. Pode disparar balas incendiárias.",
+   "uk": "Утримуй, щоб поливати кулями. У довгих чергах точність падає. Може стріляти запальними набоями."
+  },
+  "item.crossbow.title": {
+   "en": "Demon Hunter",
+   "de": "Dämonenjäger",
+   "fr": "Chasseur de démons",
+   "it": "Cacciatore di demoni",
+   "es": "Cazademonios",
+   "pt-pt": "Caçador de Demónios",
+   "pt-br": "Caçador de Demônios",
+   "uk": "Мисливець на демонів"
+  },
+  "item.crossbow.desc": {
+   "en": "Heavy bolts pierce enemies. Upgrades add a fan of bolts, crits and ricochets.",
+   "de": "Schwere Bolzen durchbohren Gegner. Upgrades fügen einen Bolzenfächer, Krits und Abpraller hinzu.",
+   "fr": "De lourds carreaux transpercent les ennemis. Les améliorations ajoutent un éventail de carreaux, des critiques et des ricochets.",
+   "it": "Pesanti dardi trafiggono i nemici. I potenziamenti aggiungono un ventaglio di dardi, critici e rimbalzi.",
+   "es": "Virotes pesados que atraviesan enemigos. Las mejoras añaden un abanico de virotes, críticos y rebotes.",
+   "pt-pt": "Virotes pesados atravessam inimigos. As melhorias adicionam leque de virotes, críticos e ricochetes.",
+   "pt-br": "Virotes pesados atravessam inimigos. As melhorias adicionam leque de virotes, críticos e ricochetes.",
+   "uk": "Важкі болти пробивають ворогів. Покращення додають віяло болтів, крити й рикошети."
+  },
+  "item.energygun.title": {
+   "en": "Energy Gun",
+   "de": "Energiekanone",
+   "fr": "Canon à énergie",
+   "it": "Cannone a energia",
+   "es": "Cañón de energía",
+   "pt-pt": "Canhão de Energia",
+   "pt-br": "Canhão de Energia",
+   "uk": "Енергогармата"
+  },
+  "item.energygun.desc": {
+   "en": "Hold for a steady energy beam. Overheats; upgrades add plasma balls and piercing.",
+   "de": "Halten für einen stetigen Energiestrahl. Überhitzt; Upgrades fügen Plasmakugeln und Durchschlag hinzu.",
+   "fr": "Maintiens pour un rayon d'énergie continu. Surchauffe ; les améliorations ajoutent des boules de plasma et la perforation.",
+   "it": "Tieni premuto per un raggio di energia continuo. Si surriscalda; i potenziamenti aggiungono sfere di plasma e perforazione.",
+   "es": "Mantén pulsado para un rayo de energía continuo. Se sobrecalienta; las mejoras añaden bolas de plasma y perforación.",
+   "pt-pt": "Mantém premido para um raio de energia contínuo. Sobreaquece; as melhorias adicionam bolas de plasma e perfuração.",
+   "pt-br": "Segure para um raio de energia contínuo. Superaquece; as melhorias adicionam bolas de plasma e perfuração.",
+   "uk": "Утримуй для безперервного енергопроменя. Перегрівається; покращення додають плазмові кулі й пробиття."
+  },
+  "item.voodoo.title": {
+   "en": "Voodoo Doll",
+   "de": "Voodoo-Puppe",
+   "fr": "Poupée vaudou",
+   "it": "Bambola voodoo",
+   "es": "Muñeco vudú",
+   "pt-pt": "Boneco Vudu",
+   "pt-br": "Boneco de Vodu",
+   "uk": "Лялька вуду"
+  },
+  "item.voodoo.desc": {
+   "en": "Stab the doll to set the target on fire. Fire ignores armor and spreads to nearby enemies.",
+   "de": "Stich in die Puppe, um das Ziel in Brand zu setzen. Feuer ignoriert Rüstung und springt auf Gegner in der Nähe über.",
+   "fr": "Pique la poupée pour enflammer la cible. Le feu ignore l'armure et se propage aux ennemis proches.",
+   "it": "Trafiggi la bambola per dare fuoco al bersaglio. Il fuoco ignora l'armatura e si propaga ai nemici vicini.",
+   "es": "Clava una aguja en el muñeco para prender fuego al objetivo. El fuego ignora la armadura y se extiende a los enemigos cercanos.",
+   "pt-pt": "Espeta o boneco para pegar fogo ao alvo. O fogo ignora a armadura e espalha-se para inimigos próximos.",
+   "pt-br": "Espete o boneco para pôr fogo no alvo. O fogo ignora armadura e se espalha para inimigos próximos.",
+   "uk": "Встроми голку в ляльку, щоб підпалити ціль. Вогонь ігнорує броню й перекидається на ворогів поруч."
+  },
+  "item.snare.title": {
+   "en": "Snare",
+   "de": "Fangeisen",
+   "fr": "Piège à mâchoires",
+   "it": "Tagliola",
+   "es": "Cepo",
+   "pt-pt": "Armadilha de Mandíbulas",
+   "pt-br": "Armadilha de Urso",
+   "uk": "Капкан"
+  },
+  "item.snare.desc": {
+   "en": "Floor trap. Holds an enemy in place and damages it.",
+   "de": "Bodenfalle. Hält einen Gegner fest und verursacht Schaden.",
+   "fr": "Piège au sol. Immobilise un ennemi et lui inflige des dégâts.",
+   "it": "Trappola a pavimento. Blocca un nemico e lo danneggia.",
+   "es": "Trampa de suelo. Inmoviliza a un enemigo y le hace daño.",
+   "pt-pt": "Armadilha de chão. Prende o inimigo no sítio e causa dano.",
+   "pt-br": "Armadilha de chão. Prende o inimigo no lugar e causa dano.",
+   "uk": "Пастка на підлогу. Утримує ворога на місці й завдає шкоди."
+  },
+  "item.energy_wall.title": {
+   "en": "Energy Wall",
+   "de": "Energiewand",
+   "fr": "Mur d'énergie",
+   "it": "Muro di energia",
+   "es": "Muro de energía",
+   "pt-pt": "Parede de Energia",
+   "pt-br": "Parede de Energia",
+   "uk": "Енергостіна"
+  },
+  "item.energy_wall.desc": {
+   "en": "Wall trap. Damages enemies that cross the barrier.",
+   "de": "Wandfalle. Schadet Gegnern, die die Barriere durchqueren.",
+   "fr": "Piège mural. Blesse les ennemis qui traversent la barrière.",
+   "it": "Trappola a muro. Danneggia i nemici che attraversano la barriera.",
+   "es": "Trampa de pared. Daña a los enemigos que cruzan la barrera.",
+   "pt-pt": "Armadilha de parede. Causa dano aos inimigos que atravessam a barreira.",
+   "pt-br": "Armadilha de parede. Causa dano aos inimigos que atravessam a barreira.",
+   "uk": "Пастка на стіну. Завдає шкоди ворогам, що перетинають бар'єр."
+  },
+  "item.turret.title": {
+   "en": "Turret",
+   "de": "Geschützturm",
+   "fr": "Tourelle",
+   "it": "Torretta",
+   "es": "Torreta",
+   "pt-pt": "Torre",
+   "pt-br": "Torreta",
+   "uk": "Турель"
+  },
+  "item.turret.desc": {
+   "en": "Floor trap. Automatically shoots enemies in range.",
+   "de": "Bodenfalle. Schießt automatisch auf Gegner in Reichweite.",
+   "fr": "Piège au sol. Tire automatiquement sur les ennemis à portée.",
+   "it": "Trappola a pavimento. Spara da sola ai nemici a portata.",
+   "es": "Trampa de suelo. Dispara sola a los enemigos a su alcance.",
+   "pt-pt": "Armadilha de chão. Dispara sozinha contra os inimigos ao alcance.",
+   "pt-br": "Armadilha de chão. Atira sozinha nos inimigos ao alcance.",
+   "uk": "Пастка на підлогу. Сама стріляє по ворогах поруч."
+  },
+  "item.tar.title": {
+   "en": "Tar",
+   "de": "Teer",
+   "fr": "Goudron",
+   "it": "Catrame",
+   "es": "Alquitrán",
+   "pt-pt": "Alcatrão",
+   "pt-br": "Piche",
+   "uk": "Смола"
+  },
+  "item.tar.desc": {
+   "en": "Floor trap. A pool of tar that slows every enemy walking through it.",
+   "de": "Bodenfalle. Eine Teerlache, die jeden Gegner verlangsamt, der hindurchgeht.",
+   "fr": "Piège au sol. Une flaque de goudron qui ralentit chaque ennemi qui la traverse.",
+   "it": "Trappola a pavimento. Una pozza di catrame che rallenta ogni nemico che la attraversa.",
+   "es": "Trampa de suelo. Un charco de alquitrán que ralentiza a todo enemigo que lo cruza.",
+   "pt-pt": "Armadilha de chão. Uma poça de alcatrão que abranda todos os inimigos que passam por ela.",
+   "pt-br": "Armadilha de chão. Uma poça de piche que deixa lento todo inimigo que passa por ela.",
+   "uk": "Пастка на підлогу. Калюжа смоли сповільнює кожного ворога, що йде крізь неї."
+  },
+  "item.frost_fan.title": {
+   "en": "Frost Fan",
+   "de": "Frostventilator",
+   "fr": "Ventilateur givrant",
+   "it": "Ventola gelida",
+   "es": "Ventilador helado",
+   "pt-pt": "Ventilador Gélido",
+   "pt-br": "Ventilador Gélido",
+   "uk": "Морозний вентилятор"
+  },
+  "item.frost_fan.desc": {
+   "en": "Floor trap. Blows freezing air in a circle when enemies come close: chill builds up and enemies freeze.",
+   "de": "Bodenfalle. Bläst eisige Luft im Kreis, wenn Gegner nahe kommen: Kälte baut sich auf und Gegner frieren ein.",
+   "fr": "Piège au sol. Souffle un air glacial en cercle quand les ennemis approchent : le froid s'accumule et les ennemis gèlent.",
+   "it": "Trappola a pavimento. Soffia aria gelida in cerchio quando i nemici si avvicinano: il freddo si accumula e i nemici si congelano.",
+   "es": "Trampa de suelo. Sopla aire helado en círculo cuando se acercan enemigos: el frío se acumula y los enemigos se congelan.",
+   "pt-pt": "Armadilha de chão. Sopra ar gelado em círculo quando os inimigos se aproximam: o frio acumula-se e eles congelam.",
+   "pt-br": "Armadilha de chão. Sopra ar congelante em círculo quando inimigos chegam perto: o frio acumula e eles congelam.",
+   "uk": "Пастка на підлогу. Коли вороги близько, дме морозом по колу: холод накопичується, і вороги замерзають."
+  },
+  "item.fire_grate.title": {
+   "en": "Fire Grate",
+   "de": "Feuerrost",
+   "fr": "Grille de feu",
+   "it": "Griglia infuocata",
+   "es": "Rejilla de fuego",
+   "pt-pt": "Grelha de Fogo",
+   "pt-br": "Grelha de Fogo",
+   "uk": "Вогняна решітка"
+  },
+  "item.fire_grate.desc": {
+   "en": "Floor trap. Fire jets burst from the floor at enemies approaching it and set them ablaze.",
+   "de": "Bodenfalle. Feuerstrahlen schießen aus dem Boden auf nahende Gegner und setzen sie in Brand.",
+   "fr": "Piège au sol. Des jets de feu jaillissent du sol vers les ennemis qui approchent et les embrasent.",
+   "it": "Trappola a pavimento. Getti di fuoco escono dal pavimento verso i nemici in arrivo e li incendiano.",
+   "es": "Trampa de suelo. Chorros de fuego salen del suelo hacia los enemigos que se acercan y los prenden.",
+   "pt-pt": "Armadilha de chão. Jatos de fogo saem do chão contra os inimigos que se aproximam e incendeiam-nos.",
+   "pt-br": "Armadilha de chão. Jatos de fogo saem do chão nos inimigos que se aproximam e os incendeiam.",
+   "uk": "Пастка на підлогу. Струмені вогню б'ють з підлоги по ворогах, що підходять, і підпалюють їх."
+  },
+  "item.tesla.title": {
+   "en": "Tesla Coil",
+   "de": "Teslaspule",
+   "fr": "Bobine Tesla",
+   "it": "Bobina di Tesla",
+   "es": "Bobina Tesla",
+   "pt-pt": "Bobina de Tesla",
+   "pt-br": "Bobina de Tesla",
+   "uk": "Котушка Тесли"
+  },
+  "item.tesla.desc": {
+   "en": "Wall trap. Fires a chain lightning that jumps between enemies in a crowd.",
+   "de": "Wandfalle. Feuert einen Kettenblitz, der zwischen Gegnern in einer Menge überspringt.",
+   "fr": "Piège mural. Lance un éclair en chaîne qui saute d'ennemi en ennemi dans une foule.",
+   "it": "Trappola a muro. Lancia un fulmine a catena che salta tra i nemici in gruppo.",
+   "es": "Trampa de pared. Lanza un rayo en cadena que salta entre los enemigos de un grupo.",
+   "pt-pt": "Armadilha de parede. Dispara um raio em cadeia que salta entre inimigos numa multidão.",
+   "pt-br": "Armadilha de parede. Dispara um raio em cadeia que pula entre inimigos numa multidão.",
+   "uk": "Пастка на стіну. Б'є ланцюговою блискавкою, що перескакує між ворогами в натовпі."
+  },
+  "item.darts.title": {
+   "en": "Darts",
+   "de": "Pfeile",
+   "fr": "Fléchettes",
+   "it": "Dardi",
+   "es": "Dardos",
+   "pt-pt": "Dardos",
+   "pt-br": "Dardos",
+   "uk": "Дротики"
+  },
+  "item.darts.desc": {
+   "en": "Floor or wall trap. Fires a volley of darts at enemies in its zone; poison can be added.",
+   "de": "Boden- oder Wandfalle. Feuert eine Pfeilsalve auf Gegner in ihrer Zone; Gift kann hinzugefügt werden.",
+   "fr": "Piège au sol ou mural. Tire une salve de fléchettes sur les ennemis de sa zone ; on peut ajouter du poison.",
+   "it": "Trappola a pavimento o a muro. Spara una raffica di dardi ai nemici nella sua zona; si può aggiungere il veleno.",
+   "es": "Trampa de suelo o pared. Lanza una ráfaga de dardos a los enemigos de su zona; se puede añadir veneno.",
+   "pt-pt": "Armadilha de chão ou de parede. Dispara uma rajada de dardos contra os inimigos da sua zona; pode-se adicionar veneno.",
+   "pt-br": "Armadilha de chão ou parede. Dispara uma rajada de dardos nos inimigos da sua área; dá para adicionar veneno.",
+   "uk": "Пастка на підлогу або стіну. Стріляє залпом дротиків по ворогах у своїй зоні; можна додати отруту."
+  },
+  "item.speed_boost.title": {
+   "en": "Speed Boost",
+   "de": "Tempo-Boost",
+   "fr": "Boost de vitesse",
+   "it": "Turbo velocità",
+   "es": "Turbo de velocidad",
+   "pt-pt": "Turbo de Velocidade",
+   "pt-br": "Turbo de Velocidade",
+   "uk": "Прискорення"
+  },
+  "item.speed_boost.desc": {
+   "en": "Run {percent}% faster for {minutes} min",
+   "de": "Lauf {minutes} Min lang {percent} % schneller",
+   "fr": "Cours {percent} % plus vite pendant {minutes} min",
+   "it": "Corri più veloce del {percent}% per {minutes} min",
+   "es": "Corre un {percent} % más rápido durante {minutes} min",
+   "pt-pt": "Corre {percent}% mais depressa durante {minutes} min",
+   "pt-br": "Corra {percent}% mais rápido por {minutes} min",
+   "uk": "Біжи на {percent}% швидше протягом {minutes} хв"
+  },
+  "item.lucky_charm.title": {
+   "en": "Lucky Charm",
+   "de": "Glücksbringer",
+   "fr": "Porte-bonheur",
+   "it": "Portafortuna",
+   "es": "Amuleto de la suerte",
+   "pt-pt": "Amuleto da Sorte",
+   "pt-br": "Amuleto da Sorte",
+   "uk": "Талісман удачі"
+  },
+  "item.lucky_charm.desc": {
+   "en": "Increases drop chance by {percent}%",
+   "de": "Erhöht die Dropchance um {percent} %",
+   "fr": "Augmente les chances de butin de {percent} %",
+   "it": "Aumenta la probabilità di bottino del {percent}%",
+   "es": "Aumenta la probabilidad de botín un {percent} %",
+   "pt-pt": "Aumenta a probabilidade de saque em {percent}%",
+   "pt-br": "Aumenta a chance de drop em {percent}%",
+   "uk": "Збільшує шанс випадіння на {percent}%"
+  },
+  "item.mega_pack.title": {
+   "en": "Mega Pack",
+   "de": "Mega-Paket",
+   "fr": "Méga pack",
+   "it": "Mega pacchetto",
+   "es": "Megapack",
+   "pt-pt": "Mega Pacote",
+   "pt-br": "Mega Pacote",
+   "uk": "Мегапак"
+  },
+  "item.mega_pack.desc": {
+   "en": "{count} random boosters in one pack",
+   "de": "{count} zufällige Booster in einem Paket",
+   "fr": "{count} boosts aléatoires dans un seul pack",
+   "it": "{count} potenziamenti casuali in un pacchetto",
+   "es": "{count} potenciadores aleatorios en un pack",
+   "pt-pt": "{count} potenciadores aleatórios num pacote",
+   "pt-br": "{count} boosters aleatórios em um pacote",
+   "uk": "{count} випадкових бустерів в одному паку"
+  },
+  "item.golden_hat.title": {
+   "en": "Golden Hat",
+   "de": "Goldener Hut",
+   "fr": "Chapeau doré",
+   "it": "Cappello d'oro",
+   "es": "Sombrero dorado",
+   "pt-pt": "Chapéu Dourado",
+   "pt-br": "Chapéu Dourado",
+   "uk": "Золотий капелюх"
+  },
+  "item.golden_hat.desc": {
+   "en": "A shiny hat. Pure style.",
+   "de": "Ein glänzender Hut. Purer Stil.",
+   "fr": "Un chapeau brillant. Pur style.",
+   "it": "Un cappello scintillante. Puro stile.",
+   "es": "Un sombrero brillante. Puro estilo.",
+   "pt-pt": "Um chapéu brilhante. Puro estilo.",
+   "pt-br": "Um chapéu brilhante. Puro estilo.",
+   "uk": "Блискучий капелюх. Чистий стиль."
+  },
+  "item.shield.title": {
+   "en": "Shield",
+   "de": "Schild",
+   "fr": "Bouclier",
+   "it": "Scudo",
+   "es": "Escudo",
+   "pt-pt": "Escudo",
+   "pt-br": "Escudo",
+   "uk": "Щит"
+  },
+  "item.shield.desc": {
+   "en": "Survive {hits} hit per run",
+   "de": "Überstehe {hits} Treffer pro Runde",
+   "fr": "Survis à {hits} coup par partie",
+   "it": "Sopravvivi a {hits} colpo per partita",
+   "es": "Resiste {hits} golpe por partida",
+   "pt-pt": "Aguenta {hits} golpe por partida",
+   "pt-br": "Aguente {hits} golpe por partida",
+   "uk": "Переживи {hits} удар за забіг"
+  },
+  "item.magnet.title": {
+   "en": "Coin Magnet",
+   "de": "Münzmagnet",
+   "fr": "Aimant à pièces",
+   "it": "Calamita per monete",
+   "es": "Imán de monedas",
+   "pt-pt": "Íman de Moedas",
+   "pt-br": "Ímã de Moedas",
+   "uk": "Магніт для монет"
+  },
+  "item.magnet.desc": {
+   "en": "Pulls coins from {radius} studs",
+   "de": "Zieht Münzen aus {radius} Studs Entfernung an",
+   "fr": "Attire les pièces dans un rayon de {radius} studs",
+   "it": "Attira le monete entro {radius} stud",
+   "es": "Atrae monedas a {radius} studs",
+   "pt-pt": "Atrai moedas a {radius} studs",
+   "pt-br": "Puxa moedas a {radius} studs",
+   "uk": "Притягує монети з відстані {radius} studs"
+  },
+  "item.vip.title": {
+   "en": "VIP",
+   "de": "VIP",
+   "fr": "VIP",
+   "it": "VIP",
+   "es": "VIP",
+   "pt-pt": "VIP",
+   "pt-br": "VIP",
+   "uk": "VIP"
+  },
+  "item.vip.desc": {
+   "en": "Permanent {bonus}% coin bonus",
+   "de": "Dauerhaft +{bonus} % Münzbonus",
+   "fr": "Bonus permanent de +{bonus} % de pièces",
+   "it": "Bonus permanente del +{bonus}% sulle monete",
+   "es": "Bonus permanente de +{bonus} % de monedas",
+   "pt-pt": "Bónus permanente de +{bonus}% de moedas",
+   "pt-br": "Bônus permanente de +{bonus}% de moedas",
+   "uk": "Постійний бонус +{bonus}% до монет"
+  },
+  "item.upgrade_damage.title": {
+   "en": "Damage",
+   "de": "Schaden",
+   "fr": "Dégâts",
+   "it": "Danno",
+   "es": "Daño",
+   "pt-pt": "Dano",
+   "pt-br": "Dano",
+   "uk": "Шкода"
+  },
+  "item.upgrade_damage.desc": {
+   "en": "Each hit deals more damage.",
+   "de": "Jeder Treffer verursacht mehr Schaden.",
+   "fr": "Chaque coup inflige plus de dégâts.",
+   "it": "Ogni colpo infligge più danno.",
+   "es": "Cada golpe hace más daño.",
+   "pt-pt": "Cada acerto causa mais dano.",
+   "pt-br": "Cada acerto causa mais dano.",
+   "uk": "Кожне влучання завдає більше шкоди."
+  },
+  "item.upgrade_fire_rate.title": {
+   "en": "Fire rate",
+   "de": "Feuerrate",
+   "fr": "Cadence de tir",
+   "it": "Cadenza di tiro",
+   "es": "Cadencia",
+   "pt-pt": "Cadência",
+   "pt-br": "Cadência",
+   "uk": "Скорострільність"
+  },
+  "item.upgrade_fire_rate.desc": {
+   "en": "Shorter pause between shots.",
+   "de": "Kürzere Pause zwischen den Schüssen.",
+   "fr": "Pause plus courte entre les tirs.",
+   "it": "Pausa più breve tra un colpo e l'altro.",
+   "es": "Pausa más corta entre disparos.",
+   "pt-pt": "Pausa menor entre os tiros.",
+   "pt-br": "Pausa menor entre os tiros.",
+   "uk": "Коротша пауза між пострілами."
+  },
+  "item.upgrade_ricochet.title": {
+   "en": "Ricochet",
+   "de": "Abpraller",
+   "fr": "Ricochet",
+   "it": "Rimbalzo",
+   "es": "Rebote",
+   "pt-pt": "Ricochete",
+   "pt-br": "Ricochete",
+   "uk": "Рикошет"
+  },
+  "item.upgrade_ricochet.desc": {
+   "en": "Projectiles bounce to nearby enemies.",
+   "de": "Geschosse prallen zu Gegnern in der Nähe ab.",
+   "fr": "Les projectiles rebondissent vers les ennemis proches.",
+   "it": "I proiettili rimbalzano sui nemici vicini.",
+   "es": "Los proyectiles rebotan hacia enemigos cercanos.",
+   "pt-pt": "Os projéteis ricocheteiam para inimigos próximos.",
+   "pt-br": "Os projéteis ricocheteiam para inimigos próximos.",
+   "uk": "Снаряди відскакують у ворогів поруч."
+  },
+  "item.upgrade_multishot.title": {
+   "en": "Multishot",
+   "de": "Mehrfachschuss",
+   "fr": "Tir multiple",
+   "it": "Colpo multiplo",
+   "es": "Disparo múltiple",
+   "pt-pt": "Tiro Múltiplo",
+   "pt-br": "Tiro Múltiplo",
+   "uk": "Мультипостріл"
+  },
+  "item.upgrade_multishot.desc": {
+   "en": "Fire several projectiles per shot.",
+   "de": "Mehrere Geschosse pro Schuss.",
+   "fr": "Plusieurs projectiles par tir.",
+   "it": "Più proiettili per colpo.",
+   "es": "Varios proyectiles por disparo.",
+   "pt-pt": "Vários projéteis por tiro.",
+   "pt-br": "Vários projéteis por tiro.",
+   "uk": "Кілька снарядів за один постріл."
+  },
+  "item.upgrade_crit.title": {
+   "en": "Crit damage",
+   "de": "Kritischer Schaden",
+   "fr": "Dégâts critiques",
+   "it": "Danno critico",
+   "es": "Daño crítico",
+   "pt-pt": "Dano Crítico",
+   "pt-br": "Dano Crítico",
+   "uk": "Критична шкода"
+  },
+  "item.upgrade_crit.desc": {
+   "en": "Critical hits deal bigger damage.",
+   "de": "Kritische Treffer verursachen mehr Schaden.",
+   "fr": "Les coups critiques infligent plus de dégâts.",
+   "it": "I colpi critici infliggono più danno.",
+   "es": "Los golpes críticos hacen más daño.",
+   "pt-pt": "Acertos críticos causam mais dano.",
+   "pt-br": "Acertos críticos causam mais dano.",
+   "uk": "Критичні влучання завдають більше шкоди."
+  },
+  "item.upgrade_pellets.title": {
+   "en": "Pellets",
+   "de": "Schrot",
+   "fr": "Plombs",
+   "it": "Pallini",
+   "es": "Perdigones",
+   "pt-pt": "Chumbos",
+   "pt-br": "Chumbinhos",
+   "uk": "Дробини"
+  },
+  "item.upgrade_pellets.desc": {
+   "en": "More pellets in every shot.",
+   "de": "Mehr Schrotkugeln in jedem Schuss.",
+   "fr": "Plus de plombs à chaque tir.",
+   "it": "Più pallini in ogni colpo.",
+   "es": "Más perdigones en cada disparo.",
+   "pt-pt": "Mais chumbos em cada tiro.",
+   "pt-br": "Mais chumbinhos em cada tiro.",
+   "uk": "Більше дробин у кожному пострілі."
+  },
+  "item.upgrade_choke.title": {
+   "en": "Choke",
+   "de": "Choke",
+   "fr": "Choke",
+   "it": "Strozzatore",
+   "es": "Choke",
+   "pt-pt": "Choke",
+   "pt-br": "Choke",
+   "uk": "Чок"
+  },
+  "item.upgrade_choke.desc": {
+   "en": "Tighter spread and longer full-damage range.",
+   "de": "Engere Streuung und größere Reichweite mit vollem Schaden.",
+   "fr": "Dispersion plus serrée et plus longue portée à pleins dégâts.",
+   "it": "Rosata più stretta e maggiore portata a danno pieno.",
+   "es": "Dispersión más cerrada y mayor alcance con daño completo.",
+   "pt-pt": "Dispersão mais fechada e alcance maior com dano total.",
+   "pt-br": "Dispersão mais fechada e alcance maior com dano total.",
+   "uk": "Щільніший розліт і довша дистанція повної шкоди."
+  },
+  "item.upgrade_dual.title": {
+   "en": "Two Revolvers",
+   "de": "Zwei Revolver",
+   "fr": "Deux revolvers",
+   "it": "Due revolver",
+   "es": "Dos revólveres",
+   "pt-pt": "Dois Revólveres",
+   "pt-br": "Dois Revólveres",
+   "uk": "Два револьвери"
+  },
+  "item.upgrade_dual.desc": {
+   "en": "Fire a second revolver: faster shots, less accuracy.",
+   "de": "Feuere einen zweiten Revolver: schnellere Schüsse, weniger Präzision.",
+   "fr": "Tire avec un second revolver : tirs plus rapides, moins de précision.",
+   "it": "Spara con un secondo revolver: colpi più rapidi, meno precisione.",
+   "es": "Dispara con un segundo revólver: disparos más rápidos, menos precisión.",
+   "pt-pt": "Dispara com um segundo revólver: tiros mais rápidos, menos precisão.",
+   "pt-br": "Atire com um segundo revólver: tiros mais rápidos, menos precisão.",
+   "uk": "Другий револьвер: швидші постріли, менша точність."
+  },
+  "item.upgrade_stability.title": {
+   "en": "Stability",
+   "de": "Stabilität",
+   "fr": "Stabilité",
+   "it": "Stabilità",
+   "es": "Estabilidad",
+   "pt-pt": "Estabilidade",
+   "pt-br": "Estabilidade",
+   "uk": "Стабільність"
+  },
+  "item.upgrade_stability.desc": {
+   "en": "Less spread in long bursts.",
+   "de": "Weniger Streuung bei langen Salven.",
+   "fr": "Moins de dispersion en longues rafales.",
+   "it": "Meno dispersione nelle raffiche lunghe.",
+   "es": "Menos dispersión en ráfagas largas.",
+   "pt-pt": "Menos dispersão em rajadas longas.",
+   "pt-br": "Menos dispersão em rajadas longas.",
+   "uk": "Менший розкид у довгих чергах."
+  },
+  "item.upgrade_incendiary.title": {
+   "en": "Incendiary Rounds",
+   "de": "Brandmunition",
+   "fr": "Balles incendiaires",
+   "it": "Proiettili incendiari",
+   "es": "Balas incendiarias",
+   "pt-pt": "Balas Incendiárias",
+   "pt-br": "Balas Incendiárias",
+   "uk": "Запальні набої"
+  },
+  "item.upgrade_incendiary.desc": {
+   "en": "Bullets set enemies on fire.",
+   "de": "Kugeln setzen Gegner in Brand.",
+   "fr": "Les balles enflamment les ennemis.",
+   "it": "I proiettili danno fuoco ai nemici.",
+   "es": "Las balas prenden fuego a los enemigos.",
+   "pt-pt": "As balas pegam fogo aos inimigos.",
+   "pt-br": "As balas põem fogo nos inimigos.",
+   "uk": "Кулі підпалюють ворогів."
+  },
+  "item.upgrade_beam_time.title": {
+   "en": "Beam Time",
+   "de": "Strahldauer",
+   "fr": "Durée du rayon",
+   "it": "Durata del raggio",
+   "es": "Duración del rayo",
+   "pt-pt": "Duração do Raio",
+   "pt-br": "Duração do Raio",
+   "uk": "Тривалість променя"
+  },
+  "item.upgrade_beam_time.desc": {
+   "en": "The beam lasts longer before overheating.",
+   "de": "Der Strahl hält länger bis zur Überhitzung.",
+   "fr": "Le rayon dure plus longtemps avant de surchauffer.",
+   "it": "Il raggio dura di più prima di surriscaldarsi.",
+   "es": "El rayo dura más antes de sobrecalentarse.",
+   "pt-pt": "O raio dura mais antes de sobreaquecer.",
+   "pt-br": "O raio dura mais antes de superaquecer.",
+   "uk": "Промінь довше працює до перегріву."
+  },
+  "item.upgrade_cooldown.title": {
+   "en": "Cooling",
+   "de": "Kühlung",
+   "fr": "Refroidissement",
+   "it": "Raffreddamento",
+   "es": "Enfriamiento",
+   "pt-pt": "Arrefecimento",
+   "pt-br": "Resfriamento",
+   "uk": "Охолодження"
+  },
+  "item.upgrade_cooldown.desc": {
+   "en": "Overheat passes faster.",
+   "de": "Überhitzung vergeht schneller.",
+   "fr": "La surchauffe passe plus vite.",
+   "it": "Il surriscaldamento passa più in fretta.",
+   "es": "El sobrecalentamiento pasa más rápido.",
+   "pt-pt": "O sobreaquecimento passa mais depressa.",
+   "pt-br": "O superaquecimento passa mais rápido.",
+   "uk": "Перегрів минає швидше."
+  },
+  "item.upgrade_plasma.title": {
+   "en": "Plasma Balls",
+   "de": "Plasmakugeln",
+   "fr": "Boules de plasma",
+   "it": "Sfere di plasma",
+   "es": "Bolas de plasma",
+   "pt-pt": "Bolas de Plasma",
+   "pt-br": "Bolas de Plasma",
+   "uk": "Плазмові кулі"
+  },
+  "item.upgrade_plasma.desc": {
+   "en": "While the beam is on, plasma balls explode at the target.",
+   "de": "Solange der Strahl aktiv ist, explodieren Plasmakugeln am Ziel.",
+   "fr": "Tant que le rayon est actif, des boules de plasma explosent sur la cible.",
+   "it": "Finché il raggio è attivo, sfere di plasma esplodono sul bersaglio.",
+   "es": "Mientras el rayo está activo, explotan bolas de plasma en el objetivo.",
+   "pt-pt": "Enquanto o raio está ligado, bolas de plasma explodem no alvo.",
+   "pt-br": "Enquanto o raio está ligado, bolas de plasma explodem no alvo.",
+   "uk": "Поки промінь увімкнено, плазмові кулі вибухають біля цілі."
+  },
+  "item.upgrade_pierce.title": {
+   "en": "Pierce",
+   "de": "Durchschlag",
+   "fr": "Perforation",
+   "it": "Perforazione",
+   "es": "Perforación",
+   "pt-pt": "Perfuração",
+   "pt-br": "Perfuração",
+   "uk": "Пробиття"
+  },
+  "item.upgrade_pierce.desc": {
+   "en": "The beam passes through more enemies.",
+   "de": "Der Strahl durchdringt mehr Gegner.",
+   "fr": "Le rayon traverse plus d'ennemis.",
+   "it": "Il raggio attraversa più nemici.",
+   "es": "El rayo atraviesa a más enemigos.",
+   "pt-pt": "O raio atravessa mais inimigos.",
+   "pt-br": "O raio atravessa mais inimigos.",
+   "uk": "Промінь проходить крізь більше ворогів."
+  },
+  "item.upgrade_burn.title": {
+   "en": "Burning",
+   "de": "Brennen",
+   "fr": "Brûlure",
+   "it": "Ustione",
+   "es": "Quemadura",
+   "pt-pt": "Queimadura",
+   "pt-br": "Queimadura",
+   "uk": "Горіння"
+  },
+  "item.upgrade_burn.desc": {
+   "en": "Stronger fire damage over time.",
+   "de": "Stärkerer Feuerschaden über Zeit.",
+   "fr": "Dégâts de feu sur la durée plus forts.",
+   "it": "Danno da fuoco nel tempo più forte.",
+   "es": "Más daño de fuego con el tiempo.",
+   "pt-pt": "Mais dano de fogo ao longo do tempo.",
+   "pt-br": "Mais dano de fogo ao longo do tempo.",
+   "uk": "Сильніша шкода від вогню з часом."
+  },
+  "item.upgrade_radius.title": {
+   "en": "Fire Radius",
+   "de": "Feuerradius",
+   "fr": "Rayon de feu",
+   "it": "Raggio del fuoco",
+   "es": "Radio de fuego",
+   "pt-pt": "Raio de Fogo",
+   "pt-br": "Raio de Fogo",
+   "uk": "Радіус вогню"
+  },
+  "item.upgrade_radius.desc": {
+   "en": "Fire spreads to nearby enemies.",
+   "de": "Feuer springt auf Gegner in der Nähe über.",
+   "fr": "Le feu se propage aux ennemis proches.",
+   "it": "Il fuoco si propaga ai nemici vicini.",
+   "es": "El fuego se extiende a enemigos cercanos.",
+   "pt-pt": "O fogo espalha-se para inimigos próximos.",
+   "pt-br": "O fogo se espalha para inimigos próximos.",
+   "uk": "Вогонь перекидається на ворогів поруч."
+  },
+  "item.upgrade_targets.title": {
+   "en": "Targets",
+   "de": "Ziele",
+   "fr": "Cibles",
+   "it": "Bersagli",
+   "es": "Objetivos",
+   "pt-pt": "Alvos",
+   "pt-br": "Alvos",
+   "uk": "Цілі"
+  },
+  "item.upgrade_targets.desc": {
+   "en": "Curse several enemies with one stab.",
+   "de": "Verfluche mehrere Gegner mit einem Stich.",
+   "fr": "Maudis plusieurs ennemis d'un seul coup d'aiguille.",
+   "it": "Maledici più nemici con un solo colpo d'ago.",
+   "es": "Maldice a varios enemigos con un solo pinchazo.",
+   "pt-pt": "Amaldiçoa vários inimigos com uma só espetadela.",
+   "pt-br": "Amaldiçoe vários inimigos com uma só espetada.",
+   "uk": "Проклинай кількох ворогів одним уколом."
+  },
+  "item.upgrade_ash.title": {
+   "en": "Ash Curse",
+   "de": "Aschefluch",
+   "fr": "Malédiction des cendres",
+   "it": "Maledizione di cenere",
+   "es": "Maldición de ceniza",
+   "pt-pt": "Maldição das Cinzas",
+   "pt-br": "Maldição das Cinzas",
+   "uk": "Попелясте прокляття"
+  },
+  "item.upgrade_ash.desc": {
+   "en": "Cursed enemies explode in fire when they die.",
+   "de": "Verfluchte Gegner explodieren in Flammen, wenn sie sterben.",
+   "fr": "Les ennemis maudits explosent en flammes à leur mort.",
+   "it": "I nemici maledetti esplodono in fiamme quando muoiono.",
+   "es": "Los enemigos malditos explotan en llamas al morir.",
+   "pt-pt": "Inimigos amaldiçoados explodem em chamas ao morrer.",
+   "pt-br": "Inimigos amaldiçoados explodem em chamas ao morrer.",
+   "uk": "Прокляті вороги вибухають вогнем, коли гинуть."
+  },
+  "item.upgrade_slow.title": {
+   "en": "Stickiness",
+   "de": "Klebrigkeit",
+   "fr": "Viscosité",
+   "it": "Appiccicosità",
+   "es": "Pegajosidad",
+   "pt-pt": "Viscosidade",
+   "pt-br": "Grude",
+   "uk": "Липкість"
+  },
+  "item.upgrade_slow.desc": {
+   "en": "Tar slows enemies more.",
+   "de": "Teer verlangsamt Gegner stärker.",
+   "fr": "Le goudron ralentit davantage les ennemis.",
+   "it": "Il catrame rallenta di più i nemici.",
+   "es": "El alquitrán ralentiza más a los enemigos.",
+   "pt-pt": "O alcatrão abranda mais os inimigos.",
+   "pt-br": "O piche deixa os inimigos mais lentos.",
+   "uk": "Смола сильніше сповільнює ворогів."
+  },
+  "item.upgrade_linger.title": {
+   "en": "Tar Residue",
+   "de": "Teerreste",
+   "fr": "Résidus de goudron",
+   "it": "Residui di catrame",
+   "es": "Restos de alquitrán",
+   "pt-pt": "Resíduos de Alcatrão",
+   "pt-br": "Resto de Piche",
+   "uk": "Залишки смоли"
+  },
+  "item.upgrade_linger.desc": {
+   "en": "Enemies stay slowed longer after leaving the tar.",
+   "de": "Gegner bleiben länger verlangsamt, nachdem sie den Teer verlassen.",
+   "fr": "Les ennemis restent ralentis plus longtemps après avoir quitté le goudron.",
+   "it": "I nemici restano rallentati più a lungo dopo aver lasciato il catrame.",
+   "es": "Los enemigos siguen ralentizados más tiempo al salir del alquitrán.",
+   "pt-pt": "Os inimigos ficam abrandados mais tempo depois de saírem do alcatrão.",
+   "pt-br": "Os inimigos ficam lentos por mais tempo depois de sair do piche.",
+   "uk": "Вороги довше лишаються сповільненими після виходу зі смоли."
+  },
+  "item.upgrade_length.title": {
+   "en": "Longer Pool",
+   "de": "Längere Lache",
+   "fr": "Flaque plus longue",
+   "it": "Pozza più lunga",
+   "es": "Charco más largo",
+   "pt-pt": "Poça Maior",
+   "pt-br": "Poça Maior",
+   "uk": "Довша калюжа"
+  },
+  "item.upgrade_length.desc": {
+   "en": "The tar pool gets longer.",
+   "de": "Die Teerlache wird länger.",
+   "fr": "La flaque de goudron s'allonge.",
+   "it": "La pozza di catrame si allunga.",
+   "es": "El charco de alquitrán se alarga.",
+   "pt-pt": "A poça de alcatrão fica mais comprida.",
+   "pt-br": "A poça de piche fica mais comprida.",
+   "uk": "Калюжа смоли стає довшою."
+  },
+  "item.upgrade_chill_power.title": {
+   "en": "Chill Power",
+   "de": "Kältekraft",
+   "fr": "Puissance du froid",
+   "it": "Potenza del gelo",
+   "es": "Poder del frío",
+   "pt-pt": "Poder do Frio",
+   "pt-br": "Poder do Frio",
+   "uk": "Сила холоду"
+  },
+  "item.upgrade_chill_power.desc": {
+   "en": "Chill builds up faster.",
+   "de": "Kälte baut sich schneller auf.",
+   "fr": "Le froid s'accumule plus vite.",
+   "it": "Il freddo si accumula più in fretta.",
+   "es": "El frío se acumula más rápido.",
+   "pt-pt": "O frio acumula-se mais depressa.",
+   "pt-br": "O frio acumula mais rápido.",
+   "uk": "Холод накопичується швидше."
+  },
+  "item.upgrade_active_time.title": {
+   "en": "Active Time",
+   "de": "Aktivzeit",
+   "fr": "Durée d'activité",
+   "it": "Tempo attivo",
+   "es": "Tiempo activo",
+   "pt-pt": "Tempo Ativo",
+   "pt-br": "Tempo Ativo",
+   "uk": "Час дії"
+  },
+  "item.upgrade_active_time.desc": {
+   "en": "The trap stays active longer.",
+   "de": "Die Falle bleibt länger aktiv.",
+   "fr": "Le piège reste actif plus longtemps.",
+   "it": "La trappola resta attiva più a lungo.",
+   "es": "La trampa permanece activa más tiempo.",
+   "pt-pt": "A armadilha fica ativa por mais tempo.",
+   "pt-br": "A armadilha fica ativa por mais tempo.",
+   "uk": "Пастка довше залишається активною."
+  },
+  "item.upgrade_jet_length.title": {
+   "en": "Jet Length",
+   "de": "Strahllänge",
+   "fr": "Longueur des jets",
+   "it": "Lunghezza del getto",
+   "es": "Longitud del chorro",
+   "pt-pt": "Alcance do Jato",
+   "pt-br": "Alcance do Jato",
+   "uk": "Довжина струменя"
+  },
+  "item.upgrade_jet_length.desc": {
+   "en": "Fire jets reach further.",
+   "de": "Feuerstrahlen reichen weiter.",
+   "fr": "Les jets de feu portent plus loin.",
+   "it": "I getti di fuoco arrivano più lontano.",
+   "es": "Los chorros de fuego llegan más lejos.",
+   "pt-pt": "Os jatos de fogo vão mais longe.",
+   "pt-br": "Os jatos de fogo vão mais longe.",
+   "uk": "Струмені вогню б'ють далі."
+  },
+  "item.upgrade_burn_power.title": {
+   "en": "Burn Power",
+   "de": "Brennkraft",
+   "fr": "Puissance de brûlure",
+   "it": "Potenza del fuoco",
+   "es": "Poder de quemadura",
+   "pt-pt": "Poder de Queima",
+   "pt-br": "Poder de Queima",
+   "uk": "Сила горіння"
+  },
+  "item.upgrade_burn_power.desc": {
+   "en": "Fire burns harder.",
+   "de": "Feuer brennt stärker.",
+   "fr": "Le feu brûle plus fort.",
+   "it": "Il fuoco brucia più forte.",
+   "es": "El fuego quema más fuerte.",
+   "pt-pt": "O fogo queima mais forte.",
+   "pt-br": "O fogo queima mais forte.",
+   "uk": "Вогонь пече сильніше."
+  },
+  "item.upgrade_rear_jets.title": {
+   "en": "Rear Jets",
+   "de": "Heckdüsen",
+   "fr": "Jets arrière",
+   "it": "Getti posteriori",
+   "es": "Chorros traseros",
+   "pt-pt": "Jatos Traseiros",
+   "pt-br": "Jatos Traseiros",
+   "uk": "Задні струмені"
+  },
+  "item.upgrade_rear_jets.desc": {
+   "en": "Adds jets behind the grate.",
+   "de": "Fügt Strahlen hinter dem Rost hinzu.",
+   "fr": "Ajoute des jets derrière la grille.",
+   "it": "Aggiunge getti dietro la griglia.",
+   "es": "Añade chorros detrás de la rejilla.",
+   "pt-pt": "Adiciona jatos atrás da grelha.",
+   "pt-br": "Adiciona jatos atrás da grelha.",
+   "uk": "Додає струмені позаду решітки."
+  },
+  "item.upgrade_jumps.title": {
+   "en": "Chain Length",
+   "de": "Kettenlänge",
+   "fr": "Longueur de chaîne",
+   "it": "Lunghezza della catena",
+   "es": "Longitud de cadena",
+   "pt-pt": "Tamanho da Cadeia",
+   "pt-br": "Tamanho da Cadeia",
+   "uk": "Довжина ланцюга"
+  },
+  "item.upgrade_jumps.desc": {
+   "en": "Lightning jumps to more enemies.",
+   "de": "Der Blitz springt auf mehr Gegner über.",
+   "fr": "L'éclair saute vers plus d'ennemis.",
+   "it": "Il fulmine salta su più nemici.",
+   "es": "El rayo salta a más enemigos.",
+   "pt-pt": "O raio salta para mais inimigos.",
+   "pt-br": "O raio pula para mais inimigos.",
+   "uk": "Блискавка перескакує на більше ворогів."
+  },
+  "item.upgrade_branch.title": {
+   "en": "Branching",
+   "de": "Verzweigung",
+   "fr": "Ramification",
+   "it": "Ramificazione",
+   "es": "Ramificación",
+   "pt-pt": "Ramificação",
+   "pt-br": "Ramificação",
+   "uk": "Розгалуження"
+  },
+  "item.upgrade_branch.desc": {
+   "en": "Lightning splits into branches.",
+   "de": "Der Blitz verzweigt sich.",
+   "fr": "L'éclair se divise en branches.",
+   "it": "Il fulmine si divide in rami.",
+   "es": "El rayo se divide en ramas.",
+   "pt-pt": "O raio divide-se em ramos.",
+   "pt-br": "O raio se divide em galhos.",
+   "uk": "Блискавка розгалужується."
+  },
+  "item.upgrade_poison.title": {
+   "en": "Poison Darts",
+   "de": "Giftpfeile",
+   "fr": "Fléchettes empoisonnées",
+   "it": "Dardi avvelenati",
+   "es": "Dardos venenosos",
+   "pt-pt": "Dardos Venenosos",
+   "pt-br": "Dardos Venenosos",
+   "uk": "Отруйні дротики"
+  },
+  "item.upgrade_poison.desc": {
+   "en": "Darts poison enemies.",
+   "de": "Pfeile vergiften Gegner.",
+   "fr": "Les fléchettes empoisonnent les ennemis.",
+   "it": "I dardi avvelenano i nemici.",
+   "es": "Los dardos envenenan a los enemigos.",
+   "pt-pt": "Os dardos envenenam os inimigos.",
+   "pt-br": "Os dardos envenenam os inimigos.",
+   "uk": "Дротики отруюють ворогів."
+  },
+  "item.upgrade_vortex.title": {
+   "en": "Vortex",
+   "de": "Wirbel",
+   "fr": "Vortex",
+   "it": "Vortice",
+   "es": "Vórtice",
+   "pt-pt": "Vórtice",
+   "pt-br": "Vórtice",
+   "uk": "Вир"
+  },
+  "item.upgrade_vortex.desc": {
+   "en": "Unique upgrade: the fan pulls enemies into a whirlwind.",
+   "de": "Einzigartiges Upgrade: Der Ventilator zieht Gegner in einen Wirbelsturm.",
+   "fr": "Amélioration unique : le ventilateur aspire les ennemis dans un tourbillon.",
+   "it": "Potenziamento unico: la ventola risucchia i nemici in un turbine.",
+   "es": "Mejora única: el ventilador arrastra a los enemigos a un remolino.",
+   "pt-pt": "Melhoria única: o ventilador puxa os inimigos para um remoinho.",
+   "pt-br": "Melhoria única: o ventilador puxa os inimigos para um redemoinho.",
+   "uk": "Унікальне покращення: вентилятор затягує ворогів у вихор."
+  },
+  "item.upgrade_trap_radius.title": {
+   "en": "Radius",
+   "de": "Radius",
+   "fr": "Rayon",
+   "it": "Raggio",
+   "es": "Radio",
+   "pt-pt": "Raio",
+   "pt-br": "Raio",
+   "uk": "Радіус"
+  },
+  "item.upgrade_trap_radius.desc": {
+   "en": "The trap's effect zone gets wider.",
+   "de": "Die Wirkungszone der Falle wird größer.",
+   "fr": "La zone d'effet du piège s'élargit.",
+   "it": "L'area d'effetto della trappola si allarga.",
+   "es": "La zona de efecto de la trampa se amplía.",
+   "pt-pt": "A área de efeito da armadilha fica maior.",
+   "pt-br": "A área de efeito da armadilha fica maior.",
+   "uk": "Зона дії пастки стає ширшою."
+  }
+ }
+}

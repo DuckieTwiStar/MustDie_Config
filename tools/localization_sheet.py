@@ -6,6 +6,9 @@
   python3 tools/localization_sheet.py export OUT.json  # localization/strings.csv -> рядки листа
   python3 tools/localization_sheet.py check            # перевірка CSV + export -> import без втрат
 
+Імпорт пише і localization/strings.csv, і runtime-файли lobby/localization.json та rooms/shared/localization.json
+(їх читає гра через ConfigService; копії ідентичні, validate.py це перевіряє).
+
 IN.json: відповідь get_values ({"values": [[...]]}) або просто [[...]]; xlsx-експорт можна перегнати в той самий список.
 
 Лист Strings: Key | Context | en | de | fr | it | es | pt-pt | pt-br | uk (перший рядок = заголовки).
@@ -28,6 +31,7 @@ from collections import Counter
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 CSV_PATH = os.path.join(ROOT, "localization", "strings.csv")
+JSON_PATHS = [os.path.join(ROOT, "lobby", "localization.json"), os.path.join(ROOT, "rooms", "shared", "localization.json")]
 SOURCE = "en"
 LOCALES = ["de", "fr", "it", "es", "pt-pt", "pt-br", "uk"]
 SHEET_HEADER = ["Key", "Context", SOURCE] + LOCALES
@@ -59,6 +63,20 @@ def write_csv(entries, path=CSV_PATH):
     os.makedirs(os.path.dirname(path), exist_ok=True)
     with open(path, "w", encoding="utf-8", newline="") as fh:
         fh.write(buf.getvalue())
+
+
+def build_runtime_json(entries):
+    """Текст runtime-файлу для гри: {"languages": [...], "strings": {ключ: {мова: текст}}}. Детермінований (без дат)."""
+    data = {"languages": [SOURCE] + LOCALES,
+            "strings": {e["key"]: {loc: e[loc] for loc in [SOURCE] + LOCALES} for e in entries}}
+    return json.dumps(data, ensure_ascii=False, indent=1) + "\n"
+
+
+def write_runtime_json(entries):
+    text = build_runtime_json(entries)
+    for path in JSON_PATHS:
+        with open(path, "w", encoding="utf-8", newline="") as fh:
+            fh.write(text)
 
 
 def sheet_to_entries(rows):
@@ -129,7 +147,8 @@ def main(argv):
             print(f"{len(errs)} помилок, CSV не записано")
             return 1
         write_csv(entries)
-        print(f"OK: {len(entries)} рядків -> {os.path.relpath(CSV_PATH, ROOT)}")
+        write_runtime_json(entries)
+        print(f"OK: {len(entries)} рядків -> {os.path.relpath(CSV_PATH, ROOT)} і {len(JSON_PATHS)} копії localization.json")
         return 0
     entries = read_csv()
     if cmd == "export":
@@ -149,6 +168,15 @@ def main(argv):
     with open(CSV_PATH, encoding="utf-8", newline="") as fh:
         if fh.read() != buf.getvalue():
             errs.append("strings.csv не в канонічному вигляді (перезапишіть через import)")
+    expected = build_runtime_json(entries)
+    for path in JSON_PATHS:
+        rel = os.path.relpath(path, ROOT)
+        if not os.path.exists(path):
+            errs.append(f"{rel}: немає файлу (запустіть import)")
+        else:
+            with open(path, encoding="utf-8", newline="") as fh:
+                if fh.read() != expected:
+                    errs.append(f"{rel}: не збігається зі strings.csv (запустіть import)")
     for e in errs:
         print("ПОМИЛКА", e)
     print("OK" if not errs else f"{len(errs)} помилок", f"({len(entries)} рядків, {len(LOCALES)} мов + {SOURCE})")
