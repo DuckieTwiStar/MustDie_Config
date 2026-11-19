@@ -285,3 +285,6 @@ lobby.portal.starting,Starting...,Portal button/label while the group is startin
 lobby.portal.bot_name,Bot,Portal slot: bot name,,Bot,Bot,Bot,Bot,Bot,Bot,Бот
 lobby.leaderboard.you,You,Leaderboard: own name fallback,,Du,Toi,Tu,Tú,Tu,Você,Ти
 lobby.leaderboard.na,N/A,Leaderboard: no rank/score yet,,k. A.,N/D,N/D,N/D,N/D,N/D,Н/Д
+lobby.shop.owned,Owned,Shop: price button of an item the player already owns,,Im Besitz,Possédé,Posseduto,Adquirido,Adquirido,Adquirido,Куплено
+lobby.leaderboard.weekly,Weekly,Leaderboard board title (map attribute ObjectText = Weekly),,Wöchentlich,Hebdomadaire,Settimanale,Semanal,Semanal,Semanal,Тижневий
+lobby.leaderboard.all_time,All time,Leaderboard board title (map attribute ObjectText = All time),,Gesamt,Tous temps,Di sempre,Histórico,De sempre,Todos os tempos,За весь час

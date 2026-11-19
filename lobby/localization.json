@@ -2709,6 +2709,36 @@
    "pt-pt": "N/D",
    "pt-br": "N/D",
    "uk": "Н/Д"
+  },
+  "lobby.shop.owned": {
+   "en": "Owned",
+   "de": "Im Besitz",
+   "fr": "Possédé",
+   "it": "Posseduto",
+   "es": "Adquirido",
+   "pt-pt": "Adquirido",
+   "pt-br": "Adquirido",
+   "uk": "Куплено"
+  },
+  "lobby.leaderboard.weekly": {
+   "en": "Weekly",
+   "de": "Wöchentlich",
+   "fr": "Hebdomadaire",
+   "it": "Settimanale",
+   "es": "Semanal",
+   "pt-pt": "Semanal",
+   "pt-br": "Semanal",
+   "uk": "Тижневий"
+  },
+  "lobby.leaderboard.all_time": {
+   "en": "All time",
+   "de": "Gesamt",
+   "fr": "Tous temps",
+   "it": "Di sempre",
+   "es": "Histórico",
+   "pt-pt": "De sempre",
+   "pt-br": "Todos os tempos",
+   "uk": "За весь час"
   }
  }
 }
