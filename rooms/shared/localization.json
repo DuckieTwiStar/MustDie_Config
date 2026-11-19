@@ -2849,6 +2849,466 @@
    "pt-pt": "Presente da comunidade",
    "pt-br": "Presente da comunidade",
    "uk": "Подарунок спільноти"
+  },
+  "lobby.upgrade.weapon.damage.desc": {
+   "en": "Increase damage +{delta}",
+   "de": "Schaden erhöhen +{delta}",
+   "fr": "Augmente les dégâts +{delta}",
+   "it": "Aumenta i danni +{delta}",
+   "es": "Aumenta el daño +{delta}",
+   "pt-pt": "Aumenta o dano +{delta}",
+   "pt-br": "Aumenta o dano +{delta}",
+   "uk": "Більше шкоди +{delta}"
+  },
+  "lobby.upgrade.weapon.attack_interval.desc": {
+   "en": "Shoot faster: {new} s between shots",
+   "de": "Schneller schießen: {new} s zwischen Schüssen",
+   "fr": "Tir plus rapide : {new} s entre les tirs",
+   "it": "Spara più veloce: {new} s tra i colpi",
+   "es": "Dispara más rápido: {new} s entre disparos",
+   "pt-pt": "Dispara mais rápido: {new} s entre tiros",
+   "pt-br": "Atira mais rápido: {new} s entre tiros",
+   "uk": "Швидша стрільба: {new} с між пострілами"
+  },
+  "lobby.upgrade.weapon.range.desc": {
+   "en": "Range {new}",
+   "de": "Reichweite {new}",
+   "fr": "Portée {new}",
+   "it": "Gittata {new}",
+   "es": "Alcance {new}",
+   "pt-pt": "Alcance {new}",
+   "pt-br": "Alcance {new}",
+   "uk": "Дальність {new}"
+  },
+  "lobby.upgrade.weapon.projectile_speed.desc": {
+   "en": "Projectile speed {new}",
+   "de": "Projektilgeschwindigkeit {new}",
+   "fr": "Vitesse des projectiles {new}",
+   "it": "Velocità dei proiettili {new}",
+   "es": "Velocidad del proyectil {new}",
+   "pt-pt": "Velocidade do projétil {new}",
+   "pt-br": "Velocidade do projétil {new}",
+   "uk": "Швидкість снаряда {new}"
+  },
+  "lobby.upgrade.weapon.ricochet.desc": {
+   "en": "Ricochets: {new} bounces",
+   "de": "Abpraller: {new}",
+   "fr": "Ricochets : {new} rebonds",
+   "it": "Rimbalzi: {new}",
+   "es": "Rebotes: {new}",
+   "pt-pt": "Ricochetes: {new}",
+   "pt-br": "Ricochetes: {new}",
+   "uk": "Рикошети: {new}"
+  },
+  "lobby.upgrade.weapon.multishot.desc": {
+   "en": "+{delta} extra projectile per shot",
+   "de": "+{delta} zusätzliches Projektil pro Schuss",
+   "fr": "+{delta} projectile supplémentaire par tir",
+   "it": "+{delta} proiettile extra per colpo",
+   "es": "+{delta} proyectil extra por disparo",
+   "pt-pt": "+{delta} projétil extra por tiro",
+   "pt-br": "+{delta} projétil extra por tiro",
+   "uk": "+{delta} додатковий снаряд за постріл"
+  },
+  "lobby.upgrade.weapon.crit_damage.desc": {
+   "en": "Crit damage x{new}",
+   "de": "Kritischer Schaden x{new}",
+   "fr": "Dégâts critiques x{new}",
+   "it": "Danni critici x{new}",
+   "es": "Daño crítico x{new}",
+   "pt-pt": "Dano crítico x{new}",
+   "pt-br": "Dano crítico x{new}",
+   "uk": "Критична шкода x{new}"
+  },
+  "lobby.upgrade.weapon.crit_chance.desc": {
+   "en": "Crit chance {new}%",
+   "de": "Krit-Chance {new}%",
+   "fr": "Chance de critique {new}%",
+   "it": "Probabilità di critico {new}%",
+   "es": "Probabilidad de crítico {new}%",
+   "pt-pt": "Probabilidade de crítico {new}%",
+   "pt-br": "Chance de crítico {new}%",
+   "uk": "Шанс крита {new}%"
+  },
+  "lobby.upgrade.weapon.pellets.desc": {
+   "en": "+{delta} pellets per shot",
+   "de": "+{delta} Schrotkugeln pro Schuss",
+   "fr": "+{delta} plombs par tir",
+   "it": "+{delta} pallini per colpo",
+   "es": "+{delta} perdigones por disparo",
+   "pt-pt": "+{delta} chumbos por tiro",
+   "pt-br": "+{delta} chumbinhos por tiro",
+   "uk": "+{delta} дробин за постріл"
+  },
+  "lobby.upgrade.weapon.choke.desc": {
+   "en": "Tighter spread: {new}°, longer full-damage range",
+   "de": "Engere Streuung: {new}°, größere Reichweite mit vollem Schaden",
+   "fr": "Dispersion réduite : {new}°, portée à pleins dégâts accrue",
+   "it": "Rosata più stretta: {new}°, gittata a danno pieno più lunga",
+   "es": "Dispersión más cerrada: {new}°, más alcance con daño completo",
+   "pt-pt": "Dispersão mais apertada: {new}°, maior alcance com dano total",
+   "pt-br": "Dispersão mais fechada: {new}°, maior alcance com dano total",
+   "uk": "Вужчий розліт: {new}°, довша дистанція повної шкоди"
+  },
+  "lobby.upgrade.weapon.dual.desc": {
+   "en": "Second revolver: faster fire, a bit less accurate",
+   "de": "Zweiter Revolver: schnelleres Feuer, etwas ungenauer",
+   "fr": "Second revolver : tir plus rapide, un peu moins précis",
+   "it": "Secondo revolver: fuoco più rapido, un po' meno preciso",
+   "es": "Segundo revólver: dispara más rápido, algo menos preciso",
+   "pt-pt": "Segundo revólver: dispara mais rápido, um pouco menos preciso",
+   "pt-br": "Segundo revólver: atira mais rápido, um pouco menos preciso",
+   "uk": "Другий револьвер: швидший вогонь, трохи менша точність"
+  },
+  "lobby.upgrade.weapon.stability.desc": {
+   "en": "Max spread {new}° in long bursts",
+   "de": "Max. Streuung {new}° bei langen Salven",
+   "fr": "Dispersion max {new}° en longues rafales",
+   "it": "Dispersione max {new}° nelle raffiche lunghe",
+   "es": "Dispersión máx. {new}° en ráfagas largas",
+   "pt-pt": "Dispersão máx. {new}° em rajadas longas",
+   "pt-br": "Dispersão máx. {new}° em rajadas longas",
+   "uk": "Макс. розкид {new}° у довгих чергах"
+  },
+  "lobby.upgrade.weapon.incendiary.desc": {
+   "en": "Bullets set on fire: {new}/s",
+   "de": "Kugeln setzen in Brand: {new}/s",
+   "fr": "Les balles enflamment : {new}/s",
+   "it": "I proiettili incendiano: {new}/s",
+   "es": "Las balas incendian: {new}/s",
+   "pt-pt": "As balas incendeiam: {new}/s",
+   "pt-br": "As balas incendeiam: {new}/s",
+   "uk": "Кулі підпалюють: {new}/с"
+  },
+  "lobby.upgrade.weapon.beam_time.desc": {
+   "en": "Beam lasts {new} s before overheating",
+   "de": "Strahl hält {new} s bis zur Überhitzung",
+   "fr": "Le rayon dure {new} s avant surchauffe",
+   "it": "Il raggio dura {new} s prima di surriscaldarsi",
+   "es": "El rayo dura {new} s antes de sobrecalentarse",
+   "pt-pt": "O raio dura {new} s antes de sobreaquecer",
+   "pt-br": "O raio dura {new} s antes de superaquecer",
+   "uk": "Промінь працює {new} с до перегріву"
+  },
+  "lobby.upgrade.weapon.cooldown.desc": {
+   "en": "Cools down in {new} s",
+   "de": "Kühlt in {new} s ab",
+   "fr": "Refroidit en {new} s",
+   "it": "Si raffredda in {new} s",
+   "es": "Se enfría en {new} s",
+   "pt-pt": "Arrefece em {new} s",
+   "pt-br": "Esfria em {new} s",
+   "uk": "Охолоджується за {new} с"
+  },
+  "lobby.upgrade.weapon.plasma.desc": {
+   "en": "Plasma ball explodes for {new}",
+   "de": "Plasmakugel explodiert für {new}",
+   "fr": "La boule de plasma explose pour {new}",
+   "it": "La sfera di plasma esplode per {new}",
+   "es": "La bola de plasma explota por {new}",
+   "pt-pt": "A bola de plasma explode com {new}",
+   "pt-br": "A bola de plasma explode com {new}",
+   "uk": "Плазмова куля вибухає на {new}"
+  },
+  "lobby.upgrade.weapon.pierce.desc": {
+   "en": "Passes through +{delta} enemies",
+   "de": "Durchdringt +{delta} Gegner",
+   "fr": "Traverse +{delta} ennemis",
+   "it": "Attraversa +{delta} nemici",
+   "es": "Atraviesa +{delta} enemigos",
+   "pt-pt": "Atravessa +{delta} inimigos",
+   "pt-br": "Atravessa +{delta} inimigos",
+   "uk": "Пробиває ще +{delta} ворогів"
+  },
+  "lobby.upgrade.weapon.burn.desc": {
+   "en": "Burning {new}/s",
+   "de": "Brennen {new}/s",
+   "fr": "Brûlure {new}/s",
+   "it": "Bruciatura {new}/s",
+   "es": "Quemadura {new}/s",
+   "pt-pt": "Queimadura {new}/s",
+   "pt-br": "Queimadura {new}/s",
+   "uk": "Горіння {new}/с"
+  },
+  "lobby.upgrade.weapon.radius.desc": {
+   "en": "Fire spreads to enemies within {new}",
+   "de": "Feuer greift auf Gegner im Umkreis von {new} über",
+   "fr": "Le feu se propage aux ennemis à {new}",
+   "it": "Il fuoco si propaga ai nemici entro {new}",
+   "es": "El fuego se extiende a enemigos a {new}",
+   "pt-pt": "O fogo alastra a inimigos até {new}",
+   "pt-br": "O fogo se espalha para inimigos até {new}",
+   "uk": "Вогонь перекидається на ворогів у радіусі {new}"
+  },
+  "lobby.upgrade.weapon.targets.desc": {
+   "en": "Curse {new} enemies at once",
+   "de": "Verfluche {new} Gegner auf einmal",
+   "fr": "Maudit {new} ennemis à la fois",
+   "it": "Maledici {new} nemici alla volta",
+   "es": "Maldice a {new} enemigos a la vez",
+   "pt-pt": "Amaldiçoa {new} inimigos de uma vez",
+   "pt-br": "Amaldiçoa {new} inimigos de uma vez",
+   "uk": "Проклинає {new} ворогів одразу"
+  },
+  "lobby.upgrade.weapon.ash.desc": {
+   "en": "Cursed enemies explode on death for {new}",
+   "de": "Verfluchte Gegner explodieren beim Tod für {new}",
+   "fr": "Les ennemis maudits explosent à leur mort pour {new}",
+   "it": "I nemici maledetti esplodono alla morte per {new}",
+   "es": "Los enemigos malditos explotan al morir por {new}",
+   "pt-pt": "Inimigos amaldiçoados explodem ao morrer com {new}",
+   "pt-br": "Inimigos amaldiçoados explodem ao morrer com {new}",
+   "uk": "Прокляті вороги вибухають після смерті на {new}"
+  },
+  "lobby.upgrade.weapon.magazine.desc": {
+   "en": "Magazine {new} rounds",
+   "de": "Magazin {new} Schuss",
+   "fr": "Chargeur de {new} balles",
+   "it": "Caricatore da {new} colpi",
+   "es": "Cargador de {new} balas",
+   "pt-pt": "Carregador de {new} balas",
+   "pt-br": "Pente de {new} balas",
+   "uk": "Магазин на {new} набоїв"
+  },
+  "lobby.upgrade.weapon.reload_time.desc": {
+   "en": "Reload in {new} s",
+   "de": "Nachladen in {new} s",
+   "fr": "Rechargement en {new} s",
+   "it": "Ricarica in {new} s",
+   "es": "Recarga en {new} s",
+   "pt-pt": "Recarrega em {new} s",
+   "pt-br": "Recarrega em {new} s",
+   "uk": "Перезарядка за {new} с"
+  },
+  "lobby.upgrade.trap.damage.desc": {
+   "en": "Hit harder: +{delta} damage",
+   "de": "Härter zuschlagen: +{delta} Schaden",
+   "fr": "Frappe plus fort : +{delta} dégâts",
+   "it": "Colpisce più forte: +{delta} danni",
+   "es": "Golpea más fuerte: +{delta} de daño",
+   "pt-pt": "Atinge com mais força: +{delta} de dano",
+   "pt-br": "Acerta mais forte: +{delta} de dano",
+   "uk": "Б'є сильніше: +{delta} шкоди"
+  },
+  "lobby.upgrade.trap.cooldown.desc": {
+   "en": "Recharges faster: {new} s",
+   "de": "Lädt schneller auf: {new} s",
+   "fr": "Se recharge plus vite : {new} s",
+   "it": "Si ricarica più in fretta: {new} s",
+   "es": "Se recarga más rápido: {new} s",
+   "pt-pt": "Recarrega mais depressa: {new} s",
+   "pt-br": "Recarrega mais rápido: {new} s",
+   "uk": "Швидше перезаряджається: {new} с"
+  },
+  "lobby.upgrade.trap.fire_interval.desc": {
+   "en": "Shoots faster: {new} s between shots",
+   "de": "Schießt schneller: {new} s zwischen Schüssen",
+   "fr": "Tire plus vite : {new} s entre les tirs",
+   "it": "Spara più veloce: {new} s tra i colpi",
+   "es": "Dispara más rápido: {new} s entre disparos",
+   "pt-pt": "Dispara mais rápido: {new} s entre tiros",
+   "pt-br": "Atira mais rápido: {new} s entre tiros",
+   "uk": "Стріляє швидше: {new} с між пострілами"
+  },
+  "lobby.upgrade.trap.hold.desc": {
+   "en": "Holds an enemy for {new} s",
+   "de": "Hält einen Gegner {new} s fest",
+   "fr": "Retient un ennemi {new} s",
+   "it": "Trattiene un nemico per {new} s",
+   "es": "Retiene a un enemigo {new} s",
+   "pt-pt": "Prende um inimigo durante {new} s",
+   "pt-br": "Prende um inimigo por {new} s",
+   "uk": "Тримає ворога {new} с"
+  },
+  "lobby.upgrade.trap.slow.desc": {
+   "en": "Enemies move at {new}x speed in the tar",
+   "de": "Gegner bewegen sich im Teer mit {new}x Tempo",
+   "fr": "Les ennemis avancent à {new}x de vitesse dans le goudron",
+   "it": "I nemici si muovono a velocità {new}x nel catrame",
+   "es": "Los enemigos se mueven a {new}x de velocidad en el alquitrán",
+   "pt-pt": "Os inimigos movem-se a {new}x de velocidade no alcatrão",
+   "pt-br": "Os inimigos se movem a {new}x de velocidade no piche",
+   "uk": "Вороги рухаються зі швидкістю {new}x у смолі"
+  },
+  "lobby.upgrade.trap.linger.desc": {
+   "en": "Slow lingers {new} s after leaving the tar",
+   "de": "Verlangsamung hält {new} s nach dem Teer an",
+   "fr": "Le ralentissement dure {new} s après le goudron",
+   "it": "Il rallentamento dura {new} s dopo il catrame",
+   "es": "La ralentización dura {new} s tras salir del alquitrán",
+   "pt-pt": "O abrandamento dura {new} s depois de sair do alcatrão",
+   "pt-br": "A lentidão dura {new} s depois de sair do piche",
+   "uk": "Сповільнення триває {new} с після виходу зі смоли"
+  },
+  "lobby.upgrade.trap.length.desc": {
+   "en": "The pool grows to {new} cells long",
+   "de": "Die Lache wird {new} Felder lang",
+   "fr": "La flaque s'étend sur {new} cases",
+   "it": "La pozza si allunga a {new} caselle",
+   "es": "El charco crece hasta {new} casillas",
+   "pt-pt": "A poça cresce até {new} células",
+   "pt-br": "A poça cresce até {new} células",
+   "uk": "Калюжа росте до {new} клітинок"
+  },
+  "lobby.upgrade.trap.radius.desc": {
+   "en": "Effect radius grows to {new} studs",
+   "de": "Wirkungsradius wächst auf {new} Studs",
+   "fr": "Le rayon d'effet passe à {new} studs",
+   "it": "Il raggio d'effetto sale a {new} stud",
+   "es": "El radio de efecto crece a {new} studs",
+   "pt-pt": "O raio de efeito cresce para {new} studs",
+   "pt-br": "O raio de efeito cresce para {new} studs",
+   "uk": "Радіус дії росте до {new} стадів"
+  },
+  "lobby.upgrade.trap.chill_power.desc": {
+   "en": "Each pulse adds {new} chill stacks",
+   "de": "Jeder Impuls fügt {new} Kältestapel hinzu",
+   "fr": "Chaque impulsion ajoute {new} cumuls de froid",
+   "it": "Ogni impulso aggiunge {new} accumuli di gelo",
+   "es": "Cada pulso añade {new} acumulaciones de frío",
+   "pt-pt": "Cada pulso adiciona {new} acumulações de frio",
+   "pt-br": "Cada pulso adiciona {new} acúmulos de frio",
+   "uk": "Кожен імпульс додає {new} стаків холоду"
+  },
+  "lobby.upgrade.trap.active_time.desc": {
+   "en": "Stays active for {new} s",
+   "de": "Bleibt {new} s aktiv",
+   "fr": "Reste actif {new} s",
+   "it": "Resta attiva per {new} s",
+   "es": "Permanece activa {new} s",
+   "pt-pt": "Fica ativa durante {new} s",
+   "pt-br": "Fica ativa por {new} s",
+   "uk": "Працює {new} с"
+  },
+  "lobby.upgrade.trap.jet_length.desc": {
+   "en": "Jet reaches {new} cells",
+   "de": "Strahl reicht {new} Felder weit",
+   "fr": "Le jet atteint {new} cases",
+   "it": "Il getto arriva a {new} caselle",
+   "es": "El chorro alcanza {new} casillas",
+   "pt-pt": "O jato alcança {new} células",
+   "pt-br": "O jato alcança {new} células",
+   "uk": "Струмінь сягає {new} клітинок"
+  },
+  "lobby.upgrade.trap.burn_power.desc": {
+   "en": "Burning deals {new} damage per second",
+   "de": "Brennen verursacht {new} Schaden pro Sekunde",
+   "fr": "La brûlure inflige {new} dégâts par seconde",
+   "it": "La bruciatura infligge {new} danni al secondo",
+   "es": "La quemadura causa {new} de daño por segundo",
+   "pt-pt": "A queimadura causa {new} de dano por segundo",
+   "pt-br": "A queimadura causa {new} de dano por segundo",
+   "uk": "Горіння завдає {new} шкоди за секунду"
+  },
+  "lobby.upgrade.trap.rear_jets.desc": {
+   "en": "Also fires behind the grate",
+   "de": "Feuert auch hinter dem Gitter",
+   "fr": "Tire aussi derrière la grille",
+   "it": "Spara anche dietro la griglia",
+   "es": "También dispara detrás de la rejilla",
+   "pt-pt": "Também dispara atrás da grelha",
+   "pt-br": "Também dispara atrás da grade",
+   "uk": "Б'є також позаду решітки"
+  },
+  "lobby.upgrade.trap.jumps.desc": {
+   "en": "Lightning jumps {new} times",
+   "de": "Blitz springt {new}-mal",
+   "fr": "L'éclair rebondit {new} fois",
+   "it": "Il fulmine salta {new} volte",
+   "es": "El rayo salta {new} veces",
+   "pt-pt": "O relâmpago salta {new} vezes",
+   "pt-br": "O raio salta {new} vezes",
+   "uk": "Блискавка стрибає {new} разів"
+  },
+  "lobby.upgrade.trap.branch.desc": {
+   "en": "Each target arcs to {new} more enemies",
+   "de": "Jedes Ziel springt auf {new} weitere Gegner über",
+   "fr": "Chaque cible propage l'arc à {new} ennemis de plus",
+   "it": "Ogni bersaglio si propaga ad altri {new} nemici",
+   "es": "Cada objetivo salta a {new} enemigos más",
+   "pt-pt": "Cada alvo propaga-se a mais {new} inimigos",
+   "pt-br": "Cada alvo se propaga para mais {new} inimigos",
+   "uk": "Від кожної цілі розряд б'є ще {new} ворогів"
+  },
+  "lobby.upgrade.trap.poison.desc": {
+   "en": "Darts are coated with poison: stacks build up and weaken enemies",
+   "de": "Pfeile sind vergiftet: Stapel bauen sich auf und schwächen Gegner",
+   "fr": "Fléchettes empoisonnées : les cumuls affaiblissent les ennemis",
+   "it": "Dardi avvelenati: gli accumuli indeboliscono i nemici",
+   "es": "Dardos envenenados: las acumulaciones debilitan a los enemigos",
+   "pt-pt": "Dardos envenenados: as acumulações enfraquecem os inimigos",
+   "pt-br": "Dardos envenenados: os acúmulos enfraquecem os inimigos",
+   "uk": "Дротики отруєні: стаки накопичуються й послаблюють ворогів"
+  },
+  "lobby.upgrade.trap.vortex.desc": {
+   "en": "Once per burst each enemy in range is caught in a vortex, spun around and thrown into another lane",
+   "de": "Einmal pro Stoß wird jeder Gegner in Reichweite von einem Wirbel erfasst, herumgewirbelt und auf eine andere Bahn geschleudert",
+   "fr": "Une fois par rafale, chaque ennemi à portée est pris dans un tourbillon, tourné et projeté dans un autre couloir",
+   "it": "Una volta per raffica, ogni nemico nel raggio viene preso da un vortice, fatto girare e scagliato in un'altra corsia",
+   "es": "Una vez por ráfaga, cada enemigo en rango queda atrapado en un remolino, gira y sale despedido a otro carril",
+   "pt-pt": "Uma vez por rajada, cada inimigo ao alcance é apanhado num vórtice, gira e é atirado para outra via",
+   "pt-br": "Uma vez por rajada, cada inimigo no alcance é pego por um vórtice, gira e é jogado em outra pista",
+   "uk": "Раз за порив кожного ворога поруч затягує вихор, крутить і викидає на іншу доріжку"
+  },
+  "lobby.upgrade.weapon.range.name": {
+   "en": "Range",
+   "de": "Reichweite",
+   "fr": "Portée",
+   "it": "Gittata",
+   "es": "Alcance",
+   "pt-pt": "Alcance",
+   "pt-br": "Alcance",
+   "uk": "Дальність"
+  },
+  "lobby.upgrade.weapon.projectile_speed.name": {
+   "en": "Projectile speed",
+   "de": "Projektiltempo",
+   "fr": "Vitesse des projectiles",
+   "it": "Velocità dei proiettili",
+   "es": "Velocidad del proyectil",
+   "pt-pt": "Velocidade do projétil",
+   "pt-br": "Velocidade do projétil",
+   "uk": "Швидкість снаряда"
+  },
+  "lobby.upgrade.weapon.crit_chance.name": {
+   "en": "Crit chance",
+   "de": "Krit-Chance",
+   "fr": "Chance de critique",
+   "it": "Probabilità di critico",
+   "es": "Probabilidad de crítico",
+   "pt-pt": "Probabilidade de crítico",
+   "pt-br": "Chance de crítico",
+   "uk": "Шанс крита"
+  },
+  "lobby.upgrade.weapon.magazine.name": {
+   "en": "Magazine",
+   "de": "Magazin",
+   "fr": "Chargeur",
+   "it": "Caricatore",
+   "es": "Cargador",
+   "pt-pt": "Carregador",
+   "pt-br": "Pente",
+   "uk": "Магазин"
+  },
+  "lobby.upgrade.weapon.reload_time.name": {
+   "en": "Reload",
+   "de": "Nachladen",
+   "fr": "Rechargement",
+   "it": "Ricarica",
+   "es": "Recarga",
+   "pt-pt": "Recarga",
+   "pt-br": "Recarga",
+   "uk": "Перезарядка"
+  },
+  "lobby.upgrade.trap.hold.name": {
+   "en": "Hold time",
+   "de": "Haltezeit",
+   "fr": "Durée de prise",
+   "it": "Tempo di presa",
+   "es": "Tiempo de retención",
+   "pt-pt": "Tempo de retenção",
+   "pt-br": "Tempo de retenção",
+   "uk": "Час утримання"
   }
  }
 }

@@ -21,7 +21,9 @@ strings.csv: формат LocalizationTable Roblox (Key, Source, Context, Exampl
 - Key унікальний, формат a.b.c (малі літери, цифри, _), не порожній;
 - є всі мови; порожній переклад = помилка (гра покаже en, але в релізі такого бути не має);
 - плейсхолдери {x}, теги RichText <b>..</b> і кількість переносів \\n у перекладі такі самі, як в en;
-- клітинки без пробілів на краях.
+- клітинки без пробілів на краях;
+- немає значень помилок Google Sheets (#ERROR!, #NAME? ...): текст, що починається з + = -, таблиця вважає формулою,
+  такі клітинки вводимо з апострофом ('+{delta} ...).
 """
 import csv
 import io
@@ -42,6 +44,7 @@ CSV_HEADER = ["Key", "Source", "Context", "Example"] + LOCALES
 KEY_RE = re.compile(r"^[a-z0-9_]+(\.[a-z0-9_]+)+$")
 PH_RE = re.compile(r"\{[a-z_]+\}")
 TAG_RE = re.compile(r"</?[a-z]+>")
+SHEET_ERROR_RE = re.compile(r"^#(ERROR!|NAME\?|VALUE!|REF!|DIV/0!|N/A|NUM!|NULL!)")
 
 
 def read_csv(path=CSV_PATH):
@@ -143,6 +146,8 @@ def validate(entries):
             t = e[loc]
             if t != t.strip():
                 errs.append(f"{k} [{loc}]: пробіли на краях")
+            if SHEET_ERROR_RE.match(t):
+                errs.append(f"{k} [{loc}]: у клітинці помилка таблиці {t!r} (текст з + = - на початку вводимо з апострофом)")
             if loc == SOURCE:
                 continue
             if not t:

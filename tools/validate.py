@@ -22,7 +22,9 @@
 - каталог items.json: кожна зброя й пастка має запис (і навпаки), icon це rbxassetid://<число> або порожньо,
   плейсхолдери {x} в description мають значення в values, reward.id у магазинах лобі є в каталозі;
 - тексти-ключі в конфігах лобі (title, description тощо = "lobby.x.y", "item.x.title"...) є в localization/strings.csv,
-  а плейсхолдери такого тексту мають значення: titleParams поруч (портали) або values (магазини); {n} у нагородах = amount.
+  а плейсхолдери такого тексту мають значення: titleParams поруч (портали) або values (магазини); {n} у нагородах = amount;
+- кожен upgrade_types (weapon_upgrades, trap_upgrades) має ключ lobby.upgrade.<weapon|trap>.<id>.desc з тими ж
+  плейсхолдерами, що й desc_en, а без item_id ще й lobby.upgrade.<weapon|trap>.<id>.name (картки магазину в лобі).
 """
 import json
 import re
@@ -286,6 +288,23 @@ def check_loc_refs():
             missing = sorted(set(LOC_PH_RE.findall(texts[node])) - given)
             if missing:
                 err(p, f"{trail}: текст {node!r} має плейсхолдери {missing} без значень ({field}Params / values / amount)")
+
+    for owner, fname in (("weapon", "weapon_upgrades.json"), ("trap", "trap_upgrades.json")):
+        p = SHARED / fname
+        try:
+            types = json.loads(p.read_text(encoding="utf-8")).get("upgrade_types") or []
+        except Exception:
+            continue
+        for u in types:
+            if not isinstance(u, dict) or not isinstance(u.get("id"), str):
+                continue
+            key = f"lobby.upgrade.{owner}.{u['id']}.desc"
+            if key not in texts:
+                err(p, f"upgrade_types {u['id']}: немає ключа локалізації {key} (опис рівня в магазині лобі)")
+            elif sorted(LOC_PH_RE.findall(texts[key])) != sorted(LOC_PH_RE.findall(str(u.get("desc_en", "")))):
+                err(p, f"upgrade_types {u['id']}: плейсхолдери {key} не збігаються з desc_en")
+            if not u.get("item_id") and f"lobby.upgrade.{owner}.{u['id']}.name" not in texts:
+                err(p, f"upgrade_types {u['id']}: без item_id потрібен ключ lobby.upgrade.{owner}.{u['id']}.name")
 
     for p in sorted((ROOT / "lobby").glob("*.json")):
         if p.name in ("localization.json", "items.json"):
