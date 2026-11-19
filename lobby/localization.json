@@ -2649,6 +2649,66 @@
    "pt-pt": "A área de efeito da armadilha fica maior.",
    "pt-br": "A área de efeito da armadilha fica maior.",
    "uk": "Зона дії пастки стає ширшою."
+  },
+  "lobby.portal.host": {
+   "en": "Host",
+   "de": "Gastgeber",
+   "fr": "Hôte",
+   "it": "Host",
+   "es": "Anfitrión",
+   "pt-pt": "Anfitrião",
+   "pt-br": "Anfitrião",
+   "uk": "Хост"
+  },
+  "lobby.portal.you": {
+   "en": "You",
+   "de": "Du",
+   "fr": "Toi",
+   "it": "Tu",
+   "es": "Tú",
+   "pt-pt": "Tu",
+   "pt-br": "Você",
+   "uk": "Ти"
+  },
+  "lobby.portal.starting": {
+   "en": "Starting...",
+   "de": "Startet...",
+   "fr": "Démarrage...",
+   "it": "Avvio...",
+   "es": "Iniciando...",
+   "pt-pt": "A iniciar...",
+   "pt-br": "Iniciando...",
+   "uk": "Запуск..."
+  },
+  "lobby.portal.bot_name": {
+   "en": "Bot",
+   "de": "Bot",
+   "fr": "Bot",
+   "it": "Bot",
+   "es": "Bot",
+   "pt-pt": "Bot",
+   "pt-br": "Bot",
+   "uk": "Бот"
+  },
+  "lobby.leaderboard.you": {
+   "en": "You",
+   "de": "Du",
+   "fr": "Toi",
+   "it": "Tu",
+   "es": "Tú",
+   "pt-pt": "Tu",
+   "pt-br": "Você",
+   "uk": "Ти"
+  },
+  "lobby.leaderboard.na": {
+   "en": "N/A",
+   "de": "k. A.",
+   "fr": "N/D",
+   "it": "N/D",
+   "es": "N/D",
+   "pt-pt": "N/D",
+   "pt-br": "N/D",
+   "uk": "Н/Д"
   }
  }
 }

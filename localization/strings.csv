@@ -279,3 +279,9 @@ item.upgrade_vortex.title,Vortex,"Trap upgrade (frost fan, unique)",,Wirbel,Vort
 item.upgrade_vortex.desc,Unique upgrade: the fan pulls enemies into a whirlwind.,Trap upgrade,,Einzigartiges Upgrade: Der Ventilator zieht Gegner in einen Wirbelsturm.,Amélioration unique : le ventilateur aspire les ennemis dans un tourbillon.,Potenziamento unico: la ventola risucchia i nemici in un turbine.,Mejora única: el ventilador arrastra a los enemigos a un remolino.,Melhoria única: o ventilador puxa os inimigos para um remoinho.,Melhoria única: o ventilador puxa os inimigos para um redemoinho.,Унікальне покращення: вентилятор затягує ворогів у вихор.
 item.upgrade_trap_radius.title,Radius,Trap upgrade,,Radius,Rayon,Raggio,Radio,Raio,Raio,Радіус
 item.upgrade_trap_radius.desc,The trap's effect zone gets wider.,Trap upgrade,,Die Wirkungszone der Falle wird größer.,La zone d'effet du piège s'élargit.,L'area d'effetto della trappola si allarga.,La zona de efecto de la trampa se amplía.,A área de efeito da armadilha fica maior.,A área de efeito da armadilha fica maior.,Зона дії пастки стає ширшою.
+lobby.portal.host,Host,Portal slot tag: party host,,Gastgeber,Hôte,Host,Anfitrión,Anfitrião,Anfitrião,Хост
+lobby.portal.you,You,Portal slot tag: this player,,Du,Toi,Tu,Tú,Tu,Você,Ти
+lobby.portal.starting,Starting...,Portal button/label while the group is starting,,Startet...,Démarrage...,Avvio...,Iniciando...,A iniciar...,Iniciando...,Запуск...
+lobby.portal.bot_name,Bot,Portal slot: bot name,,Bot,Bot,Bot,Bot,Bot,Bot,Бот
+lobby.leaderboard.you,You,Leaderboard: own name fallback,,Du,Toi,Tu,Tú,Tu,Você,Ти
+lobby.leaderboard.na,N/A,Leaderboard: no rank/score yet,,k. A.,N/D,N/D,N/D,N/D,N/D,Н/Д
