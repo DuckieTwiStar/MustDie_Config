@@ -345,3 +345,5 @@ lobby.upgrade.weapon.crit_chance.name,Crit chance,Shop: weapon upgrade name (no 
 lobby.upgrade.weapon.magazine.name,Magazine,Shop: weapon upgrade name (no catalog item),,Magazin,Chargeur,Caricatore,Cargador,Carregador,Pente,Магазин
 lobby.upgrade.weapon.reload_time.name,Reload,Shop: weapon upgrade name (no catalog item),,Nachladen,Rechargement,Ricarica,Recarga,Recarga,Recarga,Перезарядка
 lobby.upgrade.trap.hold.name,Hold time,Shop: trap upgrade name (no catalog item),,Haltezeit,Durée de prise,Tempo di presa,Tiempo de retención,Tempo de retenção,Tempo de retenção,Час утримання
+enemy.warlord.name,Warlord,Boss name on the boss HP bar in rooms,,Kriegsherr,Seigneur de guerre,Signore della guerra,Señor de la guerra,Senhor da Guerra,Senhor da Guerra,Воєвода
+enemy.gatekeeper.name,Gatekeeper,Boss name on the boss HP bar in rooms,,Torwächter,Gardien,Guardiano,Guardián,Guardião,Guardião,Вартовий

@@ -306,6 +306,15 @@ def check_loc_refs():
             if not u.get("item_id") and f"lobby.upgrade.{owner}.{u['id']}.name" not in texts:
                 err(p, f"upgrade_types {u['id']}: без item_id потрібен ключ lobby.upgrade.{owner}.{u['id']}.name")
 
+    p = SHARED / "enemies.json"
+    try:
+        enemies = json.loads(p.read_text(encoding="utf-8")).get("enemies") or []
+    except Exception:
+        enemies = []
+    for e in enemies:
+        if isinstance(e, dict) and e.get("boss") is True and f"enemy.{e.get('id')}.name" not in texts:
+            err(p, f"бос {e.get('id')}: немає ключа локалізації enemy.{e.get('id')}.name (ім'я на смузі HP боса)")
+
     for p in sorted((ROOT / "lobby").glob("*.json")):
         if p.name in ("localization.json", "items.json"):
             continue

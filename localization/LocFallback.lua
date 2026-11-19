@@ -333,6 +333,8 @@ local strings: { [string]: string } = {
 	["lobby.upgrade.weapon.magazine.name"] = "Magazine",
 	["lobby.upgrade.weapon.reload_time.name"] = "Reload",
 	["lobby.upgrade.trap.hold.name"] = "Hold time",
+	["enemy.warlord.name"] = "Warlord",
+	["enemy.gatekeeper.name"] = "Gatekeeper",
 }
 
 return table.freeze(strings)

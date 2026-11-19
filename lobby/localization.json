@@ -3309,6 +3309,26 @@
    "pt-pt": "Tempo de retenção",
    "pt-br": "Tempo de retenção",
    "uk": "Час утримання"
+  },
+  "enemy.warlord.name": {
+   "en": "Warlord",
+   "de": "Kriegsherr",
+   "fr": "Seigneur de guerre",
+   "it": "Signore della guerra",
+   "es": "Señor de la guerra",
+   "pt-pt": "Senhor da Guerra",
+   "pt-br": "Senhor da Guerra",
+   "uk": "Воєвода"
+  },
+  "enemy.gatekeeper.name": {
+   "en": "Gatekeeper",
+   "de": "Torwächter",
+   "fr": "Gardien",
+   "it": "Guardiano",
+   "es": "Guardián",
+   "pt-pt": "Guardião",
+   "pt-br": "Guardião",
+   "uk": "Вартовий"
   }
  }
 }
