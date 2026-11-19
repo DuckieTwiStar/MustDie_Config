@@ -20,7 +20,9 @@
 - пастки: price_soft = 0 у default_owned, інакше > 0 (розблокування в лобі); room.json: unlock_weapon існує, базова, tier не спадає з номером кімнати;
 - bots.json: пул зброї ботів та бюджет на пастки (розблокування й прокачки); симулятор: python3 tools/validate.py --economy;
 - каталог items.json: кожна зброя й пастка має запис (і навпаки), icon це rbxassetid://<число> або порожньо,
-  плейсхолдери {x} в description мають значення в values, reward.id у магазинах лобі є в каталозі.
+  плейсхолдери {x} в description мають значення в values, reward.id у магазинах лобі є в каталозі;
+- тексти-ключі в конфігах лобі (title, description тощо = "lobby.x.y", "item.x.title"...) є в localization/strings.csv,
+  а плейсхолдери такого тексту мають значення: titleParams поруч (портали) або values (магазини); {n} у нагородах = amount.
 """
 import json
 import re
@@ -248,6 +250,51 @@ ROOM_OPTIONAL_FILES = ["run_rewards", "sounds"]  # sounds: своя музика
 SKIP = {"leaderboards"}  # формат лідербордів веде сторона Жені
 
 errors = []
+
+
+LOC_KEY_RE = re.compile(r"^(lobby|room|msg|sys|item)\.[a-z0-9_]+(\.[a-z0-9_]+)+$")
+LOC_PH_RE = re.compile(r"\{([a-z_]+)\}")
+
+
+def check_loc_refs():
+    """Рядки-ключі локалізації в конфігах лобі мають існувати в strings.csv і мати значення для плейсхолдерів."""
+    import csv
+    path = ROOT / "localization" / "strings.csv"
+    if not path.exists():
+        return
+    with open(path, encoding="utf-8", newline="") as fh:
+        texts = {r["Key"]: r["Source"] for r in csv.DictReader(fh)}
+
+    def visit(p, node, trail, parent):
+        if isinstance(node, dict):
+            for k, v in node.items():
+                visit(p, v, f"{trail}.{k}" if trail else k, node)
+        elif isinstance(node, list):
+            for i, v in enumerate(node):
+                visit(p, v, f"{trail}[{i}]", parent)
+        elif isinstance(node, str) and LOC_KEY_RE.match(node):
+            if node not in texts:
+                err(p, f"{trail}: ключа локалізації {node!r} немає в localization/strings.csv")
+                return
+            field = trail.rsplit(".", 1)[-1]
+            given = set()
+            if isinstance(parent, dict):
+                given |= set((parent.get(f"{field}Params") or {}).keys())
+                given |= set((parent.get("values") or {}).keys())
+                if "amount" in parent:
+                    given |= {"n", "amount"}
+            missing = sorted(set(LOC_PH_RE.findall(texts[node])) - given)
+            if missing:
+                err(p, f"{trail}: текст {node!r} має плейсхолдери {missing} без значень ({field}Params / values / amount)")
+
+    for p in sorted((ROOT / "lobby").glob("*.json")):
+        if p.name in ("localization.json", "items.json"):
+            continue
+        try:
+            data = json.loads(p.read_text(encoding="utf-8"))
+        except Exception:
+            continue  # синтаксис перевіряє load()
+        visit(p, data, "", None)
 
 
 def err(path, msg):
@@ -1368,6 +1415,7 @@ def main():
 
     check_portals(ROOT / "lobby" / "portals.json", shared.get("weapons") or [], room_unlocks)
     check_shop_soft(ROOT / "lobby" / "shop_soft.json", shared.get("weapons") or [], shared.get("traps") or [])
+    check_loc_refs()
 
     # leaderboards.json і items.json лежать у кількох місцях, бо різні частини гри читають різні адреси: копії мають бути ідентичними
     for fname in ("leaderboards.json", "items.json", "localization.json"):

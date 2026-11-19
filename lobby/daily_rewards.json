@@ -5,7 +5,7 @@
       "reward": {
         "icon": "rbxassetid://120728741244450",
         "kind": "SoftCurrency",
-        "title": "500 Coins",
+        "title": "lobby.daily.coins",
         "amount": 500
       }
     },
@@ -14,7 +14,7 @@
       "reward": {
         "icon": "rbxassetid://120728741244450",
         "kind": "SoftCurrency",
-        "title": "2000 Coins",
+        "title": "lobby.daily.coins",
         "amount": 2000
       }
     },
@@ -23,54 +23,54 @@
       "reward": {
         "icon": "rbxassetid://120728741244450",
         "kind": "SoftCurrency",
-        "title": "5000 Coins",
+        "title": "lobby.daily.coins",
         "amount": 5000
       }
     }
   ],
-  "title": "Daily Rewards",
+  "title": "lobby.daily.title",
   "cycles": [
     [
       {
         "icon": "rbxassetid://120728741244450",
         "kind": "SoftCurrency",
-        "title": "100 Coins",
+        "title": "lobby.daily.coins",
         "amount": 100
       },
       {
         "icon": "rbxassetid://120728741244450",
         "kind": "SoftCurrency",
-        "title": "150 Coins",
+        "title": "lobby.daily.coins",
         "amount": 150
       },
       {
         "icon": "rbxassetid://120728741244450",
         "kind": "SoftCurrency",
-        "title": "200 Coins",
+        "title": "lobby.daily.coins",
         "amount": 200
       },
       {
         "icon": "rbxassetid://120728741244450",
         "kind": "SoftCurrency",
-        "title": "300 Coins",
+        "title": "lobby.daily.coins",
         "amount": 300
       },
       {
         "icon": "rbxassetid://120728741244450",
         "kind": "SoftCurrency",
-        "title": "400 Coins",
+        "title": "lobby.daily.coins",
         "amount": 400
       },
       {
         "icon": "rbxassetid://120728741244450",
         "kind": "SoftCurrency",
-        "title": "500 Coins",
+        "title": "lobby.daily.coins",
         "amount": 500
       },
       {
         "icon": "rbxassetid://120728741244450",
         "kind": "SoftCurrency",
-        "title": "1000 Coins",
+        "title": "lobby.daily.coins",
         "amount": 1000
       }
     ]

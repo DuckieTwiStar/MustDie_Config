@@ -282,6 +282,11 @@ local strings: { [string]: string } = {
 	["lobby.showcase.rarity_rare"] = "RARE",
 	["lobby.showcase.rarity_epic"] = "EPIC",
 	["lobby.showcase.rarity_legendary"] = "LEGENDARY",
+	["room.intro.loading"] = "Loading…",
+	["lobby.prompt.play"] = "Play",
+	["lobby.prompt.enter"] = "Enter",
+	["lobby.prompt.shop"] = "Shop",
+	["lobby.prompt.community_gift"] = "Community Gift",
 }
 
 return table.freeze(strings)

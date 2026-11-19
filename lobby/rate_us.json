@@ -1,12 +1,12 @@
 {
-  "buttonText": "Join",
-  "title": "Join our Community",
+  "buttonText": "lobby.rate.join",
+  "title": "lobby.rate.title",
   "groupId": 873927772,
-  "infoText": "Get a unique gift for joining",
+  "infoText": "lobby.rate.info",
   "reward": {
     "icon": "rbxassetid://120728741244450",
     "kind": "SoftCurrency",
-    "title": "1000 Coins",
+    "title": "lobby.daily.coins",
     "amount": 1000
   }
 }

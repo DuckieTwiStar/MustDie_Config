@@ -2,11 +2,11 @@
   "items": [
     {
       "type": "consumable",
-      "description": "Get {amount} coins",
+      "description": "lobby.shop.get_coins",
       "id": "coins_small",
       "layout": "row",
       "priceRobux": 49,
-      "title": "Pile of Coins",
+      "title": "lobby.shop.pile_of_coins",
       "productId": 0,
       "values": {
         "amount": 500
@@ -19,11 +19,11 @@
     },
     {
       "type": "consumable",
-      "description": "Get {amount} coins",
+      "description": "lobby.shop.get_coins",
       "id": "coins_big",
       "layout": "row",
       "priceRobux": 199,
-      "title": "Chest of Coins",
+      "title": "lobby.shop.chest_of_coins",
       "productId": 0,
       "values": {
         "amount": 3000
@@ -36,11 +36,11 @@
     },
     {
       "type": "nonconsumable",
-      "description": "Permanent {bonus}% coin bonus",
+      "description": "item.vip.desc",
       "id": "vip",
       "layout": "row",
       "priceRobux": 399,
-      "title": "VIP",
+      "title": "item.vip.title",
       "productId": 0,
       "values": {
         "bonus": 25
@@ -55,11 +55,11 @@
     },
     {
       "type": "nonconsumable",
-      "description": "{amount} coins and a Lucky Charm. One time only!",
+      "description": "lobby.shop.starter_pack_desc",
       "id": "starter_pack",
       "layout": "offer",
       "priceRobux": 99,
-      "title": "Starter Pack",
+      "title": "lobby.shop.starter_pack",
       "productId": 0,
       "values": {
         "amount": 2000
@@ -72,5 +72,5 @@
     }
   ],
   "showSoftCounter": true,
-  "title": "Robux Shop"
+  "title": "lobby.shop.robux_shop"
 }

@@ -294,3 +294,8 @@ lobby.showcase.rarity_uncommon,UNCOMMON,Weapon showcase: rarity tag (uppercase),
 lobby.showcase.rarity_rare,RARE,Weapon showcase: rarity tag (uppercase),,SELTEN,RARE,RARO,RARO,RARO,RARO,РІДКІСНИЙ
 lobby.showcase.rarity_epic,EPIC,Weapon showcase: rarity tag (uppercase),,EPISCH,ÉPIQUE,EPICO,ÉPICO,ÉPICO,ÉPICO,ЕПІЧНИЙ
 lobby.showcase.rarity_legendary,LEGENDARY,Weapon showcase: rarity tag (uppercase),,LEGENDÄR,LÉGENDAIRE,LEGGENDARIO,LEGENDARIO,LENDÁRIO,LENDÁRIO,ЛЕГЕНДАРНИЙ
+room.intro.loading,Loading…,Loading screen / intro before the room is ready; teleport screen fallback,,Wird geladen…,Chargement…,Caricamento…,Cargando…,A carregar…,Carregando…,Завантаження…
+lobby.prompt.play,Play,Lobby interaction prompt: action (portal),,Spielen,Jouer,Gioca,Jugar,Jogar,Jogar,Грати
+lobby.prompt.enter,Enter,Lobby interaction prompt: action (portal),,Betreten,Entrer,Entra,Entrar,Entrar,Entrar,Увійти
+lobby.prompt.shop,Shop,Lobby interaction prompt: action (shop counter),,Laden,Boutique,Negozio,Tienda,Loja,Loja,Магазин
+lobby.prompt.community_gift,Community Gift,Lobby interaction prompt: object (group gift box),,Community-Geschenk,Cadeau de la communauté,Regalo della community,Regalo de la comunidad,Presente da comunidade,Presente da comunidade,Подарунок спільноти

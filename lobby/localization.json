@@ -2799,6 +2799,56 @@
    "pt-pt": "LENDÁRIO",
    "pt-br": "LENDÁRIO",
    "uk": "ЛЕГЕНДАРНИЙ"
+  },
+  "room.intro.loading": {
+   "en": "Loading…",
+   "de": "Wird geladen…",
+   "fr": "Chargement…",
+   "it": "Caricamento…",
+   "es": "Cargando…",
+   "pt-pt": "A carregar…",
+   "pt-br": "Carregando…",
+   "uk": "Завантаження…"
+  },
+  "lobby.prompt.play": {
+   "en": "Play",
+   "de": "Spielen",
+   "fr": "Jouer",
+   "it": "Gioca",
+   "es": "Jugar",
+   "pt-pt": "Jogar",
+   "pt-br": "Jogar",
+   "uk": "Грати"
+  },
+  "lobby.prompt.enter": {
+   "en": "Enter",
+   "de": "Betreten",
+   "fr": "Entrer",
+   "it": "Entra",
+   "es": "Entrar",
+   "pt-pt": "Entrar",
+   "pt-br": "Entrar",
+   "uk": "Увійти"
+  },
+  "lobby.prompt.shop": {
+   "en": "Shop",
+   "de": "Laden",
+   "fr": "Boutique",
+   "it": "Negozio",
+   "es": "Tienda",
+   "pt-pt": "Loja",
+   "pt-br": "Loja",
+   "uk": "Магазин"
+  },
+  "lobby.prompt.community_gift": {
+   "en": "Community Gift",
+   "de": "Community-Geschenk",
+   "fr": "Cadeau de la communauté",
+   "it": "Regalo della community",
+   "es": "Regalo de la comunidad",
+   "pt-pt": "Presente da comunidade",
+   "pt-br": "Presente da comunidade",
+   "uk": "Подарунок спільноти"
   }
  }
 }

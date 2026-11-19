@@ -1,6 +1,6 @@
 {
-  "hardShopText": "Robux Shop",
+  "hardShopText": "lobby.shop.robux_shop",
   "items": [],
-  "title": "Merchant",
-  "insufficientText": "Play more, earn more!"
+  "title": "lobby.shop.merchant",
+  "insufficientText": "lobby.shop.play_more"
 }
