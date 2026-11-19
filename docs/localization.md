@@ -2,6 +2,12 @@
 
 Google Sheets у папці Balance на Диску, лист **Strings**. Джерело правди для текстів — таблиця; у git лежить `localization/strings.csv`.
 
+## Правило (з 19.11.2026)
+**Усі тексти гри (UI, повідомлення, написи на мапі, назви й описи предметів) додаються через таблицю `[MD]Localization`.**
+1. Новий або змінений текст спершу вносимо в лист Strings: ключ, Context, en і всі 7 мов.
+2. Потім `import` -> `strings.csv` -> `check` -> коміт.
+3. У коді й на мапі лише ключ / переклад за ключем, без захардкоджених рядків. Тимчасово, до підключення Translator, напис на мапі може містити en-текст зі таблиці (приклад: `room.hud.pen_gate` = PEN GATE над воротами загону в Room 3 і 4).
+
 ## Мови
 Джерело `en` + `de`, `fr`, `it`, `es`, `pt-pt`, `pt-br`, `uk` (коди Roblox: https://create.roblox.com/docs/production/localization/language-codes).
 pt-pt і pt-br — окремі колонки: pt-pt на «tu» з європейською лексикою (equipa, vaga, câmara), pt-br на «você».
