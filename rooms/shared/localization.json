@@ -2739,6 +2739,66 @@
    "pt-pt": "De sempre",
    "pt-br": "Todos os tempos",
    "uk": "За весь час"
+  },
+  "lobby.showcase.buy": {
+   "en": "Buy",
+   "de": "Kaufen",
+   "fr": "Acheter",
+   "it": "Acquista",
+   "es": "Comprar",
+   "pt-pt": "Comprar",
+   "pt-br": "Comprar",
+   "uk": "Купити"
+  },
+  "lobby.showcase.rarity_common": {
+   "en": "COMMON",
+   "de": "GEWÖHNLICH",
+   "fr": "COMMUN",
+   "it": "COMUNE",
+   "es": "COMÚN",
+   "pt-pt": "COMUM",
+   "pt-br": "COMUM",
+   "uk": "ЗВИЧАЙНИЙ"
+  },
+  "lobby.showcase.rarity_uncommon": {
+   "en": "UNCOMMON",
+   "de": "UNGEWÖHNLICH",
+   "fr": "PEU COMMUN",
+   "it": "NON COMUNE",
+   "es": "POCO COMÚN",
+   "pt-pt": "INCOMUM",
+   "pt-br": "INCOMUM",
+   "uk": "НЕЗВИЧАЙНИЙ"
+  },
+  "lobby.showcase.rarity_rare": {
+   "en": "RARE",
+   "de": "SELTEN",
+   "fr": "RARE",
+   "it": "RARO",
+   "es": "RARO",
+   "pt-pt": "RARO",
+   "pt-br": "RARO",
+   "uk": "РІДКІСНИЙ"
+  },
+  "lobby.showcase.rarity_epic": {
+   "en": "EPIC",
+   "de": "EPISCH",
+   "fr": "ÉPIQUE",
+   "it": "EPICO",
+   "es": "ÉPICO",
+   "pt-pt": "ÉPICO",
+   "pt-br": "ÉPICO",
+   "uk": "ЕПІЧНИЙ"
+  },
+  "lobby.showcase.rarity_legendary": {
+   "en": "LEGENDARY",
+   "de": "LEGENDÄR",
+   "fr": "LÉGENDAIRE",
+   "it": "LEGGENDARIO",
+   "es": "LEGENDARIO",
+   "pt-pt": "LENDÁRIO",
+   "pt-br": "LENDÁRIO",
+   "uk": "ЛЕГЕНДАРНИЙ"
   }
  }
 }

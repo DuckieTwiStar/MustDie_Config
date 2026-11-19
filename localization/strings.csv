@@ -288,3 +288,9 @@ lobby.leaderboard.na,N/A,Leaderboard: no rank/score yet,,k. A.,N/D,N/D,N/D,N/D,N
 lobby.shop.owned,Owned,Shop: price button of an item the player already owns,,Im Besitz,Possédé,Posseduto,Adquirido,Adquirido,Adquirido,Куплено
 lobby.leaderboard.weekly,Weekly,Leaderboard board title (map attribute ObjectText = Weekly),,Wöchentlich,Hebdomadaire,Settimanale,Semanal,Semanal,Semanal,Тижневий
 lobby.leaderboard.all_time,All time,Leaderboard board title (map attribute ObjectText = All time),,Gesamt,Tous temps,Di sempre,Histórico,De sempre,Todos os tempos,За весь час
+lobby.showcase.buy,Buy,Weapon showcase card: buy button,,Kaufen,Acheter,Acquista,Comprar,Comprar,Comprar,Купити
+lobby.showcase.rarity_common,COMMON,Weapon showcase: rarity tag (uppercase),,GEWÖHNLICH,COMMUN,COMUNE,COMÚN,COMUM,COMUM,ЗВИЧАЙНИЙ
+lobby.showcase.rarity_uncommon,UNCOMMON,Weapon showcase: rarity tag (uppercase),,UNGEWÖHNLICH,PEU COMMUN,NON COMUNE,POCO COMÚN,INCOMUM,INCOMUM,НЕЗВИЧАЙНИЙ
+lobby.showcase.rarity_rare,RARE,Weapon showcase: rarity tag (uppercase),,SELTEN,RARE,RARO,RARO,RARO,RARO,РІДКІСНИЙ
+lobby.showcase.rarity_epic,EPIC,Weapon showcase: rarity tag (uppercase),,EPISCH,ÉPIQUE,EPICO,ÉPICO,ÉPICO,ÉPICO,ЕПІЧНИЙ
+lobby.showcase.rarity_legendary,LEGENDARY,Weapon showcase: rarity tag (uppercase),,LEGENDÄR,LÉGENDAIRE,LEGGENDARIO,LEGENDARIO,LENDÁRIO,LENDÁRIO,ЛЕГЕНДАРНИЙ
