@@ -7,7 +7,9 @@
   python3 tools/localization_sheet.py check            # перевірка CSV + export -> import без втрат
 
 Імпорт пише і localization/strings.csv, і runtime-файли lobby/localization.json та rooms/shared/localization.json
-(їх читає гра через ConfigService; копії ідентичні, validate.py це перевіряє).
+(їх читає гра через ConfigService; копії ідентичні, validate.py це перевіряє), і localization/LocFallback.lua —
+англійські тексти, вшиті в гру (Core.Shared.LocFallback): їх видно, поки таблиця не завантажилась або якщо GitHub недоступний.
+Після зміни таблиці вміст LocFallback.lua вставляємо в модуль Core.Shared.LocFallback (Packages) і публікуємо Core.
 
 IN.json: відповідь get_values ({"values": [[...]]}) або просто [[...]]; xlsx-експорт можна перегнати в той самий список.
 
@@ -32,6 +34,7 @@ from collections import Counter
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 CSV_PATH = os.path.join(ROOT, "localization", "strings.csv")
 JSON_PATHS = [os.path.join(ROOT, "lobby", "localization.json"), os.path.join(ROOT, "rooms", "shared", "localization.json")]
+LUA_PATH = os.path.join(ROOT, "localization", "LocFallback.lua")
 SOURCE = "en"
 LOCALES = ["de", "fr", "it", "es", "pt-pt", "pt-br", "uk"]
 SHEET_HEADER = ["Key", "Context", SOURCE] + LOCALES
@@ -77,6 +80,28 @@ def write_runtime_json(entries):
     for path in JSON_PATHS:
         with open(path, "w", encoding="utf-8", newline="") as fh:
             fh.write(text)
+
+
+def lua_string(text):
+    return '"' + text.replace("\\", "\\\\").replace('"', '\\"').replace("\n", "\\n") + '"'
+
+
+def build_fallback_lua(entries):
+    """ModuleScript Core.Shared.LocFallback: {ключ = англійський текст}. Детермінований."""
+    lines = ["--!strict",
+             "-- ЗГЕНЕРОВАНО tools/localization_sheet.py з localization/strings.csv. Не редагувати вручну.",
+             "-- Англійські тексти, вшиті в гру: Loc / LocalizationServer беруть їх, поки таблиця не прийшла з GitHub.",
+             "",
+             "local strings: { [string]: string } = {"]
+    for e in entries:
+        lines.append(f"\t[{lua_string(e['key'])}] = {lua_string(e[SOURCE])},")
+    lines += ["}", "", "return table.freeze(strings)", ""]
+    return "\n".join(lines)
+
+
+def write_fallback_lua(entries):
+    with open(LUA_PATH, "w", encoding="utf-8", newline="") as fh:
+        fh.write(build_fallback_lua(entries))
 
 
 def sheet_to_entries(rows):
@@ -148,7 +173,8 @@ def main(argv):
             return 1
         write_csv(entries)
         write_runtime_json(entries)
-        print(f"OK: {len(entries)} рядків -> {os.path.relpath(CSV_PATH, ROOT)} і {len(JSON_PATHS)} копії localization.json")
+        write_fallback_lua(entries)
+        print(f"OK: {len(entries)} рядків -> {os.path.relpath(CSV_PATH, ROOT)}, {len(JSON_PATHS)} копії localization.json і LocFallback.lua")
         return 0
     entries = read_csv()
     if cmd == "export":
@@ -177,6 +203,12 @@ def main(argv):
             with open(path, encoding="utf-8", newline="") as fh:
                 if fh.read() != expected:
                     errs.append(f"{rel}: не збігається зі strings.csv (запустіть import)")
+    if not os.path.exists(LUA_PATH):
+        errs.append("localization/LocFallback.lua: немає файлу (запустіть import)")
+    else:
+        with open(LUA_PATH, encoding="utf-8", newline="") as fh:
+            if fh.read() != build_fallback_lua(entries):
+                errs.append("localization/LocFallback.lua: не збігається зі strings.csv (запустіть import)")
     for e in errs:
         print("ПОМИЛКА", e)
     print("OK" if not errs else f"{len(errs)} помилок", f"({len(entries)} рядків, {len(LOCALES)} мов + {SOURCE})")
