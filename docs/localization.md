@@ -31,5 +31,40 @@ IN.json — значення листа `Strings!A1:J` (get_values) або то�
 ## Формат strings.csv
 Формат LocalizationTable Roblox: `Key, Source, Context, Example, de, fr, it, es, pt-pt, pt-br, uk` (Source = en). Імпортується в Studio через Localization Tools або `LocalizationTable:SetEntries`.
 
-## Статус (18.11.2026)
-264 рядки × 8 мов. Код гри ще читає захардкоджені рядки — підключення таблиці (LocalizationService + Translator, перемикання мови) окремим кроком.
+## Що генерує import
+- `localization/strings.csv` — джерело в git (формат LocalizationTable Roblox).
+- `lobby/localization.json` і `rooms/shared/localization.json` — runtime-таблиця для гри (усі мови), копії побайтно однакові.
+- `localization/LocFallback.lua` — англійські тексти, вшиті в гру. **Після зміни таблиці** вміст файлу вставляємо в
+  ModuleScript `ReplicatedStorage.Core.Shared.LocFallback` (place Packages) і публікуємо Core.
+- Помилки таблиці (`#ERROR!` тощо) ловить import: текст, що починається з `+ = -`, вводимо з апострофом (`'+{delta} ...`).
+
+## Як це працює в грі
+- Сервер `CoreServer.LocalizationServer`: одразу публікує англійську з `LocFallback`, потім таблицю з GitHub
+  (атрибути `ReplicatedStorage.LocStrings_<мова>`), і ставить `LocReady = true` (або через 10 с, якщо GitHub недоступний).
+- Клієнт `Core.Client.Loc`: перший `require` чекає `LocReady` (до 8 с), далі `Loc.t(key, params)`.
+  Порядок пошуку: мова гравця -> en з таблиці -> en з `LocFallback` -> сам ключ (з попередженням `[Loc] немає ключа`).
+- Мова: `LocalPlayer.LocaleId`. Тест у Studio: `workspace:SetAttribute("LocTestLanguage", "uk")` **до** Play
+  (UI будується один раз, тож мову треба задати до старту).
+- Сповіщення сервера (`TD_Notice`, `PortalNotice`, `PortalTeleportStarted`) несуть ключ і параметри, перекладає клієнт.
+- Серверні тексти (кік): `LocalizationServer.t(player, key, params)`.
+
+## Ключі в конфігах і на мапі
+- Тексти в конфігах лобі (`title`, `description`, `buttonText`, `infoText`, `hardShopText`, `insufficientText`,
+  назви нагород) — ключі. Клієнт показує їх через `Loc.maybe(текстАбоКлюч, params)`: ключ перекладається, звичайний текст лишається.
+  Параметри: портали — `titleParams` поруч (`{ "n": 1 }`), магазини — `values`, нагороди — `{n}` = `amount`.
+  `validate.py` перевіряє, що ключ є в таблиці і плейсхолдери мають значення.
+- Назви й описи предметів: `item.<id>.title` / `item.<id>.desc` (ItemCatalog.title / ItemCatalog.description).
+- Описи рівнів прокачок у магазині лобі: `lobby.upgrade.<weapon|trap>.<id>.desc` (+ `.name` для типів без item_id);
+  `validate.py` вимагає ключ для кожного `upgrade_types`.
+- Написи на мапі (TextLabel у workspace): атрибут `LocKey` = ключ, `LocParam_<ім'я>` = параметр (на написі або предку),
+  `LocUpper = true` — великими літерами (з кирилицею). Текст у Studio лишається англійським.
+- Підказки взаємодії (ProximityPrompt від InteractionService): атрибути моделі `ActionText` / `ObjectText` = ключі
+  (`lobby.prompt.*`, `lobby.portal.room` + `LocParam_n`). Перекладає `Core.Client.LocMap`.
+
+## Порядок релізу
+1. Код (Packages: Core, CoreServer, Leaderboard, TowerDefense; лобі: Portal, PortalUI, ShopSoft, ShopHard, DailyReward, RateUs) — Publish, Get Latest, Save/Publish place.
+2. Лише потім promote-release: старий код показав би ключі з нових конфігів.
+
+## Статус (19.11.2026)
+330 рядків × 8 мов. Підключено: усі UI кімнат і лобі, серверні сповіщення, конфіги лобі, написи й підказки на мапі лобі, PEN GATE у Room 3/4.
+Не локалізовано свідомо: дебаг-панель, декоративні вивіски Room 4 (WET FLOOR, HOTEL…), імена ворогів/боса (окремий крок).
