@@ -1,7 +1,7 @@
 {
   "meta": {
-    "version": "BAL-0019",
-    "exported_at": "2026-11-02",
+    "version": "BAL-0020",
+    "exported_at": "2026-11-24",
     "note": "Арсенал 19.10.2026, контракт конфігів бою 23.10.2026 (Ж-002, docs/combat-config-contract.md). tier = прогрес (замки порталів), order = сортування і порядок на вітрині лобі, rarity = рамка й кількість прокачок. defaults = значення пропущених необов'язкових полів. Решта числових полів = стати зброї (snake_case). fire_mode вибирає механіку в коді. on_hit = ефекти, які зброя накладає (id ефекту -> числа). Кулаки й рогатка безкоштовні (default_owned), їх price_soft лише для бюджету ботів. Магазин і перезарядка (23.10.2026): magazine 0 = без ліміту; reload_time = с на всю перезарядку, а при reload_per_round на один патрон; стартові часи орієнтовні"
   },
   "defaults": {
@@ -91,8 +91,8 @@
       "projectile_style": "arrow",
       "name_en": "Bow",
       "name_uk": "Лук",
-      "damage": 40,
-      "attack_interval": 1,
+      "damage": 60,
+      "attack_interval": 0.9,
       "range": 250,
       "projectile_speed": 160,
       "ricochet": 0,

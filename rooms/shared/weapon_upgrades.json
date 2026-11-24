@@ -1,7 +1,7 @@
 {
   "meta": {
-    "version": "BAL-0019",
-    "exported_at": "2026-11-02",
+    "version": "BAL-0020",
+    "exported_at": "2026-11-24",
     "note": "Прокачка зброї: постійна, купується в лобі за софт (price_soft), у забігу лише діє. upgrade_types: що змінює кожна прокачка (stat = поле зброї або on_hit.<ефект>.<параметр>; op set | add | mul, типово set), назва для UI, item_id = запис kind=upgrade в items.json. weapon_upgrades: рядки рівнів, price_soft = ціна рівня в софті, value = нове значення поля на цьому рівні. Ціни 23.10.2026 поставлені попередньо (50% від старих віспових цін, до плейтестів). Арсенал 19.10.2026: рарність = скільки прокачок"
   },
   "upgrade_types": [
@@ -266,7 +266,7 @@
       "order": 50,
       "level": 1,
       "price_soft": 75,
-      "value": 50
+      "value": 64
     },
     {
       "id": "bow_damage_2",
@@ -275,7 +275,7 @@
       "order": 50,
       "level": 2,
       "price_soft": 125,
-      "value": 60
+      "value": 67
     },
     {
       "id": "bow_damage_3",
@@ -293,7 +293,7 @@
       "order": 60,
       "level": 1,
       "price_soft": 75,
-      "value": 0.85
+      "value": 0.8
     },
     {
       "id": "bow_attack_interval_2",
