@@ -103,7 +103,7 @@ SCHEMA = {
         "reload_per_round": (bool, False, None, None), "reload_interruptible": (bool, False, None, None),
         "plasma_damage": (NUM, False, 0, None), "plasma_speed": (NUM, False, 1, None),
         "targets": (int, False, 1, None), "splash_radius": (NUM, False, 0, None),
-        "armor_pierce": (NUM, False, 0, 1), "knockback": (NUM, False, 0, None), "knockback_scatter": (NUM, False, 0, None), "knockback_stun": (NUM, False, 0, 5),
+        "armor_pierce": (NUM, False, 0, 1), "knockback": (NUM, False, 0, None), "knockback_scatter": (NUM, False, 0, None), "knockback_stun": (NUM, False, 0, 5), "knockback_immunity": (NUM, False, 0, 10),
         "bonus_vs": (dict, False, None, None), "on_hit": (dict, False, None, None),
         # мітка фокусу (В-014): лише projectile; step = +множник за влучання, max = стеля бонусу, window = с до зникнення, transfer = частка стаків при зміні цілі
         "mark_step": (NUM, False, 0, 1), "mark_max": (NUM, False, 0, 5), "mark_window": (NUM, False, 0.1, 30),
@@ -857,7 +857,7 @@ def check_weapon_extras(weapons, effect_ids):
         if not isinstance(w, dict):
             continue
         where = f"weapons[{i}] ({w.get('id')})"
-        for kb_key in ("knockback", "knockback_scatter", "knockback_stun"):
+        for kb_key in ("knockback", "knockback_scatter", "knockback_stun", "knockback_immunity"):
             if type_ok(w.get(kb_key, 0), NUM) and w.get(kb_key, 0) != 0 and w.get("fire_mode") not in ("melee", "projectile"):
                 err(path, f"{where}.{kb_key}: відкидання поки працює лише в ударі кулаків (melee) і снарядах (projectile)")
         if any(k in w for k in ("mark_step", "mark_max", "mark_window", "mark_transfer", "mark_all_damage")):
