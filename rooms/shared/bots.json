@@ -2,7 +2,7 @@
   "meta": {
     "version": "BAL-0005",
     "exported_at": "2026-10-23",
-    "note": "Боти: зброя з пулу за кімнатою, бюджет на пастки (trap_budget_mult) і на прокачку зброї (upgrade_budget_mult) = ціна зброї кімнати x множник. Гра читає (LoadoutService.rollBot)"
+    "note": "Боти: зброя з пулу за кімнатою, бюджет на пастки (trap_budget_mult) і на прокачку зброї (upgrade_budget_mult) = ціна зброї кімнати x множник. Гра читає (LoadoutService.rollBot). archetypes: характери ботів у забігу (BotService, етап 3, 25.11.2026): вага вибору, реакція (с), точність 0..1, частка віспів на пастки, пост і відрізок будівництва (частки маршруту), дистанція перед фронтом (studs), ваги пасток"
   },
   "bots": {
     "weapon_pool_exclude": [
@@ -10,6 +10,39 @@
     ],
     "include_premium": false,
     "trap_budget_mult": 1,
-    "upgrade_budget_mult": 0.5
+    "upgrade_budget_mult": 0.5,
+    "archetypes": {
+      "builder": {
+        "weight": 1,
+        "reaction": 0.55,
+        "accuracy": 0.55,
+        "trap_share": 0.9,
+        "post": 0.45,
+        "standoff": 18,
+        "build_from": 0.25,
+        "build_to": 0.8,
+        "traps": {
+          "darts": 0.35,
+          "tar": 0.3,
+          "frost_fan": 0.15,
+          "fire_grate": 0.12,
+          "tesla": 0.08
+        }
+      },
+      "shooter": {
+        "weight": 1,
+        "reaction": 0.35,
+        "accuracy": 0.8,
+        "trap_share": 0.1,
+        "post": 0.62,
+        "standoff": 32,
+        "build_from": 0.55,
+        "build_to": 0.75,
+        "traps": {
+          "darts": 0.6,
+          "tar": 0.4
+        }
+      }
+    }
   }
 }

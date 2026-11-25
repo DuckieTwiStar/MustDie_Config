@@ -136,6 +136,8 @@ SCHEMA = {
         "_object": True,
         "weapon_pool_exclude": (list, True, None, None), "include_premium": (bool, True, None, None),
         "trap_budget_mult": (NUM, True, 0, 100), "upgrade_budget_mult": (NUM, True, 0, 100),
+        # характери ботів у забігу (BotService): id -> поля BOT_ARCHETYPE_FIELDS; немає = вбудовані в коді
+        "archetypes": (dict, False, None, None),
     },
     "zones": {
         "id": (str, True, None, None), "order": (int, True, 0, None), "name_en": (str, True, None, None),
@@ -1045,6 +1047,52 @@ def check_items(items, weapon_ids, trap_ids, enemy_ids=frozenset()):
                 err(sp, f"reward.id {rw.get('id')!r} немає в items.json")
 
 
+# Поля характеру бота (bots.archetypes.<id>). Ті самі межі в грі: ConfigLoader.validateBots.
+BOT_ARCHETYPE_FIELDS = {
+    "weight": (0, 100), "reaction": (0.05, 5), "accuracy": (0, 1), "trap_share": (0, 1),
+    "post": (0, 1), "standoff": (0, 200), "build_from": (0, 1), "build_to": (0, 1),
+}
+
+
+def check_bot_archetypes(path, bots, traps):
+    """bots.archetypes: id характеру -> числа поведінки й ваги пасток (traps: id пастки -> вага 0..100)."""
+    arch = bots.get("archetypes") if isinstance(bots, dict) else None
+    if arch is None:
+        return
+    if not isinstance(arch, dict) or not arch:
+        err(path, "bots.archetypes: непорожній об'єкт id -> характер")
+        return
+    trap_ids = {t.get("id") for t in traps if isinstance(t, dict)}
+    for aid, a in arch.items():
+        where = f"bots.archetypes.{aid}"
+        if not ID_RE.match(str(aid)):
+            err(path, f"{where}: id не snake_case")
+        if not isinstance(a, dict):
+            err(path, f"{where}: має бути об'єктом")
+            continue
+        for key, (lo, hi) in BOT_ARCHETYPE_FIELDS.items():
+            v = a.get(key)
+            if not type_ok(v, NUM):
+                err(path, f"{where}: немає числа {key}")
+            elif v < lo or v > hi:
+                err(path, f"{where}: {key}={v} поза {lo}..{hi}")
+        for key in a:
+            if key not in BOT_ARCHETYPE_FIELDS and key != "traps":
+                err(path, f"{where}: невідоме поле {key} (додай його в BOT_ARCHETYPE_FIELDS, ConfigLoader і README)")
+        if type_ok(a.get("build_from"), NUM) and type_ok(a.get("build_to"), NUM) and a["build_from"] >= a["build_to"]:
+            err(path, f"{where}: build_from має бути менше за build_to")
+        tw = a.get("traps")
+        if tw is not None:
+            if not isinstance(tw, dict):
+                err(path, f"{where}.traps: об'єкт id пастки -> вага")
+                continue
+            for tid, w in tw.items():
+                if tid not in trap_ids:
+                    err(path, f"{where}.traps: пастки {tid!r} немає в traps.json")
+                if not type_ok(w, NUM) or w < 0 or w > 100:
+                    err(path, f"{where}.traps.{tid}: вага 0..100")
+
+
 def check_economy(weapons, traps, bots, room_unlocks):
     """3.1: tier/order/ціни зброї й пасток, зброя що відкриває кімнату, пул і бюджет ботів."""
     wpath, tpath = SHARED / "weapons.json", SHARED / "traps.json"
@@ -1440,6 +1488,7 @@ def main():
 
     room_unlocks.sort(key=lambda x: (x[0] == "template", int(re.sub(r"\D", "", x[0]) or 0)))
     check_economy(shared.get("weapons") or [], shared.get("traps") or [], shared.get("bots") or {}, room_unlocks)
+    check_bot_archetypes(SHARED / "bots.json", shared.get("bots") or {}, shared.get("traps") or [])
 
     check_portals(ROOT / "lobby" / "portals.json", shared.get("weapons") or [], room_unlocks)
     check_shop_soft(ROOT / "lobby" / "shop_soft.json", shared.get("weapons") or [], shared.get("traps") or [])
