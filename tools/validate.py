@@ -1052,6 +1052,10 @@ BOT_ARCHETYPE_FIELDS = {
     "weight": (0, 100), "reaction": (0.05, 5), "accuracy": (0, 1), "trap_share": (0, 1),
     "post": (0, 1), "standoff": (0, 200), "build_from": (0, 1), "build_to": (0, 1),
 }
+# Необов'язкові поля характеру: немає = значення в дужках коментаря
+BOT_ARCHETYPE_OPTIONAL = {
+    "leash": (0.01, 1),  # 1: у бою бот іде за фронтом хвилі; менше: не далі від post (воротар)
+}
 
 
 def check_bot_archetypes(path, bots, traps):
@@ -1076,8 +1080,16 @@ def check_bot_archetypes(path, bots, traps):
                 err(path, f"{where}: немає числа {key}")
             elif v < lo or v > hi:
                 err(path, f"{where}: {key}={v} поза {lo}..{hi}")
+        for key, (lo, hi) in BOT_ARCHETYPE_OPTIONAL.items():
+            v = a.get(key)
+            if v is None:
+                continue
+            if not type_ok(v, NUM):
+                err(path, f"{where}: {key} має бути числом")
+            elif v < lo or v > hi:
+                err(path, f"{where}: {key}={v} поза {lo}..{hi}")
         for key in a:
-            if key not in BOT_ARCHETYPE_FIELDS and key != "traps":
+            if key not in BOT_ARCHETYPE_FIELDS and key not in BOT_ARCHETYPE_OPTIONAL and key != "traps":
                 err(path, f"{where}: невідоме поле {key} (додай його в BOT_ARCHETYPE_FIELDS, ConfigLoader і README)")
         if type_ok(a.get("build_from"), NUM) and type_ok(a.get("build_to"), NUM) and a["build_from"] >= a["build_to"]:
             err(path, f"{where}: build_from має бути менше за build_to")

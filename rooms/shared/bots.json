@@ -2,7 +2,7 @@
   "meta": {
     "version": "BAL-0005",
     "exported_at": "2026-10-23",
-    "note": "Боти: зброя з пулу за кімнатою, бюджет на пастки (trap_budget_mult) і на прокачку зброї (upgrade_budget_mult) = ціна зброї кімнати x множник. Гра читає (LoadoutService.rollBot). archetypes: характери ботів у забігу (BotService, етап 3, 25.11.2026): вага вибору, реакція (с), точність 0..1, частка віспів на пастки, пост і відрізок будівництва (частки маршруту), дистанція перед фронтом (studs), ваги пасток"
+    "note": "Боти: зброя з пулу за кімнатою, бюджет на пастки (trap_budget_mult) і на прокачку зброї (upgrade_budget_mult) = ціна зброї кімнати x множник. Гра читає (LoadoutService.rollBot). archetypes: ролі ботів у забігу (BotService, 25.11.2026), рівень «середній гравець»: builder ставить найбільше, shooter основний урон, controller смола/мороз під зонами урону, goalkeeper стоїть біля бази (leash) і ловить проривних. Віспи бот витрачає до нуля; trap_share = охота братися будувати у хвилях"
   },
   "bots": {
     "weapon_pool_exclude": [
@@ -15,12 +15,13 @@
       "builder": {
         "weight": 1,
         "reaction": 0.55,
-        "accuracy": 0.55,
+        "accuracy": 0.5,
         "trap_share": 0.9,
         "post": 0.45,
         "standoff": 18,
         "build_from": 0.25,
         "build_to": 0.8,
+        "leash": 1,
         "traps": {
           "darts": 0.35,
           "tar": 0.3,
@@ -32,15 +33,48 @@
       "shooter": {
         "weight": 1,
         "reaction": 0.35,
-        "accuracy": 0.8,
+        "accuracy": 0.7,
         "trap_share": 0.1,
         "post": 0.62,
         "standoff": 32,
-        "build_from": 0.55,
-        "build_to": 0.75,
+        "build_from": 0.5,
+        "build_to": 0.8,
+        "leash": 1,
         "traps": {
           "darts": 0.6,
           "tar": 0.4
+        }
+      },
+      "controller": {
+        "weight": 0.7,
+        "reaction": 0.5,
+        "accuracy": 0.55,
+        "trap_share": 0.7,
+        "post": 0.5,
+        "standoff": 24,
+        "build_from": 0.2,
+        "build_to": 0.85,
+        "leash": 1,
+        "traps": {
+          "tar": 0.45,
+          "frost_fan": 0.3,
+          "darts": 0.25
+        }
+      },
+      "goalkeeper": {
+        "weight": 0.7,
+        "reaction": 0.4,
+        "accuracy": 0.6,
+        "trap_share": 0.5,
+        "post": 0.86,
+        "standoff": 10,
+        "build_from": 0.7,
+        "build_to": 0.95,
+        "leash": 0.08,
+        "traps": {
+          "darts": 0.5,
+          "fire_grate": 0.3,
+          "tar": 0.2
         }
       }
     }
