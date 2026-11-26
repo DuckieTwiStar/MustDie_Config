@@ -156,6 +156,7 @@ SCHEMA = {
         "count_mult": (NUM, True, 0.1, None), "reward_mult": (NUM, True, 0, None),
         # BAL-0008: множник паузи між спавнами (1 = як у waves.json)
         "interval_mult": (NUM, False, 0.1, 10),
+        "boss_hp_mult": (NUM, False, 0.1, 10),
     },
     # ефекти на ворогах (EffectService v2, docs/effects-v2.md): стеки, модифікатори, теги, переходи; новий id = новий ефект без коду
     "status_effects": {

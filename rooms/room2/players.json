@@ -1,8 +1,8 @@
 {
   "meta": {
-    "version": "BAL-0019",
+    "version": "BAL-0020",
     "exported_at": "2026-11-02",
-    "note": "Room 2: хвилі під 4 гравців. BAL-0019: прихованого множника HP нема (було 1.15), вороги однакові в усіх кімнатах; складність кімнати задана кількістю ворогів у хвилях."
+    "note": "Room 2: хвилі під 4 гравців. BAL-0019: прихованого множника HP нема (було 1.15), вороги однакові в усіх кімнатах; складність кімнати задана кількістю ворогів у хвилях. BAL-0020: boss_hp_mult 0.65 — множник HP боса (hp_by_players) для цієї кімнати."
   },
   "players": [
     {
@@ -11,7 +11,8 @@
       "hp_mult": 1.0,
       "count_mult": 0.3,
       "reward_mult": 1,
-      "interval_mult": 3.333
+      "interval_mult": 3.333,
+      "boss_hp_mult": 0.65
     },
     {
       "id": "p2",
@@ -19,7 +20,8 @@
       "hp_mult": 1.0,
       "count_mult": 0.55,
       "reward_mult": 1,
-      "interval_mult": 1.818
+      "interval_mult": 1.818,
+      "boss_hp_mult": 0.65
     },
     {
       "id": "p3",
@@ -27,7 +29,8 @@
       "hp_mult": 1.0,
       "count_mult": 0.8,
       "reward_mult": 1,
-      "interval_mult": 1.25
+      "interval_mult": 1.25,
+      "boss_hp_mult": 0.65
     },
     {
       "id": "p4",
@@ -35,7 +38,8 @@
       "hp_mult": 1.0,
       "count_mult": 1.0,
       "reward_mult": 1,
-      "interval_mult": 1.0
+      "interval_mult": 1.0,
+      "boss_hp_mult": 0.65
     }
   ]
 }
