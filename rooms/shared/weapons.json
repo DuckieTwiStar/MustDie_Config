@@ -80,7 +80,7 @@
       "mark_max": 1.0,
       "mark_window": 3,
       "mark_transfer": 0,
-      "mark_all_damage": false
+      "mark_all_damage": true
     },
     {
       "id": "bow",
