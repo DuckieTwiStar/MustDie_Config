@@ -266,7 +266,7 @@
       "order": 50,
       "level": 1,
       "price_soft": 75,
-      "value": 64
+      "value": 46
     },
     {
       "id": "bow_damage_2",
@@ -275,7 +275,7 @@
       "order": 50,
       "level": 2,
       "price_soft": 125,
-      "value": 67
+      "value": 47
     },
     {
       "id": "bow_damage_3",
@@ -284,7 +284,7 @@
       "order": 50,
       "level": 3,
       "price_soft": 175,
-      "value": 70
+      "value": 49
     },
     {
       "id": "bow_attack_interval_1",
@@ -293,7 +293,7 @@
       "order": 60,
       "level": 1,
       "price_soft": 75,
-      "value": 0.8
+      "value": 0.65
     },
     {
       "id": "bow_attack_interval_2",
@@ -302,7 +302,7 @@
       "order": 60,
       "level": 2,
       "price_soft": 125,
-      "value": 0.7
+      "value": 0.6
     },
     {
       "id": "bow_attack_interval_3",
@@ -311,7 +311,7 @@
       "order": 60,
       "level": 3,
       "price_soft": 175,
-      "value": 0.6
+      "value": 0.55
     },
     {
       "id": "bow_ricochet_1",
