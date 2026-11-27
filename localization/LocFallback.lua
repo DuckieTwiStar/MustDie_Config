@@ -37,6 +37,7 @@ local strings: { [string]: string } = {
 	["room.trap.hint_wall"] = "Aim at a wall or column: click to place, Q to cancel",
 	["room.trap.hint_floor"] = "Pick a floor cell: click to place, Q to cancel",
 	["room.trap.too_far_hint"] = "Too far: come closer to place the trap",
+	["room.trap.auto_cancel"] = "Couldn't place the trap: back to your weapon",
 	["room.trap.stat_damage"] = "Damage: {value}",
 	["room.trap.stat_hold"] = "Hold: {value} s",
 	["room.trap.stat_cooldown"] = "Cooldown: {value} s",

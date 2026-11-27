@@ -350,6 +350,16 @@
    "pt-br": "Longe demais: chegue mais perto para colocar a armadilha",
    "uk": "Задалеко: підійди ближче, щоб поставити пастку"
   },
+  "room.trap.auto_cancel": {
+   "en": "Couldn't place the trap: back to your weapon",
+   "de": "Falle konnte nicht platziert werden: zurück zur Waffe",
+   "fr": "Impossible de poser le piège : retour à ton arme",
+   "it": "Impossibile piazzare la trappola: torni all'arma",
+   "es": "No se pudo colocar la trampa: vuelves a tu arma",
+   "pt-pt": "Não foi possível colocar a armadilha: voltas à tua arma",
+   "pt-br": "Não deu para colocar a armadilha: de volta à sua arma",
+   "uk": "Не вдалося поставити пастку: повертаю зброю"
+  },
   "room.trap.stat_damage": {
    "en": "Damage: {value}",
    "de": "Schaden: {value}",
