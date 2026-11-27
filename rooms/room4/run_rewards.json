@@ -1,23 +1,23 @@
 {
   "meta": {
-    "version": "BAL-0019",
-    "exported_at": "2026-11-02",
-    "note": "Нагороди забігу room4 (BAL-0019). Ціль: ≈1500 софту за перемогу з базою на 80%; wave_soft під 6 хвиль. Решта полів як у shared"
+    "version": "BAL-0020",
+    "exported_at": "2026-11-27",
+    "note": "Нагороди забігу room4 (BAL-0020): множники ×0.77 від BAL-0019 як у room1/room2/room3 (damage_per_soft 40→52, base_hp_per_soft 5→6.5, wisps_per_soft 200→260, wave_soft ×0.77). Ціль BAL-0019: ≈1500 софту за перемогу з базою на 80%. Прогін p4 (база 230/1000) дав 1065 на BAL-0019 ≈ 820 після ×0.77."
   },
   "run_rewards": {
-    "damage_per_soft": 40,
-    "wisps_per_soft": 200,
-    "base_hp_per_soft": 5,
+    "damage_per_soft": 52,
+    "wisps_per_soft": 260,
+    "base_hp_per_soft": 6.5,
     "results_delay": 1.5,
     "results_timer": 20,
     "damage_dealer_min_players": 1,
     "wave_soft": [
-      25,
-      65,
-      115,
-      170,
-      230,
-      300
+      19,
+      50,
+      89,
+      131,
+      177,
+      231
     ],
     "participation_only": true
   }
