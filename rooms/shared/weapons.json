@@ -2,7 +2,7 @@
   "meta": {
     "version": "BAL-0020",
     "exported_at": "2026-11-25",
-    "note": "Арсенал 19.10.2026, контракт конфігів бою 23.10.2026 (Ж-002, docs/combat-config-contract.md). tier = прогрес (замки порталів), order = сортування і порядок на вітрині лобі, rarity = рамка й кількість прокачок. defaults = значення пропущених необов'язкових полів. Решта числових полів = стати зброї (snake_case). fire_mode вибирає механіку в коді. on_hit = ефекти, які зброя накладає (id ефекту -> числа). Кулаки й рогатка безкоштовні (default_owned), їх price_soft лише для бюджету ботів. Магазин і перезарядка (23.10.2026): magazine 0 = без ліміту; reload_time = с на всю перезарядку, а при reload_per_round на один патрон; стартові часи орієнтовні | 2026-11-25: fists knockback_immunity 1.5 (відкидання лише цілі удару, повторно не раніше ніж через 1.5 с після паузи)"
+    "note": "Арсенал 19.10.2026, контракт конфігів бою 23.10.2026 (Ж-002, docs/combat-config-contract.md). tier = прогрес (замки порталів), order = сортування і порядок на вітрині лобі, rarity = рамка й кількість прокачок. defaults = значення пропущених необов'язкових полів. Решта числових полів = стати зброї (snake_case). fire_mode вибирає механіку в коді. on_hit = ефекти, які зброя накладає (id ефекту -> числа). Кулаки й рогатка безкоштовні (default_owned), їх price_soft лише для бюджету ботів. Магазин і перезарядка (23.10.2026): magazine 0 = без ліміту; reload_time = с на всю перезарядку, а при reload_per_round на один патрон; стартові часи орієнтовні | 2026-11-25: fists knockback_immunity 1.5 (відкидання лише цілі удару, повторно не раніше ніж через 1.5 с після паузи) | 2026-11-27: headshot_mult = множник урону влучання в голову (head_zone ворога), множиться з критом; 1 = зброя хедшотів не дає (кулаки, дробовик, промінь, вуду)"
   },
   "defaults": {
     "auto": false,
@@ -20,6 +20,7 @@
     "ricochet_damage_mult": 0.5,
     "crit_chance": 0,
     "crit_mult": 1,
+    "headshot_mult": 1,
     "spread": 0,
     "pellets": 1,
     "falloff_min": 1,
@@ -70,6 +71,7 @@
       "name_en": "Slingshot",
       "name_uk": "Рогатка",
       "damage": 15,
+      "headshot_mult": 1.5,
       "attack_interval": 0.75,
       "range": 120,
       "projectile_speed": 120,
@@ -93,6 +95,7 @@
       "name_en": "Bow",
       "name_uk": "Лук",
       "damage": 45,
+      "headshot_mult": 1.5,
       "attack_interval": 0.7,
       "range": 250,
       "projectile_speed": 160,
@@ -110,6 +113,7 @@
       "name_en": "Revolver",
       "name_uk": "Револьвер",
       "damage": 22,
+      "headshot_mult": 1.5,
       "attack_interval": 0.55,
       "range": 150,
       "magazine": 6,
@@ -153,6 +157,7 @@
       "name_en": "Tommy Gun",
       "name_uk": "Автомат «Томмі»",
       "damage": 7,
+      "headshot_mult": 1.5,
       "attack_interval": 0.1,
       "range": 120,
       "magazine": 50,
@@ -180,6 +185,7 @@
       "name_en": "Demon Hunter",
       "name_uk": "Арбалет «Мисливець на демонів»",
       "damage": 70,
+      "headshot_mult": 1.5,
       "attack_interval": 1.4,
       "range": 300,
       "projectile_speed": 220,

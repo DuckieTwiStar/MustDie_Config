@@ -55,6 +55,8 @@ SCHEMA = {
         "knockback_resist": (NUM, False, -1, 1),
         # замах по печаті (В-013): секунд, 0 = миттєвий удар; типово 0.6 у коді
         "base_hit_windup": (NUM, False, 0, 10),
+        # хедшоти (27.11.2026): верхня частка висоти хітбокса = голова; немає = голови немає (жаба)
+        "head_zone": (NUM, False, 0, 1),
     },
     "traps": {
         "id": (str, True, None, None), "order": (int, True, 0, None),
@@ -84,6 +86,8 @@ SCHEMA = {
         "projectile_speed": (NUM, False, 0.1, None), "gravity": (NUM, False, 0, None),
         "ricochet": (int, False, 0, None), "multishot": (int, False, 1, None),
         "crit_chance": (NUM, False, 0, 1), "crit_mult": (NUM, False, 1, None),
+        # хедшоти (27.11.2026): множник урону влучання в голову, 1 = немає
+        "headshot_mult": (NUM, False, 1, 10),
         "pellets": (int, False, 1, None), "spread": (NUM, False, 0, 90),
         "falloff_start": (NUM, False, 0, None), "falloff_min": (NUM, False, 0, 1),
         # арсенал 19.10.2026
@@ -200,7 +204,7 @@ WEAPON_IDENTITY = {"id", "order", "default_owned", "tier", "price_soft", "base_i
 DEFAULT_KEYS = (
     "auto", "damage_type", "armor_pierce", "knockback", "gravity", "stick", "pierce",
     "multishot", "multishot_spread", "volley_delay", "ricochet", "ricochet_range", "ricochet_damage_mult",
-    "crit_chance", "crit_mult", "spread", "pellets", "falloff_min", "dual", "dual_rate", "dual_magazine_mult",
+    "crit_chance", "crit_mult", "headshot_mult", "spread", "pellets", "falloff_min", "dual", "dual_rate", "dual_magazine_mult",
     "magazine", "reload_time", "reload_per_round", "reload_interruptible",
     "plasma_damage", "plasma_interval", "plasma_radius", "plasma_speed", "targets", "splash_radius", "splash_share",
 )
@@ -753,7 +757,7 @@ def check_enemy_extras(enemies):
             check_phases(path, where, ph)
 
 
-PHASE_KEYS = {"id": str, "speed": NUM, "armor": NUM, "damage_to_base": NUM, "shield_hp": NUM, "shield_mult": dict, "until": dict}
+PHASE_KEYS = {"id": str, "speed": NUM, "armor": NUM, "damage_to_base": NUM, "shield_hp": NUM, "shield_mult": dict, "until": dict, "head_zone": NUM}
 
 
 def check_phases(path, where, phases):
@@ -771,7 +775,7 @@ def check_phases(path, where, phases):
                 err(path, f"{pw}: невідоме поле {k} (є {sorted(PHASE_KEYS)})")
         if not isinstance(p.get("id"), str) or not p.get("id"):
             err(path, f"{pw}: немає id")
-        for k, lo, hi in (("speed", 0.1, None), ("armor", 0, 0.99), ("damage_to_base", 0, None), ("shield_hp", 1, None)):
+        for k, lo, hi in (("speed", 0.1, None), ("armor", 0, 0.99), ("damage_to_base", 0, None), ("shield_hp", 1, None), ("head_zone", 0, 1)):
             if k in p and not (type_ok(p[k], NUM) and p[k] >= lo and (hi is None or p[k] <= hi)):
                 err(path, f"{pw}: {k} має бути числом {lo}..{hi if hi is not None else '∞'}")
         for t, m in (p.get("shield_mult") or {}).items():
@@ -1057,6 +1061,7 @@ BOT_ARCHETYPE_FIELDS = {
 BOT_ARCHETYPE_OPTIONAL = {
     "leash": (0.01, 1),  # 1: у бою бот іде за фронтом хвилі; менше: не далі від post (воротар)
     "boss_focus": (0, 1),  # 0: бос як звичайна ціль; 1: бос головна ціль у дальності; від 0.5 бот стає збоку від боса
+    "head_aim": (0, 1),  # 0.3: шанс цілитися в голову (хедшоти)
 }
 
 

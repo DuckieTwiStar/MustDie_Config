@@ -2,7 +2,7 @@
   "meta": {
     "version": "BAL-0019",
     "exported_at": "2026-11-02",
-    "note": "Вороги: стати, хітбокс (studs), колір, модель вигляду (visual, малює клієнт) і її масштаб; movement=jump - стрибун (жаба)"
+    "note": "Вороги: стати, хітбокс (studs), колір, модель вигляду (visual, малює клієнт) і її масштаб; movement=jump - стрибун (жаба) | 2026-11-27: head_zone (хедшоти) = верхня частка висоти хітбокса, де голова моделі; немає = голови немає (жаба). Щитоносець: поки щит, хедшотів немає"
   },
   "enemies": [
     {
@@ -20,6 +20,7 @@
         5,
         3
       ],
+      "head_zone": 0.45,
       "color": "#C8463C",
       "visual": "Zombie_Rigid",
       "visual_scale": 1.3
@@ -39,6 +40,7 @@
         6,
         4
       ],
+      "head_zone": 0.45,
       "color": "#A03C96",
       "visual": "Hatter_Rigid",
       "visual_scale": 1.1
@@ -58,6 +60,7 @@
         9,
         6
       ],
+      "head_zone": 0.35,
       "color": "#5A2828",
       "visual": "Boilermaker_Rigid",
       "visual_scale": 1.15,
@@ -78,6 +81,7 @@
         5,
         3
       ],
+      "head_zone": 0.45,
       "color": "#3C8CDC",
       "visual": "Runner_Rigid",
       "visual_scale": 1.3,
@@ -122,6 +126,7 @@
         6,
         4
       ],
+      "head_zone": 0.8,
       "color": "#3C6EA0",
       "visual": "Octopus_Rigid",
       "visual_scale": 1.5,
@@ -164,6 +169,7 @@
         12,
         8
       ],
+      "head_zone": 0.3,
       "color": "#8C1E1E",
       "visual": "Boilermaker_Rigid",
       "visual_scale": 1.6,
@@ -205,6 +211,7 @@
         10,
         7
       ],
+      "head_zone": 0.3,
       "color": "#A0641E",
       "visual": "Boilermaker_Rigid",
       "visual_scale": 1.4,
