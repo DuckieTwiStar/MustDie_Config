@@ -35,7 +35,7 @@
     },
     "enemies": {
       "corridor_lanes": 8,
-      "turn_radius": 12,
+      "turn_radius": 16,
       "speed_jitter": 0.1,
       "spawn_jitter": 0.4,
       "drift_amplitude": 6,
