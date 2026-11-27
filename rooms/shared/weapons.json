@@ -95,7 +95,7 @@
       "name_en": "Bow",
       "name_uk": "Лук",
       "damage": 45,
-      "headshot_mult": 1.5,
+      "headshot_mult": 1.3,
       "attack_interval": 0.7,
       "range": 250,
       "projectile_speed": 160,

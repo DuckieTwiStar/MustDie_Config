@@ -20,7 +20,7 @@
         5,
         3
       ],
-      "head_zone": 0.45,
+      "head_zone": 0.3,
       "color": "#C8463C",
       "visual": "Zombie_Rigid",
       "visual_scale": 1.3
@@ -40,7 +40,7 @@
         6,
         4
       ],
-      "head_zone": 0.45,
+      "head_zone": 0.3,
       "color": "#A03C96",
       "visual": "Hatter_Rigid",
       "visual_scale": 1.1
@@ -60,7 +60,7 @@
         9,
         6
       ],
-      "head_zone": 0.35,
+      "head_zone": 0.3,
       "color": "#5A2828",
       "visual": "Boilermaker_Rigid",
       "visual_scale": 1.15,
@@ -81,7 +81,7 @@
         5,
         3
       ],
-      "head_zone": 0.45,
+      "head_zone": 0.3,
       "color": "#3C8CDC",
       "visual": "Runner_Rigid",
       "visual_scale": 1.3,
